@@ -1,0 +1,7 @@
+#!/usr/bin/env mkb
+
+# files specifies all files to build
+files
+{
+# Add new source files here
+}

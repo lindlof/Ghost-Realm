@@ -1,0 +1,7 @@
+--dll="z:\ghosthunter\ghosthunter\trunk\build_ghosthunter_vc10\Debug_ghosthunter_VC10_x86\ghosthunter.s86"
+--data="z:\ghosthunter\ghosthunter\trunk\data"
+--checks3edir="1"
+--app-icf1="z:/ghosthunter/ghosthunter/trunk/data/app.icf"
+--config-txt1="c:/win/marmalade/6.2/s3e/s3e.config.txt"
+--config-txt2="z:/ghosthunter/ghosthunter/trunk/data/app.config.txt"
+--config-txt3="c:/win/marmalade/6.2/s3e\s3e.config.txt"

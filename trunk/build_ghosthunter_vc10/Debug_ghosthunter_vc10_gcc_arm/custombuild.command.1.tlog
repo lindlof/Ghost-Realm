@@ -1,0 +1,2 @@
+^Z:\GHOSTHUNTER\GHOSTHUNTER\GHOSTHUNTER\GHOSTHUNTER.MKB
+"C:\win\Marmalade\6.2\s3e\python\python.exe" "C:\win\Marmalade\6.2\s3e\makefile_builder\mkb.py" "z:/ghosthunter/ghosthunter/ghosthunter/ghosthunter.mkb" "--default-buildenv=vc10" --msvc-project
