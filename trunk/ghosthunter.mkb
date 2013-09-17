@@ -3,5 +3,19 @@
 # files specifies all files to build
 files
 {
-# Add new source files here
+}
+subprojects
+{
+    iwgx
+}
+assets
+{
+    (data)
+    textures/hammersmith_ghost.png
+}
+#### AUTO GENERATED deployment settings from DeployTool.exe. Do not edit below this line ####
+deployments
+{
+	["Default"]
+	name='Ghost Hunter'
 }

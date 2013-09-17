@@ -13,11 +13,44 @@
 #ifndef IW_DEBUG
 #   define IW_DEBUG 1
 #endif
+#ifndef IW_MKF_IWGEOM
+#   define IW_MKF_IWGEOM 1
+#endif
+#ifndef IW_MKF_IWGL
+#   define IW_MKF_IWGL 1
+#endif
+#ifndef IW_MKF_IWGX
+#   define IW_MKF_IWGX 1
+#endif
+#ifndef IW_MKF_IWRESMANAGER
+#   define IW_MKF_IWRESMANAGER 1
+#endif
+#ifndef IW_MKF_IWUTIL
+#   define IW_MKF_IWUTIL 1
+#endif
+#ifndef IW_MKF_LIBJPEG
+#   define IW_MKF_LIBJPEG 1
+#endif
+#ifndef IW_MKF_LIBPNG
+#   define IW_MKF_LIBPNG 1
+#endif
+#ifndef IW_MKF_ZLIB
+#   define IW_MKF_ZLIB 1
+#endif
 #ifndef IW_PLATFORM_S3E
 #   define IW_PLATFORM_S3E 1
 #endif
 #ifndef IW_SDK
 #   define IW_SDK 1
+#endif
+#ifndef IW_USE_ASSERTIONS
+#   define IW_USE_ASSERTIONS 1
+#endif
+#ifndef IW_USE_CALLSTACK
+#   define IW_USE_CALLSTACK 1
+#endif
+#ifndef IW_USE_TRACING
+#   define IW_USE_TRACING 1
 #endif
 #ifndef S3E_INCLUDE_LEGACY
 #   define S3E_INCLUDE_LEGACY 1
@@ -47,7 +80,7 @@
 #endif
 */
 
-#if !defined I3D_ARCH_ARM && !defined I3D_ARCH_X86 && !defined I3D_ARCH_AMD64 && !defined I3D_ARCH_MIPS && !defined I3D_ARCH_PS3 && !defined I3D_ARCH_X360 && !defined I3D_ARCH_PSP
+#if !defined I3D_ARCH_ARM && !defined I3D_ARCH_X86 && !defined I3D_ARCH_AMD64 && !defined I3D_ARCH_MIPS
     #if defined __ARMCC_VERSION || defined __ARMC__ || defined __arm__
         #define I3D_ARCH_ARM
     #elif defined __mipsel || defined __MIPSEL
@@ -67,13 +100,13 @@
     #define __ARM__
 #endif
 
-#if defined __cplusplus && defined _MSC_VER && _MSC_VER < 1400 && !defined IW_WCHAR_T_DEFINED
+#if defined __cplusplus && defined _MSC_VER && _MSC_VER < 1400 && !defined IW_WCHAR_T_DEFINED && !defined __clang__
     // wchar_t is a builtin in C++ .. but not for MSVC <= 2003
     typedef unsigned short wchar_t;
     #define IW_WCHAR_T_DEFINED
 #endif
 
-#ifdef _MSC_VER
+#if defined _MSC_VER && !defined __clang__
     #pragma warning (disable: 4786)
 #endif
 
@@ -87,4 +120,11 @@
 #undef WIN32
 #undef __linux__
 #undef __linux
+#undef __gnu_linux__
 #undef linux
+
+#if defined __i386__ && defined __ANDROID__
+#ifndef S3E_ANDROID_X86
+#   define S3E_ANDROID_X86 1
+#endif
+#endif

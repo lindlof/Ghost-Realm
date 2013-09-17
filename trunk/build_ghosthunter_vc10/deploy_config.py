@@ -4,9 +4,9 @@
 # tool during the build process.
 
 config = {}
-cmdline = ['C:/win/Marmalade/6.2/s3e/makefile_builder/mkb.py', 'z:/ghosthunter/ghosthunter/trunk/ghosthunter.mkb', '--deploy-only']
-mkb = 'z:/ghosthunter/ghosthunter/trunk/ghosthunter.mkb'
-mkf = []
+cmdline = ['C:/Marmalade/6.3/s3e/makefile_builder/mkb.py', 'c:/workspace/ghosthunter/trunk/ghosthunter.mkb', '--default-buildenv=vc10', '--msvc-project', '--deploy-only']
+mkb = 'c:/workspace/ghosthunter/trunk/ghosthunter.mkb'
+mkf = ['c:\\marmalade\\6.3\\modules\\iwgx\\iwgx.mkf', 'c:\\marmalade\\6.3\\modules\\iwgeom\\iwgeom.mkf', 'c:\\marmalade\\6.3\\modules\\iwutil\\iwutil.mkf', 'c:\\marmalade\\6.3\\modules\\third_party\\libjpeg\\libjpeg.mkf', 'c:\\marmalade\\6.3\\modules\\third_party\\libpng\\libpng.mkf', 'c:\\marmalade\\6.3\\modules\\third_party\\zlib\\zlib.mkf', 'c:\\marmalade\\6.3\\modules\\iwresmanager\\iwresmanager.mkf', 'c:\\marmalade\\6.3\\modules\\iwgl\\iwgl.mkf']
 
 class DeployConfig(object):
     pass
@@ -16,51 +16,63 @@ class DeployConfig(object):
 assets = {}
 
 assets['Default'] = [
-    ('z:/ghosthunter/ghosthunter/trunk\data', '.', 0),
+    ('c:/workspace/ghosthunter/trunk/data/textures/hammersmith_ghost.png', 'textures/hammersmith_ghost.png', 0),
 ]
 
 ######### DEFAULT CONFIG #############
 
 class DefaultConfig(DeployConfig):
     embed_icf = -1
-    name = 'ghosthunter'
+    name = 'Ghost Hunter'
     pub_sign_key = 0
     priv_sign_key = 0
-    caption = 'ghosthunter'
-    long_caption = 'ghosthunter'
+    caption = 'Ghost Hunter'
+    long_caption = 'Ghost Hunter'
     version = [0, 0, 1]
-    config = ['z:/ghosthunter/ghosthunter/trunk/data/app.icf']
-    data_dir = 'z:/ghosthunter/ghosthunter/trunk/data'
+    config = ['c:/workspace/ghosthunter/trunk/data/app.icf']
+    data_dir = 'c:/workspace/ghosthunter/trunk/data'
     iphone_link_lib = []
     linux_ext_lib = []
+    android_extra_application_manifest = []
     iphone_link_libdir = []
+    iphone_link_libdirs = []
     iphone_link_opts = []
-    osx_ext_dll = []
     android_external_jars = []
     android_external_res = []
     android_supports_gl_texture = []
     android_extra_manifest = []
-    iphone_link_libdirs = []
-    android_extra_application_manifest = []
     win32_ext_dll = []
     android_so = []
+    osx_ext_dll = []
     iphone_link_libs = []
     target = {
-         'arm' : {
-                   'debug'   : r'z:/ghosthunter/ghosthunter/trunk/build_ghosthunter_vc10/Debug_ghosthunter_VC10_arm/ghosthunter.s3e',
-                   'release' : r'z:/ghosthunter/ghosthunter/trunk/build_ghosthunter_vc10/Release_ghosthunter_VC10_arm/ghosthunter.s3e',
+         'gcc_x86' : {
+                   'debug'   : r'c:/workspace/ghosthunter/trunk/build_ghosthunter_vc10/Debug_ghosthunter_VC10_gcc_x86/ghosthunter.so',
+                   'release' : r'c:/workspace/ghosthunter/trunk/build_ghosthunter_vc10/Release_ghosthunter_VC10_gcc_x86/ghosthunter.so',
                  },
          'mips_gcc' : {
-                   'debug'   : r'z:/ghosthunter/ghosthunter/trunk/build_ghosthunter_vc10/Debug_ghosthunter_VC10_gcc_mips/ghosthunter.so',
-                   'release' : r'z:/ghosthunter/ghosthunter/trunk/build_ghosthunter_vc10/Release_ghosthunter_VC10_gcc_mips/ghosthunter.so',
-                 },
-         'x86' : {
-                   'debug'   : r'z:/ghosthunter/ghosthunter/trunk/build_ghosthunter_vc10/Debug_ghosthunter_VC10_x86/ghosthunter.s86',
-                   'release' : r'z:/ghosthunter/ghosthunter/trunk/build_ghosthunter_vc10/Release_ghosthunter_VC10_x86/ghosthunter.s86',
+                   'debug'   : r'c:/workspace/ghosthunter/trunk/build_ghosthunter_vc10/Debug_ghosthunter_VC10_gcc_mips/ghosthunter.so',
+                   'release' : r'c:/workspace/ghosthunter/trunk/build_ghosthunter_vc10/Release_ghosthunter_VC10_gcc_mips/ghosthunter.so',
                  },
          'arm_gcc' : {
-                   'debug'   : r'z:/ghosthunter/ghosthunter/trunk/build_ghosthunter_vc10/Debug_ghosthunter_VC10_gcc_arm/ghosthunter.s3e',
-                   'release' : r'z:/ghosthunter/ghosthunter/trunk/build_ghosthunter_vc10/Release_ghosthunter_VC10_gcc_arm/ghosthunter.s3e',
+                   'debug'   : r'c:/workspace/ghosthunter/trunk/build_ghosthunter_vc10/Debug_ghosthunter_VC10_gcc_arm/ghosthunter.s3e',
+                   'release' : r'c:/workspace/ghosthunter/trunk/build_ghosthunter_vc10/Release_ghosthunter_VC10_gcc_arm/ghosthunter.s3e',
+                 },
+         'mips' : {
+                   'debug'   : r'c:/workspace/ghosthunter/trunk/build_ghosthunter_vc10/Debug_ghosthunter_VC10_gcc_mips/ghosthunter.so',
+                   'release' : r'c:/workspace/ghosthunter/trunk/build_ghosthunter_vc10/Release_ghosthunter_VC10_gcc_mips/ghosthunter.so',
+                 },
+         'gcc_x86_android' : {
+                   'debug'   : r'c:/workspace/ghosthunter/trunk/build_ghosthunter_vc10/Debug_ghosthunter_VC10_gcc_x86_android/ghosthunter.so',
+                   'release' : r'c:/workspace/ghosthunter/trunk/build_ghosthunter_vc10/Release_ghosthunter_VC10_gcc_x86_android/ghosthunter.so',
+                 },
+         'arm' : {
+                   'debug'   : r'c:/workspace/ghosthunter/trunk/build_ghosthunter_vc10/Debug_ghosthunter_VC10_arm/ghosthunter.s3e',
+                   'release' : r'c:/workspace/ghosthunter/trunk/build_ghosthunter_vc10/Release_ghosthunter_VC10_arm/ghosthunter.s3e',
+                 },
+         'x86' : {
+                   'debug'   : r'c:/workspace/ghosthunter/trunk/build_ghosthunter_vc10/Debug_ghosthunter_VC10_x86/ghosthunter.s86',
+                   'release' : r'c:/workspace/ghosthunter/trunk/build_ghosthunter_vc10/Release_ghosthunter_VC10_x86/ghosthunter.s86',
                  },
         }
     assets = assets['Default']
