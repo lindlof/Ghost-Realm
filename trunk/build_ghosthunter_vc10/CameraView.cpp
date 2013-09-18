@@ -7,6 +7,7 @@
  * PARTICULAR PURPOSE.
  */
 
+#include "CameraView.h"
 #include "s3e.h"
 #include "s3eCamera.h"
 
@@ -26,6 +27,14 @@ static CIwTexture* g_GhostTexture = NULL;
 static s3eCameraFrameRotation g_FrameRotation = S3E_CAMERA_FRAME_ROT90;
 
 static CIwFMat viewMatrix;
+
+static bool ghost_attacked;
+
+
+void setGhostAttacked(bool attacked) {
+	ghost_attacked = attacked;
+}
+
 
 // Camera callback. Copy the capture frame buffer into a texture ready for rendering.
 static int32 frameReceived(void* systemData, void* userData)
@@ -87,7 +96,7 @@ void CameraViewInit()
 // The following function deletes textures if they exist and terminates
 // IwGx and s3e API functionality.
 //-----------------------------------------------------------------------------
-void CameraViewShutDown()
+void CameraViewTerm()
 {
     // Release all textures
     if (g_GhostTexture)
@@ -123,7 +132,7 @@ void CameraViewRender()
 	CIwMaterial* pMat = NULL;
 
 	RenderCamera(pMat);
-	RenderGhost(pMat);
+	if (!ghost_attacked) RenderGhost(pMat);
 
     IwGxFlush();
     IwGxSwapBuffers();

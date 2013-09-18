@@ -35,11 +35,15 @@ CursorKeyCodes  g_Cursorkey = EXCURSOR_NONE;
 static CIwMaterial* g_CursorMaterial = NULL;
 
 
-// Externs for functions which examples must implement
+// Externs for functions
 void CameraViewInit();
-void CameraViewShutDown();
+void CameraViewTerm();
 void CameraViewRender();
 bool CameraViewUpdate();
+
+void CameraControllerInit();
+void CameraControllerTerm();
+bool CameraControllerUpdate();
 
 // Attempt to lock to 25 frames per second
 #define MS_PER_FRAME (1000 / 25)
@@ -412,6 +416,7 @@ int main()
 
     // Main loop
     CameraViewInit();
+	CameraControllerInit();
 
     // Set screen clear colour
     IwGxSetColClear(0xff, 0xff, 0xff, 0xff);
@@ -424,6 +429,8 @@ int main()
         s3ePointerUpdate();
 
         int64 start = s3eTimerGetMs();
+
+		CameraControllerUpdate();
 
         bool result = CameraViewUpdate();
         if  (
@@ -452,7 +459,8 @@ int main()
     }
 
     delete g_CursorMaterial;
-    CameraViewShutDown();
+    CameraViewTerm();
+	CameraControllerTerm();
     DeleteButtons();
     IwGxTerminate();
     return 0;

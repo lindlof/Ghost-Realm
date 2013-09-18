@@ -1047,9 +1047,13 @@ chdir /d "c:\marmalade\6.3\s3e"
     <ClInclude Include="c:/marmalade/6.3/s3e/h/std/wctype.h" />
     <ClInclude Include="c:/marmalade/6.3/modules/third_party/zlib/h/zconf.h" />
     <ClInclude Include="c:/marmalade/6.3/modules/third_party/zlib/h/zlib.h" />
+    <ClInclude Include="CameraModel.h" />
+    <ClInclude Include="CameraView.h" />
     <ClInclude Include="Main.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CameraController.cpp" />
+    <ClCompile Include="CameraModel.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="CameraView.cpp" />
   </ItemGroup>

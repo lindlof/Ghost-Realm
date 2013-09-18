@@ -1118,6 +1118,12 @@
       <Filter>(zlib)\h</Filter>
     </ClInclude>
     <ClInclude Include="Main.h" />
+    <ClInclude Include="CameraView.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraModel.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\ghosthunter.mkb" />
@@ -1125,6 +1131,12 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="CameraView.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraController.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraModel.cpp">
       <Filter>Camera</Filter>
     </ClCompile>
   </ItemGroup>
