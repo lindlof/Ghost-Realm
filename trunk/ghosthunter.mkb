@@ -3,6 +3,14 @@
 # files specifies all files to build
 files
 {
+	(source)
+	CameraController.cpp
+	CameraModel.cpp
+	CameraModel.h
+	CameraView.cpp
+	CameraView.h
+	Main.cpp
+	Main.h
 }
 subprojects
 {
