@@ -11,6 +11,8 @@ files
 	CameraView.h
 	Main.cpp
 	Main.h
+	Player.cpp
+	Player.h
 }
 subprojects
 {

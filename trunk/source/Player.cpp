@@ -7,6 +7,20 @@
  * PARTICULAR PURPOSE.
  */
 
-#include <math.h>
+#include "Player.h"
 
-void accelometerUpdate(int32 x, int32 y, int32 z);
+class Vitality {
+	int vitality;
+
+	public : Vitality() {
+		vitality = 100;
+	}
+};
+
+class Player {
+	Vitality vitality;
+
+	public : Player() {
+		vitality = Vitality::Vitality();
+	}
+};

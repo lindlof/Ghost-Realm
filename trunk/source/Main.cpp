@@ -45,6 +45,10 @@ void CameraControllerInit();
 void CameraControllerTerm();
 bool CameraControllerUpdate();
 
+void CameraModelInit();
+void CameraModelTerm();
+bool CameraModelUpdate();
+
 // Attempt to lock to 25 frames per second
 #define MS_PER_FRAME (1000 / 25)
 
@@ -417,6 +421,8 @@ int main()
     // Main loop
     CameraViewInit();
 	CameraControllerInit();
+	CameraModelInit();
+
 
     // Set screen clear colour
     IwGxSetColClear(0xff, 0xff, 0xff, 0xff);
@@ -431,6 +437,7 @@ int main()
         int64 start = s3eTimerGetMs();
 
 		CameraControllerUpdate();
+		CameraModelUpdate();
 
         bool result = CameraViewUpdate();
         if  (
@@ -461,6 +468,8 @@ int main()
     delete g_CursorMaterial;
     CameraViewTerm();
 	CameraControllerTerm();
+	CameraModelTerm();
+
     DeleteButtons();
     IwGxTerminate();
     return 0;

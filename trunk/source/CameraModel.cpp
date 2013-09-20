@@ -8,10 +8,13 @@
  */
 
 #include "CameraModel.h"
+#include "Main.h"
 
 #include <math.h>
 #include <time.h>
 #include "CameraView.h"
+#include "s3eCompass.h"
+#include "Player.h"
 
 class Strike {
 	clock_t time;
@@ -24,7 +27,7 @@ class Strike {
 	public : void strikeUpdate(int32 x, int32 y, int32 z) {
 		float magnitude = (float)sqrt((x*x) + (y*y) + (z*z));
 
-		float phoneAccel = sqrt(z^2 + y^2);
+		double phoneAccel = sqrt(z^2 + y^2);
 
 		// Striking starts when the phone moves 'forward' with
 		// enough acceleration
@@ -50,23 +53,29 @@ class Strike {
 	}
 };
 
-class Vitality {
-	int vitality;
-
-
-};
-
 class Ghost {
 	int positionX;
 	int positionY;
-	int sizeX;
-	int sizeY;
+	int width;
+	int height;
 
+	int compassPoint;
 
+	public : Ghost() {
+		positionX = 0;
+		positionY = 0;
+		width = 150;
+		height = 300;
+
+		compassPoint = 90;
+	}
 };
 
 static Strike strike;
-static Vitality vitality;
+//static Player player;
+
+static bool compassError;
+static double currentCompassHeading = 0;
 
 float gravityX, gravityY, gravityZ = 0;
 
@@ -75,7 +84,7 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
     // with t, the low-pass filter's time-constant
     // and dT, the event delivery rate
 
-	float alpha = 0.8;
+	float alpha = 0.8f;
 
 	// Use low-pass filter to isolate the force of gravity
 	gravityX = alpha * gravityX + (1 - alpha) * x;
@@ -90,9 +99,25 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
 }
 
 void CameraModelInit() {
-
+	if (s3eCompassAvailable())
+    {
+        s3eCompassStart();
+    }
 }
 
-void CameraModelUpdate() {
+void CameraModelTerm()
+{
+	if (s3eCompassAvailable()) 
+	{
+        s3eCompassStop();
+	}
+}
 
+bool CameraModelUpdate() 
+{
+	s3eCompassHeading h;
+    compassError = S3E_RESULT_SUCCESS != s3eCompassGetHeading(&h);
+    currentCompassHeading = h.m_Heading;
+
+	return true;
 }
