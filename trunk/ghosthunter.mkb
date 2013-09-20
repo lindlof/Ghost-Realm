@@ -8,7 +8,8 @@ files
 	CameraModel.cpp
 	CameraModel.h
 	CameraView.cpp
-	CameraView.h
+	Ghost.cpp
+	Ghost.h
 	Main.cpp
 	Main.h
 	Player.cpp

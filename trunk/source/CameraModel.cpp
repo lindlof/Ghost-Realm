@@ -13,9 +13,7 @@
 #include <math.h>
 #include <time.h>
 #include "CameraView.h"
-#include "s3eCompass.h"
 #include "Player.h"
-#include "IwRandom.h"
 
 class Strike {
 	clock_t time;
@@ -43,43 +41,26 @@ class Strike {
 				// Ghost is attacked if the strike took enough time
 
 				if (clock() - time > STRINKE_TIME_TO_HIT) {
-					setGhostAttacked(true);
+					//ghost.setGhostHit(true);
 				}
 			}
 		} else {
 			time = clock();
-			setGhostAttacked(false);
+			//ghost.setGhostHit(false);
 		}
 
 	}
 };
 
-class Ghost {
-	int positionX;
-	int positionY;
-	int width;
-	int height;
-
-	int compassPoint;
-
-	public : Ghost() {
-		positionX = 0;
-		positionY = 0;
-		width = 150;
-		height = 300;
-
-		IwRandSeed((int32)s3eTimerGetMs());
-		compassPoint = IwRandMinMax(0, 360);
-	}
-};
-
 static Strike strike;
 static Player player;
-
-static bool compassError;
-static double currentCompassHeading = 0;
+static Ghost ghost;
 
 float gravityX, gravityY, gravityZ = 0;
+
+Ghost getGhost() {
+	return ghost;
+}
 
 void accelometerUpdate(int32 x, int32 y, int32 z) {
 	// alpha is calculated as t / (t + dT)
@@ -100,26 +81,15 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
 	strike.strikeUpdate(x, y, z);
 }
 
-void CameraModelInit() {
-	if (s3eCompassAvailable())
-    {
-        s3eCompassStart();
-    }
+void CameraModelInit() 
+{
 }
 
-void CameraModelTerm()
+void CameraModelTerm() 
 {
-	if (s3eCompassAvailable()) 
-	{
-        s3eCompassStop();
-	}
 }
 
 bool CameraModelUpdate() 
 {
-	s3eCompassHeading h;
-    compassError = S3E_RESULT_SUCCESS != s3eCompassGetHeading(&h);
-    currentCompassHeading = h.m_Heading;
-
 	return true;
 }

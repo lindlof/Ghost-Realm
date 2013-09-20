@@ -8,6 +8,7 @@
  */
 
 #include "CameraView.h"
+#include "CameraModel.h"
 #include "s3e.h"
 #include "s3eCamera.h"
 
@@ -25,15 +26,7 @@ static CIwTexture* g_CameraTexture = NULL;
 static CIwTexture* g_GhostTexture = NULL;
 
 static s3eCameraFrameRotation g_FrameRotation = S3E_CAMERA_FRAME_ROT90;
-
 static CIwFMat viewMatrix;
-
-static bool ghost_attacked;
-
-
-void setGhostAttacked(bool attacked) {
-	ghost_attacked = attacked;
-}
 
 
 // Camera callback. Copy the capture frame buffer into a texture ready for rendering.
@@ -132,7 +125,7 @@ void CameraViewRender()
 	CIwMaterial* pMat = NULL;
 
 	RenderCamera(pMat);
-	if (!ghost_attacked) RenderGhost(pMat);
+	RenderGhost(pMat);
 
     IwGxFlush();
     IwGxSwapBuffers();
@@ -188,6 +181,10 @@ void RenderCamera(CIwMaterial* pMat) {
 }
 
 void RenderGhost(CIwMaterial* pMat) {
+
+	Ghost ghost = getGhost();
+	// ask ghost what to show
+
     pMat = IW_GX_ALLOC_MATERIAL();
 	pMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
     pMat->SetTexture(g_GhostTexture);
