@@ -9,18 +9,10 @@
 
 #include "Player.h"
 
-class Vitality {
-	int vitality;
-
-	public : Vitality() {
-		vitality = 100;
-	}
+Vitality::Vitality() {
+	vitality = 100;
 };
 
-class Player {
-	Vitality vitality;
-
-	public : Player() {
-		vitality = Vitality::Vitality();
-	}
+Player::Player() {
+	vitality = Vitality::Vitality();
 };

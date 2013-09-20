@@ -72,7 +72,7 @@ class Ghost {
 };
 
 static Strike strike;
-//static Player player;
+static Player player;
 
 static bool compassError;
 static double currentCompassHeading = 0;

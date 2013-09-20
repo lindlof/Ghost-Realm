@@ -7,5 +7,18 @@
  * PARTICULAR PURPOSE.
  */
 
-class Vitality;
-class Player;
+class Vitality {
+	private:
+	int vitality;	
+
+	public:
+	Vitality();
+};
+
+class Player {
+	private:
+	Vitality vitality;
+
+	public:
+	Player();
+};
