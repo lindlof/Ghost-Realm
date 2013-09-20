@@ -50,7 +50,23 @@ class Strike {
 	}
 };
 
+class Vitality {
+	int vitality;
+
+
+};
+
+class Ghost {
+	int positionX;
+	int positionY;
+	int sizeX;
+	int sizeY;
+
+
+};
+
 static Strike strike;
+static Vitality vitality;
 
 float gravityX, gravityY, gravityZ = 0;
 
@@ -71,4 +87,12 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
 	float linearAccelerationZ = z - gravityZ;
 
 	strike.strikeUpdate(x, y, z);
+}
+
+void CameraModelInit() {
+
+}
+
+void CameraModelUpdate() {
+
 }

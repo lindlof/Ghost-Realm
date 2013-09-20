@@ -9,4 +9,7 @@
 
 #include <math.h>
 
+void CameraModeInit();
+void CameraModeUpdate();
+
 void accelometerUpdate(int32 x, int32 y, int32 z);
