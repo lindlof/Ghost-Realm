@@ -16,17 +16,31 @@
 class Strike {
 	clock_t time;
 
+	const static int SPEED_TO_START_STRIKING = 200;
+	const static int STRINKE_TIME_TO_HIT = 100;
+
 	// If player keeps the device in high acceleration for over
 	// half second the ghost is considered to be attacked
 	public : void strikeUpdate(int32 x, int32 y, int32 z) {
 		float magnitude = (float)sqrt((x*x) + (y*y) + (z*z));
 
-		bool striking = z > 200;
+		float phoneAccel = sqrt(z^2 + y^2);
 
+		// Striking starts when the phone moves 'forward' with
+		// enough acceleration
+		bool striking = (z > 0) && 
+			phoneAccel > SPEED_TO_START_STRIKING;
+		
 		// TODO: Consider specific direction/higher acceleration to be rewarded differently
 		if (striking) {
-			if (clock() - time > 200) {
-				setGhostAttacked(true);
+
+			// Striking is done when phone stops with enough acceleration
+			if (z < 0 && phoneAccel > 200) {
+				// Ghost is attacked if the strike took enough time
+
+				if (clock() - time > STRINKE_TIME_TO_HIT) {
+					setGhostAttacked(true);
+				}
 			}
 		} else {
 			time = clock();
