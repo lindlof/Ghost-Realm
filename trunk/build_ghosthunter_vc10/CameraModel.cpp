@@ -19,14 +19,13 @@ class Strike {
 	// If player keeps the device in high acceleration for over
 	// half second the ghost is considered to be attacked
 	public : void strikeUpdate(int32 x, int32 y, int32 z) {
-		// Magnitude of the acceleration without gravity
-		float mag = (float)sqrt((x*x) + (y*y) + (z*z)) - 950;
+		float magnitude = (float)sqrt((x*x) + (y*y) + (z*z));
 
-		bool striking = mag > 100;
+		bool striking = z > 200;
 
 		// TODO: Consider specific direction/higher acceleration to be rewarded differently
 		if (striking) {
-			if (clock() - time > 500) {
+			if (clock() - time > 200) {
 				setGhostAttacked(true);
 			}
 		} else {
@@ -39,6 +38,23 @@ class Strike {
 
 static Strike strike;
 
+float gravityX, gravityY, gravityZ = 0;
+
 void accelometerUpdate(int32 x, int32 y, int32 z) {
+	// alpha is calculated as t / (t + dT)
+    // with t, the low-pass filter's time-constant
+    // and dT, the event delivery rate
+
+	float alpha = 0.8;
+
+	// Use low-pass filter to isolate the force of gravity
+	gravityX = alpha * gravityX + (1 - alpha) * x;
+	gravityY = alpha * gravityY + (1 - alpha) * y;
+	gravityZ = alpha * gravityZ + (1 - alpha) * z;
+
+	float linearAccelerationX = x - gravityX;
+	float linearAccelerationY = y - gravityY;
+	float linearAccelerationZ = z - gravityZ;
+
 	strike.strikeUpdate(x, y, z);
 }
