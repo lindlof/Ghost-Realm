@@ -15,6 +15,7 @@
 #include "CameraView.h"
 #include "s3eCompass.h"
 #include "Player.h"
+#include "IwRandom.h"
 
 class Strike {
 	clock_t time;
@@ -67,7 +68,8 @@ class Ghost {
 		width = 150;
 		height = 300;
 
-		compassPoint = 90;
+		IwRandSeed((int32)s3eTimerGetMs());
+		compassPoint = IwRandMinMax(0, 360);
 	}
 };
 
