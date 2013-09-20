@@ -7,7 +7,6 @@
  * PARTICULAR PURPOSE.
  */
 
-#include "CameraView.h"
 #include "CameraModel.h"
 #include "s3e.h"
 #include "s3eCamera.h"

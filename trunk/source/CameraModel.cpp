@@ -12,7 +12,6 @@
 
 #include <math.h>
 #include <time.h>
-#include "CameraView.h"
 #include "Player.h"
 
 class Strike {
