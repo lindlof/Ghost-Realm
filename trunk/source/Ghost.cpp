@@ -12,6 +12,7 @@
 #include "IwRandom.h"
 #include "s3eTimer.h"
 #include "s3eCompass.h"
+#include "IwDebug.h"
 
 static bool compassError;
 static double currentCompassHeading = 0;
@@ -28,8 +29,13 @@ Ghost::Ghost() {
 	compassPoint = IwRandMinMax(0, 360);
 };
 
-void Ghost::setGhostHit(bool ghostHit) {
-	hit = ghostHit;
+void Ghost::ghostGotHit() {
+	IwTrace(GHOST_HUNTER, ("Ghost got hit"));
+	hit = true;
+}
+
+bool Ghost::isGhostHit() {
+	return hit;
 }
 
 void GhostInit() {

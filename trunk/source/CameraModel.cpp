@@ -13,53 +13,116 @@
 #include <math.h>
 #include <time.h>
 #include "Player.h"
+#include "IwDebug.h"
+
+static Player player;
+static Ghost ghost;
 
 class Strike {
-	clock_t time;
+	bool striking;
+	clock_t strikeInitTime;
 
-	const static int SPEED_TO_START_STRIKING = 200;
-	const static int STRINKE_TIME_TO_HIT = 100;
+	float peakAccel;
+	bool accelDecreasing;
+	clock_t accelDecreasingTime;
 
-	// If player keeps the device in high acceleration for over
-	// half second the ghost is considered to be attacked
+	float accelToStartStrike;
+	const static int MIN_STRIKE_TIME = 150;
+	const static int MAX_STRIKE_TIME = 250;
+	const static int REQUIRED_BLOW_STR = -1400;
+
+	public : Strike() {
+		accelToStartStrike = 700;
+	};
+
+	// 1) When the phone is going forward and there is certain
+	//    amount of acceleration the strike mode is initiated.
+	//
+	// 2) The strike must end in given minimum and maximum time.
+	//    Normal strike don't take very long but neither should
+	//    shaking of the phone be considered as a strike.
+	//
+	//    The strike is immediately discarded if phone starts
+	//    going backward before the minimum time is reached.
+	//
+	// 3) The end phase begins when the phone acceleration
+	//    starts decreasing. (Please note the effect of the
+	//    low-pass filter.) If acceleration decreases rapidly
+	//    enough the strike is considered successful.
+	//
+	// 4) When a ghost is hit tell it to the ghost.
+
 	public : void strikeUpdate(int32 x, int32 y, int32 z) {
-		float magnitude = (float)sqrt((x*x) + (y*y) + (z*z));
+		int i;
 
-		double phoneAccel = sqrt(z^2 + y^2);
+		float phoneAccel = (float)sqrt(z*z + y*y);
+		phoneAccel = z < 0 ? phoneAccel*-1 : phoneAccel*1;
 
-		// Striking starts when the phone moves 'forward' with
-		// enough acceleration
-		bool striking = (z > 0) && 
-			phoneAccel > SPEED_TO_START_STRIKING;
-		
-		// TODO: Consider specific direction/higher acceleration to be rewarded differently
-		if (striking) {
+		if (phoneAccel < -200 || phoneAccel > 200) 
+			IwTrace(GHOST_HUNTER, ("Strike x: %d y: %d z: %d accel: %f", x, y, z, phoneAccel));
 
-			// Striking is done when phone stops with enough acceleration
-			if (z < 0 && phoneAccel > 200) {
-				// Ghost is attacked if the strike took enough time
+		// 1) Should the strike init?
+		if (!striking && phoneAccel > accelToStartStrike) {
+			striking = true;
+			
+			IwTrace(GHOST_HUNTER, ("Strike started with accel %f", phoneAccel));
 
-				if (clock() - time > STRINKE_TIME_TO_HIT) {
-					//ghost.setGhostHit(true);
-				}
-			}
-		} else {
-			time = clock();
-			//ghost.setGhostHit(false);
+			// Initialize variables
+			strikeInitTime = clock();
+			peakAccel = 0;
+			accelDecreasing = false;
 		}
 
+		int timeUsed = clock() - strikeInitTime;
+
+		if (striking) {
+			if (timeUsed < MIN_STRIKE_TIME && z < 0) {
+				// 2) Is the phone already slowing or going backward?
+				striking = false;
+				IwTrace(GHOST_HUNTER, ("Strike ended too early"));
+			} else if (timeUsed > MAX_STRIKE_TIME) {
+				// 2) Is the time up?
+				IwTrace(GHOST_HUNTER, ("Strike timed out"));
+				striking = false;
+			}
+		}
+
+		
+		if (striking && timeUsed >= MIN_STRIKE_TIME) {
+			peakAccel = phoneAccel > peakAccel ? phoneAccel : peakAccel;
+			if (phoneAccel < peakAccel - 20) {
+				// 3) Acceleration is decreasing
+				if (!accelDecreasing) {
+					// 3) Initialize the end phase
+					accelDecreasing = true;
+					accelDecreasingTime = clock();
+				}
+			}
+			IwTrace(GOHU, ("Peak accel %f", peakAccel));
+
+			if (phoneAccel < REQUIRED_BLOW_STR) {
+				// If the final stop/blow of the strike is strong enough
+				// accept the hit
+				IwTrace(GHOST_HUNTER, ("Final phone accel %f", phoneAccel));
+				ghost.ghostGotHit();
+				striking = false;
+			} else {
+				IwTrace(GHOST_HUNTER, ("The blow was too weak with accel %f", 
+					phoneAccel));
+			}
+		}
 	}
 };
 
 static Strike strike;
-static Player player;
-static Ghost ghost;
-
-float gravityX, gravityY, gravityZ = 0;
 
 Ghost getGhost() {
 	return ghost;
 }
+
+#define ACCELOMETER_ITERATIONS 40
+int iteration = 0;
+float gravityX, gravityY, gravityZ;
 
 void accelometerUpdate(int32 x, int32 y, int32 z) {
 	// alpha is calculated as t / (t + dT)
@@ -77,7 +140,16 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
 	float linearAccelerationY = y - gravityY;
 	float linearAccelerationZ = z - gravityZ;
 
-	strike.strikeUpdate(x, y, z);
+	if (iteration < ACCELOMETER_ITERATIONS) {
+		// Accelometer values are useless before the gravity values
+		// have some time to adjust.
+		iteration++;
+		if (iteration == ACCELOMETER_ITERATIONS)
+			IwTrace(GHOST_HUNTER, ("CameraModel accelometer initialized"));
+	} else {
+		strike.strikeUpdate(linearAccelerationX, linearAccelerationY, 
+		linearAccelerationZ);
+	}
 }
 
 void CameraModelInit() 

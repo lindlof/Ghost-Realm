@@ -182,7 +182,9 @@ void RenderCamera(CIwMaterial* pMat) {
 void RenderGhost(CIwMaterial* pMat) {
 
 	Ghost ghost = getGhost();
-	// ask ghost what to show
+	if (ghost.isGhostHit()) {
+		return;
+	}
 
     pMat = IW_GX_ALLOC_MATERIAL();
 	pMat->SetModulateMode(CIwMaterial::MODULATE_NONE);

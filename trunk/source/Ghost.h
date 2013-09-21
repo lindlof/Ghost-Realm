@@ -23,5 +23,6 @@ class Ghost {
 
 	public:
 	Ghost();
-	void setGhostHit(bool ghostHit);
+	void ghostGotHit();
+	bool isGhostHit();
 };
