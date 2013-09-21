@@ -58,8 +58,8 @@ class Strike {
 		float phoneAccel = (float)sqrt(z*z + y*y);
 		phoneAccel = z < 0 ? phoneAccel*-1 : phoneAccel*1;
 
-		if (phoneAccel < -200 || phoneAccel > 200) 
-			IwTrace(GHOST_HUNTER, ("Strike x: %d y: %d z: %d accel: %f", x, y, z, phoneAccel));
+		//if (phoneAccel < -200 || phoneAccel > 200) 
+		//	IwTrace(GHOST_HUNTER, ("Strike x: %d y: %d z: %d accel: %f", x, y, z, phoneAccel));
 
 		// 1) Should the strike init?
 		if (!striking && phoneAccel > accelToStartStrike) {
@@ -152,6 +152,10 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
 	}
 }
 
+void compassUpdate(double heading, bool error) {
+	ghost.compassUpdate(heading, error);
+}
+
 void CameraModelInit() 
 {
 }
@@ -162,5 +166,6 @@ void CameraModelTerm()
 
 bool CameraModelUpdate() 
 {
+	ghost.ghostUpdate();
 	return true;
 }

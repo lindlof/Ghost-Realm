@@ -10,25 +10,34 @@
 #include "CameraModel.h"
 #include "s3eAccelerometer.h"
 #include <math.h>
+#include "s3eCompass.h"
 
-static bool g_Enabled = false;
+static bool accelometerEnabled = false;
 
 void CameraControllerInit()
 {
     if (s3eAccelerometerStart() == S3E_RESULT_SUCCESS)
     {
-        g_Enabled = true;
+        accelometerEnabled = true;
+    }
+	if (s3eCompassAvailable())
+    {
+        s3eCompassStart();
     }
 }
 
 void CameraControllerTerm()
 {
     s3eAccelerometerStop();
+	if (s3eCompassAvailable()) 
+	{
+        s3eCompassStop();
+	}
 }
 
 bool CameraControllerUpdate()
 {
-    if (g_Enabled)
+    if (accelometerEnabled)
     {
 		int32 x = s3eAccelerometerGetX();
 		int32 y = s3eAccelerometerGetY();
@@ -36,6 +45,12 @@ bool CameraControllerUpdate()
 
 		accelometerUpdate(x, y, z);
     }
+
+	s3eCompassHeading h;
+	bool compassError = S3E_RESULT_SUCCESS != s3eCompassGetHeading(&h);
+	double compassHeading = h.m_Heading;
+
+	compassUpdate(compassHeading, compassError);
 
     return true;
 }

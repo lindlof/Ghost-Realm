@@ -11,18 +11,16 @@
 
 #include "IwRandom.h"
 #include "s3eTimer.h"
-#include "s3eCompass.h"
 #include "IwDebug.h"
-
-static bool compassError;
-static double currentCompassHeading = 0;
 
 Ghost::Ghost() {
 	positionX = 0;
 	positionY = 0;
 	width = 150;
 	height = 300;
+
 	hit = false;
+	hitTime = 0;
 
 	staging = true;
 	IwRandSeed((int32)s3eTimerGetMs());
@@ -32,32 +30,20 @@ Ghost::Ghost() {
 void Ghost::ghostGotHit() {
 	IwTrace(GHOST_HUNTER, ("Ghost got hit"));
 	hit = true;
+	hitTime = clock();
 }
 
 bool Ghost::isGhostHit() {
 	return hit;
 }
 
-void GhostInit() {
-	if (s3eCompassAvailable())
-    {
-        s3eCompassStart();
-    }
-}
-
-bool GhostUpdate()
-{
-	s3eCompassHeading h;
-	compassError = S3E_RESULT_SUCCESS != s3eCompassGetHeading(&h);
-	currentCompassHeading = h.m_Heading;
-
-    return true;
-}
-
-void GhostTerm()
-{
-	if (s3eCompassAvailable()) 
-	{
-        s3eCompassStop();
+bool Ghost::ghostUpdate() {
+	if (clock() - hitTime > 100) {
+		hit = false;
 	}
+}
+
+void Ghost::compassUpdate(double heading, bool error)
+{
+	
 }

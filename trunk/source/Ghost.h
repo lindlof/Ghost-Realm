@@ -7,6 +7,8 @@
  * PARTICULAR PURPOSE.
  */
 
+#include <time.h>
+
 class Ghost {
 	private:
 	int positionX;
@@ -15,6 +17,7 @@ class Ghost {
 	int height;
 
 	bool hit;
+	clock_t hitTime;
 
 	// Ghost is not initially in combat but you find it
 	// from a specific point of compass around you.
@@ -23,6 +26,8 @@ class Ghost {
 
 	public:
 	Ghost();
+	bool ghostUpdate();
+	void compassUpdate(double heading, bool error);
 	void ghostGotHit();
 	bool isGhostHit();
 };
