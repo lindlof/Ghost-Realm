@@ -16,7 +16,6 @@ class Ghost {
 	int width;
 	int height;
 
-	bool hit;
 	clock_t hitTime;
 
 	// Ghost is not initially in combat but you find it
@@ -29,5 +28,5 @@ class Ghost {
 	bool ghostUpdate();
 	void compassUpdate(double heading, bool error);
 	void ghostGotHit();
-	bool isGhostHit();
+	clock_t getHitTime();
 };

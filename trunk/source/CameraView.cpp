@@ -18,6 +18,8 @@
 
 #include <sys/param.h>
 
+#define GHOST_HIT_LENGTH 500
+
 void RenderCamera(CIwMaterial* pMat);
 void RenderGhost(CIwMaterial* pMat);
 
@@ -55,7 +57,7 @@ static int32 frameReceived(void* systemData, void* userData)
 void CameraViewInit()
 {
     IwGxInit();
-    IwGxLightingOff();
+    //IwGxLightingOff();
 
     // Camera field of view
     IwGxSetPerspMul(0xa0);
@@ -130,6 +132,21 @@ void CameraViewRender()
     IwGxSwapBuffers();
 }
 
+static CIwFVec2 normalUvs[4] =
+{
+    CIwFVec2(0, 0),
+    CIwFVec2(0, 1),
+    CIwFVec2(1, 1),
+    CIwFVec2(1, 0),
+};
+static CIwFVec2 cameraUvs[4] =
+{
+    CIwFVec2(0, 0),
+    CIwFVec2(0, 1),
+    CIwFVec2(1, 1),
+    CIwFVec2(1, 0),
+};
+
 void RenderCamera(CIwMaterial* pMat) {
     // Refresh dynamic texture
     if (g_CameraTexture != NULL)
@@ -154,25 +171,15 @@ void RenderCamera(CIwMaterial* pMat) {
     xy3[2].x = x2, xy3[2].y = y2;
     xy3[3].x = x2, xy3[3].y = y1;
 
-    // Camera image must not rotate with surface
-    static CIwFVec2 normal_uvs[4] =
-    {
-        CIwFVec2(0, 0),
-        CIwFVec2(0, 1),
-        CIwFVec2(1, 1),
-        CIwFVec2(1, 0),
-    };
-
     // rotate UV coordinates based on rotation
     // (image must rotate against rotation of surface,
     // assuming that the camera image is NOT auto rotated)
-    static CIwFVec2 uvs[4];
     for (int j=0; j<4; j++)
     {
-        uvs[j] = normal_uvs[(4 - (int)g_FrameRotation + j ) % 4];
+        cameraUvs[j] = normalUvs[(4 - (int)g_FrameRotation + j ) % 4];
     }
 
-    IwGxSetUVStream(uvs);
+    IwGxSetUVStream(cameraUvs);
     IwGxSetVertStreamScreenSpace(xy3, 4);
 
     // Draw a single quad
@@ -182,23 +189,64 @@ void RenderCamera(CIwMaterial* pMat) {
 void RenderGhost(CIwMaterial* pMat) {
 
 	Ghost ghost = getGhost();
-	if (ghost.isGhostHit()) {
-		return;
-	}
+	int sinceHit = clock() - ghost.getHitTime();
 
     pMat = IW_GX_ALLOC_MATERIAL();
-	pMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
-    pMat->SetTexture(g_GhostTexture);
+	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
 	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
-	
-    // Set as the active material
+
+	IwGxLightingEmissive(true);
+
+	if (sinceHit < GHOST_HIT_LENGTH) {
+		int halfAnimation = GHOST_HIT_LENGTH/2;
+
+		// Hit starts from 0, maxes out at 0xff and
+		// then decreases back to 0. This all happens
+		// in the animation length creating fade 
+		// in fade out effect.
+		int hit;
+
+		// Divide the sinceHit time so that it maxes
+		// out in 0xff
+		hit = sinceHit / ((float)halfAnimation/0xff);
+
+		if (sinceHit > halfAnimation) {
+			// If we are over the half way let's start
+			// decreasing the number from 0xff
+			hit = 0xff + (0xff - hit);
+		}
+
+		pMat->SetColEmissive(0xff, 0xff-hit, 0xff-hit, 0xff);
+		//pMat->SetColEmissive(0xff0000ff);
+	} else {
+		// The default state that displays the image as it is
+		pMat->SetColEmissive(0xffffffff);
+	}
+
+	pMat->SetTexture(g_GhostTexture);
+
     IwGxSetMaterial(pMat);
 
+	int imgW = 124;
+	int imgH = 273;
+	int ghostWidth = (int16)IwGxGetScreenWidth()/3;
+	int ghostHeight = (int16)IwGxGetScreenHeight()/4;
+
+	// Preserve the image scale by scaling the relatively
+	// larger value down
+	if (imgW/imgH < ghostWidth/ghostHeight) {
+		// Scale width down
+		ghostWidth = ghostHeight * imgW/imgH;
+	} else {
+		// Scale height down
+		ghostHeight = ghostWidth * imgH/imgW;
+	}
+
 	// Middle screen screenspace vertex coords
-    int16 x1 = (int16)IwGxGetScreenWidth()/2 - 100;
-    int16 x2 = (int16)IwGxGetScreenWidth()/2 + 100;
-    int16 y1 = (int16)IwGxGetScreenHeight()/2 - 167;
-    int16 y2 = (int16)IwGxGetScreenHeight()/2 + 167;
+    int16 x1 = (int16)IwGxGetScreenWidth()/2 - ghostWidth/2;
+    int16 x2 = (int16)IwGxGetScreenWidth()/2 + ghostWidth/2;
+    int16 y1 = (int16)IwGxGetScreenHeight()/2 - ghostHeight/2;
+    int16 y2 = (int16)IwGxGetScreenHeight()/2 + ghostHeight/2;
 
     static CIwSVec2 xy3[4];
     xy3[0].x = x1, xy3[0].y = y1;
@@ -207,14 +255,7 @@ void RenderGhost(CIwMaterial* pMat) {
     xy3[3].x = x2, xy3[3].y = y1;
     IwGxSetVertStreamScreenSpace(xy3, 4);
 
-    static CIwFVec2 uvs[4] =
-    {
-        CIwFVec2(0, 0),
-        CIwFVec2(0, 1),
-        CIwFVec2(1, 1),
-        CIwFVec2(1, 0),
-    };
-    IwGxSetUVStream(uvs);
+    IwGxSetUVStream(normalUvs);
 	
     // Draw a single quad
     IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);

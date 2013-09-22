@@ -19,7 +19,6 @@ Ghost::Ghost() {
 	width = 150;
 	height = 300;
 
-	hit = false;
 	hitTime = 0;
 
 	staging = true;
@@ -29,18 +28,14 @@ Ghost::Ghost() {
 
 void Ghost::ghostGotHit() {
 	IwTrace(GHOST_HUNTER, ("Ghost got hit"));
-	hit = true;
 	hitTime = clock();
 }
 
-bool Ghost::isGhostHit() {
-	return hit;
+clock_t Ghost::getHitTime() {
+	return hitTime;
 }
 
 bool Ghost::ghostUpdate() {
-	if (clock() - hitTime > 100) {
-		hit = false;
-	}
 }
 
 void Ghost::compassUpdate(double heading, bool error)
