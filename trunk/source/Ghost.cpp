@@ -12,6 +12,7 @@
 #include "IwRandom.h"
 #include "s3eTimer.h"
 #include "IwDebug.h"
+#include "s3eVibra.h"
 
 Ghost::Ghost() {
 	positionX = 0;
@@ -29,6 +30,7 @@ Ghost::Ghost() {
 void Ghost::ghostGotHit() {
 	IwTrace(GHOST_HUNTER, ("Ghost got hit"));
 	hitTime = clock();
+	s3eVibraVibrate(100, 100); 	
 }
 
 clock_t Ghost::getHitTime() {
