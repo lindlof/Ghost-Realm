@@ -10,6 +10,8 @@
 #include <time.h>
 #include "Player.h"
 
+#define MAX_GHOST_ECTOPLASM 100
+
 enum GhostType { GHOST_NORMAL };
 
 class Ghost {
@@ -22,6 +24,7 @@ class Ghost {
 	int positionY;
 	int width;
 	int height;
+	int ectoplasm;
 
 	clock_t foundAnimTime;
 	float scale;
@@ -48,4 +51,5 @@ class Ghost {
 	int getPositionX();
 
 	bool isFound();
+	int getEctoplasm();
 };

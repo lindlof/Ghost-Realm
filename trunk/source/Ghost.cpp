@@ -38,6 +38,8 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	foundAnimTime = 0;
 	foundAnimProgress = 0;
 
+	ectoplasm = MAX_GHOST_ECTOPLASM;
+
 	staging = true;
 	IwRandSeed((int32)s3eTimerGetMs());
 	compassPoint = IwRandMinMax(0, 360);
@@ -45,6 +47,7 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 
 void Ghost::ghostGotHit() {
 	IwTrace(GHOST_HUNTER, ("Ghost got hit"));
+	ectoplasm -= 40;
 	hitTime = clock();
 	s3eVibraVibrate(100, 100); 	
 }
@@ -173,4 +176,8 @@ float getHeightSpace(GhostType ghostType) {
 		case GHOST_NORMAL: return 2;
 	}
 	return -1;
+}
+
+int Ghost::getEctoplasm() {
+	return ectoplasm;
 }

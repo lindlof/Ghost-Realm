@@ -174,6 +174,12 @@ void CameraModelTerm()
 
 bool CameraModelUpdate() 
 {
+	int ectoplasm = ghost->getEctoplasm();
+	if (ectoplasm < 0) {
+		delete ghost;
+		ghost = new Ghost(GHOST_NORMAL, player);
+	}
+
 	ghost->ghostUpdate();
 	return true;
 }
