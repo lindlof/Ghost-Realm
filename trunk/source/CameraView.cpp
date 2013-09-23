@@ -22,6 +22,7 @@
 
 void RenderCamera(CIwMaterial* pMat);
 void RenderGhost(CIwMaterial* pMat);
+void RenderVitality(CIwMaterial* pMat);
 
 static CIwTexture* g_CameraTexture = NULL;
 static CIwTexture* g_GhostTexture = NULL;
@@ -127,6 +128,7 @@ void CameraViewRender()
 
 	RenderCamera(pMat);
 	RenderGhost(pMat);
+	RenderVitality(pMat);
 
     IwGxFlush();
     IwGxSwapBuffers();
@@ -156,7 +158,6 @@ void RenderCamera(CIwMaterial* pMat) {
     pMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
     pMat->SetTexture(g_CameraTexture);
 
-    // Set as the active material
     IwGxSetMaterial(pMat);
 
     // Full screen screenspace vertex coords
@@ -182,7 +183,6 @@ void RenderCamera(CIwMaterial* pMat) {
     IwGxSetUVStream(cameraUvs);
     IwGxSetVertStreamScreenSpace(xy3, 4);
 
-    // Draw a single quad
     IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
 }
 
@@ -194,6 +194,7 @@ void RenderGhost(CIwMaterial* pMat) {
     pMat = IW_GX_ALLOC_MATERIAL();
 	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
 	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
+	pMat->SetTexture(g_GhostTexture);
 
 	IwGxLightingEmissive(true);
 
@@ -222,8 +223,6 @@ void RenderGhost(CIwMaterial* pMat) {
 		// The default state that displays the image as it is
 		pMat->SetColEmissive(0xffffffff);
 	}
-
-	pMat->SetTexture(g_GhostTexture);
 
     IwGxSetMaterial(pMat);
 
@@ -257,6 +256,41 @@ void RenderGhost(CIwMaterial* pMat) {
 
     IwGxSetUVStream(normalUvs);
 	
-    // Draw a single quad
+    IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
+}
+
+void RenderVitality(CIwMaterial* pMat) {
+
+	Player player = getPlayer();
+
+	pMat = IW_GX_ALLOC_MATERIAL();
+	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
+	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
+
+	IwGxLightingEmissive(true);
+	pMat->SetColEmissive(0x30ff0000);
+
+	IwGxSetMaterial(pMat);
+
+	// Vertex coords for full vitality
+	int16 x1 = (int16)IwGxGetScreenWidth()/100 * 5;
+    int16 x2 = (int16)IwGxGetScreenWidth()/100 * 95;
+    int16 y1 = (int16)IwGxGetScreenHeight()/100 * 1;
+    int16 y2 = (int16)IwGxGetScreenHeight()/100 * 3;
+
+	// Full length of the bar
+	int16 barLength = x2 - x1;
+	// Multiply the full bar length with current vitality status
+	barLength =  barLength * (float)player.getVitality() / MAX_PLAYER_VITALITY;
+
+	x2 = x1 + barLength;
+
+    static CIwSVec2 xy3[4];
+    xy3[0].x = x1, xy3[0].y = y1;
+    xy3[1].x = x1, xy3[1].y = y2;
+    xy3[2].x = x2, xy3[2].y = y2;
+    xy3[3].x = x2, xy3[3].y = y1;
+    IwGxSetVertStreamScreenSpace(xy3, 4);
+
     IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
 }

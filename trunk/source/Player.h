@@ -7,18 +7,14 @@
  * PARTICULAR PURPOSE.
  */
 
-class Vitality {
-	private:
-	int vitality;	
-
-	public:
-	Vitality();
-};
+#define MAX_PLAYER_VITALITY 10000
 
 class Player {
 	private:
-	Vitality vitality;
+	int vitality;
 
 	public:
 	Player();
+	void playerGotHit(int vitality);
+	int getVitality();
 };

@@ -8,11 +8,17 @@
  */
 
 #include "Player.h"
-
-Vitality::Vitality() {
-	vitality = 100;
-};
+#include "IwDebug.h"
 
 Player::Player() {
-	vitality = Vitality::Vitality();
+	vitality = MAX_PLAYER_VITALITY;
 };
+
+void Player::playerGotHit(int vitality) {
+	Player::vitality -= vitality;
+	IwTrace(GHOST_HUNTER, ("Player vitality %d", getVitality()));
+}
+
+int Player::getVitality() {
+	return Player::vitality;
+}

@@ -8,14 +8,21 @@
  */
 
 #include <time.h>
+#include "Player.h"
+
+enum GhostType { GHOST_NORMAL };
 
 class Ghost {
 	private:
+	GhostType ghostType;
+	Player *player;
+	bool found;
 	int positionX;
 	int positionY;
 	int width;
 	int height;
 
+	clock_t playerHitTime;
 	clock_t hitTime;
 
 	// Ghost is not initially in combat but you find it
@@ -24,9 +31,11 @@ class Ghost {
 	int compassPoint;
 
 	public:
-	Ghost();
+	Ghost(GhostType ghostType, Player *player);
 	bool ghostUpdate();
 	void compassUpdate(double heading, bool error);
 	void ghostGotHit();
 	clock_t getHitTime();
+
+	int getStrength();
 };

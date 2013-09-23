@@ -12,4 +12,6 @@
 
 void accelometerUpdate(int32 x, int32 y, int32 z);
 void compassUpdate(double heading, bool error);
+
 Ghost getGhost();
+Player getPlayer();

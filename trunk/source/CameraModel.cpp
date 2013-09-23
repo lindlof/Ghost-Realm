@@ -12,11 +12,19 @@
 
 #include <math.h>
 #include <time.h>
-#include "Player.h"
 #include "IwDebug.h"
 
-static Player player;
-static Ghost ghost;
+
+static Player *player;
+static Ghost *ghost;
+
+Ghost getGhost() {
+	return *ghost;
+}
+
+Player getPlayer() {
+	return *player;
+}
 
 class Strike {
 	bool striking;
@@ -104,7 +112,7 @@ class Strike {
 				// If the final stop/blow of the strike is strong enough
 				// accept the hit
 				IwTrace(GHOST_HUNTER, ("Final phone accel %f", phoneAccel));
-				ghost.ghostGotHit();
+				ghost->ghostGotHit();
 				striking = false;
 			} else {
 				IwTrace(GHOST_HUNTER, ("The blow was too weak with accel %f", 
@@ -115,10 +123,6 @@ class Strike {
 };
 
 static Strike strike;
-
-Ghost getGhost() {
-	return ghost;
-}
 
 #define ACCELOMETER_ITERATIONS 40
 int iteration = 0;
@@ -153,19 +157,23 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
 }
 
 void compassUpdate(double heading, bool error) {
-	ghost.compassUpdate(heading, error);
+	ghost->compassUpdate(heading, error);
 }
 
 void CameraModelInit() 
 {
+	player = new Player();
+	ghost = new Ghost(GHOST_NORMAL, player);
 }
 
 void CameraModelTerm() 
 {
+	delete player;
+	delete ghost;
 }
 
 bool CameraModelUpdate() 
 {
-	ghost.ghostUpdate();
+	ghost->ghostUpdate();
 	return true;
 }
