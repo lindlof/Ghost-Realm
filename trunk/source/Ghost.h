@@ -17,11 +17,16 @@ class Ghost {
 	GhostType ghostType;
 	Player *player;
 	bool found;
+	int compassX;
 	int positionX;
 	int positionY;
 	int width;
 	int height;
 
+	clock_t foundAnimTime;
+	float scale;
+	int foundAnimProgress;
+	
 	clock_t playerHitTime;
 	clock_t hitTime;
 
@@ -38,4 +43,9 @@ class Ghost {
 	clock_t getHitTime();
 
 	int getStrength();
+	int getWidth();
+	int getHeight();
+	int getPositionX();
+
+	bool isFound();
 };

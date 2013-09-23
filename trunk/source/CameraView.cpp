@@ -189,6 +189,11 @@ void RenderCamera(CIwMaterial* pMat) {
 void RenderGhost(CIwMaterial* pMat) {
 
 	Ghost ghost = getGhost();
+
+	if (!ghost.isFound()) {
+		return;
+	}
+
 	int sinceHit = clock() - ghost.getHitTime();
 
     pMat = IW_GX_ALLOC_MATERIAL();
@@ -226,26 +231,11 @@ void RenderGhost(CIwMaterial* pMat) {
 
     IwGxSetMaterial(pMat);
 
-	int imgW = 124;
-	int imgH = 273;
-	int ghostWidth = (int16)IwGxGetScreenWidth()/3;
-	int ghostHeight = (int16)IwGxGetScreenHeight()/4;
-
-	// Preserve the image scale by scaling the relatively
-	// larger value down
-	if (imgW/imgH < ghostWidth/ghostHeight) {
-		// Scale width down
-		ghostWidth = ghostHeight * imgW/imgH;
-	} else {
-		// Scale height down
-		ghostHeight = ghostWidth * imgH/imgW;
-	}
-
 	// Middle screen screenspace vertex coords
-    int16 x1 = (int16)IwGxGetScreenWidth()/2 - ghostWidth/2;
-    int16 x2 = (int16)IwGxGetScreenWidth()/2 + ghostWidth/2;
-    int16 y1 = (int16)IwGxGetScreenHeight()/2 - ghostHeight/2;
-    int16 y2 = (int16)IwGxGetScreenHeight()/2 + ghostHeight/2;
+    int16 x1 = ghost.getPositionX();
+    int16 x2 = ghost.getPositionX() + ghost.getWidth();
+	int16 y1 = (int16)IwGxGetScreenHeight()/2 - ghost.getHeight()/2;
+    int16 y2 = (int16)IwGxGetScreenHeight()/2 + ghost.getHeight()/2;
 
     static CIwSVec2 xy3[4];
     xy3[0].x = x1, xy3[0].y = y1;
