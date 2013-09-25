@@ -42,7 +42,7 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 
 	staging = true;
 	IwRandSeed((int32)s3eTimerGetMs());
-	compassPoint = IwRandMinMax(0, 360);
+	bearing = IwRandMinMax(0, 360);
 };
 
 void Ghost::ghostGotHit() {
@@ -143,7 +143,7 @@ void Ghost::compassUpdate(double heading, bool error)
 		return;
 	}
 
-	int ghostScreenDistance = abs(compassPoint - heading) * 55;
+	int ghostScreenDistance = abs(bearing - heading) * 55;
 	int ghostScreenArea = (int16)IwGxGetScreenWidth()/2 + 
 		Ghost::getWidth() - ghostScreenDistance;
 
@@ -151,7 +151,7 @@ void Ghost::compassUpdate(double heading, bool error)
 		// Ghost is in the screen
 		found = true;
 
-		if (compassPoint < heading) {
+		if (bearing < heading) {
 			compassX = -Ghost::getWidth() + ghostScreenArea;
 		} else {
 			compassX = (int16)IwGxGetScreenWidth() - ghostScreenArea;

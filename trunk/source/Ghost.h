@@ -36,7 +36,7 @@ class Ghost {
 	// Ghost is not initially in combat but you find it
 	// from a specific point of compass around you.
 	bool staging;
-	int compassPoint;
+	int bearing;
 
 	public:
 	Ghost(GhostType ghostType, Player *player);
