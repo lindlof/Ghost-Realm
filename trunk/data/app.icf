@@ -24,3 +24,6 @@ SysTraceToFile=1
 [GX]
 DataCacheSize=64000
 NumTPages=20
+
+[TRACE]
+GX=0

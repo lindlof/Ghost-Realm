@@ -40,6 +40,34 @@ static int32 frameReceived(void* systemData, void* userData)
     // This is a slow operation compared to memcpy so we don't want to do it every frame.
     if (g_CameraTexture == NULL)
     {
+		/*
+		// Calculate camera width and height scaled for the screen
+		{
+			//double streamWidth = (double) data->m_Width;
+			//double streamHeight = (double) data->m_Height;
+			double streamWidth = (double) data->m_Height;
+			double streamHeight = (double) data->m_Width;
+
+			double scrWhRatio = (float)IwGxGetScreenWidth() / (uint16)IwGxGetScreenHeight();
+			IwTrace(GHOST_HUNTER, ("%f / %d = %f", (float)IwGxGetScreenWidth(), (uint16)IwGxGetScreenHeight(), scrWhRatio));
+
+			if (streamWidth/streamHeight > scrWhRatio) {
+				camWidth = (uint16) (streamHeight * scrWhRatio);
+				IwTrace(GHOST_HUNTER, ("streamHeigh: %f scrWhRatio: %f", (double)streamHeight, scrWhRatio));
+				camHeight = (uint16) streamHeight;
+			} else {
+				camWidth = (uint16) streamWidth;
+				camHeight = (uint16) (streamWidth * 1/scrWhRatio);
+			}
+
+			// Pitch equals to the row byte length. RGB_565 is 16-bit.
+			camPitch = (uint16)camWidth * 16/8;
+
+			IwTrace(GHOST_HUNTER, ("Stream w %f h %f pitch %d", streamWidth, streamHeight, data->m_Pitch));
+			IwTrace(GHOST_HUNTER, ("Cam w %d h %d pitch %d", camWidth, camHeight, camPitch));
+		}
+		*/
+
         g_CameraTexture = new CIwTexture();
         g_CameraTexture->SetMipMapping(false);
         g_CameraTexture->SetModifiable(true);
@@ -58,11 +86,9 @@ static int32 frameReceived(void* systemData, void* userData)
 void CameraViewInit()
 {
     IwGxInit();
-    //IwGxLightingOff();
 
     // Camera field of view
-    IwGxSetPerspMul(0xa0);
-	// IwGxSetPerspMul((float) IwGxGetScreenWidth() * 0.5f); 90 deg
+	IwGxSetPerspMul((float) IwGxGetScreenWidth() / 2); // 90 deg FOV
     IwGxSetFarZNearZ(0x2000,0x10);
 
     g_GhostTexture = new CIwTexture;

@@ -105,14 +105,12 @@ int Ghost::getWidth() {
 	float ghostWhScale = getGhostScale(Ghost::ghostType);
 	float width = (int16)IwGxGetScreenWidth() / getWidthSpace(Ghost::ghostType);
 	float height = (int16)IwGxGetScreenHeight() / getHeightSpace(Ghost::ghostType);
-	IwTrace(GHOST_HUNTER, ("Width 1 %f", width));
+
 	if (ghostWhScale < width/height) {
 		width = height * ghostWhScale;
-		IwTrace(GHOST_HUNTER, ("Width 2 %f height %f scale %f", width, height, ghostWhScale));
 	}
 
 	width *= scale;
-	IwTrace(GHOST_HUNTER, ("Width 3 %f", width));
 	return (int) width;
 }
 
