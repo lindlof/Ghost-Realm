@@ -20,9 +20,9 @@
 
 #define GHOST_HIT_LENGTH 500
 
-void RenderCamera(CIwMaterial* pMat);
-void RenderGhost(CIwMaterial* pMat);
-void RenderVitality(CIwMaterial* pMat);
+void renderCamera(CIwMaterial* pMat);
+void renderGhost(CIwMaterial* pMat);
+void renderVitality(CIwMaterial* pMat);
 
 static CIwTexture* g_CameraTexture = NULL;
 static CIwTexture* g_GhostTexture = NULL;
@@ -91,10 +91,12 @@ void CameraViewInit()
 	IwGxSetPerspMul((float) IwGxGetScreenWidth() / 2); // 90 deg FOV
     IwGxSetFarZNearZ(0x2000,0x10);
 
+	// Set screen clear colour
+    IwGxSetColClear(0xff, 0xff, 0xff, 0xff);
+    IwGxPrintSetColour(128, 128, 128);
+
     g_GhostTexture = new CIwTexture;
     g_GhostTexture->LoadFromFile("textures/hammersmith_ghost.png");
-
-    // Upload the textures to VRAM ready for use
     g_GhostTexture->Upload();
 
     // Set up camera capture
@@ -135,26 +137,16 @@ void CameraViewTerm()
     IwGxTerminate();
 }
 
-//-----------------------------------------------------------------------------
-
-bool CameraViewUpdate()
-{
-    return true;
-}
-
-//-----------------------------------------------------------------------------
-// The following function displays the augmented reality scene
-//-----------------------------------------------------------------------------
-void CameraViewRender()
+void CameraViewUpdate()
 {
 	// Clear the screen
     IwGxClear(IW_GX_COLOUR_BUFFER_F | IW_GX_DEPTH_BUFFER_F);
 
 	CIwMaterial* pMat = NULL;
 
-	RenderCamera(pMat);
-	RenderGhost(pMat);
-	RenderVitality(pMat);
+	renderCamera(pMat);
+	renderGhost(pMat);
+	renderVitality(pMat);
 
     IwGxFlush();
     IwGxSwapBuffers();
@@ -175,7 +167,7 @@ static CIwFVec2 cameraUvs[4] =
     CIwFVec2(1, 0),
 };
 
-void RenderCamera(CIwMaterial* pMat) {
+void renderCamera(CIwMaterial* pMat) {
     // Refresh dynamic texture
     if (g_CameraTexture != NULL)
         g_CameraTexture->ChangeTexels(g_CameraTexture->GetTexels(), CIwImage::RGB_565);
@@ -212,7 +204,7 @@ void RenderCamera(CIwMaterial* pMat) {
     IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
 }
 
-void RenderGhost(CIwMaterial* pMat) {
+void renderGhost(CIwMaterial* pMat) {
 
 	Ghost ghost = getGhost();
 
@@ -271,11 +263,17 @@ void RenderGhost(CIwMaterial* pMat) {
     IwGxSetVertStreamScreenSpace(xy3, 4);
 
     IwGxSetUVStream(normalUvs);
+
+	// Set base color for lighting
+	CIwColour* cols = IW_GX_ALLOC(CIwColour, 4);
+	cols[0].Set(0, 0, 0, 0);
+	cols[1] = cols[2] = cols[3] = cols[0];
+	IwGxSetColStream(cols, 4);
 	
     IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
 }
 
-void RenderVitality(CIwMaterial* pMat) {
+void renderVitality(CIwMaterial* pMat) {
 
 	Player player = getPlayer();
 
@@ -283,16 +281,13 @@ void RenderVitality(CIwMaterial* pMat) {
 	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
 	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
 
-	IwGxLightingEmissive(true);
-	pMat->SetColEmissive(0x30ff0000);
-
 	IwGxSetMaterial(pMat);
 
 	// Vertex coords for full vitality
 	int16 x1 = (int16)IwGxGetScreenWidth()/100 * 5;
     int16 x2 = (int16)IwGxGetScreenWidth()/100 * 95;
     int16 y1 = (int16)IwGxGetScreenHeight()/100 * 1;
-    int16 y2 = (int16)IwGxGetScreenHeight()/100 * 3;
+    int16 y2 = (int16)IwGxGetScreenHeight()/100 * 2;
 
 	// Full length of the bar
 	int16 barLength = x2 - x1;
@@ -301,12 +296,10 @@ void RenderVitality(CIwMaterial* pMat) {
 
 	x2 = x1 + barLength;
 
-    static CIwSVec2 xy3[4];
-    xy3[0].x = x1, xy3[0].y = y1;
-    xy3[1].x = x1, xy3[1].y = y2;
-    xy3[2].x = x2, xy3[2].y = y2;
-    xy3[3].x = x2, xy3[3].y = y1;
-    IwGxSetVertStreamScreenSpace(xy3, 4);
+	CIwColour* cols = IW_GX_ALLOC(CIwColour, 4);
+	cols[0].Set(0, 0, 0xff, 0x50);
+	cols[1] = cols[2] = cols[3] = cols[0];
 
-    IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
+	CIwSVec2 XY(x1, y1), dXY(x2, y2);
+	IwGxDrawRectScreenSpace(&XY, &dXY, cols);
 }

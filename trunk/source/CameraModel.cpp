@@ -8,7 +8,6 @@
  */
 
 #include "CameraModel.h"
-#include "Main.h"
 
 #include <math.h>
 #include <time.h>
