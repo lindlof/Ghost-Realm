@@ -46,7 +46,6 @@ class Ghost {
 	public:
 	Ghost(GhostType ghostType, Player *player);
 	bool ghostUpdate();
-	void compassUpdate(double heading, bool error);
 	void ghostGotHit();
 	clock_t getHitTime();
 

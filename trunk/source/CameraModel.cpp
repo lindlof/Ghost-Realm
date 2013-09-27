@@ -158,7 +158,7 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
 }
 
 void compassUpdate(double heading, bool error) {
-	ghost->compassUpdate(heading, error);
+	player->compassUpdate(heading, error);
 }
 
 void CameraModelInit() 

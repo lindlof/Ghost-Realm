@@ -22,3 +22,12 @@ void Player::playerGotHit(int vitality) {
 int Player::getVitality() {
 	return Player::vitality;
 }
+
+void Player::compassUpdate(double heading, bool error)
+{
+	Player::heading = heading;
+}
+
+double Player::getHeading() {
+	return heading;
+}

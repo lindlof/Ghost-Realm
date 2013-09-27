@@ -12,9 +12,12 @@
 class Player {
 	private:
 	int vitality;
+	double heading;
 
 	public:
 	Player();
+	void compassUpdate(double heading, bool error);
 	void playerGotHit(int vitality);
 	int getVitality();
+	double getHeading();
 };

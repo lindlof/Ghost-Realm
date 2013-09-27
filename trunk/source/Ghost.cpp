@@ -60,6 +60,24 @@ clock_t Ghost::getHitTime() {
 }
 
 bool Ghost::ghostUpdate() {
+
+	{ // What is ghosts x coord in relation to the screen
+		int ghostScreenDistance = abs(bearing - player->getHeading()) * 55;
+		int ghostScreenArea = (int16)IwGxGetScreenWidth()/2 + 
+				Ghost::getWidth() - ghostScreenDistance;
+
+		if (ghostScreenArea > 0) {
+			// Ghost is in the screen
+			found = true;
+
+			if (bearing < player->getHeading()) {
+				compassX = -Ghost::getWidth() + ghostScreenArea;
+			} else {
+				compassX = (int16)IwGxGetScreenWidth() - ghostScreenArea;
+			}
+		}
+	}
+
 	if (found && foundAnimProgress < FOUND_ANIM_STEPS) {
 
 		if (clock() - foundAnimTime > 7) {
@@ -132,28 +150,6 @@ int Ghost::getPositionX() {
 
 bool Ghost::isFound() {
 	return found;
-}
-
-void Ghost::compassUpdate(double heading, bool error)
-{
-	if (foundAnimProgress >= FOUND_ANIM_STEPS) {
-		return;
-	}
-
-	int ghostScreenDistance = abs(bearing - heading) * 55;
-	int ghostScreenArea = (int16)IwGxGetScreenWidth()/2 + 
-		Ghost::getWidth() - ghostScreenDistance;
-
-	if (ghostScreenArea > 0) {
-		// Ghost is in the screen
-		found = true;
-
-		if (bearing < heading) {
-			compassX = -Ghost::getWidth() + ghostScreenArea;
-		} else {
-			compassX = (int16)IwGxGetScreenWidth() - ghostScreenArea;
-		}
-	}
 }
 
 float getGhostScale(GhostType ghostType) {
