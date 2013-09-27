@@ -8,11 +8,14 @@
  */
 
 #define MAX_PLAYER_VITALITY 10000
+#define HEADING_SIZE 7
 
 class Player {
 	private:
 	int vitality;
+	double headingArr[HEADING_SIZE];
 	double heading;
+	int headingFilled;
 
 	public:
 	Player();

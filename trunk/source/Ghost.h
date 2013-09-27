@@ -20,13 +20,14 @@ class Ghost {
 	Player *player;
 	bool found;
 
-	
-	clock_t floatingTime;
 	int positionX;
 	int positionY;
 	int width;
 	int height;
 	int ectoplasm;
+
+	clock_t middleMagnetTime;
+	int middleMagnet;
 
 	clock_t foundAnimTime;
 	int compassX;
@@ -41,7 +42,7 @@ class Ghost {
 	// Ghost is not initially in combat but you find it
 	// from a specific point of compass around you.
 	bool staging;
-	int bearing;
+	double bearing;
 
 	public:
 	Ghost(GhostType ghostType, Player *player);

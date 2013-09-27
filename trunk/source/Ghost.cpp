@@ -15,6 +15,7 @@
 #include "s3eVibra.h"
 #include "IwGx.h"
 
+#define DEGREE_IN_PIXELS 55
 #define FOUND_ANIM_STEPS 100
 #define ORIGINAL_SCALE 0.5
 
@@ -28,9 +29,11 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	Ghost::player = player;
 	found = false;
 
-	floatingTime = 0;
 	positionX = 0;
 	positionY = 0;
+
+	middleMagnetTime = 0;
+	middleMagnet = 0;
 
 	playerHitTime = 0;
 	hitTime = 0;
@@ -62,7 +65,7 @@ clock_t Ghost::getHitTime() {
 bool Ghost::ghostUpdate() {
 
 	{ // What is ghosts x coord in relation to the screen
-		int ghostScreenDistance = abs(bearing - player->getHeading()) * 55;
+		int ghostScreenDistance = abs(bearing - player->getHeading()) * DEGREE_IN_PIXELS;
 		int ghostScreenArea = (int16)IwGxGetScreenWidth()/2 + 
 				Ghost::getWidth() - ghostScreenDistance;
 
@@ -99,22 +102,73 @@ bool Ghost::ghostUpdate() {
 		}
 
 		if (foundAnimProgress == FOUND_ANIM_STEPS) {
-			float floatingPower = 20.f;
+			float ghostMoveSpeed;
+			float moveSmooth;
 
-			if (clock() - floatingTime > 50) {
+			int ghostDistance = abs(bearing - player->getHeading());
+			
+			{
 				// Ghost moves torwards heading
-				bearing = bearing * (50.f/100) + 
-					player->getHeading() * (50.f/100);
+
+				bool headingToMiddle = bearing < player->getHeading();
+
+				if (ghostDistance < 1.3) {
+					ghostMoveSpeed = (headingToMiddle) ? 2.f  : 1.3f;
+				} else if (ghostDistance < 3) {
+					ghostMoveSpeed = (headingToMiddle) ? 4.f  : 2.f;
+				} else if (ghostDistance < 6) {
+					ghostMoveSpeed = (headingToMiddle) ? 7.f  : 3.f;
+				} else if (ghostDistance < 12) {
+					ghostMoveSpeed = (headingToMiddle) ? 12.f : 9.f;
+				} else if (ghostDistance < 20) {
+					ghostMoveSpeed = (headingToMiddle) ? 16.f : 13.f;
+				} else {
+					ghostMoveSpeed = 20.f;
+				}
+
+				bearing = bearing * ((100-ghostMoveSpeed)/100) + 
+					player->getHeading() * (ghostMoveSpeed/100);
 			}
 
-			// Soften the compass movement with low-pass filter
-			int16 midPositionX = getMidPositionX();
-			Ghost::positionX = compassX * (floatingPower/100) + 
-				positionX * ((100-floatingPower)/100);
+			{
+				// Smoothen the ghost movement but try to keep up with
+				// the bearing, except in very middle of the screen
 
-			floatingTime = clock();
+				if (ghostDistance < 1.3) {
+					moveSmooth = 98.f;
+				} else if (ghostDistance < 3) {
+					moveSmooth = 95.f;
+				} else if (ghostDistance < 6) {
+					moveSmooth = 93.f;
+				} else if (ghostDistance < 12) {
+					moveSmooth = 85.f;
+				} else if (ghostDistance < 20) {
+					moveSmooth = 75.f;
+				} else {
+					moveSmooth = 50.f;
+				}
 
-			IwTrace(GHOST_HUNTER, ("Ghost position %d compass %d", Ghost::positionX, compassX));
+				Ghost::positionX = compassX * ((100.f-moveSmooth)/100) + 
+					positionX * (moveSmooth/100);
+			}
+
+			{
+				// Compas rarely sets the ghost to the very middle of the
+				// screen so we installed a magnet in the very middle
+
+				if (clock() - middleMagnetTime > 10) {
+
+					if (ghostDistance < 1) {
+						if (middleMagnet < 100) middleMagnet++;
+					} else {
+						if (middleMagnet > 0) middleMagnet--;
+					}
+					middleMagnetTime = clock();
+				}
+
+				Ghost::positionX = positionX * ((100.f-middleMagnet)/100) + 
+					getMidPositionX() * (((float)middleMagnet)/100);
+			}
 		}
 	}
 
@@ -201,13 +255,13 @@ int Ghost::getEctoplasm() {
 }
 
 void Ghost::floatingUpdate(int32 x, int32 y, int32 z) {
-	/*
-	if (found && foundAnimProgress == FOUND_ANIM_STEPS && 
+	
+	/*if (found && foundAnimProgress == FOUND_ANIM_STEPS && 
 			clock() - floatingTime > 50) {
-		float floatingPower = 10.f;
+		float floatingPower = 50.f;
 
 		int16 midPositionX = getMidPositionX();
-		Ghost::positionX = (positionX - x) * (floatingPower/100) + 
+		Ghost::positionX = (positionX + x) * (floatingPower/100) + 
 			(midPositionX * (100-floatingPower)/100);
 
 		floatingTime = clock();
