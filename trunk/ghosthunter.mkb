@@ -4,16 +4,22 @@
 files
 {
 	(source)
+
+	[Camera]
 	CameraController.cpp
 	CameraModel.cpp
 	CameraModel.h
 	CameraView.cpp
+
+	[Component]
 	Ghost.cpp
 	Ghost.h
-	Main.cpp
-	Main.h
 	Player.cpp
 	Player.h
+
+	[Main]
+	Main.cpp
+	Main.h
 }
 subprojects
 {
