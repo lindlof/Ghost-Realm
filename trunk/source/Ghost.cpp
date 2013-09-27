@@ -28,6 +28,7 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	Ghost::player = player;
 	found = false;
 
+	floatingTime = 0;
 	positionX = 0;
 	positionY = 0;
 
@@ -69,18 +70,12 @@ bool Ghost::ghostUpdate() {
 		// Increase scale each anim step so that it ends being 1
 		scale = ORIGINAL_SCALE + (1-ORIGINAL_SCALE)/FOUND_ANIM_STEPS * foundAnimProgress;
 
-		int midPositionX = (int16)IwGxGetScreenWidth()/2-getWidth()/2;
+		int16 midPositionX = getMidPositionX();
 
 		// Ghost is dragged more heavily to middle as animation goes on
-		positionX = compassX * ((float)(FOUND_ANIM_STEPS-foundAnimProgress)/FOUND_ANIM_STEPS) + 
+		Ghost::positionX = compassX * ((float)(FOUND_ANIM_STEPS-foundAnimProgress)/FOUND_ANIM_STEPS) + 
 			midPositionX * ((float)(foundAnimProgress)/FOUND_ANIM_STEPS);
-
-		//positionX = (int16)IwGxGetScreenWidth()/2-getWidth()/2;
-
-		//positionX = compassX;
 		
-	} else if (foundAnimProgress == FOUND_ANIM_STEPS) {
-		positionX = (int16)IwGxGetScreenWidth()/2-getWidth()/2;
 	}
 
 	// If the ghost is found it may hit the player
@@ -92,6 +87,10 @@ bool Ghost::ghostUpdate() {
 		playerHitTime = clock();
 	}
 	return true;
+}
+
+int16 Ghost::getMidPositionX() {
+	return (int16)IwGxGetScreenWidth()/2-getWidth()/2;
 }
 
 int Ghost::getStrength() {
@@ -180,4 +179,18 @@ float getHeightSpace(GhostType ghostType) {
 
 int Ghost::getEctoplasm() {
 	return ectoplasm;
+}
+
+void Ghost::floatingUpdate(int32 x, int32 y, int32 z) {
+
+	if (found && foundAnimProgress == FOUND_ANIM_STEPS && 
+			clock() - floatingTime > 50) {
+		float floatingPower = 10.f;
+
+		int16 midPositionX = getMidPositionX();
+		Ghost::positionX = (positionX - x) * (floatingPower/100) + 
+			(midPositionX * (100-floatingPower)/100);
+
+		floatingTime = clock();
+	}
 }

@@ -19,7 +19,9 @@ class Ghost {
 	GhostType ghostType;
 	Player *player;
 	bool found;
-	int compassX;
+
+	
+	clock_t floatingTime;
 	int positionX;
 	int positionY;
 	int width;
@@ -27,11 +29,14 @@ class Ghost {
 	int ectoplasm;
 
 	clock_t foundAnimTime;
+	int compassX;
 	float scale;
 	int foundAnimProgress;
 	
 	clock_t playerHitTime;
 	clock_t hitTime;
+
+	int16 getMidPositionX();
 
 	// Ghost is not initially in combat but you find it
 	// from a specific point of compass around you.
@@ -50,6 +55,7 @@ class Ghost {
 	int getHeight();
 	int getPositionX();
 
+	void floatingUpdate(int32 x, int32 y, int32 z);
 	bool isFound();
 	int getEctoplasm();
 };

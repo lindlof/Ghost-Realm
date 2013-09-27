@@ -17,12 +17,12 @@
 static Player *player;
 static Ghost *ghost;
 
-Ghost getGhost() {
-	return *ghost;
+Ghost* getGhost() {
+	return ghost;
 }
 
-Player getPlayer() {
-	return *player;
+Player* getPlayer() {
+	return player;
 }
 
 class Strike {
@@ -151,7 +151,9 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
 			IwTrace(GHOST_HUNTER, ("CameraModel accelometer initialized"));
 	} else {
 		strike.strikeUpdate(linearAccelerationX, linearAccelerationY, 
-		linearAccelerationZ);
+			linearAccelerationZ);
+		ghost->floatingUpdate(linearAccelerationX, linearAccelerationY, 
+			linearAccelerationZ);
 	}
 }
 

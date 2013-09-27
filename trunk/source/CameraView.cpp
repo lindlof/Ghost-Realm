@@ -206,13 +206,13 @@ void renderCamera(CIwMaterial* pMat) {
 
 void renderGhost(CIwMaterial* pMat) {
 
-	Ghost ghost = getGhost();
+	Ghost *ghost = getGhost();
 
-	if (!ghost.isFound()) {
+	if (!ghost->isFound()) {
 		return;
 	}
 
-	int sinceHit = clock() - ghost.getHitTime();
+	int sinceHit = clock() - ghost->getHitTime();
 
     pMat = IW_GX_ALLOC_MATERIAL();
 	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
@@ -249,11 +249,11 @@ void renderGhost(CIwMaterial* pMat) {
 
     IwGxSetMaterial(pMat);
 
-	// Middle screen screenspace vertex coords
-    int16 x1 = ghost.getPositionX();
-    int16 x2 = ghost.getPositionX() + ghost.getWidth();
-	int16 y1 = (int16)IwGxGetScreenHeight()/2 - ghost.getHeight()/2;
-    int16 y2 = (int16)IwGxGetScreenHeight()/2 + ghost.getHeight()/2;
+	// Screenspace vertex coords
+    int16 x1 = ghost->getPositionX();
+    int16 x2 = ghost->getPositionX() + ghost->getWidth();
+	int16 y1 = (int16)IwGxGetScreenHeight()/2 - ghost->getHeight()/2;
+    int16 y2 = (int16)IwGxGetScreenHeight()/2 + ghost->getHeight()/2;
 
     static CIwSVec2 xy3[4];
     xy3[0].x = x1, xy3[0].y = y1;
@@ -275,7 +275,7 @@ void renderGhost(CIwMaterial* pMat) {
 
 void renderVitality(CIwMaterial* pMat) {
 
-	Player player = getPlayer();
+	Player *player = getPlayer();
 
 	pMat = IW_GX_ALLOC_MATERIAL();
 	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
@@ -292,7 +292,7 @@ void renderVitality(CIwMaterial* pMat) {
 	// Full length of the bar
 	int16 barLength = x2 - x1;
 	// Multiply the full bar length with current vitality status
-	barLength =  barLength * (float)player.getVitality() / MAX_PLAYER_VITALITY;
+	barLength =  barLength * (float)player->getVitality() / MAX_PLAYER_VITALITY;
 
 	x2 = x1 + barLength;
 
