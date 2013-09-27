@@ -69,31 +69,53 @@ bool Ghost::ghostUpdate() {
 		if (ghostScreenArea > 0) {
 			// Ghost is in the screen
 			found = true;
+		}
 
-			if (bearing < player->getHeading()) {
-				compassX = -Ghost::getWidth() + ghostScreenArea;
-			} else {
-				compassX = (int16)IwGxGetScreenWidth() - ghostScreenArea;
-			}
+		if (bearing < player->getHeading()) {
+			compassX = -Ghost::getWidth() + ghostScreenArea;
+		} else {
+			compassX = (int16)IwGxGetScreenWidth() - ghostScreenArea;
 		}
 	}
 
-	if (found && foundAnimProgress < FOUND_ANIM_STEPS) {
+	if (found) {
 
-		if (clock() - foundAnimTime > 7) {
-			foundAnimProgress++;
-			foundAnimTime = clock();
+		if (foundAnimProgress < FOUND_ANIM_STEPS) {
+
+			if (clock() - foundAnimTime > 7) {
+				foundAnimProgress++;
+				foundAnimTime = clock();
+			}
+
+			// Increase scale each anim step so that it ends being 1
+			scale = ORIGINAL_SCALE + (1-ORIGINAL_SCALE)/FOUND_ANIM_STEPS * foundAnimProgress;
+
+			int16 midPositionX = getMidPositionX();
+
+			// Ghost is dragged more heavily to middle as animation goes on
+			Ghost::positionX = compassX * ((float)(FOUND_ANIM_STEPS-foundAnimProgress)/FOUND_ANIM_STEPS) + 
+				midPositionX * ((float)(foundAnimProgress)/FOUND_ANIM_STEPS);
+		
 		}
 
-		// Increase scale each anim step so that it ends being 1
-		scale = ORIGINAL_SCALE + (1-ORIGINAL_SCALE)/FOUND_ANIM_STEPS * foundAnimProgress;
+		if (foundAnimProgress == FOUND_ANIM_STEPS) {
+			float floatingPower = 20.f;
 
-		int16 midPositionX = getMidPositionX();
+			if (clock() - floatingTime > 50) {
+				// Ghost moves torwards heading
+				bearing = bearing * (50.f/100) + 
+					player->getHeading() * (50.f/100);
+			}
 
-		// Ghost is dragged more heavily to middle as animation goes on
-		Ghost::positionX = compassX * ((float)(FOUND_ANIM_STEPS-foundAnimProgress)/FOUND_ANIM_STEPS) + 
-			midPositionX * ((float)(foundAnimProgress)/FOUND_ANIM_STEPS);
-		
+			// Soften the compass movement with low-pass filter
+			int16 midPositionX = getMidPositionX();
+			Ghost::positionX = compassX * (floatingPower/100) + 
+				positionX * ((100-floatingPower)/100);
+
+			floatingTime = clock();
+
+			IwTrace(GHOST_HUNTER, ("Ghost position %d compass %d", Ghost::positionX, compassX));
+		}
 	}
 
 	// If the ghost is found it may hit the player
@@ -104,6 +126,7 @@ bool Ghost::ghostUpdate() {
 		IwTrace(GHOST_HUNTER, ("Player got hit for %d", hit));
 		playerHitTime = clock();
 	}
+
 	return true;
 }
 
@@ -178,7 +201,7 @@ int Ghost::getEctoplasm() {
 }
 
 void Ghost::floatingUpdate(int32 x, int32 y, int32 z) {
-
+	/*
 	if (found && foundAnimProgress == FOUND_ANIM_STEPS && 
 			clock() - floatingTime > 50) {
 		float floatingPower = 10.f;
@@ -188,5 +211,5 @@ void Ghost::floatingUpdate(int32 x, int32 y, int32 z) {
 			(midPositionX * (100-floatingPower)/100);
 
 		floatingTime = clock();
-	}
+	}*/
 }
