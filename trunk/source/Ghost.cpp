@@ -105,7 +105,7 @@ bool Ghost::ghostUpdate() {
 			float ghostMoveSpeed;
 			float moveSmooth;
 
-			int ghostDistance = abs(bearing - player->getHeading());
+			double ghostDistance = abs(bearing - player->getHeading());
 			
 			{
 				// Ghost moves torwards heading
