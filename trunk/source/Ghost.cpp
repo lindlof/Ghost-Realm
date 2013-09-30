@@ -40,7 +40,9 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 
 	staging = true;
 	IwRandSeed((int32)s3eTimerGetMs());
-	bearing = IwRandMinMax(0, 360);
+	do {
+		bearing = IwRandMinMax(0, 360);
+	} while (abs(bearing - player->getHeading()) < 90);
 };
 
 void Ghost::ghostGotHit() {
