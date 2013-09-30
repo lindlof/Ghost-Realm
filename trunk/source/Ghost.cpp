@@ -22,6 +22,7 @@ float getGhostTypeDistance(GhostType ghostType);
 
 Ghost::Ghost(GhostType ghostType, Player *player) {
 	Ghost::ghostType = ghostType;
+	int tries = 0;
 
 	Ghost::player = player;
 	found = false;
@@ -42,7 +43,9 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	IwRandSeed((int32)s3eTimerGetMs());
 	do {
 		bearing = IwRandMinMax(0, 360);
-	} while (abs(bearing - player->getHeading()) < 90);
+		tries++;
+	} while (abs(bearing - player->getHeading()) < 90 && 
+		tries < 50);
 };
 
 void Ghost::ghostGotHit() {
