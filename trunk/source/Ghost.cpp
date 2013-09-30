@@ -100,6 +100,14 @@ bool Ghost::ghostUpdate() {
 				ghostMoveSpeed = 20.f;
 			}
 
+			if (bearing < 90 && player->getHeading() > 360-90) {
+				// Going clockwise over north point of compass
+				bearing += 360;
+			} else if (bearing > 360-90 && player->getHeading() < 90) {
+				// Going counterclockwise over north point of compass
+				bearing -= 360;
+			}
+
 			bearing = bearing * ((100-ghostMoveSpeed)/100) + 
 				player->getHeading() * (ghostMoveSpeed/100);
 		}
