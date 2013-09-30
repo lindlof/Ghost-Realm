@@ -1,0 +1,162 @@
+// skin file exported from : 'init23.blend'
+CIwAnimSkin
+{
+	skeleton "Armature"
+	model "beard"
+	CIwAnimSkinSet
+	{
+		useBones { head upper_arm.L upper_arm.R }
+		numVerts 3
+		vertWeights { 63, 0.9999999, 0.0000000, 0.0000001}
+		vertWeights { 65, 0.9999999, 0.0000000, 0.0000001}
+		vertWeights { 66, 0.9999999, 0.0000000, 0.0000001}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { head upper_arm.R }
+		numVerts 1
+		vertWeights { 76, 0.9999999, 0.0000001}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { head upper_arm.L upper_arm.R thigh.L }
+		numVerts 1
+		vertWeights { 13, 1.0000000, 0.0000000, 0.0000000, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { head }
+		numVerts 91
+		vertWeights { 0, 1.0000000}
+		vertWeights { 1, 1.0000000}
+		vertWeights { 2, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 3, 1.0000000}
+		vertWeights { 4, 1.0000000}
+		vertWeights { 8, 1.0000000}
+		vertWeights { 9, 1.0000000}
+		vertWeights { 10, 1.0000000}
+		vertWeights { 12, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 14, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 15, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 16, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 17, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 18, 1.0000000}
+		vertWeights { 19, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 20, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 21, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 22, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 23, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 24, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 25, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 26, 1.0000000}
+		vertWeights { 27, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 29, 1.0000000}
+		vertWeights { 30, 1.0000000}
+		vertWeights { 31, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 32, 1.0000000}
+		vertWeights { 33, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 34, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 35, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 37, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 38, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 43, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 44, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 45, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 46, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 47, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 48, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 49, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 50, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 51, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 52, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 53, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 54, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 56, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 57, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 58, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 59, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 60, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 61, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 62, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 64, 1.0000000}
+		vertWeights { 67, 1.0000000}
+		vertWeights { 68, 1.0000000}
+		vertWeights { 69, 1.0000000}
+		vertWeights { 70, 1.0000000}
+		vertWeights { 71, 1.0000000}
+		vertWeights { 72, 1.0000000}
+		vertWeights { 73, 1.0000000}
+		vertWeights { 74, 1.0000000}
+		vertWeights { 75, 1.0000000}
+		vertWeights { 77, 1.0000000}
+		vertWeights { 78, 1.0000000}
+		vertWeights { 79, 1.0000000}
+		vertWeights { 80, 1.0000000}
+		vertWeights { 81, 1.0000000}
+		vertWeights { 84, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 85, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 86, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 87, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 88, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 89, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 90, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 91, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 93, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 94, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 95, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 96, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 98, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 99, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 100, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 101, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 102, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 103, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 104, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 105, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 106, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 107, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 108, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 109, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 110, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { neck head upper_arm.L upper_arm.L.001 }
+		numVerts 7
+		vertWeights { 36, 0.0000000, 1.0000000, 0.0000000, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 39, 0.0000000, 1.0000000, 0.0000000, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 40, 0.0000000, 1.0000000, 0.0000000, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 41, 0.0000000, 1.0000000, 0.0000000, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 42, 0.0000000, 1.0000000, 0.0000000, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 92, 0.0000000, 1.0000000, 0.0000000, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 97, 0.0000000, 1.0000000, 0.0000000, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { neck head upper_arm.L upper_arm.R }
+		numVerts 2
+		vertWeights { 6, 0.0000000, 0.9999999, 0.0000000, 0.0000001}
+		vertWeights { 7, 0.0000000, 0.9999999, 0.0000000, 0.0000001}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { head upper_arm.L upper_arm.L.001 upper_arm.R }
+		numVerts 2
+		vertWeights { 55, 0.9999999, 0.0000000, 0.0000000, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 83, 0.9999999, 0.0000000, 0.0000000, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { head upper_arm.L upper_arm.R upper_arm.R.001 }
+		numVerts 1
+		vertWeights { 5, 0.9999999, 0.0000000, 0.0000001, 0.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { head shoulder.L upper_arm.L upper_arm.R }
+		numVerts 3
+		vertWeights { 11, 0.9999999, 0.0000000, 0.0000000, 0.0000001}
+		vertWeights { 28, 0.9999999, 0.0000000, 0.0000000, 0.0000001}
+		vertWeights { 82, 0.9999999, 0.0000000, 0.0000000, 0.0000000}
+	}
+}

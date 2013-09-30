@@ -1,0 +1,21 @@
+// Marmalade group file exported from : C:\Users\eerosa\Desktop\init23.blend
+// Exported 2013-09-27 14:32:11.122000
+CIwResGroup
+{
+	name "viking"
+	".\models\Armature.skel"
+	".\models\beard.geo"
+	".\models\beard.skin"
+	".\models\body.geo"
+	".\models\body.skin"
+	".\models\Cylinder.geo"
+	".\models\Cylinder.skin"
+	".\models\Cylinder_001.geo"
+	".\models\Cylinder_001.skin"
+	".\models\loincloth.geo"
+	".\models\loincloth.skin"
+	".\models\nose.geo"
+	".\models\nose.skin"
+	".\models\Plane.geo"
+	".\anims\Armature.anim"
+}

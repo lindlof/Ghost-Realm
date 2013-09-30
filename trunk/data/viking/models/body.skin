@@ -1,0 +1,386 @@
+// skin file exported from : 'init23.blend'
+CIwAnimSkin
+{
+	skeleton "Armature"
+	model "body"
+	CIwAnimSkinSet
+	{
+		useBones { thigh.L shin.L }
+		numVerts 10
+		vertWeights { 16, 0.8045962, 0.1954038}
+		vertWeights { 17, 0.4939866, 0.5060134}
+		vertWeights { 19, 0.5149390, 0.4850610}
+		vertWeights { 40, 0.0621769, 0.9378231}
+		vertWeights { 41, 0.0127119, 0.9872881}
+		vertWeights { 42, 0.0555997, 0.9444003}
+		vertWeights { 44, 0.0900116, 0.9099884}
+		vertWeights { 46, 0.0863512, 0.9136488}
+		vertWeights { 49, 0.0310578, 0.9689422}
+		vertWeights { 51, 0.0011241, 0.9988759}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { hips thigh.L shin.L }
+		numVerts 7
+		vertWeights { 15, 0.6416096, 0.2556955, 0.1026949}
+		vertWeights { 18, 0.1683439, 0.6495033, 0.1821528}
+		vertWeights { 20, 0.1160917, 0.5333315, 0.3505768}
+		vertWeights { 21, 0.1639071, 0.5710439, 0.2650489}
+		vertWeights { 34, 0.0143072, 0.2808927, 0.7048001}
+		vertWeights { 35, 0.0349227, 0.7772523, 0.1878249}
+		vertWeights { 43, 0.0037235, 0.1199640, 0.8763125}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { ribs thigh.L shin.L }
+		numVerts 2
+		vertWeights { 1, 0.0753661, 0.7793921, 0.1452418}
+		vertWeights { 9, 0.0953306, 0.7901067, 0.1145627}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { hips ribs thigh.L shin.L }
+		numVerts 8
+		vertWeights { 0, 0.0055580, 0.0765579, 0.8519772, 0.0659069}
+		vertWeights { 6, 0.6743550, 0.0072483, 0.2833241, 0.0350726}
+		vertWeights { 10, 0.2959068, 0.4033202, 0.2631680, 0.0376050} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 11, 0.4005067, 0.0373329, 0.3829754, 0.1791850} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 14, 0.2576744, 0.1899594, 0.4457908, 0.1065754} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 29, 0.0909888, 0.0584704, 0.6369977, 0.2135432} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 30, 0.1362846, 0.0412794, 0.7956837, 0.0267524}
+		vertWeights { 33, 0.0679259, 0.2040721, 0.6426361, 0.0853659} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { ribs neck shoulder.L }
+		numVerts 1
+		vertWeights { 74, 0.7283468, 0.0529545, 0.2186988}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { shin.L }
+		numVerts 1
+		vertWeights { 53, 1.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { head }
+		numVerts 6
+		vertWeights { 105, 1.0000000}
+		vertWeights { 109, 1.0000000}
+		vertWeights { 113, 1.0000000}
+		vertWeights { 117, 1.0000000}
+		vertWeights { 121, 1.0000000}
+		vertWeights { 125, 1.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { forearm.L }
+		numVerts 5
+		vertWeights { 194, 1.0000000}
+		vertWeights { 199, 1.0000000}
+		vertWeights { 200, 1.0000000}
+		vertWeights { 202, 1.0000000}
+		vertWeights { 205, 1.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { neck head }
+		numVerts 9
+		vertWeights { 106, 0.0581057, 0.9418943}
+		vertWeights { 110, 0.0306591, 0.9693409}
+		vertWeights { 111, 0.0862279, 0.9137721}
+		vertWeights { 114, 0.0108997, 0.9891003}
+		vertWeights { 115, 0.0814514, 0.9185486}
+		vertWeights { 118, 0.0286746, 0.9713254}
+		vertWeights { 119, 0.0968154, 0.9031846}
+		vertWeights { 122, 0.0436626, 0.9563374}
+		vertWeights { 123, 0.1113312, 0.8886688}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { ribs neck head }
+		numVerts 1
+		vertWeights { 107, 0.0463279, 0.1054342, 0.8482379}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { ribs shoulder.L shoulder.R }
+		numVerts 1
+		vertWeights { 78, 0.0021155, 0.9257210, 0.0721634}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { hips ribs thigh.L }
+		numVerts 3
+		vertWeights { 4, 0.0992155, 0.8117285, 0.0890560}
+		vertWeights { 12, 0.5625767, 0.2045036, 0.2329197}
+		vertWeights { 32, 0.1141847, 0.2182810, 0.6675342}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { ribs neck shoulder.L shoulder.R }
+		numVerts 2
+		vertWeights { 62, 0.0193512, 0.2521482, 0.0804642, 0.6480365}
+		vertWeights { 79, 0.0478277, 0.0199184, 0.1995792, 0.7326747}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { neck head shoulder.L }
+		numVerts 1
+		vertWeights { 120, 0.2174692, 0.7818183, 0.0007125}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { ribs neck head shoulder.L }
+		numVerts 15
+		vertWeights { 60, 0.6130682, 0.1854063, 0.0803960, 0.1211295}
+		vertWeights { 65, 0.1003137, 0.1180152, 0.0128050, 0.7688661} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 81, 0.5790260, 0.2180682, 0.0947398, 0.1081660}
+		vertWeights { 82, 0.0261361, 0.8255942, 0.0761482, 0.0721216} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 83, 0.4595967, 0.2363824, 0.0687202, 0.2353007}
+		vertWeights { 84, 0.2919385, 0.3334647, 0.0689027, 0.3056941} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 85, 0.1812965, 0.2402249, 0.0700268, 0.5084518} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 86, 0.2566083, 0.4658522, 0.2178493, 0.0596902}
+		vertWeights { 87, 0.0145567, 0.7584843, 0.1911843, 0.0357748} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 88, 0.1513108, 0.6047825, 0.1571386, 0.0867682}
+		vertWeights { 89, 0.0883252, 0.6627687, 0.1470386, 0.1018674} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 90, 0.0904239, 0.5950925, 0.1906570, 0.1238266}
+		vertWeights { 108, 0.1096490, 0.2205625, 0.6623346, 0.0074540}
+		vertWeights { 112, 0.0517588, 0.1896926, 0.7514437, 0.0071049}
+		vertWeights { 116, 0.0111364, 0.1986378, 0.7629038, 0.0273220}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { upper_arm.L }
+		numVerts 15
+		vertWeights { 126, 1.0000000}
+		vertWeights { 127, 1.0000000}
+		vertWeights { 129, 1.0000000}
+		vertWeights { 131, 1.0000000}
+		vertWeights { 133, 1.0000000}
+		vertWeights { 135, 1.0000000}
+		vertWeights { 141, 1.0000000}
+		vertWeights { 166, 1.0000000}
+		vertWeights { 167, 1.0000000}
+		vertWeights { 168, 1.0000000}
+		vertWeights { 169, 1.0000000}
+		vertWeights { 170, 1.0000000}
+		vertWeights { 171, 1.0000000}
+		vertWeights { 172, 1.0000000}
+		vertWeights { 173, 1.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { ribs upper_arm.L thigh.L shin.L }
+		numVerts 2
+		vertWeights { 8, 0.2768859, 0.0482865, 0.6219335, 0.0528941}
+		vertWeights { 13, 0.3979202, 0.0731378, 0.5015357, 0.0274063}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { hips ribs upper_arm.L thigh.L }
+		numVerts 2
+		vertWeights { 5, 0.0064887, 0.2946626, 0.0552196, 0.6436291} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 31, 0.0930314, 0.6047538, 0.0138091, 0.2884057} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { upper_arm.L.001 }
+		numVerts 1
+		vertWeights { 180, 1.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { ribs shoulder.L upper_arm.L }
+		numVerts 5
+		vertWeights { 61, 0.0914029, 0.0625415, 0.8460556}
+		vertWeights { 68, 0.8823339, 0.0905668, 0.0270993}
+		vertWeights { 73, 0.0218401, 0.0460762, 0.9320837}
+		vertWeights { 75, 0.0636751, 0.7428653, 0.1934596}
+		vertWeights { 76, 0.2296635, 0.7067803, 0.0635562}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { foot.L }
+		numVerts 1
+		vertWeights { 36, 1.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { shoulder.L upper_arm.L }
+		numVerts 6
+		vertWeights { 77, 0.9014004, 0.0985996}
+		vertWeights { 142, 0.1674897, 0.8325103}
+		vertWeights { 143, 0.1942486, 0.8057514}
+		vertWeights { 144, 0.1782391, 0.8217609}
+		vertWeights { 145, 0.1100195, 0.8899805}
+		vertWeights { 146, 0.1455995, 0.8544005}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { ribs shoulder.L upper_arm.L shoulder.R }
+		numVerts 1
+		vertWeights { 71, 0.7290383, 0.1360833, 0.0866223, 0.0482561} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { hips ribs shoulder.L upper_arm.L }
+		numVerts 2
+		vertWeights { 28, 0.0371345, 0.9332628, 0.0062629, 0.0233399} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 72, 0.0512765, 0.8070248, 0.0905625, 0.0511362} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { ribs neck shoulder.L upper_arm.L }
+		numVerts 5
+		vertWeights { 58, 0.0797755, 0.0208148, 0.7474938, 0.1519159}
+		vertWeights { 59, 0.0072432, 0.0087848, 0.8591447, 0.1248273}
+		vertWeights { 63, 0.1487741, 0.0621257, 0.7106796, 0.0784206}
+		vertWeights { 64, 0.0798548, 0.0952021, 0.8202873, 0.0046559} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 80, 0.0312350, 0.0326068, 0.7898483, 0.1463099}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { shin.L foot.L }
+		numVerts 23
+		vertWeights { 22, 0.9245685, 0.0754315}
+		vertWeights { 23, 0.1004488, 0.8995512}
+		vertWeights { 24, 0.9308503, 0.0691497}
+		vertWeights { 25, 0.8479620, 0.1520380}
+		vertWeights { 26, 0.0842038, 0.9157962}
+		vertWeights { 27, 0.8196555, 0.1803445}
+		vertWeights { 37, 0.9440156, 0.0559844}
+		vertWeights { 38, 0.0369259, 0.9630741}
+		vertWeights { 48, 0.9887646, 0.0112354}
+		vertWeights { 91, 0.0050328, 0.9949672}
+		vertWeights { 92, 0.3969459, 0.6030541}
+		vertWeights { 93, 0.0567182, 0.9432818}
+		vertWeights { 94, 0.1910772, 0.8089228}
+		vertWeights { 95, 0.0676929, 0.9323071}
+		vertWeights { 96, 0.1571166, 0.8428834}
+		vertWeights { 97, 0.4086459, 0.5913541}
+		vertWeights { 98, 0.0276639, 0.9723361}
+		vertWeights { 99, 0.2785537, 0.7214463}
+		vertWeights { 100, 0.0089653, 0.9910347}
+		vertWeights { 101, 0.0047013, 0.9952987}
+		vertWeights { 102, 0.0388386, 0.9611614}
+		vertWeights { 103, 0.0054451, 0.9945549}
+		vertWeights { 104, 0.1301550, 0.8698450}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { thigh.L shin.L foot.L }
+		numVerts 9
+		vertWeights { 39, 0.1288854, 0.8416892, 0.0294253}
+		vertWeights { 45, 0.0843375, 0.9132508, 0.0024116}
+		vertWeights { 47, 0.0666331, 0.8511307, 0.0822362}
+		vertWeights { 50, 0.0526918, 0.9009015, 0.0464067}
+		vertWeights { 52, 0.0147522, 0.9530099, 0.0322379}
+		vertWeights { 54, 0.0306892, 0.9656425, 0.0036683}
+		vertWeights { 55, 0.0410359, 0.9540626, 0.0049015}
+		vertWeights { 56, 0.0959577, 0.8455849, 0.0584574}
+		vertWeights { 57, 0.0679906, 0.9089309, 0.0230784}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { upper_arm.L.001 forearm.L }
+		numVerts 41
+		vertWeights { 158, 0.7432854, 0.2567146}
+		vertWeights { 159, 0.7747377, 0.2252623}
+		vertWeights { 160, 0.7909303, 0.2090697}
+		vertWeights { 161, 0.7854686, 0.2145314}
+		vertWeights { 162, 0.7509481, 0.2490519}
+		vertWeights { 163, 0.6918362, 0.3081638}
+		vertWeights { 164, 0.7209975, 0.2790025}
+		vertWeights { 165, 0.7173514, 0.2826486}
+		vertWeights { 182, 0.2118203, 0.7881797}
+		vertWeights { 183, 0.0092760, 0.9907240}
+		vertWeights { 184, 0.1121732, 0.8878268}
+		vertWeights { 185, 0.1917379, 0.8082621}
+		vertWeights { 186, 0.6685757, 0.3314243}
+		vertWeights { 187, 0.6298214, 0.3701786}
+		vertWeights { 188, 0.7435482, 0.2564518}
+		vertWeights { 189, 0.7094841, 0.2905159}
+		vertWeights { 190, 0.2179629, 0.7820371}
+		vertWeights { 191, 0.2366147, 0.7633853}
+		vertWeights { 192, 0.1603234, 0.8396766}
+		vertWeights { 193, 0.0254024, 0.9745976}
+		vertWeights { 195, 0.1744600, 0.8255400}
+		vertWeights { 196, 0.2424430, 0.7575570}
+		vertWeights { 197, 0.1984337, 0.8015663}
+		vertWeights { 198, 0.0450550, 0.9549450}
+		vertWeights { 201, 0.0466426, 0.9533574}
+		vertWeights { 203, 0.0828062, 0.9171938}
+		vertWeights { 204, 0.0902639, 0.9097361}
+		vertWeights { 206, 0.1986324, 0.8013676}
+		vertWeights { 207, 0.2057092, 0.7942908}
+		vertWeights { 208, 0.2032478, 0.7967522}
+		vertWeights { 209, 0.1993632, 0.8006368}
+		vertWeights { 210, 0.2023997, 0.7976003}
+		vertWeights { 211, 0.2031228, 0.7968772}
+		vertWeights { 212, 0.2026189, 0.7973811}
+		vertWeights { 213, 0.2039357, 0.7960643}
+		vertWeights { 214, 0.6342475, 0.3657525}
+		vertWeights { 215, 0.7002623, 0.2997377}
+		vertWeights { 216, 0.1627485, 0.8372515}
+		vertWeights { 217, 0.1885090, 0.8114910}
+		vertWeights { 218, 0.1989189, 0.8010811}
+		vertWeights { 219, 0.7819679, 0.2180321}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { neck head shoulder.R }
+		numVerts 1
+		vertWeights { 124, 0.2368721, 0.7427455, 0.0203823}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { ribs upper_arm.L }
+		numVerts 2
+		vertWeights { 137, 0.0563375, 0.9436625}
+		vertWeights { 139, 0.0696751, 0.9303249}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { upper_arm.L upper_arm.L.001 }
+		numVerts 25
+		vertWeights { 128, 0.9829346, 0.0170654}
+		vertWeights { 130, 0.9441726, 0.0558274}
+		vertWeights { 132, 0.9179037, 0.0820963}
+		vertWeights { 134, 0.8746990, 0.1253010}
+		vertWeights { 136, 0.8229687, 0.1770313}
+		vertWeights { 138, 0.8582541, 0.1417459}
+		vertWeights { 140, 0.9754551, 0.0245449}
+		vertWeights { 147, 0.7867720, 0.2132280}
+		vertWeights { 148, 0.7945861, 0.2054139}
+		vertWeights { 149, 0.7648853, 0.2351147}
+		vertWeights { 150, 0.0287104, 0.9712896}
+		vertWeights { 151, 0.2243152, 0.7756848}
+		vertWeights { 152, 0.4419947, 0.5580053}
+		vertWeights { 153, 0.4445606, 0.5554394}
+		vertWeights { 154, 0.3480451, 0.6519549}
+		vertWeights { 155, 0.2717938, 0.7282062}
+		vertWeights { 156, 0.1603533, 0.8396467}
+		vertWeights { 157, 0.0746932, 0.9253068}
+		vertWeights { 174, 0.0315797, 0.9684203}
+		vertWeights { 175, 0.0940451, 0.9059549}
+		vertWeights { 176, 0.1351667, 0.8648333}
+		vertWeights { 177, 0.0492392, 0.9507608}
+		vertWeights { 178, 0.1312632, 0.8687368}
+		vertWeights { 179, 0.0196541, 0.9803459}
+		vertWeights { 181, 0.1557097, 0.8442903}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { ribs shoulder.L upper_arm.L thigh.L }
+		numVerts 7
+		vertWeights { 2, 0.5609472, 0.0764114, 0.1648053, 0.1978361}
+		vertWeights { 3, 0.5991944, 0.0450397, 0.1513179, 0.2044480}
+		vertWeights { 7, 0.5484968, 0.0429590, 0.2277807, 0.1807635}
+		vertWeights { 66, 0.7318349, 0.1614256, 0.1020462, 0.0046934}
+		vertWeights { 67, 0.1942776, 0.0624044, 0.7116983, 0.0316197}
+		vertWeights { 69, 0.3236996, 0.2590307, 0.3719916, 0.0452780}
+		vertWeights { 70, 0.5502912, 0.1224075, 0.2714881, 0.0558131}
+	}
+}

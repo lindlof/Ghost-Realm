@@ -15,6 +15,8 @@
 #include "IwGxPrint.h"
 #include "IwMaterial.h"
 #include "IwTexture.h"
+#include "IwGraphics.h"
+#include "IwAnim.h"
 
 #include <sys/param.h>
 
@@ -94,6 +96,8 @@ static int32 frameReceived(void* systemData, void* userData)
 void CameraViewInit()
 {
     IwGxInit();
+	IwGraphicsInit();
+	IwAnimInit();
 
     // Camera field of view
 	IwGxSetPerspMul((float) IwGxGetScreenWidth() / 2); // 90 deg FOV
@@ -106,6 +110,9 @@ void CameraViewInit()
     g_GhostTexture = new CIwTexture;
     g_GhostTexture->LoadFromFile("textures/hammersmith_ghost.png");
     g_GhostTexture->Upload();
+
+	IwGetResManager()->LoadGroup("viking/viking.group");
+	CIwResGroup* pGroup = IwGetResManager()->GetGroupNamed("viking");
 
     // Set up camera capture
     if (s3eCameraAvailable())
@@ -142,6 +149,8 @@ void CameraViewTerm()
         s3eCameraUnRegister(S3E_CAMERA_UPDATE_STREAMING, frameReceived);
     }
 
+	IwAnimTerminate();
+	IwGraphicsTerminate();
     IwGxTerminate();
 }
 

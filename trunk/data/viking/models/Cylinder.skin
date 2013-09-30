@@ -1,0 +1,34 @@
+// skin file exported from : 'init23.blend'
+CIwAnimSkin
+{
+	skeleton "Armature"
+	model "Cylinder"
+	CIwAnimSkinSet
+	{
+		useBones { shin.L }
+		numVerts 13
+		vertWeights { 0, 1.0000000}
+		vertWeights { 1, 1.0000000}
+		vertWeights { 3, 1.0000000}
+		vertWeights { 5, 1.0000000}
+		vertWeights { 6, 1.0000000}
+		vertWeights { 8, 1.0000000}
+		vertWeights { 9, 1.0000000}
+		vertWeights { 10, 1.0000000}
+		vertWeights { 12, 1.0000000}
+		vertWeights { 13, 1.0000000}
+		vertWeights { 14, 1.0000000}
+		vertWeights { 16, 1.0000000}
+		vertWeights { 17, 1.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { shin.L foot.L }
+		numVerts 5
+		vertWeights { 2, 0.9999999, 0.0000001}
+		vertWeights { 4, 0.9999999, 0.0000001}
+		vertWeights { 7, 0.9999999, 0.0000001}
+		vertWeights { 11, 0.9999999, 0.0000001}
+		vertWeights { 15, 0.9999999, 0.0000001}
+	}
+}

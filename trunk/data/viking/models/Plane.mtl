@@ -1,0 +1,5 @@
+// mtl file exported from : 'init23.blend'
+CIwMaterial
+{
+	name "NoMaterialAssigned" // There is no material assigned in blender !!!, exporter have generated a default one
+}

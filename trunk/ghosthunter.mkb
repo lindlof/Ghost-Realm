@@ -20,13 +20,23 @@ files
 	[Main]
 	Main.cpp
 	Main.h
+
+	[Resources]
+	(data/viking)
+    viking.group
 }
 subprojects
 {
     iwgx
+    iwgeom
+    iwgraphics
+    iwanim
 }
 assets
 {
+	(data-ram/data-gles1)
+    viking/viking.group.bin
+
     (data)
     textures/hammersmith_ghost.png
 }
