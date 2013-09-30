@@ -58,13 +58,11 @@ clock_t Ghost::getHitTime() {
 
 bool Ghost::ghostUpdate() {
 
-	{ // What is ghosts x coord in relation to the screen
-		int ghostRotationDistance = abs(bearing - player->getHeading());
+	double ghostDistance = abs(bearing - player->getHeading());
 
-		if (ghostRotationDistance < 20) {
-			// Ghost is in the screen
-			found = true;
-		}
+	if (!found && ghostDistance < 20) {
+		// Ghost is middle enough of the screen to aggro
+		found = true;
 	}
 
 	if (found) {
@@ -80,34 +78,30 @@ bool Ghost::ghostUpdate() {
 			scale = ORIGINAL_SCALE + (1-ORIGINAL_SCALE)/FOUND_ANIM_STEPS * foundAnimProgress;
 		}
 
-		if (found) {
-			float ghostMoveSpeed;
-			float moveSmooth;
-
-			double ghostDistance = abs(bearing - player->getHeading());
+		float ghostMoveSpeed;
+		float moveSmooth;
 			
-			{
-				// Ghost moves torwards heading
+		{
+			// Ghost moves torwards heading
 
-				bool headingToMiddle = bearing < player->getHeading();
+			bool headingToMiddle = bearing < player->getHeading();
 
-				if (ghostDistance < 1.3) {
-					ghostMoveSpeed = (headingToMiddle) ? 2.f  : 1.3f;
-				} else if (ghostDistance < 3) {
-					ghostMoveSpeed = (headingToMiddle) ? 4.f  : 2.f;
-				} else if (ghostDistance < 6) {
-					ghostMoveSpeed = (headingToMiddle) ? 7.f  : 3.f;
-				} else if (ghostDistance < 12) {
-					ghostMoveSpeed = (headingToMiddle) ? 12.f : 9.f;
-				} else if (ghostDistance < 20) {
-					ghostMoveSpeed = (headingToMiddle) ? 16.f : 13.f;
-				} else {
-					ghostMoveSpeed = 20.f;
-				}
-
-				bearing = bearing * ((100-ghostMoveSpeed)/100) + 
-					player->getHeading() * (ghostMoveSpeed/100);
+			if (ghostDistance < 1.3) {
+				ghostMoveSpeed = (headingToMiddle) ? 2.f  : 1.3f;
+			} else if (ghostDistance < 3) {
+				ghostMoveSpeed = (headingToMiddle) ? 4.f  : 2.f;
+			} else if (ghostDistance < 6) {
+				ghostMoveSpeed = (headingToMiddle) ? 7.f  : 3.f;
+			} else if (ghostDistance < 12) {
+				ghostMoveSpeed = (headingToMiddle) ? 12.f : 9.f;
+			} else if (ghostDistance < 20) {
+				ghostMoveSpeed = (headingToMiddle) ? 16.f : 13.f;
+			} else {
+				ghostMoveSpeed = 20.f;
 			}
+
+			bearing = bearing * ((100-ghostMoveSpeed)/100) + 
+				player->getHeading() * (ghostMoveSpeed/100);
 		}
 	}
 
