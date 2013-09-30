@@ -20,8 +20,6 @@ class Ghost {
 	Player *player;
 	bool found;
 
-	int positionX;
-	int positionY;
 	int width;
 	int height;
 	int ectoplasm;
@@ -30,7 +28,6 @@ class Ghost {
 	int middleMagnet;
 
 	clock_t foundAnimTime;
-	int compassX;
 	float scale;
 	int foundAnimProgress;
 	
@@ -51,11 +48,10 @@ class Ghost {
 	clock_t getHitTime();
 
 	int getStrength();
-	int getWidth();
-	int getHeight();
-	int getPositionX();
 
 	void floatingUpdate(int32 x, int32 y, int32 z);
 	bool isFound();
 	int getEctoplasm();
+	float getDistance();
+	double getBearing();
 };

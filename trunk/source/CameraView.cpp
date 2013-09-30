@@ -20,6 +20,7 @@
 
 #define GHOST_HIT_LENGTH 500
 
+void setupPlayer();
 void renderCamera(CIwMaterial* pMat);
 void renderGhost(CIwMaterial* pMat);
 void renderVitality(CIwMaterial* pMat);
@@ -30,6 +31,13 @@ static CIwTexture* g_GhostTexture = NULL;
 static s3eCameraFrameRotation g_FrameRotation = S3E_CAMERA_FRAME_ROT90;
 static CIwFMat viewMatrix;
 
+double inline rad(double d) {
+    return d / 180.0f * PI;
+}
+
+double inline deg(double d) {
+    return d / PI * 180.0f;
+}
 
 // Camera callback. Copy the capture frame buffer into a texture ready for rendering.
 static int32 frameReceived(void* systemData, void* userData)
@@ -145,6 +153,7 @@ void CameraViewUpdate()
 	CIwMaterial* pMat = NULL;
 
 	renderCamera(pMat);
+	setupPlayer();
 	renderGhost(pMat);
 	renderVitality(pMat);
 
@@ -198,28 +207,78 @@ void renderCamera(CIwMaterial* pMat) {
         cameraUvs[j] = normalUvs[(4 - (int)g_FrameRotation + j ) % 4];
     }
 
+	IwGxSetScreenSpaceSlot(-1);
+
     IwGxSetUVStream(cameraUvs);
     IwGxSetVertStreamScreenSpace(xy3, 4);
 
     IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
 }
 
+void setupPlayer() {
+	Player *player = getPlayer();
+	
+    // Set viewing position with the Y axis as upright.
+    viewMatrix.SetIdentity();
+    viewMatrix.LookAt(CIwFVec3(0,0,0), CIwFVec3(0,0,100), CIwFVec3(0,-1,0));
+
+    // Rotate according to compass heading
+	viewMatrix.PostRotateY((float)rad(player->getHeading()));
+    IwGxSetViewMatrix(&viewMatrix);
+}
+
+// Vertex data
+const float s = 0x80;
+CIwFVec3    s_Verts[8];
+
+CIwColour   s_Cols[8] =
+{
+	{0x00, 0x00, 0x00},
+	{0x00, 0x00, 0x00},
+	{0x00, 0x00, 0x00},
+	{0x00, 0x00, 0x00},
+	{0x00, 0x00, 0x00},
+	{0x00, 0x00, 0x00},
+	{0x00, 0x00, 0x00},
+	{0x00, 0x00, 0x00},
+};
+
+CIwFVec2 s_UVs[4] =
+{
+    CIwFVec2(0, 0),
+    CIwFVec2(1, 0),
+    CIwFVec2(1, 1),
+    CIwFVec2(0, 1),
+};
+
+// Index stream for textured material
+uint16      s_QuadStrip[4] =
+{
+	0, 3, 1, 2,
+};
+
 void renderGhost(CIwMaterial* pMat) {
 
 	Ghost *ghost = getGhost();
 
-	if (!ghost->isFound()) {
-		return;
-	}
+	CIwFVec3 ghostPosition(0, 0, ghost->getDistance());
+	static CIwFMat modelMatrix;
 
-	int sinceHit = clock() - ghost->getHitTime();
+    // Place the markers on the edge of the compass radius
+    // rotated to their correct bearing to current location
+	modelMatrix.SetRotY((float)rad(ghost->getBearing()));
+	modelMatrix.SetTrans(modelMatrix.RotateVec(ghostPosition));
+    IwGxSetModelMatrix(&modelMatrix);
+	
 
     pMat = IW_GX_ALLOC_MATERIAL();
 	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
 	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
 	pMat->SetTexture(g_GhostTexture);
-
+	
 	IwGxLightingEmissive(true);
+
+	int sinceHit = clock() - ghost->getHitTime();
 
 	if (sinceHit < GHOST_HIT_LENGTH) {
 		int halfAnimation = GHOST_HIT_LENGTH/2;
@@ -241,36 +300,38 @@ void renderGhost(CIwMaterial* pMat) {
 		}
 
 		pMat->SetColEmissive(0xff, 0xff-hit, 0xff-hit, 0xff);
-		//pMat->SetColEmissive(0xff0000ff);
 	} else {
 		// The default state that displays the image as it is
 		pMat->SetColEmissive(0xffffffff);
 	}
-
+	
     IwGxSetMaterial(pMat);
 
-	// Screenspace vertex coords
-    int16 x1 = ghost->getPositionX();
-    int16 x2 = ghost->getPositionX() + ghost->getWidth();
-	int16 y1 = (int16)IwGxGetScreenHeight()/2 - ghost->getHeight()/2;
-    int16 y2 = (int16)IwGxGetScreenHeight()/2 + ghost->getHeight()/2;
 
-    static CIwSVec2 xy3[4];
-    xy3[0].x = x1, xy3[0].y = y1;
-    xy3[1].x = x1, xy3[1].y = y2;
-    xy3[2].x = x2, xy3[2].y = y2;
-    xy3[3].x = x2, xy3[3].y = y1;
-    IwGxSetVertStreamScreenSpace(xy3, 4);
+	IwGxSetScreenSpaceSlot(1);
 
-    IwGxSetUVStream(normalUvs);
+	{
+		// Model space 3d vertex coords
+		float w = 62;
+		float h = 136;
+		s_Verts[0] = CIwFVec3( w,  h, -s);
+		s_Verts[1] = CIwFVec3(-w,  h, -s);
+		s_Verts[2] = CIwFVec3(-w, -h, -s);
+		s_Verts[3] = CIwFVec3( w, -h, -s);
+		s_Verts[4] = CIwFVec3( w,  h,  s);
+		s_Verts[5] = CIwFVec3(-w,  h,  s);
+		s_Verts[6] = CIwFVec3(-w, -h,  s);
+		s_Verts[7] = CIwFVec3( w, -h,  s);
+	}
+
+	IwGxSetVertStreamModelSpace(s_Verts, 8);
 
 	// Set base color for lighting
-	CIwColour* cols = IW_GX_ALLOC(CIwColour, 4);
-	cols[0].Set(0, 0, 0, 0);
-	cols[1] = cols[2] = cols[3] = cols[0];
-	IwGxSetColStream(cols, 4);
+	IwGxSetColStream(s_Cols, 8);
 	
-    IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
+    IwGxSetUVStream(s_UVs);
+	IwGxSetScreenSpaceSlot(1);
+	IwGxDrawPrims(IW_GX_QUAD_STRIP, s_QuadStrip, 4);
 }
 
 void renderVitality(CIwMaterial* pMat) {

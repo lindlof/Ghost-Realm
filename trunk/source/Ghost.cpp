@@ -15,13 +15,10 @@
 #include "s3eVibra.h"
 #include "IwGx.h"
 
-#define DEGREE_IN_PIXELS 55
 #define FOUND_ANIM_STEPS 100
-#define ORIGINAL_SCALE 0.5
+#define ORIGINAL_SCALE 0.5f
 
-float getGhostScale(GhostType ghostType);
-float getWidthSpace(GhostType ghostType);
-float getHeightSpace(GhostType ghostType);
+float getGhostTypeDistance(GhostType ghostType);
 
 Ghost::Ghost(GhostType ghostType, Player *player) {
 	Ghost::ghostType = ghostType;
@@ -29,16 +26,13 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	Ghost::player = player;
 	found = false;
 
-	positionX = 0;
-	positionY = 0;
-
 	middleMagnetTime = 0;
 	middleMagnet = 0;
 
 	playerHitTime = 0;
 	hitTime = 0;
 
-	scale = 0.5;
+	scale = ORIGINAL_SCALE;
 	foundAnimTime = 0;
 	foundAnimProgress = 0;
 
@@ -65,19 +59,11 @@ clock_t Ghost::getHitTime() {
 bool Ghost::ghostUpdate() {
 
 	{ // What is ghosts x coord in relation to the screen
-		int ghostScreenDistance = abs(bearing - player->getHeading()) * DEGREE_IN_PIXELS;
-		int ghostScreenArea = (int16)IwGxGetScreenWidth()/2 + 
-				Ghost::getWidth() - ghostScreenDistance;
+		int ghostRotationDistance = abs(bearing - player->getHeading());
 
-		if (ghostScreenArea > 0) {
+		if (ghostRotationDistance < 20) {
 			// Ghost is in the screen
 			found = true;
-		}
-
-		if (bearing < player->getHeading()) {
-			compassX = -Ghost::getWidth() + ghostScreenArea;
-		} else {
-			compassX = (int16)IwGxGetScreenWidth() - ghostScreenArea;
 		}
 	}
 
@@ -92,16 +78,9 @@ bool Ghost::ghostUpdate() {
 
 			// Increase scale each anim step so that it ends being 1
 			scale = ORIGINAL_SCALE + (1-ORIGINAL_SCALE)/FOUND_ANIM_STEPS * foundAnimProgress;
-
-			int16 midPositionX = getMidPositionX();
-
-			// Ghost is dragged more heavily to middle as animation goes on
-			Ghost::positionX = compassX * ((float)(FOUND_ANIM_STEPS-foundAnimProgress)/FOUND_ANIM_STEPS) + 
-				midPositionX * ((float)(foundAnimProgress)/FOUND_ANIM_STEPS);
-		
 		}
 
-		if (foundAnimProgress == FOUND_ANIM_STEPS) {
+		if (found) {
 			float ghostMoveSpeed;
 			float moveSmooth;
 
@@ -129,46 +108,6 @@ bool Ghost::ghostUpdate() {
 				bearing = bearing * ((100-ghostMoveSpeed)/100) + 
 					player->getHeading() * (ghostMoveSpeed/100);
 			}
-
-			{
-				// Smoothen the ghost movement but try to keep up with
-				// the bearing, except in very middle of the screen
-
-				if (ghostDistance < 1.3) {
-					moveSmooth = 98.f;
-				} else if (ghostDistance < 3) {
-					moveSmooth = 95.f;
-				} else if (ghostDistance < 6) {
-					moveSmooth = 93.f;
-				} else if (ghostDistance < 12) {
-					moveSmooth = 85.f;
-				} else if (ghostDistance < 20) {
-					moveSmooth = 75.f;
-				} else {
-					moveSmooth = 50.f;
-				}
-
-				Ghost::positionX = compassX * ((100.f-moveSmooth)/100) + 
-					positionX * (moveSmooth/100);
-			}
-
-			{
-				// Compas rarely sets the ghost to the very middle of the
-				// screen so we installed a magnet in the very middle
-
-				if (clock() - middleMagnetTime > 10) {
-
-					if (ghostDistance < 1) {
-						if (middleMagnet < 100) middleMagnet++;
-					} else {
-						if (middleMagnet > 0) middleMagnet--;
-					}
-					middleMagnetTime = clock();
-				}
-
-				Ghost::positionX = positionX * ((100.f-middleMagnet)/100) + 
-					getMidPositionX() * (((float)middleMagnet)/100);
-			}
 		}
 	}
 
@@ -184,10 +123,6 @@ bool Ghost::ghostUpdate() {
 	return true;
 }
 
-int16 Ghost::getMidPositionX() {
-	return (int16)IwGxGetScreenWidth()/2-getWidth()/2;
-}
-
 int Ghost::getStrength() {
 	switch(Ghost::ghostType) {
 		case GHOST_NORMAL: return 5;
@@ -195,55 +130,26 @@ int Ghost::getStrength() {
 	return -1;
 }
 
-int Ghost::getWidth() {
-	float ghostWhScale = getGhostScale(Ghost::ghostType);
-	float width = (int16)IwGxGetScreenWidth() / getWidthSpace(Ghost::ghostType);
-	float height = (int16)IwGxGetScreenHeight() / getHeightSpace(Ghost::ghostType);
-
-	if (ghostWhScale < width/height) {
-		width = height * ghostWhScale;
-	}
-
-	width *= scale;
-	return (int) width;
-}
-
-int Ghost::getHeight() {
-	float ghostWhScale = getGhostScale(Ghost::ghostType);
-	float width = (int16)IwGxGetScreenWidth() / getWidthSpace(Ghost::ghostType);
-	float height = (int16)IwGxGetScreenHeight() / getHeightSpace(Ghost::ghostType);
-
-	if (ghostWhScale >= width/height) {
-		height = width * 1/ghostWhScale;
-	}
-
-	height *= scale;
-	return (int) height;
-}
-
-int Ghost::getPositionX() {
-	return positionX;
+float Ghost::getDistance() {
+	return getGhostTypeDistance(Ghost::ghostType) * 1.f/scale;
 }
 
 bool Ghost::isFound() {
 	return found;
 }
 
-float getGhostScale(GhostType ghostType) {
+double Ghost::getBearing() {
+	return bearing;
+}
+
+float getGhostTypeDistance(GhostType ghostType) {
 	switch(ghostType) {
-		case GHOST_NORMAL: return 124.f/273;
+		case GHOST_NORMAL: return 300.f;
 	}
 	return -1;
 }
 
-float getWidthSpace(GhostType ghostType) {
-	switch(ghostType) {
-		case GHOST_NORMAL: return 1.5;
-	}
-	return -1;
-}
-
-float getHeightSpace(GhostType ghostType) {
+float getGhostTypeHeight(GhostType ghostType) {
 	switch(ghostType) {
 		case GHOST_NORMAL: return 2;
 	}
