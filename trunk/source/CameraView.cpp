@@ -27,6 +27,11 @@ void renderCamera(CIwMaterial* pMat);
 void renderGhost(CIwMaterial* pMat);
 void renderVitality(CIwMaterial* pMat);
 
+void cameraStreamInit(int camDataW, int camDataH);
+static CIwSVec2 cameraVert[4];
+static CIwFVec2 cameraUvs[4];
+static CIwFVec2 cameraUvsRotated[4];
+
 static CIwTexture* g_CameraTexture = NULL;
 static CIwTexture* g_GhostTexture = NULL;
 
@@ -50,33 +55,7 @@ static int32 frameReceived(void* systemData, void* userData)
     // This is a slow operation compared to memcpy so we don't want to do it every frame.
     if (g_CameraTexture == NULL)
     {
-		/*
-		// Calculate camera width and height scaled for the screen
-		{
-			//double streamWidth = (double) data->m_Width;
-			//double streamHeight = (double) data->m_Height;
-			double streamWidth = (double) data->m_Height;
-			double streamHeight = (double) data->m_Width;
-
-			double scrWhRatio = (float)IwGxGetScreenWidth() / (uint16)IwGxGetScreenHeight();
-			IwTrace(GHOST_HUNTER, ("%f / %d = %f", (float)IwGxGetScreenWidth(), (uint16)IwGxGetScreenHeight(), scrWhRatio));
-
-			if (streamWidth/streamHeight > scrWhRatio) {
-				camWidth = (uint16) (streamHeight * scrWhRatio);
-				IwTrace(GHOST_HUNTER, ("streamHeigh: %f scrWhRatio: %f", (double)streamHeight, scrWhRatio));
-				camHeight = (uint16) streamHeight;
-			} else {
-				camWidth = (uint16) streamWidth;
-				camHeight = (uint16) (streamWidth * 1/scrWhRatio);
-			}
-
-			// Pitch equals to the row byte length. RGB_565 is 16-bit.
-			camPitch = (uint16)camWidth * 16/8;
-
-			IwTrace(GHOST_HUNTER, ("Stream w %f h %f pitch %d", streamWidth, streamHeight, data->m_Pitch));
-			IwTrace(GHOST_HUNTER, ("Cam w %d h %d pitch %d", camWidth, camHeight, camPitch));
-		}
-		*/
+		cameraStreamInit(data->m_Width, data->m_Height);
 
         g_CameraTexture = new CIwTexture();
         g_CameraTexture->SetMipMapping(false);
@@ -91,6 +70,52 @@ static int32 frameReceived(void* systemData, void* userData)
     g_FrameRotation = data->m_Rotation;
 
     return 0;
+}
+
+void cameraStreamInit(int camDataW, int camDataH) {
+	double w = IwGxGetScreenWidth();
+	double h = IwGxGetScreenHeight();
+	{
+		double whRatio = ((double)camDataW) / camDataH;
+
+		if (whRatio > w/h) {
+			w = w * whRatio;
+		} else if (whRatio < w/h) {
+			h = h * 1.f/whRatio;
+		}
+	}
+
+	// Full screen screenspace vertex coords
+	int16 x1 = (int16)(-abs(w - IwGxGetScreenWidth())/2); // Negative or 0
+	int16 x2 = (int16)(w - x1);
+	int16 y1 = (int16)(-abs(h - IwGxGetScreenHeight())/2); // Negative or 0
+	int16 y2 = (int16)(h - y1);
+
+	cameraVert[0].x = x1, cameraVert[0].y = y1;
+	cameraVert[1].x = x1, cameraVert[1].y = y2;
+	cameraVert[2].x = x2, cameraVert[2].y = y2;
+	cameraVert[3].x = x2, cameraVert[3].y = y1;
+
+	{
+		// Camera UV counter-mirrors the image.
+		// Camera UV presents the image counterclockwise. Image is rotated in live.
+		// Camera UV does cut parts of the image that bleed over the screen.
+		// (so that waste doesn't get rendered)
+
+		float uvX = ((float)y1) / h;
+		float uvY = ((float)x1) / w;
+		float uvW = 1.f - uvX;
+		float uvH = 1.f - uvY;
+
+		cameraUvs[0].x = uvX;
+		cameraUvs[0].y = uvY;
+		cameraUvs[1].x = uvX;
+		cameraUvs[1].y = uvY + uvH;
+		cameraUvs[2].x = uvX + uvW;
+		cameraUvs[2].y = uvY + uvH;
+		cameraUvs[3].x = uvX + uvW;
+		cameraUvs[3].y = uvY;
+	}
 }
 
 void CameraViewInit()
@@ -172,21 +197,6 @@ bool CameraViewUpdate()
 	return true;
 }
 
-static CIwFVec2 normalUvs[4] =
-{
-    CIwFVec2(0, 0),
-    CIwFVec2(0, 1),
-    CIwFVec2(1, 1),
-    CIwFVec2(1, 0),
-};
-static CIwFVec2 cameraUvs[4] =
-{
-    CIwFVec2(0, 0),
-    CIwFVec2(0, 1),
-    CIwFVec2(1, 1),
-    CIwFVec2(1, 0),
-};
-
 void renderCamera(CIwMaterial* pMat) {
     // Refresh dynamic texture
     if (g_CameraTexture != NULL)
@@ -198,30 +208,18 @@ void renderCamera(CIwMaterial* pMat) {
 
     IwGxSetMaterial(pMat);
 
-    // Full screen screenspace vertex coords
-    int16 x1 = 0;
-    int16 x2 = (int16)IwGxGetScreenWidth();
-    int16 y1 = 0;
-    int16 y2 = (int16)IwGxGetScreenHeight();
-
-    static CIwSVec2 xy3[4];
-    xy3[0].x = x1, xy3[0].y = y1;
-    xy3[1].x = x1, xy3[1].y = y2;
-    xy3[2].x = x2, xy3[2].y = y2;
-    xy3[3].x = x2, xy3[3].y = y1;
-
     // rotate UV coordinates based on rotation
     // (image must rotate against rotation of surface,
     // assuming that the camera image is NOT auto rotated)
     for (int j=0; j<4; j++)
     {
-        cameraUvs[j] = normalUvs[(4 - (int)g_FrameRotation + j ) % 4];
+        cameraUvsRotated[j] = cameraUvs[(4 - (int)g_FrameRotation + j ) % 4];
     }
 
 	IwGxSetScreenSpaceSlot(-1);
 
-    IwGxSetUVStream(cameraUvs);
-    IwGxSetVertStreamScreenSpace(xy3, 4);
+    IwGxSetUVStream(cameraUvsRotated);
+    IwGxSetVertStreamScreenSpace(cameraVert, 4);
 
     IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
 }
