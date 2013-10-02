@@ -151,7 +151,7 @@ double Ghost::getBearing() {
 
 float getGhostTypeDistance(GhostType ghostType) {
 	switch(ghostType) {
-		case GHOST_NORMAL: return 300.f;
+		case GHOST_NORMAL: return 400.f;
 	}
 	return -1;
 }

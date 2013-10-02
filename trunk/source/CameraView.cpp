@@ -125,7 +125,7 @@ void CameraViewInit()
 	IwAnimInit();
 
     // Camera field of view
-	IwGxSetPerspMul((float) IwGxGetScreenWidth() / 2); // 90 deg FOV
+	IwGxSetPerspMul((float) IwGxGetScreenWidth() / 1.3);
     IwGxSetFarZNearZ(0x2000,0x10);
 
 	// Set screen clear colour
