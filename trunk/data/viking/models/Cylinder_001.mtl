@@ -1,9 +1,0 @@
-// mtl file exported from : 'init23.blend'
-CIwMaterial
-{
-	name "Material.002"
-	colAmbient {0.00,19.94,16.99,255.00} 
-	colDiffuse  {0.00,19.94,16.99} 
-	colSpecular  {0.00,0.00,0.00} 
-	texture0 .\textures\placeholder.png
-}

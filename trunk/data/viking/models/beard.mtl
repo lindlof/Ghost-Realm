@@ -1,8 +1,0 @@
-// mtl file exported from : 'init23.blend'
-CIwMaterial
-{
-	name "Material"
-	colAmbient {122.23,167.89,142.38,255.00} 
-	colDiffuse  {122.23,167.89,142.38} 
-	colSpecular  {0.00,0.00,0.00} 
-}
