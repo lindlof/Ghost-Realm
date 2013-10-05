@@ -7,12 +7,21 @@
  * PARTICULAR PURPOSE.
  */
 
+#ifndef _PLAYER_H
+#define _PLAYER_H
+#include "Strike.h"
+
+#include "Ghost.h"
+class Ghost;
+
 #define MAX_PLAYER_VITALITY 10000
 
 class Player {
 	private:
 	int vitality;
 	double heading;
+	Ghost *ghost;
+	Strike *strike;
 
 	public:
 	Player();
@@ -20,4 +29,8 @@ class Player {
 	void playerGotHit(int vitality);
 	int getVitality();
 	double getHeading();
+	void accelometerUpdate(int32 x, int32 y, int32 z);
+	void setGhost(Ghost *ghost);
 };
+
+#endif

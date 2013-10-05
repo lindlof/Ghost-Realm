@@ -7,8 +7,13 @@
  * PARTICULAR PURPOSE.
  */
 
+#ifndef _GHOST_H
+#define _GHOST_H
+
 #include <time.h>
+
 #include "Player.h"
+class Player;
 
 #define MAX_GHOST_ECTOPLASM 100
 
@@ -55,3 +60,5 @@ class Ghost {
 	float getDistance();
 	double getBearing();
 };
+
+#endif

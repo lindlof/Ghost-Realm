@@ -11,6 +11,8 @@
 #include "IwDebug.h"
 
 Player::Player() {
+	ghost = NULL;
+	Player::strike = new Strike();
 	vitality = MAX_PLAYER_VITALITY;
 };
 
@@ -30,4 +32,16 @@ void Player::compassUpdate(double heading, bool error)
 
 double Player::getHeading() {
 	return heading;
+}
+
+void Player::accelometerUpdate(int32 x, int32 y, int32 z) {
+	int strikeRes = strike->strikeUpdate(x, y, z);
+	if (strikeRes > 0) {
+		IwTrace(GHOST_HUNTER, ("Player is hitting"));
+		if (ghost != NULL) ghost->ghostGotHit();
+	}
+}
+
+void Player::setGhost(Ghost *ghost) {
+	Player::ghost = ghost;
 }

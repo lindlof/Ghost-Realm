@@ -16,6 +16,8 @@ files
 	Ghost.h
 	Player.cpp
 	Player.h
+	Strike.cpp
+	Strike.h
 
 	[Main]
 	Main.cpp

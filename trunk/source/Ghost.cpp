@@ -49,12 +49,10 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 };
 
 void Ghost::ghostGotHit() {
-	if (found) {
-		IwTrace(GHOST_HUNTER, ("Ghost got hit"));
-		ectoplasm -= 40;
-		hitTime = clock();
-		s3eVibraVibrate(100, 100); 	
-	}
+	IwTrace(GHOST_HUNTER, ("Ghost got hit"));
+	ectoplasm -= 40;
+	hitTime = clock();
+	s3eVibraVibrate(100, 100);
 }
 
 clock_t Ghost::getHitTime() {
@@ -68,6 +66,7 @@ bool Ghost::ghostUpdate() {
 	if (!found && ghostDistance < 20) {
 		// Ghost is middle enough of the screen to aggro
 		found = true;
+		player->setGhost(this);
 	}
 
 	if (found) {
