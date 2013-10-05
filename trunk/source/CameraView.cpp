@@ -21,10 +21,11 @@
 #include <sys/param.h>
 
 #define GHOST_HIT_LENGTH 500
+#define BLEND_DURATION 0.25f
 
 void setupPlayer();
 void renderCamera(CIwMaterial* pMat);
-void renderGhost(CIwMaterial* pMat);
+void renderGhost();
 void renderVitality(CIwMaterial* pMat);
 
 void cameraStreamInit(int camDataW, int camDataH);
@@ -33,7 +34,12 @@ static CIwFVec2 cameraUvs[4];
 static CIwFVec2 cameraUvsRotated[4];
 
 static CIwTexture* g_CameraTexture = NULL;
-static CIwTexture* g_GhostTexture = NULL;
+
+static CIwModel*       ghost_Model;
+static CIwAnim*        ghost_Anims[1];
+static CIwAnimSkel*    ghost_Skel;
+static CIwAnimSkin*    ghost_Skin;
+static CIwAnimPlayer*  ghost_Player;
 
 static s3eCameraFrameRotation g_FrameRotation = S3E_CAMERA_FRAME_ROT90;
 static CIwFMat viewMatrix;
@@ -132,12 +138,19 @@ void CameraViewInit()
     IwGxSetColClear(0xff, 0xff, 0xff, 0xff);
     IwGxPrintSetColour(128, 128, 128);
 
-    g_GhostTexture = new CIwTexture;
-    g_GhostTexture->LoadFromFile("textures/hammersmith_ghost.png");
-    g_GhostTexture->Upload();
-
+	// Load viking
 	IwGetResManager()->LoadGroup("viking/viking.group");
 	CIwResGroup* pGroup = IwGetResManager()->GetGroupNamed("viking");
+
+    ghost_Model = (CIwModel*)pGroup->GetResNamed("body", IW_GRAPHICS_RESTYPE_MODEL);
+    ghost_Skin  = (CIwAnimSkin*)pGroup->GetResNamed("body", IW_ANIM_RESTYPE_SKIN);
+    ghost_Skel  = (CIwAnimSkel*)pGroup->GetResNamed("Armature", IW_ANIM_RESTYPE_SKELETON);
+    ghost_Anims[0]  = (CIwAnim*)pGroup->GetResNamed("Armature", IW_ANIM_RESTYPE_ANIMATION);
+
+    // Create animation player
+    ghost_Player = new CIwAnimPlayer;
+    ghost_Player->SetSkel(ghost_Skel);
+    ghost_Player->PlayAnim(ghost_Anims[0], 1, CIwAnimBlendSource::LOOPING_F, BLEND_DURATION);
 
     // Set up camera capture
     if (s3eCameraAvailable())
@@ -161,12 +174,10 @@ void CameraViewInit()
 //-----------------------------------------------------------------------------
 void CameraViewTerm()
 {
-    // Release all textures
-    if (g_GhostTexture)
-        delete g_GhostTexture;
-
     if (g_CameraTexture)
         delete g_CameraTexture;
+
+	delete ghost_Player;
 
     if (s3eCameraAvailable())
     {
@@ -188,7 +199,7 @@ bool CameraViewUpdate()
 
 	renderCamera(pMat);
 	setupPlayer();
-	renderGhost(pMat);
+	renderGhost();
 	renderVitality(pMat);
 
     IwGxFlush();
@@ -236,37 +247,7 @@ void setupPlayer() {
     IwGxSetViewMatrix(&viewMatrix);
 }
 
-// Vertex data
-const float s = 0x80;
-CIwFVec3    s_Verts[8];
-
-CIwColour   s_Cols[8] =
-{
-	{0x00, 0x00, 0x00},
-	{0x00, 0x00, 0x00},
-	{0x00, 0x00, 0x00},
-	{0x00, 0x00, 0x00},
-	{0x00, 0x00, 0x00},
-	{0x00, 0x00, 0x00},
-	{0x00, 0x00, 0x00},
-	{0x00, 0x00, 0x00},
-};
-
-CIwFVec2 s_UVs[4] =
-{
-    CIwFVec2(0, 0),
-    CIwFVec2(1, 0),
-    CIwFVec2(1, 1),
-    CIwFVec2(0, 1),
-};
-
-// Index stream for textured material
-uint16      s_QuadStrip[4] =
-{
-	0, 3, 1, 2,
-};
-
-void renderGhost(CIwMaterial* pMat) {
+void renderGhost() {
 
 	Ghost *ghost = getGhost();
 
@@ -277,17 +258,17 @@ void renderGhost(CIwMaterial* pMat) {
     // rotated to their correct bearing to current location
 	modelMatrix.SetRotY((float)rad(ghost->getBearing()));
 	modelMatrix.SetTrans(modelMatrix.RotateVec(ghostPosition));
+	modelMatrix.PostRotateY(PI);
+
     IwGxSetModelMatrix(&modelMatrix);
-	
 
-    pMat = IW_GX_ALLOC_MATERIAL();
-	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
-	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
-	pMat->SetTexture(g_GhostTexture);
 	
-	IwGxLightingEmissive(true);
-
+	IwGxLightingAmbient(true);
+	IwGxSetLightType(0, IW_GX_LIGHT_AMBIENT);
+    CIwColour colA = {0xff, 0x00, 0x00, 0xff};
+	
 	int sinceHit = clock() - ghost->getHitTime();
+	CIwColour colAmbient = {0xff, 0x00, 0x00, 0x00};
 
 	if (sinceHit < GHOST_HIT_LENGTH) {
 		int halfAnimation = GHOST_HIT_LENGTH/2;
@@ -308,39 +289,29 @@ void renderGhost(CIwMaterial* pMat) {
 			hit = 0xff + (0xff - hit);
 		}
 
-		pMat->SetColEmissive(0xff, 0xff-hit, 0xff-hit, 0xff);
+		colAmbient = 0xff, 0xff-hit, 0xff-hit, 0xff;
 	} else {
 		// The default state that displays the image as it is
-		pMat->SetColEmissive(0xffffffff);
+		colAmbient = 0xffffffff;
 	}
 	
-    IwGxSetMaterial(pMat);
+	IwGxSetLightCol(0, &colAmbient);
 
+
+	// Update animation player
+    ghost_Player->Update(1.0f / 30.0f);
+
+    // Update IwGx state time stamp
+    IwGxTickUpdate();
 
 	IwGxSetScreenSpaceSlot(1);
+    IwAnimSetSkelContext(ghost_Player->GetSkel());
+    IwAnimSetSkinContext(ghost_Skin);
+    ghost_Model->Render();
 
-	{
-		// Model space 3d vertex coords
-		float w = 62;
-		float h = 136;
-		s_Verts[0] = CIwFVec3( w,  h, -s);
-		s_Verts[1] = CIwFVec3(-w,  h, -s);
-		s_Verts[2] = CIwFVec3(-w, -h, -s);
-		s_Verts[3] = CIwFVec3( w, -h, -s);
-		s_Verts[4] = CIwFVec3( w,  h,  s);
-		s_Verts[5] = CIwFVec3(-w,  h,  s);
-		s_Verts[6] = CIwFVec3(-w, -h,  s);
-		s_Verts[7] = CIwFVec3( w, -h,  s);
-	}
-
-	IwGxSetVertStreamModelSpace(s_Verts, 8);
-
-	// Set base color for lighting
-	IwGxSetColStream(s_Cols, 8);
-	
-    IwGxSetUVStream(s_UVs);
-	IwGxSetScreenSpaceSlot(1);
-	IwGxDrawPrims(IW_GX_QUAD_STRIP, s_QuadStrip, 4);
+    // Tidier to reset these
+    IwAnimSetSkelContext(NULL);
+    IwAnimSetSkinContext(NULL);
 }
 
 void renderVitality(CIwMaterial* pMat) {
