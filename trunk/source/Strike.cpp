@@ -86,8 +86,8 @@ int Strike::strikeUpdate(int32 x, int32 y, int32 z) {
 			// If the final stop/blow of the strike is strong enough
 			// accept the hit
 			IwTrace(GHOST_HUNTER, ("Final phone accel %f", phoneAccel));
-			return 1;
 			striking = false;
+			return 1;
 		} else {
 			IwTrace(GHOST_HUNTER, ("The blow was too weak with accel %f", 
 				phoneAccel));

@@ -49,8 +49,8 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 };
 
 void Ghost::ghostGotHit() {
-	IwTrace(GHOST_HUNTER, ("Ghost got hit"));
 	ectoplasm -= 40;
+	IwTrace(GHOST_HUNTER, ("Ghost got hit, ectoplasm: %d", ectoplasm));
 	hitTime = clock();
 	s3eVibraVibrate(100, 100);
 }
