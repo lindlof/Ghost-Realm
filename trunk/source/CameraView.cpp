@@ -245,7 +245,6 @@ void setupPlayer() {
 	if (!player->isReady()) {
 		return;
 	}
-	IwTrace(GHOST_HUNTER, ("Player is ready with heading %f", player->getHeading()));
 
     // Set viewing position with the Y axis as upright.
     viewMatrix.SetIdentity();
