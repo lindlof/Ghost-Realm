@@ -46,5 +46,6 @@ assets
 deployments
 {
 	["Default"]
+	android-manifest='deploy/AndroidManifest.xml'
 	name='Ghost Hunter'
 }
