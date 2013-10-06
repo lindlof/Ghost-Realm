@@ -349,7 +349,7 @@ void renderVitality() {
 	// Full length of the bar
 	int16 barLength = x2 - x1;
 	// Multiply the full bar length with current vitality status
-	barLength =  barLength * (float)player->getVitality() / MAX_PLAYER_VITALITY;
+	barLength =  barLength * (float)player->getVitality() / PLAYER_MAX_VITALITY;
 
 	x2 = x1 + barLength;
 
@@ -382,7 +382,7 @@ void renderMana() {
 	// Full length of the bar
 	int16 barLength = x2 - x1;
 	// Multiply the full bar length with current vitality status
-	barLength =  barLength * (float)player->getVitality() / MAX_PLAYER_VITALITY;
+	barLength =  barLength * (float)player->getMana() / PLAYER_MAX_MANA;
 
 	x2 = x1 + barLength;
 

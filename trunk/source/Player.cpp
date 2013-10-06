@@ -16,7 +16,8 @@ Player::Player() {
 	Player::heading = 0;
 	Player::headingFilter = 0;
 	Player::strike = new Strike();
-	vitality = MAX_PLAYER_VITALITY;
+	vitality = PLAYER_MAX_VITALITY;
+	mana = PLAYER_MAX_MANA;
 };
 
 bool Player::playerUpdate() {
@@ -38,13 +39,30 @@ bool Player::isReady() {
 	return ready > 10;
 }
 
-void Player::playerGotHit(int vitality) {
-	Player::vitality -= vitality;
+void Player::playerGotHit(int hit) {
+	Player::mana -= hit;
 	IwTrace(GHOST_HUNTER, ("Player vitality %d", getVitality()));
 }
 
 int Player::getVitality() {
 	return Player::vitality;
+}
+
+int Player::getMana() {
+	return Player::mana;
+}
+
+void Player::lostBattle() {
+	setGhost(NULL);
+	vitality -= PLAYER_MAX_VITALITY/5;
+	mana = PLAYER_MAX_MANA;
+}
+
+void Player::wonBattle() {
+	setGhost(NULL);
+	vitality += PLAYER_MAX_VITALITY/15;
+	if (vitality > PLAYER_MAX_VITALITY) vitality = PLAYER_MAX_VITALITY;
+	mana = PLAYER_MAX_MANA;
 }
 
 void Player::compassUpdate(double heading, bool error) {

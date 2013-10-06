@@ -14,13 +14,15 @@
 #include "Ghost.h"
 class Ghost;
 
-#define MAX_PLAYER_VITALITY 10000
+#define PLAYER_MAX_VITALITY 10000
+#define PLAYER_MAX_MANA 10000
 #define HEADING_FILTER 0.2f
 
 class Player {
 	private:
 	int ready;
 	int vitality;
+	int mana;
 	double heading;
 	double headingFilter;
 	Ghost *ghost;
@@ -31,11 +33,15 @@ class Player {
 	bool playerUpdate();
 	bool isReady();
 	void compassUpdate(double heading, bool error);
-	void playerGotHit(int vitality);
-	int getVitality();
+	void playerGotHit(int hit);
 	double getHeading();
 	void accelometerUpdate(int32 x, int32 y, int32 z);
 	void setGhost(Ghost *ghost);
+
+	int getVitality();
+	int getMana();
+	void lostBattle();
+	void wonBattle();
 };
 
 #endif

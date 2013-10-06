@@ -78,9 +78,15 @@ void CameraModelTerm()
 bool CameraModelUpdate() 
 {
 	int ectoplasm = ghost->getEctoplasm();
-	if (ectoplasm < 0) {
+	if (ectoplasm <= 0) {
+		player->wonBattle();
 		delete ghost;
-		player->setGhost(NULL);
+		ghost = new Ghost(GHOST_NORMAL, player);
+	}
+
+	if (player->getMana() <= 0) {
+		player->lostBattle();
+		delete ghost;
 		ghost = new Ghost(GHOST_NORMAL, player);
 	}
 

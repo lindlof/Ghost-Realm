@@ -116,8 +116,8 @@ bool Ghost::ghostUpdate() {
 
 	// If the ghost is found it may hit the player
 	if (found && clock() - playerHitTime > 5000) {
-		int hit = getStrength() * IwRandMinMax(1, 10);
-		hit = hit*hit;
+		int hit = IwRandMinMax(0, 20);
+		hit = getStrength()*hit*hit;
 		player->playerGotHit(hit);
 		IwTrace(GHOST_HUNTER, ("Player got hit for %d", hit));
 		playerHitTime = clock();
