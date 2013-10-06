@@ -25,9 +25,10 @@
 #define BLEND_DURATION 0.25f
 
 void setupPlayer();
-void renderCamera(CIwMaterial* pMat);
+void renderCamera();
 void renderGhost();
-void renderVitality(CIwMaterial* pMat);
+void renderVitality();
+void renderMana();
 
 void cameraStreamInit(int camDataW, int camDataH);
 static CIwSVec2 cameraVert[4];
@@ -196,12 +197,11 @@ bool CameraViewUpdate()
 	// Clear the screen
     IwGxClear(IW_GX_COLOUR_BUFFER_F | IW_GX_DEPTH_BUFFER_F);
 
-	CIwMaterial* pMat = NULL;
-
-	renderCamera(pMat);
+	renderCamera();
 	setupPlayer();
 	renderGhost();
-	renderVitality(pMat);
+	renderVitality();
+	renderMana();
 
     IwGxFlush();
     IwGxSwapBuffers();
@@ -209,7 +209,7 @@ bool CameraViewUpdate()
 	return true;
 }
 
-void renderCamera(CIwMaterial* pMat) {
+void renderCamera() {
 
 	IwGxLightingOff();
 
@@ -217,7 +217,7 @@ void renderCamera(CIwMaterial* pMat) {
     if (g_CameraTexture != NULL)
         g_CameraTexture->ChangeTexels(g_CameraTexture->GetTexels(), CIwImage::RGB_565);
 
-    pMat = IW_GX_ALLOC_MATERIAL();
+    CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
     pMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
     pMat->SetTexture(g_CameraTexture);
 
@@ -304,12 +304,10 @@ void renderGhost() {
 
 		IwTrace(GHOST_HUNTER, ("Animation of hit %d", hit));
 
-		CIwColour ambient = {0xff, 0xff-hit, 0xff-hit, 0xff};
-		colAmbient = ambient;
+		colAmbient.Set(0xff, 0xff-hit, 0xff-hit, 0xff);
 	} else {
 		// The default state that displays the image as it is
-		CIwColour ambient = {0xff, 0xff, 0xff, 0xff};
-		colAmbient = ambient;
+		colAmbient.Set(0xff, 0xff, 0xff, 0xff);
 	}
 	
 	IwGxSetLightCol(0, &colAmbient);
@@ -330,23 +328,23 @@ void renderGhost() {
     IwAnimSetSkinContext(NULL);
 }
 
-void renderVitality(CIwMaterial* pMat) {
+void renderVitality() {
 
 	IwGxLightingOff();
 
 	Player *player = getPlayer();
 
-	pMat = IW_GX_ALLOC_MATERIAL();
+	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
 	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
 	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
 
 	IwGxSetMaterial(pMat);
 
 	// Vertex coords for full vitality
-	int16 x1 = (int16)IwGxGetScreenWidth()/100 * 5;
-    int16 x2 = (int16)IwGxGetScreenWidth()/100 * 95;
-    int16 y1 = (int16)IwGxGetScreenHeight()/100 * 1;
-    int16 y2 = (int16)IwGxGetScreenHeight()/100 * 2;
+	int16 x1 = ((double)IwGxGetScreenWidth()/100) * 5;
+    int16 x2 = ((double)IwGxGetScreenWidth()/100) * 95;
+    int16 y1 = ((double)IwGxGetScreenHeight()/100) * 1;
+    int16 y2 = ((double)IwGxGetScreenHeight()/100) * 3;
 
 	// Full length of the bar
 	int16 barLength = x2 - x1;
@@ -356,9 +354,42 @@ void renderVitality(CIwMaterial* pMat) {
 	x2 = x1 + barLength;
 
 	CIwColour* cols = IW_GX_ALLOC(CIwColour, 4);
-	cols[0].Set(0, 0, 0xff, 0x50);
+	cols[0].Set(0xff, 0, 0, 0x70);
 	cols[1] = cols[2] = cols[3] = cols[0];
 
-	CIwSVec2 XY(x1, y1), dXY(x2, y2);
+	CIwSVec2 XY(x1, y1), dXY(x2-x1, y2-y1);
+	IwGxDrawRectScreenSpace(&XY, &dXY, cols);
+}
+
+void renderMana() {
+	
+	IwGxLightingOff();
+
+	Player *player = getPlayer();
+
+	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
+	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
+	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
+
+	IwGxSetMaterial(pMat);
+
+	// Vertex coords for full vitality
+	int16 x1 = ((double)IwGxGetScreenWidth()/100) * 5;
+    int16 x2 = ((double)IwGxGetScreenWidth()/100) * 95;
+    int16 y1 = ((double)IwGxGetScreenHeight()/100) * 4;
+    int16 y2 = ((double)IwGxGetScreenHeight()/100) * 6;
+
+	// Full length of the bar
+	int16 barLength = x2 - x1;
+	// Multiply the full bar length with current vitality status
+	barLength =  barLength * (float)player->getVitality() / MAX_PLAYER_VITALITY;
+
+	x2 = x1 + barLength;
+
+	CIwColour* cols = IW_GX_ALLOC(CIwColour, 4);
+	cols[0].Set(0x27, 0xA8, 0x22, 0x70);
+	cols[1] = cols[2] = cols[3] = cols[0];
+
+	CIwSVec2 XY(x1, y1), dXY(x2-x1, y2-y1);
 	IwGxDrawRectScreenSpace(&XY, &dXY, cols);
 }
