@@ -302,8 +302,6 @@ void renderGhost() {
 			hit = GHOST_HIT_LIGHT + (GHOST_HIT_LIGHT - hit);
 		}
 
-		IwTrace(GHOST_HUNTER, ("Animation of hit %d", hit));
-
 		colAmbient.Set(0xff, 0xff-hit, 0xff-hit, 0xff);
 	} else {
 		// The default state that displays the image as it is
