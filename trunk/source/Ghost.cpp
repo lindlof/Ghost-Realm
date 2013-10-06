@@ -87,19 +87,16 @@ bool Ghost::ghostUpdate() {
 			
 		{
 			// Ghost moves torwards heading
-
-			bool headingToMiddle = bearing < player->getHeading();
-
 			if (ghostDistance < 1.3) {
-				ghostMoveSpeed = (headingToMiddle) ? 2.f  : 1.3f;
+				ghostMoveSpeed = 2.f;
 			} else if (ghostDistance < 3) {
-				ghostMoveSpeed = (headingToMiddle) ? 4.f  : 2.f;
+				ghostMoveSpeed = 4.f;
 			} else if (ghostDistance < 6) {
-				ghostMoveSpeed = (headingToMiddle) ? 7.f  : 3.f;
+				ghostMoveSpeed = 7.f;
 			} else if (ghostDistance < 12) {
-				ghostMoveSpeed = (headingToMiddle) ? 12.f : 9.f;
+				ghostMoveSpeed = 12.f;
 			} else if (ghostDistance < 20) {
-				ghostMoveSpeed = (headingToMiddle) ? 16.f : 13.f;
+				ghostMoveSpeed = 16.f;
 			} else {
 				ghostMoveSpeed = 20.f;
 			}
@@ -112,7 +109,8 @@ bool Ghost::ghostUpdate() {
 				bearing -= 360;
 			}
 
-			bearing = bearing * ((100-ghostMoveSpeed)/100) + 
+			bearing = 
+				bearing * ((100.f-ghostMoveSpeed)/100) + 
 				player->getHeading() * (ghostMoveSpeed/100);
 		}
 	}
