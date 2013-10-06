@@ -15,16 +15,21 @@
 class Ghost;
 
 #define MAX_PLAYER_VITALITY 10000
+#define HEADING_FILTER 0.2f
 
 class Player {
 	private:
+	int ready;
 	int vitality;
 	double heading;
+	double headingFilter;
 	Ghost *ghost;
 	Strike *strike;
 
 	public:
 	Player();
+	bool playerUpdate();
+	bool isReady();
 	void compassUpdate(double heading, bool error);
 	void playerGotHit(int vitality);
 	int getVitality();

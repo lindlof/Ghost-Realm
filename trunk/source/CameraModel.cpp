@@ -85,5 +85,6 @@ bool CameraModelUpdate()
 	}
 
 	ghost->ghostUpdate();
+	player->playerUpdate();
 	return true;
 }

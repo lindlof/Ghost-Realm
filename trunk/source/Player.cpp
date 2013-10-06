@@ -12,9 +12,31 @@
 
 Player::Player() {
 	ghost = NULL;
+	ready = 0;
+	Player::heading = 0;
+	Player::headingFilter = 0;
 	Player::strike = new Strike();
 	vitality = MAX_PLAYER_VITALITY;
 };
+
+bool Player::playerUpdate() {
+
+	// Fix going over north point of compass
+	if (headingFilter < 90 && heading > 360-90) {
+		headingFilter += 360;
+	} else if (headingFilter > 360-90 && heading < 90) {
+		headingFilter -= 360;
+	}
+
+	headingFilter = heading * HEADING_FILTER + 
+		headingFilter * (1.f - HEADING_FILTER);
+
+	return true;
+}
+
+bool Player::isReady() {
+	return ready > 10;
+}
 
 void Player::playerGotHit(int vitality) {
 	Player::vitality -= vitality;
@@ -25,13 +47,16 @@ int Player::getVitality() {
 	return Player::vitality;
 }
 
-void Player::compassUpdate(double heading, bool error)
-{
+void Player::compassUpdate(double heading, bool error) {
 	Player::heading = heading;
+	if (!isReady()) {
+		headingFilter = heading;
+		ready++;
+	}
 }
 
 double Player::getHeading() {
-	return heading;
+	return headingFilter;
 }
 
 void Player::accelometerUpdate(int32 x, int32 y, int32 z) {

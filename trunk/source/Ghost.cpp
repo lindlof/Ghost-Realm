@@ -63,7 +63,7 @@ bool Ghost::ghostUpdate() {
 
 	double ghostDistance = abs(bearing - player->getHeading());
 
-	if (!found && ghostDistance < 20) {
+	if (!found && player->isReady() && ghostDistance < 20) {
 		// Ghost is middle enough of the screen to aggro
 		found = true;
 		player->setGhost(this);
@@ -101,11 +101,10 @@ bool Ghost::ghostUpdate() {
 				ghostMoveSpeed = 20.f;
 			}
 
+			// Fix going over north point of compass
 			if (bearing < 90 && player->getHeading() > 360-90) {
-				// Going clockwise over north point of compass
 				bearing += 360;
 			} else if (bearing > 360-90 && player->getHeading() < 90) {
-				// Going counterclockwise over north point of compass
 				bearing -= 360;
 			}
 

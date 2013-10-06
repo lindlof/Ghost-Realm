@@ -241,17 +241,26 @@ void renderCamera(CIwMaterial* pMat) {
 
 void setupPlayer() {
 	Player *player = getPlayer();
-	
+
+	if (!player->isReady()) {
+		return;
+	}
+	IwTrace(GHOST_HUNTER, ("Player is ready with heading %f", player->getHeading()));
+
     // Set viewing position with the Y axis as upright.
     viewMatrix.SetIdentity();
     viewMatrix.LookAt(CIwFVec3(0,0,0), CIwFVec3(0,0,100), CIwFVec3(0,-1,0));
 
     // Rotate according to compass heading
-	viewMatrix.PostRotateY((float)rad(player->getHeading()));
+	viewMatrix.PostRotateY(rad(player->getHeading()));
     IwGxSetViewMatrix(&viewMatrix);
 }
 
 void renderGhost() {
+
+	if (!getPlayer()->isReady()) {
+		return;
+	}
 
 	IwGxLightingOff();
 
@@ -262,7 +271,7 @@ void renderGhost() {
 
     // Place the markers on the edge of the compass radius
     // rotated to their correct bearing to current location
-	modelMatrix.SetRotY((float)rad(ghost->getBearing()));
+	modelMatrix.SetRotY(rad(ghost->getBearing()));
 	modelMatrix.SetTrans(modelMatrix.RotateVec(ghostPosition));
 	modelMatrix.PostRotateY(PI);
 
