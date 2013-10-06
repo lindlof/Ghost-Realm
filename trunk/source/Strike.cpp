@@ -58,7 +58,7 @@ int Strike::strikeUpdate(int32 x, int32 y, int32 z) {
 	if (striking) {
 		IwTrace(GOHU, ("accel %f", phoneAccel));
 
-		if (timeUsed < MIN_STRIKE_TIME && z < 0) {
+		if (timeUsed < MIN_STRIKE_TIME && z + y < ACCEL_TO_START_STRKE/2) {
 			// 2) Is the phone already slowing or going backward?
 			striking = false;
 			IwTrace(GHOST_HUNTER, ("Strike ended too early"));

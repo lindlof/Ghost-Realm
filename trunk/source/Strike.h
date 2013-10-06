@@ -11,10 +11,10 @@
 #include <time.h>
 #include "IwDebug.h"
 
-#define MIN_STRIKE_TIME 150
-#define MAX_STRIKE_TIME 250
+#define MIN_STRIKE_TIME 100
+#define MAX_STRIKE_TIME 300
 #define REQUIRED_BLOW_STR -1400
-#define ACCEL_TO_START_STRKE 500.f
+#define ACCEL_TO_START_STRKE 400.f
 
 class Strike {
 	private:
