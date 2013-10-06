@@ -21,6 +21,7 @@
 #include <sys/param.h>
 
 #define GHOST_HIT_LENGTH 500
+#define GHOST_HIT_LIGHT 0xf0 // 0x00 - 0xff
 #define BLEND_DURATION 0.25f
 
 void setupPlayer();
@@ -209,6 +210,9 @@ bool CameraViewUpdate()
 }
 
 void renderCamera(CIwMaterial* pMat) {
+
+	IwGxLightingOff();
+
     // Refresh dynamic texture
     if (g_CameraTexture != NULL)
         g_CameraTexture->ChangeTexels(g_CameraTexture->GetTexels(), CIwImage::RGB_565);
@@ -249,6 +253,8 @@ void setupPlayer() {
 
 void renderGhost() {
 
+	IwGxLightingOff();
+
 	Ghost *ghost = getGhost();
 
 	CIwFVec3 ghostPosition(0, 0, ghost->getDistance());
@@ -265,38 +271,40 @@ void renderGhost() {
 	
 	IwGxLightingAmbient(true);
 	IwGxSetLightType(0, IW_GX_LIGHT_AMBIENT);
-    CIwColour colA = {0xff, 0x00, 0x00, 0xff};
 	
 	int sinceHit = clock() - ghost->getHitTime();
-	CIwColour colAmbient = {0xff, 0x00, 0x00, 0x00};
+	CIwColour colAmbient;
 
 	if (sinceHit < GHOST_HIT_LENGTH) {
 		int halfAnimation = GHOST_HIT_LENGTH/2;
 
-		// Hit starts from 0, maxes out at 0xff and
+		// Hit starts from 0, maxes out at HIT_EFFECT and
 		// then decreases back to 0. This all happens
 		// in the animation length creating fade 
-		// in fade out effect.
+		// in/fade out effect.
 		int hit;
 
-		// Divide the sinceHit time so that it maxes
-		// out in 0xff
-		hit = sinceHit / ((float)halfAnimation/0xff);
+		// Divide the sinceHit time so that hit maxes
+		// out in HIT_EFFECT*2
+		hit = GHOST_HIT_LIGHT * ((float)sinceHit / halfAnimation);
 
 		if (sinceHit > halfAnimation) {
 			// If we are over the half way let's start
-			// decreasing the number from 0xff
-			hit = 0xff + (0xff - hit);
+			// decreasing from HIT_EFFECT
+			hit = GHOST_HIT_LIGHT + (GHOST_HIT_LIGHT - hit);
 		}
 
-		colAmbient = 0xff, 0xff-hit, 0xff-hit, 0xff;
+		IwTrace(GHOST_HUNTER, ("Animation of hit %d", hit));
+
+		CIwColour ambient = {0xff, 0xff-hit, 0xff-hit, 0xff};
+		colAmbient = ambient;
 	} else {
 		// The default state that displays the image as it is
-		colAmbient = 0xffffffff;
+		CIwColour ambient = {0xff, 0xff, 0xff, 0xff};
+		colAmbient = ambient;
 	}
 	
 	IwGxSetLightCol(0, &colAmbient);
-
 
 	// Update animation player
     ghost_Player->Update(1.0f / 30.0f);
@@ -315,6 +323,8 @@ void renderGhost() {
 }
 
 void renderVitality(CIwMaterial* pMat) {
+
+	IwGxLightingOff();
 
 	Player *player = getPlayer();
 
