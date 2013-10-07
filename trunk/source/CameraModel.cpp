@@ -63,6 +63,10 @@ void compassUpdate(double heading, bool error) {
 	player->compassUpdate(heading, error);
 }
 
+void ghostTouched() {
+	IwTrace(GHOST_HUNTER, ("Player touched a ghost"));
+}
+
 void CameraModelInit() 
 {
 	player = new Player();

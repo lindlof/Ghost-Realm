@@ -8,11 +8,22 @@
  */
 
 #include "CameraModel.h"
-#include "s3eAccelerometer.h"
-#include <math.h>
+#include "CameraView.h"
+
 #include "s3eCompass.h"
+#include "s3e.h"
+
+struct Touch {
+    int32 x; // position x
+    int32 y; // position y
+};
+
+#define MAX_TOUCHES 1
+Touch g_Touches[MAX_TOUCHES];
 
 static bool accelometerEnabled = false;
+void SingleTouch(s3ePointerEvent* event);
+void SingleTouchMotion(s3ePointerMotionEvent* event);
 
 void CameraControllerInit()
 {
@@ -24,6 +35,8 @@ void CameraControllerInit()
     {
         s3eCompassStart();
     }
+
+	s3ePointerRegister(S3E_POINTER_BUTTON_EVENT, (s3eCallback)SingleTouch, NULL);
 }
 
 void CameraControllerTerm()
@@ -53,4 +66,8 @@ bool CameraControllerUpdate()
 	compassUpdate(compassHeading, compassError);
 
     return true;
+}
+
+void SingleTouch(s3ePointerEvent* event) {
+	ghostClick(event->m_x, event->m_y);
 }

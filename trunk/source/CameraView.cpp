@@ -7,6 +7,7 @@
  * PARTICULAR PURPOSE.
  */
 
+#include "CameraView.h"
 #include "CameraModel.h"
 #include "s3e.h"
 #include "s3eCamera.h"
@@ -20,8 +21,6 @@
 
 #include <sys/param.h>
 
-#define GHOST_HIT_LENGTH 500
-#define GHOST_HIT_LIGHT 0xf0 // 0x00 - 0xff
 #define BLEND_DURATION 0.25f
 
 void setupPlayer();
@@ -45,6 +44,7 @@ static CIwAnimPlayer*  ghost_Player;
 
 static s3eCameraFrameRotation g_FrameRotation = S3E_CAMERA_FRAME_ROT90;
 static CIwFMat viewMatrix;
+static CIwFMat* ghostMatrix;
 
 double inline rad(double d) {
     return d / 180.0f * PI;
@@ -139,7 +139,7 @@ void CameraViewInit()
 	// Set screen clear colour
     IwGxSetColClear(0xff, 0xff, 0xff, 0xff);
     IwGxPrintSetColour(128, 128, 128);
-
+	
 	// Load viking
 	IwGetResManager()->LoadGroup("viking/viking.group");
 	CIwResGroup* pGroup = IwGetResManager()->GetGroupNamed("viking");
@@ -148,6 +148,8 @@ void CameraViewInit()
     ghost_Skin  = (CIwAnimSkin*)pGroup->GetResNamed("body", IW_ANIM_RESTYPE_SKIN);
     ghost_Skel  = (CIwAnimSkel*)pGroup->GetResNamed("Armature", IW_ANIM_RESTYPE_SKELETON);
     ghost_Anims[0]  = (CIwAnim*)pGroup->GetResNamed("Armature", IW_ANIM_RESTYPE_ANIMATION);
+	
+	ghostMatrix = new CIwFMat();
 
     // Create animation player
     ghost_Player = new CIwAnimPlayer;
@@ -180,6 +182,8 @@ void CameraViewTerm()
         delete g_CameraTexture;
 
 	delete ghost_Player;
+
+	delete ghostMatrix;
 
     if (s3eCameraAvailable())
     {
@@ -266,15 +270,14 @@ void renderGhost() {
 	Ghost *ghost = getGhost();
 
 	CIwFVec3 ghostPosition(0, 0, ghost->getDistance());
-	static CIwFMat modelMatrix;
 
     // Place the markers on the edge of the compass radius
     // rotated to their correct bearing to current location
-	modelMatrix.SetRotY(rad(ghost->getBearing()));
-	modelMatrix.SetTrans(modelMatrix.RotateVec(ghostPosition));
-	modelMatrix.PostRotateY(PI);
+	ghostMatrix->SetRotY(rad(ghost->getBearing()));
+	ghostMatrix->SetTrans(ghostMatrix->RotateVec(ghostPosition));
+	ghostMatrix->PostRotateY(PI);
 
-    IwGxSetModelMatrix(&modelMatrix);
+    IwGxSetModelMatrix(ghostMatrix);
 
 	
 	IwGxLightingAmbient(true);
@@ -390,4 +393,14 @@ void renderMana() {
 
 	CIwSVec2 XY(x1, y1), dXY(x2-x1, y2-y1);
 	IwGxDrawRectScreenSpace(&XY, &dXY, cols);
+}
+
+void ghostClick(int32 x, int32 y) {
+	int ghostMidX, ghostMidY;
+	IwGxWorldToScreenXY(ghostMidX, ghostMidY, ghostMatrix->GetTrans());
+
+	if (x > ghostMidX - 100 && x < ghostMidX + 100 &&
+		y > ghostMidY - 200 && y < ghostMidY + 100) {
+		ghostTouched();
+	}
 }
