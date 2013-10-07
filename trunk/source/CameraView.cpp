@@ -398,9 +398,11 @@ void renderMana() {
 void ghostClick(int32 x, int32 y) {
 	int ghostMidX, ghostMidY;
 	IwGxWorldToScreenXY(ghostMidX, ghostMidY, ghostMatrix->GetTrans());
+	int w = IwGxGetScreenWidth()/4;
+	int h = IwGxGetScreenHeight()/4;
 
-	if (x > ghostMidX - 100 && x < ghostMidX + 100 &&
-		y > ghostMidY - 200 && y < ghostMidY + 100) {
+	if (x > ghostMidX - w/2 && x < ghostMidX + w/2 &&
+		y > ghostMidY - h/2 && y < ghostMidY + h/2) {
 		ghostTouched();
 	}
 }

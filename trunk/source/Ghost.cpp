@@ -63,12 +63,6 @@ bool Ghost::ghostUpdate() {
 
 	double ghostDistance = abs(bearing - player->getHeading());
 
-	if (!found && player->isReady() && ghostDistance < 20) {
-		// Ghost is middle enough of the screen to aggro
-		found = true;
-		player->setGhost(this);
-	}
-
 	if (found) {
 
 		if (foundAnimProgress < FOUND_ANIM_STEPS) {
@@ -135,6 +129,10 @@ int Ghost::getStrength() {
 
 float Ghost::getDistance() {
 	return getGhostTypeDistance(Ghost::ghostType) * 1.f/scale;
+}
+
+void Ghost::setFound() {
+	found = true;
 }
 
 bool Ghost::isFound() {

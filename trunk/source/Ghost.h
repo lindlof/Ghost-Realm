@@ -55,6 +55,7 @@ class Ghost {
 	int getStrength();
 
 	void floatingUpdate(int32 x, int32 y, int32 z);
+	void setFound();
 	bool isFound();
 	int getEctoplasm();
 	float getDistance();
