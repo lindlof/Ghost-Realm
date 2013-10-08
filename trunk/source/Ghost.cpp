@@ -15,10 +15,11 @@
 #include "s3eVibra.h"
 #include "IwGx.h"
 
-#define FOUND_ANIM_STEPS 100
-#define ORIGINAL_SCALE 0.5f
+#define FOUND_ANIM_STEPS 200
+#define ANIM_TURN_DEGS_PER_STEP 1.8f
 
-float getGhostTypeDistance(GhostType ghostType);
+int getGhostTypeDistance(GhostType ghostType);
+int getGhostTypeInitialDistance(GhostType ghostType);
 
 Ghost::Ghost(GhostType ghostType, Player *player) {
 	Ghost::ghostType = ghostType;
@@ -33,7 +34,6 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	playerHitTime = 0;
 	hitTime = 0;
 
-	scale = ORIGINAL_SCALE;
 	foundAnimTime = 0;
 	foundAnimProgress = 0;
 
@@ -46,6 +46,9 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 		tries++;
 	} while (abs(bearing - player->getHeading()) < 90 && 
 		tries < 50);
+
+	initRotation = IwRandMinMax(0, 360);
+	rotation = initRotation;
 };
 
 void Ghost::ghostGotHit() {
@@ -67,13 +70,21 @@ bool Ghost::ghostUpdate() {
 
 		if (foundAnimProgress < FOUND_ANIM_STEPS) {
 
-			if (clock() - foundAnimTime > 7) {
+			if (clock() - foundAnimTime > 3) {
 				foundAnimProgress++;
 				foundAnimTime = clock();
 			}
 
-			// Increase scale each anim step so that it ends being 1
-			scale = ORIGINAL_SCALE + (1-ORIGINAL_SCALE)/FOUND_ANIM_STEPS * foundAnimProgress;
+			if (rotation != 0) {
+				// Ghost rotates torwards player
+				if (initRotation < 180) {
+					rotation = initRotation - (float)foundAnimProgress*ANIM_TURN_DEGS_PER_STEP;
+					if (rotation < 0) rotation = 0;
+				} else {
+					rotation = initRotation + (float)foundAnimProgress*ANIM_TURN_DEGS_PER_STEP;
+					if (rotation > 360) rotation = 0;
+				}
+			}
 		}
 
 		float ghostMoveSpeed;
@@ -127,8 +138,13 @@ int Ghost::getStrength() {
 	return -1;
 }
 
-float Ghost::getDistance() {
-	return getGhostTypeDistance(Ghost::ghostType) * 1.f/scale;
+int Ghost::getDistance() {
+	int distanceDiff = getGhostTypeDistance(Ghost::ghostType) - 
+			getGhostTypeInitialDistance(Ghost::ghostType);
+
+	distanceDiff *= ((float)foundAnimProgress)/FOUND_ANIM_STEPS;
+
+	return getGhostTypeInitialDistance(Ghost::ghostType) + distanceDiff;
 }
 
 void Ghost::setFound() {
@@ -143,16 +159,22 @@ double Ghost::getBearing() {
 	return bearing;
 }
 
-float getGhostTypeDistance(GhostType ghostType) {
+float Ghost::getRotation() {
+	float facingPlayer = 180;
+
+	return facingPlayer + rotation;
+}
+
+int getGhostTypeDistance(GhostType ghostType) {
 	switch(ghostType) {
-		case GHOST_NORMAL: return 400.f;
+		case GHOST_NORMAL: return 400;
 	}
 	return -1;
 }
 
-float getGhostTypeHeight(GhostType ghostType) {
+int getGhostTypeInitialDistance(GhostType ghostType) {
 	switch(ghostType) {
-		case GHOST_NORMAL: return 2;
+		case GHOST_NORMAL: return 1000;
 	}
 	return -1;
 }

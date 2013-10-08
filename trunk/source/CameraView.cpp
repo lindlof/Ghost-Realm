@@ -275,7 +275,7 @@ void renderGhost() {
     // rotated to their correct bearing to current location
 	ghostMatrix->SetRotY(rad(ghost->getBearing()));
 	ghostMatrix->SetTrans(ghostMatrix->RotateVec(ghostPosition));
-	ghostMatrix->PostRotateY(PI);
+	ghostMatrix->PostRotateY(rad(ghost->getRotation()));
 
     IwGxSetModelMatrix(ghostMatrix);
 

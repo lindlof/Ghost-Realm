@@ -32,6 +32,8 @@ class Ghost {
 	clock_t middleMagnetTime;
 	int middleMagnet;
 
+	float initRotation;
+	float rotation;
 	clock_t foundAnimTime;
 	float scale;
 	int foundAnimProgress;
@@ -58,8 +60,10 @@ class Ghost {
 	void setFound();
 	bool isFound();
 	int getEctoplasm();
-	float getDistance();
+
+	int getDistance();
 	double getBearing();
+	float getRotation();
 };
 
 #endif
