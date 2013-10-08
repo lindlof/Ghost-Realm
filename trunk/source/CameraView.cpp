@@ -403,6 +403,6 @@ void ghostClick(int32 x, int32 y) {
 
 	if (x > ghostMidX - w/2 && x < ghostMidX + w/2 &&
 		y > ghostMidY - h/2 && y < ghostMidY + h/2) {
-		ghostTouched();
+		getGhost()->tapped();
 	}
 }

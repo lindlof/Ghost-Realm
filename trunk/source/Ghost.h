@@ -41,6 +41,9 @@ class Ghost {
 	clock_t playerHitTime;
 	clock_t hitTime;
 
+	clock_t tappedTime;
+	int tappedCount;
+
 	int16 getMidPositionX();
 
 	// Ghost is not initially in combat but you find it
@@ -64,6 +67,8 @@ class Ghost {
 	int getDistance();
 	double getBearing();
 	float getRotation();
+
+	void tapped();
 };
 
 #endif

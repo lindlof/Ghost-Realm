@@ -49,6 +49,9 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 
 	initRotation = IwRandMinMax(0, 360);
 	rotation = initRotation;
+
+	tappedTime = 0;
+	tappedCount = 0;
 };
 
 void Ghost::ghostGotHit() {
@@ -195,4 +198,25 @@ void Ghost::floatingUpdate(int32 x, int32 y, int32 z) {
 
 		floatingTime = clock();
 	}*/
+}
+
+// Ghost must be double tapped for aggro
+void Ghost::tapped() {
+	if (tappedCount == 0) {
+		tappedTime = clock();
+	}
+	if (clock() - tappedTime < 500) {
+		tappedCount++;
+	} else {
+		tappedTime = 0;
+		tappedCount = 0;
+	}
+	// Press and release both increase the count
+	if (tappedCount > 2) {
+		IwTrace(GHOST_HUNTER, ("Player touched a ghost"));
+		if (player->isReady()) {
+			this->setFound();
+			player->setGhost(this);
+		}
+	}
 }
