@@ -11,14 +11,18 @@
 #include "IwDebug.h"
 
 Player::Player() {
-	ghost = NULL;
 	ready = 0;
 	Player::heading = 0;
 	Player::headingFilter = 0;
 	Player::strike = new Strike();
+	init();
+};
+
+void Player::init() {
+	ghost = NULL;
 	vitality = PLAYER_MAX_VITALITY;
 	mana = PLAYER_MAX_MANA;
-};
+}
 
 bool Player::playerUpdate() {
 
@@ -87,4 +91,12 @@ void Player::accelometerUpdate(int32 x, int32 y, int32 z) {
 
 void Player::setGhost(Ghost *ghost) {
 	Player::ghost = ghost;
+}
+
+bool Player::isDead() {
+	return vitality <= 0;
+}
+
+void Player::resurrect() {
+	init();
 }

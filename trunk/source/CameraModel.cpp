@@ -13,7 +13,6 @@
 #include <time.h>
 #include "IwDebug.h"
 
-
 static Player *player;
 static Ghost *ghost;
 

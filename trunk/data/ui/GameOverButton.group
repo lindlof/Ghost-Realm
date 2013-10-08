@@ -1,0 +1,10 @@
+CIwResGroup
+{
+	name	GameOverButton
+
+	ui/resources/georgia28reaper.gxfont
+	ui/resources/button_up.tga
+	ui/resources/button_down.tga
+
+	ui/GameOverButton.ui
+}

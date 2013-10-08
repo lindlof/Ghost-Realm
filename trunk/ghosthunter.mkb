@@ -9,8 +9,12 @@ files
 	CameraController.cpp
 	CameraModel.cpp
 	CameraModel.h
+
+	[CameraView]
 	CameraView.cpp
 	CameraView.h
+	CameraUI.cpp
+	CameraUI.h
 
 	[Component]
 	Ghost.cpp
@@ -27,6 +31,11 @@ files
 	[Resources]
 	(data/viking)
     viking.group
+
+	[UI]
+    (data/ui)
+    GameOverButton.group
+    GameOverButton.ui
 }
 subprojects
 {
@@ -34,11 +43,13 @@ subprojects
     iwgeom
     iwgraphics
     iwanim
+	iwui
 }
 assets
 {
 	(data-ram/data-gles1)
     viking/viking.group.bin
+	ui/GameOverButton.group.bin
 
     (data)
     textures/hammersmith_ghost.png

@@ -1,0 +1,24 @@
+CIwUIButton
+{
+	name 			"GameOverButton"
+	font        	"georgia28reaper"
+	textColour  	{ 255,0,0 }
+    caption    		"Don't fear\nthe Reaper"
+	alignH 			"centre"
+	alignV 			"middle"
+	margin  		{ 0 0 }
+
+	buttonUp
+    {
+        drawableType "border"
+		texture "button_up"
+		border  { 12 12 }
+    }
+
+    buttonDown
+    {
+		drawableType "border"
+		texture "button_down"
+		border  { 12 12 }
+    }
+}

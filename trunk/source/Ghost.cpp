@@ -124,7 +124,7 @@ bool Ghost::ghostUpdate() {
 
 	// If the ghost is found it may hit the player
 	if (found && clock() - playerHitTime > 5000) {
-		int hit = IwRandMinMax(0, 20);
+		int hit = IwRandMinMax(0, 23);
 		hit = getStrength()*hit*hit;
 		player->playerGotHit(hit);
 		IwTrace(GHOST_HUNTER, ("Player got hit for %d", hit));
@@ -202,6 +202,8 @@ void Ghost::floatingUpdate(int32 x, int32 y, int32 z) {
 
 // Ghost must be double tapped for aggro
 void Ghost::tapped() {
+	if (player->isDead()) return;
+
 	if (tappedCount == 0) {
 		tappedTime = clock();
 	}

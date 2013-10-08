@@ -28,6 +28,8 @@ class Player {
 	Ghost *ghost;
 	Strike *strike;
 
+	void init();
+
 	public:
 	Player();
 	bool playerUpdate();
@@ -42,6 +44,8 @@ class Player {
 	int getMana();
 	void lostBattle();
 	void wonBattle();
+	bool isDead();
+	void resurrect();
 };
 
 #endif
