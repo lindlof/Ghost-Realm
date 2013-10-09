@@ -22,6 +22,8 @@ int getGhostTypeDistance(GhostType ghostType);
 int getGhostTypeInitialDistance(GhostType ghostType);
 
 Ghost::Ghost(GhostType ghostType, Player *player) {
+	IwRandSeed((int32)s3eTimerGetMs());
+
 	Ghost::ghostType = ghostType;
 	int tries = 0;
 
@@ -37,10 +39,9 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	foundAnimTime = 0;
 	foundAnimProgress = 0;
 
-	ectoplasm = MAX_GHOST_ECTOPLASM;
+	ectoplasm = GHOST_MAX_ECTOPLASM;
 
 	staging = true;
-	IwRandSeed((int32)s3eTimerGetMs());
 	do {
 		bearing = IwRandMinMax(0, 360);
 		tries++;
@@ -54,11 +55,17 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	tappedCount = 0;
 };
 
-void Ghost::ghostGotHit() {
-	ectoplasm -= 40;
-	IwTrace(GHOST_HUNTER, ("Ghost got hit, ectoplasm: %d", ectoplasm));
-	hitTime = clock();
-	s3eVibraVibrate(100, 100);
+void Ghost::ghostGotHit(int hit) {
+	// 75% of hits success
+	if (IwRandMinMax(0, 100) <= 75) {
+		ectoplasm -= hit;
+		IwTrace(GHOST_HUNTER, ("Ghost got hit, ectoplasm: %d", ectoplasm));
+		hitTime = clock();
+		s3eVibraVibrate(100, 100);
+	} else {
+		IwTrace(GHOST_HUNTER, ("Ghost dodged a hit, ectoplasm: %d", ectoplasm));
+		s3eVibraVibrate(300, 20);
+	}
 }
 
 clock_t Ghost::getHitTime() {
@@ -124,19 +131,19 @@ bool Ghost::ghostUpdate() {
 
 	// If the ghost is found it may hit the player
 	if (found && clock() - playerHitTime > 5000) {
-		int hit = IwRandMinMax(0, 23);
-		hit = getStrength()*hit*hit;
-		player->playerGotHit(hit);
-		IwTrace(GHOST_HUNTER, ("Player got hit for %d", hit));
+		double hit = ((double)IwRandMinMax(0, PLAYER_MAX_MANA*10))/100;
+		hit = hit*getStrength();
+		player->playerGotHit((int)hit);
+		IwTrace(GHOST_HUNTER, ("Player got hit for %f", hit));
 		playerHitTime = clock();
 	}
 
 	return true;
 }
 
-int Ghost::getStrength() {
+float Ghost::getStrength() {
 	switch(Ghost::ghostType) {
-		case GHOST_NORMAL: return 5;
+		case GHOST_NORMAL: return 0.95;
 	}
 	return -1;
 }

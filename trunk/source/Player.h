@@ -14,8 +14,8 @@
 #include "Ghost.h"
 class Ghost;
 
-#define PLAYER_MAX_VITALITY 10000
-#define PLAYER_MAX_MANA 10000
+#define PLAYER_MAX_VITALITY 100.f
+#define PLAYER_MAX_MANA 100.f
 #define HEADING_FILTER 0.2f
 
 class Player {

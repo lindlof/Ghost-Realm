@@ -15,7 +15,7 @@
 #include "Player.h"
 class Player;
 
-#define MAX_GHOST_ECTOPLASM 100
+#define GHOST_MAX_ECTOPLASM 100.f
 
 enum GhostType { GHOST_NORMAL };
 
@@ -25,8 +25,6 @@ class Ghost {
 	Player *player;
 	bool found;
 
-	int width;
-	int height;
 	int ectoplasm;
 
 	clock_t middleMagnetTime;
@@ -54,10 +52,10 @@ class Ghost {
 	public:
 	Ghost(GhostType ghostType, Player *player);
 	bool ghostUpdate();
-	void ghostGotHit();
+	void ghostGotHit(int hit);
 	clock_t getHitTime();
 
-	int getStrength();
+	float getStrength();
 
 	void floatingUpdate(int32 x, int32 y, int32 z);
 	void setFound();

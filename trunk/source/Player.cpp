@@ -8,9 +8,13 @@
  */
 
 #include "Player.h"
+
 #include "IwDebug.h"
+#include "IwRandom.h"
+#include "s3eTimer.h"
 
 Player::Player() {
+	IwRandSeed((int32)s3eTimerGetMs());
 	ready = 0;
 	Player::heading = 0;
 	Player::headingFilter = 0;
@@ -58,13 +62,13 @@ int Player::getMana() {
 
 void Player::lostBattle() {
 	setGhost(NULL);
-	vitality -= PLAYER_MAX_VITALITY/5;
-	mana = PLAYER_MAX_MANA;
+	vitality -= PLAYER_MAX_VITALITY/2;
+	if (!isDead()) mana = PLAYER_MAX_MANA;
 }
 
 void Player::wonBattle() {
 	setGhost(NULL);
-	vitality += PLAYER_MAX_VITALITY/15;
+	vitality += PLAYER_MAX_VITALITY/6;
 	if (vitality > PLAYER_MAX_VITALITY) vitality = PLAYER_MAX_VITALITY;
 	mana = PLAYER_MAX_MANA;
 }
@@ -83,9 +87,15 @@ double Player::getHeading() {
 
 void Player::accelometerUpdate(int32 x, int32 y, int32 z) {
 	int strikeRes = strike->strikeUpdate(x, y, z);
-	if (strikeRes > 0) {
-		IwTrace(GHOST_HUNTER, ("Player is hitting"));
-		if (ghost != NULL) ghost->ghostGotHit();
+	if (ghost != NULL && strikeRes > 0) {
+		int manaLoss = 5;
+		mana -= manaLoss;
+		IwTrace(GHOST_HUNTER, ("Player loses mana as she hits %d, mana: %d", manaLoss, mana));
+
+		// 7-10 successful hits to kill a ghost
+		int hit = IwRandMinMax(GHOST_MAX_ECTOPLASM/100*7, GHOST_MAX_ECTOPLASM/100*10);
+		IwTrace(GHOST_HUNTER, ("Player is hitting %d", hit));
+		if (ghost != NULL) ghost->ghostGotHit(hit);
 	}
 }
 
