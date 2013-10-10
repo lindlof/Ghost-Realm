@@ -83,7 +83,7 @@ bool CameraModelUpdate()
 		ghost = new Ghost(GHOST_NORMAL, player);
 	}
 
-	if (player->getMana() <= 0) {
+	if (player->getMana() <= 0 && !player->isDead()) {
 		player->lostBattle();
 		delete ghost;
 		ghost = new Ghost(GHOST_NORMAL, player);
