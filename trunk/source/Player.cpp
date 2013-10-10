@@ -12,6 +12,7 @@
 #include "IwDebug.h"
 #include "IwRandom.h"
 #include "s3eTimer.h"
+#include "s3eVibra.h"
 
 Player::Player() {
 	IwRandSeed((int32)s3eTimerGetMs());
@@ -49,6 +50,7 @@ bool Player::isReady() {
 
 void Player::playerGotHit(int hit) {
 	Player::mana -= hit;
+	s3eVibraVibrate(100, 230);
 	IwTrace(GHOST_HUNTER, ("Player vitality %d", getVitality()));
 }
 

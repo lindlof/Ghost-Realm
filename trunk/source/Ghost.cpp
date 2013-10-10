@@ -64,7 +64,6 @@ void Ghost::ghostGotHit(int hit) {
 		s3eVibraVibrate(100, 100);
 	} else {
 		IwTrace(GHOST_HUNTER, ("Ghost dodged a hit, ectoplasm: %d", ectoplasm));
-		s3eVibraVibrate(300, 20);
 	}
 }
 
