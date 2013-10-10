@@ -35,6 +35,7 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 
 	playerHitTime = 0;
 	hitTime = 0;
+	nextHitInterval = 0;
 
 	foundAnimTime = 0;
 	foundAnimProgress = 0;
@@ -129,14 +130,21 @@ bool Ghost::ghostUpdate() {
 	}
 
 	// If the ghost is found it may hit the player
-	if (found && clock() - playerHitTime > 700) {
-		bool crit = IwRandMinMax(0, 100) > 95;
-		double hit = ((double)IwRandMinMax(0, PLAYER_MAX_MANA*12))/100;
-		hit = crit ? hit*5 : hit;
+	if (found && clock() - playerHitTime > nextHitInterval) {
+		double hit;
+		if (IwRandMinMax(0, 11) == 11) {
+			// Critical hit
+			hit = 25;
+		} else {
+			hit = ((double)IwRandMinMax(PLAYER_MAX_MANA*11, PLAYER_MAX_MANA*19))/PLAYER_MAX_MANA;
+		}
+
 		hit = hit*getStrength();
 		player->playerGotHit((int)hit);
 		IwTrace(GHOST_HUNTER, ("Player got hit for %f", hit));
+
 		playerHitTime = clock();
+		nextHitInterval = IwRandMinMax(1200, 2000);
 	}
 
 	return true;
@@ -144,7 +152,7 @@ bool Ghost::ghostUpdate() {
 
 float Ghost::getStrength() {
 	switch(Ghost::ghostType) {
-		case GHOST_NORMAL: return 0.95;
+		case GHOST_NORMAL: return 1;
 	}
 	return -1;
 }

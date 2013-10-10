@@ -38,6 +38,7 @@ class Ghost {
 	
 	clock_t playerHitTime;
 	clock_t hitTime;
+	int nextHitInterval;
 
 	clock_t tappedTime;
 	int tappedCount;
