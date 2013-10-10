@@ -88,7 +88,7 @@ double Player::getHeading() {
 void Player::accelometerUpdate(int32 x, int32 y, int32 z) {
 	int strikeRes = strike->strikeUpdate(x, y, z);
 	if (ghost != NULL && strikeRes > 0) {
-		int manaLoss = 5;
+		int manaLoss = 2;
 		mana -= manaLoss;
 		IwTrace(GHOST_HUNTER, ("Player loses mana as she hits %d, mana: %d", manaLoss, mana));
 
