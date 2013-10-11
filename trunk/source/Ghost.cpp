@@ -145,7 +145,7 @@ bool Ghost::ghostUpdate() {
 		IwTrace(GHOST_HUNTER, ("Player got hit for %f", hit));
 
 		playerHitTime = clock();
-		nextHitInterval = IwRandMinMax(1200, 2000);
+		nextHitInterval = IwRandMinMax(4000, 6000);
 	}
 
 	return true;
