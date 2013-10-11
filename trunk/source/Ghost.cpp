@@ -217,7 +217,7 @@ void Ghost::floatingUpdate(int32 x, int32 y, int32 z) {
 	}*/
 }
 
-// Ghost must be double tapped for aggro
+// Ghost must be tapped for aggro
 void Ghost::tapped() {
 	if (player->isDead()) return;
 
@@ -231,7 +231,7 @@ void Ghost::tapped() {
 		tappedCount = 0;
 	}
 	// Press and release both increase the count
-	if (tappedCount > 2) {
+	if (tappedCount > 1) {
 		IwTrace(GHOST_HUNTER, ("Player touched a ghost"));
 		if (player->isReady()) {
 			this->setFound();
