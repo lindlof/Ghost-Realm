@@ -48,8 +48,9 @@ void BuildCollision(const char* pUserString, CIwModel* pModel)
 
 
 
-void GhostCollision::setModelMatrix(CIwFMat* modelMatrix) {
+void GhostCollision::init(CIwFMat* modelMatrix) {
 	GhostCollision::modelMatrix = modelMatrix;
+	ghostY = ghostX = ghostW = -1;
 }
 
 #ifdef IW_BUILD_RESOURCES
@@ -125,6 +126,89 @@ void GhostCollision::Resolve()
         m_Norms.push_back(cross);
     }
 }
+
+// Vertex data
+CIwFVec3    health_Verts[8];
+
+// Vertex colours
+CIwColour lightHealth = {0xff, 0xff, 0x00, 0x70};
+CIwColour darkHealth  = {0xcc, 0xcc, 0x00, 0x70};
+CIwColour health_Cols[8] =
+{
+    darkHealth,
+    darkHealth,
+    lightHealth,
+    lightHealth,
+    darkHealth,
+    darkHealth,
+    lightHealth,
+    lightHealth,
+};
+
+// Index stream
+uint16      s_TriStrip[22] =
+{
+    1, 2, 5, 6, 4, 7, 0, 3, 1, 2,
+    2, 4, // degenerates
+    4, 0, 5, 1,
+    1, 3, // degenerates
+    3, 7, 2, 6,
+};
+
+void GhostCollision::RenderHealtBar(float healthPercent)
+{
+	IwGxSetModelMatrix(modelMatrix);
+
+	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
+	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
+
+	if (ghostW < 0 || ghostX < 0 || ghostY < 0) ResolveLocation();
+
+	{
+		const int16 x1 = ghostX;
+		const int16 x2 = ghostX+ghostW*healthPercent;
+		const int16 y1 = ghostY+0x40;
+		const int16 y2 = ghostY+0x48;
+		const int16 z = 0x6;
+
+		health_Verts[0] = CIwFVec3(x1, y1, -z);
+		health_Verts[1] = CIwFVec3(x2, y1, -z);
+		health_Verts[2] = CIwFVec3(x2, y2, -z);
+		health_Verts[3] = CIwFVec3(x1, y2, -z);
+		health_Verts[4] = CIwFVec3(x1, y1,  z);
+		health_Verts[5] = CIwFVec3(x2, y1,  z);
+		health_Verts[6] = CIwFVec3(x2, y2,  z);
+		health_Verts[7] = CIwFVec3(x1, y2,  z);
+	}
+
+	IwGxSetVertStream(health_Verts, 8);
+    IwGxSetColStream(health_Cols, 8);
+    IwGxDrawPrims(IW_GX_TRI_STRIP, s_TriStrip, 22);
+}
+
+// Resolve ghost modelspace location
+void GhostCollision::ResolveLocation() {
+
+	float y1 = INT32_MAX;
+	float y2 = INT32_MIN;
+	float x1 = INT32_MAX;
+    float x2 = INT32_MIN;
+
+    for (uint32 i = 0; i < m_Points.size(); i++)
+    {
+        CIwFVec3 v = (CIwFVec3)GetVert(i);
+
+		if (v.y < y1) y1 = v.y;
+		if (v.y > y2) y2 = v.y;
+		if (v.x < x1) x1 = v.x;
+		if (v.x > x2) x2 = v.x;
+    }
+
+	ghostY = y2;
+	ghostX = x1;
+	ghostW = x2 - x1;
+}
+
 //-----------------------------------------------------------------------------
 int32 GhostCollision::GetFaceUnderCursor(int32 x, int32 y)
 {
@@ -153,20 +237,11 @@ int32 GhostCollision::GetFaceUnderCursor(int32 x, int32 y)
     int32 minf = INT32_MAX; //nearest intersection distance
     uint32 nearest = 0; //nearest intersection index
 
-	int lowx, lowy, highx, highy;
-	lowx = lowy = INT16_MAX;
-	highx = highy = INT16_MIN;
-
     for (uint32 i = 0; i < m_Points.size(); i += 3)
     {
         CIwFVec3 v1 = (CIwFVec3)GetVert(i);
         CIwFVec3 v2 = (CIwFVec3)GetVert(i+1);
         CIwFVec3 v3 = (CIwFVec3)GetVert(i+2);
-
-		lowx = v1.x < lowx ? v1.x : lowx;
-		lowy = v1.y < lowy ? v1.y : lowy;
-		highx = v1.x > highx ? v1.x : highx;
-		highy = v1.y > highy ? v1.y : highy;
 
         float f = 0;
         if (IwIntersectLineTriNorm(pos, dir, v1, v2, v3, m_Norms[i/3], f)) {
@@ -177,7 +252,7 @@ int32 GhostCollision::GetFaceUnderCursor(int32 x, int32 y)
             }
         }
 
-		{ // Draw the custom resource. Kills fps but helps debugging.
+		/*{ // Draw the custom resource. Kills fps but helps debugging.
 			CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
 			pMat->SetColAmbient(0xff0000ff);
 			pMat->SetCullMode(CIwMaterial::CULL_NONE);
@@ -189,7 +264,7 @@ int32 GhostCollision::GetFaceUnderCursor(int32 x, int32 y)
 			verts[2] = v3;
 			IwGxSetVertStreamModelSpace(verts, 3);
 			IwGxDrawPrims(IW_GX_TRI_LIST, NULL, 3);
-		}
+		}*/
     }
 
     if (minf != INT32_MAX)

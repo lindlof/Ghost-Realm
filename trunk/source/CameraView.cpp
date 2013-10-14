@@ -160,13 +160,13 @@ void CameraViewInit()
 	CIwResGroup* pGroup = IwGetResManager()->GetGroupNamed("viking");
 
     ghost_Model = (CIwModel*)pGroup->GetResNamed("body", IW_GRAPHICS_RESTYPE_MODEL);
+	ghostCollision = (GhostCollision*)pGroup->GetResNamed("body", "GhostCollision");
     ghost_Skin  = (CIwAnimSkin*)pGroup->GetResNamed("body", IW_ANIM_RESTYPE_SKIN);
     ghost_Skel  = (CIwAnimSkel*)pGroup->GetResNamed("Armature", IW_ANIM_RESTYPE_SKELETON);
     ghost_Anims[0]  = (CIwAnim*)pGroup->GetResNamed("Armature", IW_ANIM_RESTYPE_ANIMATION);
-	ghostCollision = (GhostCollision*)pGroup->GetResNamed("body", "GhostCollision");
 	
 	ghostMatrix = new CIwFMat();
-	ghostCollision->setModelMatrix(ghostMatrix);
+	ghostCollision->init(ghostMatrix);
 	
     // Create animation player
     ghost_Player = new CIwAnimPlayer;
@@ -360,11 +360,12 @@ void renderGhost() {
     IwAnimSetSkinContext(ghost_Skin);
     ghost_Model->Render();
 
-	int32 faceID = ghostCollision->GetFaceUnderCursor(clickX, clickY);
 	//outline the face under the cursor
 	if (clickX > 0 && clickY > 0) {
+		int32 faceID = ghostCollision->GetFaceUnderCursor(clickX, clickY);
 		if (faceID != -1)
 		{
+			/*
 			CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
 			pMat->SetColAmbient(0x00ff00ff);
 			pMat->SetCullMode(CIwMaterial::CULL_NONE);
@@ -376,11 +377,10 @@ void renderGhost() {
 			verts[2] = ghostCollision->GetVert(faceID+2);
 			IwGxSetVertStreamModelSpace(verts, 3);
 			IwGxDrawPrims(IW_GX_TRI_LIST, NULL, 3);
-			IwTrace(GHOST_HUNTER, ("Osuu"));
+			*/
 			getGhost()->tapped();
 			clickX = clickY = -1;
 		} else {
-			IwTrace(GHOST_HUNTER, ("Ei osu"));
 			clickX = clickY = -1;
 		}
 	}
@@ -388,6 +388,8 @@ void renderGhost() {
     // Tidier to reset these
     IwAnimSetSkelContext(NULL);
     IwAnimSetSkinContext(NULL);
+
+	ghostCollision->RenderHealtBar((float)ghost->getEctoplasm() / GHOST_MAX_ECTOPLASM);
 }
 
 void renderVitality() {

@@ -41,15 +41,17 @@ public:
     void Resolve();
 	void Render();
 
-	int32 GetFaceUnderCursor(int32 x, int32 y);
-
     // helper function for looking up verts from CIwModel's vertex block
     CIwFVec3& GetVert(int32 i)
     {
         return ((CIwFVec3*)m_pModel->GetVerts())[m_Points[i]];
     }
 
-	void setModelMatrix(CIwFMat* modelMatrix);
+	void init(CIwFMat* modelMatrix);
+
+	// Functions that provide the profit
+	void RenderHealtBar(float healthPercent);
+	int32 GetFaceUnderCursor(int32 x, int32 y);
 
 private:
     // The model this collision is based on
@@ -61,6 +63,11 @@ private:
 
 	// Model matrix used in the view
 	CIwFMat* modelMatrix;
+
+	float ghostY;
+	float ghostX;
+	float ghostW;
+	void ResolveLocation();
 };
 
 #ifdef IW_BUILD_RESOURCES

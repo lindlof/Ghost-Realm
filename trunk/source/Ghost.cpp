@@ -187,7 +187,7 @@ float Ghost::getRotation() {
 
 int getGhostTypeDistance(GhostType ghostType) {
 	switch(ghostType) {
-		case GHOST_NORMAL: return 400;
+		case GHOST_NORMAL: return 500;
 	}
 	return -1;
 }
@@ -224,7 +224,7 @@ void Ghost::tapped() {
 	if (tappedCount == 0) {
 		tappedTime = clock();
 	}
-	if (clock() - tappedTime < 500) {
+	if (clock() - tappedTime < 1500) {
 		tappedCount++;
 	} else {
 		tappedTime = 0;
