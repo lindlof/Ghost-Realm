@@ -9,6 +9,7 @@
 
 #include "CameraView.h"
 #include "CameraModel.h"
+
 #include "CameraUI.h"
 
 #include "s3e.h"
@@ -20,6 +21,8 @@
 #include "IwTexture.h"
 #include "IwGraphics.h"
 #include "IwAnim.h"
+#include "IwGxTransformSW.h"
+#include "IwTextParserITX.h"
 
 #include <sys/param.h>
 
@@ -48,6 +51,9 @@ static CIwAnimPlayer*  ghost_Player;
 static s3eCameraFrameRotation g_FrameRotation = S3E_CAMERA_FRAME_ROT90;
 static CIwFMat viewMatrix;
 static CIwFMat* ghostMatrix;
+static GhostCollision* ghostCollision;
+
+int clickX = 0, clickY = 0;
 
 double inline rad(double d) {
     return d / 180.0f * PI;
@@ -142,8 +148,14 @@ void CameraViewInit()
 	// Set screen clear colour
     IwGxSetColClear(0xff, 0xff, 0xff, 0xff);
     IwGxPrintSetColour(128, 128, 128);
-	
-	// Load viking
+
+	// Initiate collision builder before loading models
+	IW_CLASS_REGISTER(GhostCollision);
+
+#ifdef IW_BUILD_RESOURCES
+	IwGetModelBuilder()->SetPostBuildFn(&BuildCollision);
+#endif
+
 	IwGetResManager()->LoadGroup("viking/viking.group");
 	CIwResGroup* pGroup = IwGetResManager()->GetGroupNamed("viking");
 
@@ -151,9 +163,11 @@ void CameraViewInit()
     ghost_Skin  = (CIwAnimSkin*)pGroup->GetResNamed("body", IW_ANIM_RESTYPE_SKIN);
     ghost_Skel  = (CIwAnimSkel*)pGroup->GetResNamed("Armature", IW_ANIM_RESTYPE_SKELETON);
     ghost_Anims[0]  = (CIwAnim*)pGroup->GetResNamed("Armature", IW_ANIM_RESTYPE_ANIMATION);
+	ghostCollision = (GhostCollision*)pGroup->GetResNamed("body", "GhostCollision");
 	
 	ghostMatrix = new CIwFMat();
-
+	ghostCollision->setModelMatrix(ghostMatrix);
+	
     // Create animation player
     ghost_Player = new CIwAnimPlayer;
     ghost_Player->SetSkel(ghost_Skel);
@@ -189,6 +203,7 @@ void CameraViewTerm()
 	delete ghost_Player;
 
 	delete ghostMatrix;
+	delete ghostCollision;
 
     if (s3eCameraAvailable())
     {
@@ -345,6 +360,31 @@ void renderGhost() {
     IwAnimSetSkinContext(ghost_Skin);
     ghost_Model->Render();
 
+	int32 faceID = ghostCollision->GetFaceUnderCursor(clickX, clickY);
+	//outline the face under the cursor
+	if (clickX > 0 && clickY > 0) {
+		if (faceID != -1)
+		{
+			CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
+			pMat->SetColAmbient(0x00ff00ff);
+			pMat->SetCullMode(CIwMaterial::CULL_NONE);
+			IwGxSetMaterial(pMat);
+
+			CIwFVec3* verts = IW_GX_ALLOC(CIwFVec3, 3);
+			verts[0] = ghostCollision->GetVert(faceID);
+			verts[1] = ghostCollision->GetVert(faceID+1);
+			verts[2] = ghostCollision->GetVert(faceID+2);
+			IwGxSetVertStreamModelSpace(verts, 3);
+			IwGxDrawPrims(IW_GX_TRI_LIST, NULL, 3);
+			IwTrace(GHOST_HUNTER, ("Osuu"));
+			getGhost()->tapped();
+			clickX = clickY = -1;
+		} else {
+			IwTrace(GHOST_HUNTER, ("Ei osu"));
+			clickX = clickY = -1;
+		}
+	}
+
     // Tidier to reset these
     IwAnimSetSkelContext(NULL);
     IwAnimSetSkinContext(NULL);
@@ -429,13 +469,6 @@ void renderGameOver() {
 }
 
 void ghostClick(int32 x, int32 y) {
-	int ghostMidX, ghostMidY;
-	IwGxWorldToScreenXY(ghostMidX, ghostMidY, ghostMatrix->GetTrans());
-	int w = IwGxGetScreenWidth()/4;
-	int h = IwGxGetScreenHeight()/4;
-
-	if (x > ghostMidX - w/2 && x < ghostMidX + w/2 &&
-		y > ghostMidY - h/2 && y < ghostMidY + h/2) {
-		getGhost()->tapped();
-	}
+	clickX = x;
+	clickY = y;
 }

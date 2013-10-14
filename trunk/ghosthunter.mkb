@@ -15,6 +15,8 @@ files
 	CameraView.h
 	CameraUI.cpp
 	CameraUI.h
+	GhostCollision.cpp
+	GhostCollision.h
 
 	[Component]
 	Ghost.cpp
@@ -48,7 +50,7 @@ subprojects
 assets
 {
 	(data-ram/data-gles1)
-    viking/viking.group.bin
+	viking/viking.group.bin
 	ui/GameOverButton.group.bin
 
     (data)

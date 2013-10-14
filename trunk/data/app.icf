@@ -22,7 +22,7 @@ MemSize=4200000
 SysTraceToFile=1
 
 [GX]
-DataCacheSize=64000
+DataCacheSize=2200000
 NumTPages=20
 
 [TRACE]
