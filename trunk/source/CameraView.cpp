@@ -11,6 +11,7 @@
 #include "CameraModel.h"
 
 #include "CameraUI.h"
+#include "CameraDefend.h"
 
 #include "s3e.h"
 #include "s3eCamera.h"
@@ -52,6 +53,7 @@ static s3eCameraFrameRotation g_FrameRotation = S3E_CAMERA_FRAME_ROT90;
 static CIwFMat viewMatrix;
 static CIwFMat* ghostMatrix;
 static GhostCollision* ghostCollision;
+static CameraDefend* cameraDefend;
 
 int clickX = 0, clickY = 0;
 
@@ -228,6 +230,17 @@ bool CameraViewUpdate()
 	renderGhost();
 	renderVitality();
 	renderMana();
+
+	//if (getGhost()->isAttacking()) {
+	if (true) {
+		if (cameraDefend == NULL)
+			cameraDefend = new CameraDefend();
+
+		cameraDefend->Render();
+	} else {
+		if (cameraDefend != NULL)
+			delete cameraDefend;
+	}
 
 	if (getPlayer()->isDead()) {
 		showGameOverButton(true);

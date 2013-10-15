@@ -17,6 +17,8 @@ files
 	CameraUI.h
 	GhostCollision.cpp
 	GhostCollision.h
+	CameraDefend.cpp
+	CameraDefend.h
 
 	[Component]
 	Ghost.cpp
@@ -54,7 +56,7 @@ assets
 	ui/GameOverButton.group.bin
 
     (data)
-    textures/hammersmith_ghost.png
+    textures/defending_dot.png
 }
 #### AUTO GENERATED deployment settings from DeployTool.exe. Do not edit below this line ####
 deployments
