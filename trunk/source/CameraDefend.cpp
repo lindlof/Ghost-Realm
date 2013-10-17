@@ -27,12 +27,14 @@ CameraDefend::CameraDefend(Ghost* ghost) {
 	defendingDotTexture->Upload();
 
 	IwRandSeed((int32)s3eTimerGetMs());
-	float width = 82;
-	float height = 82;
+	float width = (float)IwGxGetScreenWidth()*0.13f;
+	width = width > 120 ? 120 : width;
+	float height = width;
 	float padding = (float)IwGxGetScreenWidth()*0.05f;
 
+	float locPadding = (float)IwGxGetScreenHeight()*0.20f;
 	{
-		float leftSpotY = IwRandMinMax(0, IwGxGetScreenHeight()-height);
+		float leftSpotY = IwRandMinMax(locPadding, IwGxGetScreenHeight()-locPadding-height);
 		defendVertsLeft[0] = CIwFVec2(padding, leftSpotY);
 		defendVertsLeft[1] = CIwFVec2(padding, leftSpotY+height);
 		defendVertsLeft[2] = CIwFVec2(padding+width, leftSpotY+height);
@@ -40,7 +42,7 @@ CameraDefend::CameraDefend(Ghost* ghost) {
 	}
 
 	{
-		float rightSpotY = IwRandMinMax(0, IwGxGetScreenHeight()-height);
+		float rightSpotY = IwRandMinMax(locPadding, IwGxGetScreenHeight()-locPadding-height);
 		int screenW = IwGxGetScreenWidth();
 		defendVertsRight[0] = CIwFVec2(screenW-padding-width, rightSpotY);
 		defendVertsRight[1] = CIwFVec2(screenW-padding-width, rightSpotY+height);
