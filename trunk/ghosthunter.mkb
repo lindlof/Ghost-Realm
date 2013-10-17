@@ -9,6 +9,8 @@ files
 	CameraController.cpp
 	CameraModel.cpp
 	CameraModel.h
+	GhostAttack.cpp
+	GhostAttack.h
 
 	[CameraView]
 	CameraView.cpp
@@ -23,6 +25,8 @@ files
 	[Component]
 	Ghost.cpp
 	Ghost.h
+	GhostType.cpp
+	GhostType.h
 	Player.cpp
 	Player.h
 	Strike.cpp

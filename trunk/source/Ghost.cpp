@@ -18,9 +18,6 @@
 #define FOUND_ANIM_STEPS 200
 #define ANIM_TURN_DEGS_PER_STEP 1.8f
 
-int getGhostTypeDistance(GhostType ghostType);
-int getGhostTypeInitialDistance(GhostType ghostType);
-
 Ghost::Ghost(GhostType ghostType, Player *player) {
 	IwRandSeed((int32)s3eTimerGetMs());
 
@@ -54,6 +51,7 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 
 	tappedTime = 0;
 	tappedCount = 0;
+	ghostAttack = NULL;
 };
 
 void Ghost::ghostGotHit(int hit) {
@@ -131,19 +129,16 @@ bool Ghost::ghostUpdate() {
 	}
 
 	// If the ghost is found it may hit the player
-	if (found && clock() - playerHitTime > nextHitInterval) {
-		double hit;
-		if (IwRandMinMax(0, 11) == 11) {
-			// Critical hit
-			hit = 25;
+	if (getAttack() != NULL) {
+		if (getAttack()->isOver()) {
+			delete ghostAttack;
+			ghostAttack = NULL;
 		} else {
-			hit = ((double)IwRandMinMax(PLAYER_MAX_MANA*11, PLAYER_MAX_MANA*19))/PLAYER_MAX_MANA;
+			getAttack()->Update();
 		}
-
-		hit = hit*getStrength();
-		player->playerGotHit((int)hit);
-		IwTrace(GHOST_HUNTER, ("Player got hit for %f", hit));
-
+	}
+	if (found && getAttack() == NULL && clock() - playerHitTime > nextHitInterval) {
+		ghostAttack = new GhostAttack(player, ghostType);
 		playerHitTime = clock();
 		nextHitInterval = IwRandMinMax(4000, 6000);
 	}
@@ -151,20 +146,12 @@ bool Ghost::ghostUpdate() {
 	return true;
 }
 
-float Ghost::getStrength() {
-	switch(Ghost::ghostType) {
-		case GHOST_NORMAL: return 1;
-	}
-	return -1;
-}
-
 int Ghost::getDistance() {
-	int distanceDiff = getGhostTypeDistance(Ghost::ghostType) - 
-			getGhostTypeInitialDistance(Ghost::ghostType);
+	int distanceDiff = ghostType.getDistance() - ghostType.getInitialDistance();
 
 	distanceDiff *= ((float)foundAnimProgress)/FOUND_ANIM_STEPS;
 
-	return getGhostTypeInitialDistance(Ghost::ghostType) + distanceDiff;
+	return ghostType.getInitialDistance() + distanceDiff;
 }
 
 void Ghost::setFound() {
@@ -183,20 +170,6 @@ float Ghost::getRotation() {
 	float facingPlayer = 180;
 
 	return facingPlayer + rotation;
-}
-
-int getGhostTypeDistance(GhostType ghostType) {
-	switch(ghostType) {
-		case GHOST_NORMAL: return 500;
-	}
-	return -1;
-}
-
-int getGhostTypeInitialDistance(GhostType ghostType) {
-	switch(ghostType) {
-		case GHOST_NORMAL: return 1000;
-	}
-	return -1;
 }
 
 int Ghost::getEctoplasm() {
@@ -238,4 +211,8 @@ void Ghost::tapped() {
 			player->setGhost(this);
 		}
 	}
+}
+
+GhostAttack* Ghost::getAttack() {
+	return ghostAttack;
 }

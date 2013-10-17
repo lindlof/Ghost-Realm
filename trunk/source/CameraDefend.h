@@ -7,16 +7,34 @@
  * PARTICULAR PURPOSE.
  */
 
+#ifndef _GHOST_DEFEND_H
+#define _GHOST_DEFEND_H
+
+#include "GhostAttack.h"
+
+#include <time.h>
 #include "IwGraphics.h"
 
 class CameraDefend {
 	private:
+	Ghost* ghost;
+
 	CIwTexture* defendingDotTexture;
 	CIwFVec2 defendVertsLeft[4];
 	CIwFVec2 defendVertsRight[4];
 
+	CIwFVec2 drawInit;
+	bool drawing;
+	bool over;
+
 	public:
-	CameraDefend();
+	CameraDefend(Ghost* ghost);
 	~CameraDefend();
+	void Update();
 	void Render();
+	void Touch(int32 x, int32 y);
+	void Motion(int32 x, int32 y);
+	bool isOver();
 };
+
+#endif

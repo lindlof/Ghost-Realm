@@ -8,6 +8,7 @@
  */
 
 #include "CameraModel.h"
+#include "GhostType.h"
 
 #include <math.h>
 #include <time.h>
@@ -65,7 +66,7 @@ void compassUpdate(double heading, bool error) {
 void CameraModelInit() 
 {
 	player = new Player();
-	ghost = new Ghost(GHOST_NORMAL, player);
+	ghost = new Ghost(GhostType::VIKING, player);
 }
 
 void CameraModelTerm() 
@@ -80,13 +81,13 @@ bool CameraModelUpdate()
 	if (ectoplasm <= 0) {
 		player->wonBattle();
 		delete ghost;
-		ghost = new Ghost(GHOST_NORMAL, player);
+		ghost = new Ghost(GhostType::VIKING, player);
 	}
 
 	if (player->getMana() <= 0 && !player->isDead()) {
 		player->lostBattle();
 		delete ghost;
-		ghost = new Ghost(GHOST_NORMAL, player);
+		ghost = new Ghost(GhostType::VIKING, player);
 	}
 
 	ghost->ghostUpdate();

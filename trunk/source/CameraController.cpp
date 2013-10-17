@@ -37,6 +37,7 @@ void CameraControllerInit()
     }
 
 	s3ePointerRegister(S3E_POINTER_BUTTON_EVENT, (s3eCallback)SingleTouch, NULL);
+	s3ePointerRegister(S3E_POINTER_MOTION_EVENT, (s3eCallback)SingleTouchMotion, NULL);
 }
 
 void CameraControllerTerm()
@@ -69,5 +70,19 @@ bool CameraControllerUpdate()
 }
 
 void SingleTouch(s3ePointerEvent* event) {
-	ghostClick(event->m_x, event->m_y);
+	CameraDefend* cameraDefend;
+	
+	ghostTouch(event->m_x, event->m_y);
+
+	getCameraDefend(&cameraDefend);
+	if (cameraDefend != NULL)
+		cameraDefend->Touch(event->m_x, event->m_y);
+}
+
+void SingleTouchMotion(s3ePointerMotionEvent* event) {
+	CameraDefend* cameraDefend;
+
+	getCameraDefend(&cameraDefend);
+	if (cameraDefend != NULL)
+		cameraDefend->Motion(event->m_x, event->m_y);
 }

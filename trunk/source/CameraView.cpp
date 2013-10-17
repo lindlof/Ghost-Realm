@@ -191,6 +191,8 @@ void CameraViewInit()
     }
 
 	CameraUIInit();
+
+	cameraDefend = NULL;
 }
 
 //-----------------------------------------------------------------------------
@@ -231,15 +233,17 @@ bool CameraViewUpdate()
 	renderVitality();
 	renderMana();
 
-	//if (getGhost()->isAttacking()) {
-	if (true) {
-		if (cameraDefend == NULL)
-			cameraDefend = new CameraDefend();
-
-		cameraDefend->Render();
-	} else {
-		if (cameraDefend != NULL)
+	GhostAttack* ghostAttack = getGhost()->getAttack();
+	if (cameraDefend != NULL) {
+		if (cameraDefend->isOver()) {
 			delete cameraDefend;
+			cameraDefend = NULL;
+		} else {
+			cameraDefend->Update();
+			cameraDefend->Render();
+		}
+	} else if (ghostAttack != NULL) {
+		cameraDefend = new CameraDefend(getGhost());
 	}
 
 	if (getPlayer()->isDead()) {
@@ -483,7 +487,11 @@ void renderGameOver() {
 	IwGxDrawRectScreenSpace(&XY, &dXY, cols);
 }
 
-void ghostClick(int32 x, int32 y) {
+void ghostTouch(int32 x, int32 y) {
 	clickX = x;
 	clickY = y;
+}
+
+void getCameraDefend(CameraDefend** cameraDefendRet) {
+	*cameraDefendRet = cameraDefend;
 }

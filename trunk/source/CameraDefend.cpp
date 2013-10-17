@@ -19,7 +19,9 @@ static CIwFVec2 defend_uvs[4] =
     CIwFVec2(0, 1),
 };
 
-CameraDefend::CameraDefend() {
+CameraDefend::CameraDefend(Ghost* ghost) {
+	this->ghost = ghost;
+
 	defendingDotTexture = new CIwTexture;
 	defendingDotTexture->LoadFromFile ("textures/defending_dot.png");
 	defendingDotTexture->Upload();
@@ -45,6 +47,10 @@ CameraDefend::CameraDefend() {
 		defendVertsRight[2] = CIwFVec2(screenW-padding, rightSpotY+height);
 		defendVertsRight[3] = CIwFVec2(screenW-padding, rightSpotY);
 	}
+
+	drawing = false;
+
+	over = false;
 }
 
 CameraDefend::~CameraDefend() {
@@ -66,4 +72,42 @@ void CameraDefend::Render() {
 
 	IwGxSetVertStreamScreenSpace(defendVertsRight, 4);
     IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
+}
+
+void CameraDefend::Update() {
+	if (ghost->getAttack() == NULL || ghost->getAttack()->isOver()) {
+		over = true;
+	}
+}
+
+void CameraDefend::Touch(int32 x, int32 y) {
+	if (isOver()) return;
+
+	if (drawing) {
+		CIwFVec2 drawEnd = CIwFVec2(x, y);
+		{
+			// If the draw is accepted..
+			over = true;
+			if (ghost->getAttack() != NULL)
+				ghost->getAttack()->setDefended();
+		}
+		IwTrace(GHOST_HUNTER, ("Player defended coords %.0f.%.0f to %.0f.%.0f - dot left coord %.0f.%.0f right coord %.0f.%.0f", 
+			drawInit.x, drawInit.y, drawEnd.x, drawEnd.y, defendVertsLeft[0].x, defendVertsLeft[0].y,
+			defendVertsRight[0].x, defendVertsRight[0].y));
+
+		drawing = false;
+	}
+}
+
+void CameraDefend::Motion(int32 x, int32 y) {
+	if (isOver()) return;
+
+	if (!drawing) {
+		drawInit = CIwFVec2(x, y);
+		drawing = true;
+	}
+}
+
+bool CameraDefend::isOver() {
+	return over;
 }

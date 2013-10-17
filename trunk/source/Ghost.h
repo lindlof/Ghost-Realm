@@ -12,12 +12,14 @@
 
 #include <time.h>
 
+#include "GhostType.h"
+class GhostType;
+#include "GhostAttack.h"
+class GhostAttack;
 #include "Player.h"
 class Player;
 
 #define GHOST_MAX_ECTOPLASM 100.f
-
-enum GhostType { GHOST_NORMAL };
 
 class Ghost {
 	private:
@@ -36,6 +38,7 @@ class Ghost {
 	float scale;
 	int foundAnimProgress;
 	
+	GhostAttack* ghostAttack;
 	clock_t playerHitTime;
 	clock_t hitTime;
 	int nextHitInterval;
@@ -62,12 +65,15 @@ class Ghost {
 	void setFound();
 	bool isFound();
 	int getEctoplasm();
-
+	
 	int getDistance();
 	double getBearing();
 	float getRotation();
 
 	void tapped();
+	GhostAttack* getAttack();
+	void deleteAttack();
+
 };
 
 #endif
