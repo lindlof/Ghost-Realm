@@ -11,6 +11,8 @@
 
 #include "IwRandom.h"
 
+bool dotCollides(CIwFVec2* rect, CIwFVec2 point);
+
 static CIwFVec2 defend_uvs[4] =
 {
     CIwFVec2(1, 1),
@@ -84,30 +86,46 @@ void CameraDefend::Update() {
 
 void CameraDefend::Touch(int32 x, int32 y) {
 	if (isOver()) return;
-
-	if (drawing) {
-		CIwFVec2 drawEnd = CIwFVec2(x, y);
-		{
-			// If the draw is accepted..
-			over = true;
-			if (ghost->getAttack() != NULL)
-				ghost->getAttack()->setDefended();
-		}
-		IwTrace(GHOST_HUNTER, ("Player defended coords %.0f.%.0f to %.0f.%.0f - dot left coord %.0f.%.0f right coord %.0f.%.0f", 
-			drawInit.x, drawInit.y, drawEnd.x, drawEnd.y, defendVertsLeft[0].x, defendVertsLeft[0].y,
-			defendVertsRight[0].x, defendVertsRight[0].y));
-
-		drawing = false;
-	}
+	drawing = false;
 }
 
 void CameraDefend::Motion(int32 x, int32 y) {
 	if (isOver()) return;
 
 	if (!drawing) {
-		drawInit = CIwFVec2(x, y);
+		drawStart = CIwFVec2(x, y);
 		drawing = true;
+	} else {
+		CIwFVec2 drawEnd = CIwFVec2(x, y);
+
+		bool dotsCollideWithDrawing = 
+			(dotCollides(defendVertsLeft,  drawStart) && dotCollides(defendVertsRight, drawEnd)) ||
+			(dotCollides(defendVertsRight, drawStart) && dotCollides(defendVertsLeft,  drawEnd));
+
+		if (dotsCollideWithDrawing) {
+			over = true;
+			if (ghost->getAttack() != NULL)
+				ghost->getAttack()->setDefended();
+
+			IwTrace(GHOST_HUNTER, ("Player defend drawing %s; coords %.0f.%.0f to %.0f.%.0f - dot left coord %.0f.%.0f right coord %.0f.%.0f", 
+				dotsCollideWithDrawing ? "accpeted" : "rejected",
+				drawStart.x, drawStart.y, drawEnd.x, drawEnd.y, defendVertsLeft[0].x, defendVertsLeft[0].y,
+				defendVertsRight[0].x, defendVertsRight[0].y));
+		}
 	}
+}
+
+bool dotCollides(CIwFVec2* rect, CIwFVec2 point) {
+	float collisionModifier = 0.2f;
+	float leftPoint  = rect[0].x*(1-collisionModifier);
+	float rightPoint = rect[3].x*(1+collisionModifier);
+	float upPoint    = rect[0].y*(1-collisionModifier);
+	float downPoint  = rect[1].y*(1+collisionModifier);
+
+	if (point.x > leftPoint && point.x < rightPoint &&
+		point.y > upPoint   && point.y < downPoint)
+		return true;
+	return false;
 }
 
 bool CameraDefend::isOver() {

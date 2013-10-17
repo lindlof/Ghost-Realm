@@ -23,7 +23,7 @@ class CameraDefend {
 	CIwFVec2 defendVertsLeft[4];
 	CIwFVec2 defendVertsRight[4];
 
-	CIwFVec2 drawInit;
+	CIwFVec2 drawStart;
 	bool drawing;
 	bool over;
 
