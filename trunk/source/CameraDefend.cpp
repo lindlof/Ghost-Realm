@@ -86,32 +86,27 @@ void CameraDefend::Update() {
 
 void CameraDefend::Touch(int32 x, int32 y) {
 	if (isOver()) return;
-	drawing = false;
+	drawStart = CIwFVec2(x, y);
 }
 
 void CameraDefend::Motion(int32 x, int32 y) {
 	if (isOver()) return;
 
-	if (!drawing) {
-		drawStart = CIwFVec2(x, y);
-		drawing = true;
-	} else {
-		CIwFVec2 drawEnd = CIwFVec2(x, y);
+	CIwFVec2 drawEnd = CIwFVec2(x, y);
 
-		bool dotsCollideWithDrawing = 
-			(dotCollides(defendVertsLeft,  drawStart) && dotCollides(defendVertsRight, drawEnd)) ||
-			(dotCollides(defendVertsRight, drawStart) && dotCollides(defendVertsLeft,  drawEnd));
+	bool dotsCollideWithDrawing = 
+		(dotCollides(defendVertsLeft,  drawStart) && dotCollides(defendVertsRight, drawEnd)) ||
+		(dotCollides(defendVertsRight, drawStart) && dotCollides(defendVertsLeft,  drawEnd));
 
-		if (dotsCollideWithDrawing) {
-			over = true;
-			if (ghost->getAttack() != NULL)
-				ghost->getAttack()->setDefended();
+	if (dotsCollideWithDrawing) {
+		over = true;
+		if (ghost->getAttack() != NULL)
+			ghost->getAttack()->setDefended();
 
-			IwTrace(GHOST_HUNTER, ("Player defend drawing %s; coords %.0f.%.0f to %.0f.%.0f - dot left coord %.0f.%.0f right coord %.0f.%.0f", 
-				dotsCollideWithDrawing ? "accpeted" : "rejected",
-				drawStart.x, drawStart.y, drawEnd.x, drawEnd.y, defendVertsLeft[0].x, defendVertsLeft[0].y,
-				defendVertsRight[0].x, defendVertsRight[0].y));
-		}
+		IwTrace(GHOST_HUNTER, ("Player defend drawing %s; coords %.0f.%.0f to %.0f.%.0f - dot left coord %.0f.%.0f right coord %.0f.%.0f", 
+			dotsCollideWithDrawing ? "accpeted" : "rejected",
+			drawStart.x, drawStart.y, drawEnd.x, drawEnd.y, defendVertsLeft[0].x, defendVertsLeft[0].y,
+			defendVertsRight[0].x, defendVertsRight[0].y));
 	}
 }
 
