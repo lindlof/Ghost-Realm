@@ -131,8 +131,8 @@ void GhostCollision::Resolve()
 CIwFVec3    health_Verts[8];
 
 // Vertex colours
-CIwColour lightHealth = {0xff, 0xff, 0x00, 0x70};
-CIwColour darkHealth  = {0xcc, 0xcc, 0x00, 0x70};
+CIwColour lightHealth = {0xe5, 0x0b, 0x00, 0x70};
+CIwColour darkHealth  = lightHealth;
 CIwColour health_Cols[8] =
 {
     darkHealth,

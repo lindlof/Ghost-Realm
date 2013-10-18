@@ -468,7 +468,7 @@ void renderMana() {
 	x2 = x1 + barLength;
 
 	CIwColour* cols = IW_GX_ALLOC(CIwColour, 4);
-	cols[0].Set(0x0, 0x66, 0xCC, 0x70);
+	cols[0].Set(0x00, 0x80, 0xff, 0x70);
 	cols[1] = cols[2] = cols[3] = cols[0];
 
 	CIwSVec2 XY(x1, y1), dXY(x2-x1, y2-y1);
