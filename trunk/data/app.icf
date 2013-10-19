@@ -18,7 +18,8 @@
 
 [S3E]
 DispFixRot="FixedPortrait" # Portrait
-MemSize=4200000
+MemSize=10200000
+MemSizeDebug=100000000
 SysTraceToFile=1
 
 [GX]
