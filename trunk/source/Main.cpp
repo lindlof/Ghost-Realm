@@ -7,18 +7,32 @@
  * PARTICULAR PURPOSE.
  */
 
-#include "IwGx.h"
+#include "Main.h"
+
 #include <time.h>
 
-#include "Main.h"
+#include "IwGx.h"
+#include "IwGxPrint.h"
+#include "IwMaterial.h"
+#include "IwTexture.h"
+#include "IwGraphics.h"
+#include "IwAnim.h"
 
 static Game *game;
 
 int main() {
 
-    CameraViewInit();
+	IwGxInit();
+	IwGraphicsInit();
+	IwAnimInit();
+
 	CameraControllerInit();
 	CameraModelInit();
+    CameraViewInit();
+
+	MapControllerInit();
+	MapModelInit();
+	MapViewInit();
 
 	game = new Game();
 	game->setGameMode(CAMERA_MODE);
@@ -32,6 +46,10 @@ int main() {
 			CameraControllerUpdate();
 			CameraModelUpdate();
 			CameraViewUpdate();
+		} else if (game->getGameMode() == MAP_MODE) {
+			MapControllerUpdate();
+			MapModelUpdate();
+			MapViewUpdate();
 		}
 		
 		// Cap FPS
@@ -44,11 +62,19 @@ int main() {
         } while (yield > 0);
     }
 
-    CameraViewTerm();
 	CameraControllerTerm();
 	CameraModelTerm();
+    CameraViewTerm();
+
+	MapControllerTerm();
+	MapModelTerm();
+	MapViewTerm();
 
 	delete game;
+
+	IwAnimTerminate();
+	IwGraphicsTerminate();
+    IwGxTerminate();
 
     return 0;
 }

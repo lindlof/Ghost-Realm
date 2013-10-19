@@ -7,6 +7,7 @@ files
 
 	[Camera]
 	CameraController.cpp
+	CameraController.h
 	CameraModel.cpp
 	CameraModel.h
 	GhostAttack.cpp
@@ -21,6 +22,16 @@ files
 	GhostCollision.h
 	CameraDefend.cpp
 	CameraDefend.h
+
+	[Map]
+	MapController.cpp
+	MapController.h
+	MapModel.cpp
+	MapModel.h
+
+	[MapView]
+	MapView.cpp
+	MapView.h
 
 	[Component]
 	Ghost.cpp

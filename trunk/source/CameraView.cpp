@@ -139,10 +139,6 @@ void cameraStreamInit(int camDataW, int camDataH) {
 
 void CameraViewInit()
 {
-    IwGxInit();
-	IwGraphicsInit();
-	IwAnimInit();
-
     // Camera field of view
 	IwGxSetPerspMul((float) IwGxGetScreenWidth() / 1.3);
     IwGxSetFarZNearZ(0x2000,0x10);
@@ -216,10 +212,6 @@ void CameraViewTerm()
     }
 
 	CameraUITerm();
-
-	IwAnimTerminate();
-	IwGraphicsTerminate();
-    IwGxTerminate();
 }
 
 bool CameraViewUpdate()

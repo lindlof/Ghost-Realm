@@ -7,15 +7,6 @@
  * PARTICULAR PURPOSE.
  */
 
-#include <math.h>
-#include "Ghost.h"
-
-void CameraModelInit();
-void CameraModelTerm();
-bool CameraModelUpdate();
-
-void accelometerUpdate(int32 x, int32 y, int32 z);
-void compassUpdate(double heading, bool error);
-
-Ghost* getGhost();
-Player* getPlayer();
+void MapViewInit();
+void MapViewTerm();
+bool MapViewUpdate();

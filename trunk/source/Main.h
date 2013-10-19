@@ -7,10 +7,18 @@
  * PARTICULAR PURPOSE.
  */
 
+#include "CameraModel.h"
+#include "CameraController.h"
+#include "CameraView.h"
+
+#include "MapModel.h"
+#include "MapController.h"
+#include "MapView.h"
+
 // 24 FPS limit
 #define FRAME_DURATION 1000/24
 
-enum GameMode { CAMERA_MODE };
+enum GameMode { CAMERA_MODE, MAP_MODE };
 class Game {
 	private:
 	GameMode gameMode;
@@ -19,15 +27,3 @@ class Game {
 	void setGameMode(GameMode gameMode);
 	GameMode getGameMode();
 };
-
-void CameraViewInit();
-void CameraViewTerm();
-bool CameraViewUpdate();
-
-void CameraControllerInit();
-void CameraControllerTerm();
-bool CameraControllerUpdate();
-
-void CameraModelInit();
-void CameraModelTerm();
-bool CameraModelUpdate();
