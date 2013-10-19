@@ -131,7 +131,7 @@ void GhostCollision::Resolve()
 CIwFVec3    health_Verts[8];
 
 // Vertex colours
-CIwColour lightHealth = {0xe5, 0x0b, 0x00, 0x70};
+CIwColour lightHealth = {0xe5, 0x0b, 0x00, 0xa0};
 CIwColour darkHealth  = lightHealth;
 CIwColour health_Cols[8] =
 {
@@ -160,7 +160,9 @@ void GhostCollision::RenderHealtBar(float healthPercent)
 	IwGxSetModelMatrix(modelMatrix);
 
 	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
+	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
 	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
+	IwGxSetMaterial(pMat);
 
 	if (ghostW < 0 || ghostX < 0 || ghostY < 0) ResolveLocation();
 
