@@ -72,6 +72,7 @@ assets
 
     (data)
     textures/defending_dot.png
+	textures/map_fight.png
 	textures/map_ghost.png
 	textures/map_player.png
 	textures/map_template.png
