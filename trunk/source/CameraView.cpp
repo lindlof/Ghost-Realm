@@ -144,10 +144,6 @@ void CameraViewInit()
 	IwGxSetPerspMul((float) IwGxGetScreenWidth() / 1.3);
     IwGxSetFarZNearZ(0x2000,0x10);
 
-	// Set screen clear colour
-    IwGxSetColClear(0xff, 0xff, 0xff, 0xff);
-    IwGxPrintSetColour(128, 128, 128);
-
 	// Initiate collision builder before loading models
 	IW_CLASS_REGISTER(GhostCollision);
 

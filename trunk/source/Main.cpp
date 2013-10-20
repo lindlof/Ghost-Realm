@@ -28,6 +28,9 @@ int main() {
 	IwGraphicsInit();
 	IwAnimInit();
 
+	// Set screen clear colour
+    IwGxSetColClear(0x0, 0x0, 0x0, 0xff);
+
 #ifdef IW_BUILD_RESOURCES
 	// Build resources in camera view
 	CameraViewInit();

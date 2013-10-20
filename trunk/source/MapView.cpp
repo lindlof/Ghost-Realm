@@ -35,11 +35,7 @@ static CIwFVec2 mapDefaultUvs[4] =
 };
 
 void MapViewInit()
-{
-	// Set screen clear colour
-    IwGxSetColClear(0xff, 0xff, 0xff, 0xff);
-    IwGxPrintSetColour(128, 128, 128);
-	
+{	
 	ghostTexture = new CIwTexture;
 	ghostTexture->LoadFromFile ("textures/map_ghost.png");
 	ghostTexture->Upload();
