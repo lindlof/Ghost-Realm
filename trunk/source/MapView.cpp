@@ -68,9 +68,9 @@ void mapInit(int mapW, int mapH) {
 
 	// Full screen screenspace vertex coords
 	int16 x1 = (int16)(-abs(w - IwGxGetScreenWidth())/2); // Negative or 0
-	int16 x2 = (int16)(w - x1);
+	int16 x2 = (int16)(IwGxGetScreenWidth()  - x1);
 	int16 y1 = (int16)(-abs(h - IwGxGetScreenHeight())/2); // Negative or 0
-	int16 y2 = (int16)(h - y1);
+	int16 y2 = (int16)(IwGxGetScreenHeight() - y1);
 	
 	mapVert[0].x = x1, mapVert[0].y = y1;
 	mapVert[1].x = x1, mapVert[1].y = y2;
