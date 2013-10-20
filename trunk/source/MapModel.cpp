@@ -7,6 +7,9 @@
  * PARTICULAR PURPOSE.
  */
 
+#include "GameState.h"
+#include "Ghost.h"
+
 void MapModelInit() {
 
 }
@@ -16,5 +19,11 @@ void MapModelTerm() {
 }
 
 bool MapModelUpdate() {
+
+	if (getGameState()->getGhost() == NULL) {
+		Ghost* ghost = new Ghost(GhostType::VIKING, getGameState()->getPlayer());
+		getGameState()->setGhost(ghost);
+	}
+
 	return true;
 }

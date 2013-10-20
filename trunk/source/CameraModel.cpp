@@ -7,23 +7,13 @@
  * PARTICULAR PURPOSE.
  */
 
+#include "GameState.h"
 #include "CameraModel.h"
 #include "GhostType.h"
 
 #include <math.h>
 #include <time.h>
 #include "IwDebug.h"
-
-static Player *player;
-static Ghost *ghost;
-
-Ghost* getGhost() {
-	return ghost;
-}
-
-Player* getPlayer() {
-	return player;
-}
 
 #define ACCELOMETER_ITERATIONS 40
 int iteration = 0;
@@ -52,45 +42,46 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
 		if (iteration == ACCELOMETER_ITERATIONS)
 			IwTrace(GHOST_HUNTER, ("CameraModel accelometer initialized"));
 	} else {
-		player->accelometerUpdate(linearAccelerationX, linearAccelerationY, 
+		getGameState()->getPlayer()->accelometerUpdate(linearAccelerationX, linearAccelerationY, 
 			linearAccelerationZ);
-		ghost->floatingUpdate(linearAccelerationX, linearAccelerationY, 
+		getGameState()->getGhost()->floatingUpdate(linearAccelerationX, linearAccelerationY, 
 			linearAccelerationZ);
 	}
 }
 
 void compassUpdate(double heading, bool error) {
-	player->compassUpdate(heading, error);
+	getGameState()->getPlayer()->compassUpdate(heading, error);
 }
 
 void CameraModelInit() 
 {
-	player = new Player();
-	ghost = new Ghost(GhostType::VIKING, player);
+	
 }
 
 void CameraModelTerm() 
 {
-	delete player;
-	delete ghost;
+	
 }
 
 bool CameraModelUpdate() 
 {
-	int ectoplasm = ghost->getEctoplasm();
+	GameState* gameState = getGameState();
+	Player* player = gameState->getPlayer();
+
+	int ectoplasm = gameState->getGhost()->getEctoplasm();
 	if (ectoplasm <= 0) {
 		player->wonBattle();
-		delete ghost;
-		ghost = new Ghost(GhostType::VIKING, player);
-	}
-
-	if (player->getMana() <= 0 && !player->isDead()) {
+		gameState->deleteGhost();
+		gameState->setGameMode(MAP_MODE);
+	} else if (player->getMana() <= 0 && !player->isDead()) {
 		player->lostBattle();
-		delete ghost;
-		ghost = new Ghost(GhostType::VIKING, player);
+		gameState->deleteGhost();
+		gameState->setGameMode(MAP_MODE);
 	}
 
-	ghost->ghostUpdate();
+	if (gameState->getGhost() != NULL)
+		gameState->getGhost()->ghostUpdate();
+
 	player->playerUpdate();
 	return true;
 }

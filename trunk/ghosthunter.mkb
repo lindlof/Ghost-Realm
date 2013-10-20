@@ -36,6 +36,8 @@ files
 	FightButton.h
 
 	[Component]
+	GameState.cpp
+	GameState.h
 	Ghost.cpp
 	Ghost.h
 	GhostType.cpp

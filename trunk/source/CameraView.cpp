@@ -7,6 +7,8 @@
  * PARTICULAR PURPOSE.
  */
 
+#include "GameState.h"
+
 #include "CameraView.h"
 #include "CameraModel.h"
 
@@ -213,29 +215,34 @@ void CameraViewTerm()
 
 bool CameraViewUpdate()
 {
+	bool ghostAvailable = getGameState()->getGhost() != NULL;
+
 	// Clear the screen
     IwGxClear(IW_GX_COLOUR_BUFFER_F | IW_GX_DEPTH_BUFFER_F);
 
 	renderCamera();
 	setupPlayer();
-	renderGhost();
+	if (ghostAvailable)
+	  renderGhost();
 	renderVitality();
 	renderMana();
 
-	GhostAttack* ghostAttack = getGhost()->getAttack();
-	if (cameraDefend != NULL) {
-		if (cameraDefend->isOver()) {
-			delete cameraDefend;
-			cameraDefend = NULL;
-		} else {
-			cameraDefend->Update();
-			cameraDefend->Render();
+	if (ghostAvailable) {
+		GhostAttack* ghostAttack = getGameState()->getGhost()->getAttack();
+		if (cameraDefend != NULL) {
+			if (cameraDefend->isOver()) {
+				delete cameraDefend;
+				cameraDefend = NULL;
+			} else {
+				cameraDefend->Update();
+				cameraDefend->Render();
+			}
+		} else if (ghostAttack != NULL) {
+			cameraDefend = new CameraDefend(getGameState()->getGhost());
 		}
-	} else if (ghostAttack != NULL) {
-		cameraDefend = new CameraDefend(getGhost());
 	}
 
-	if (getPlayer()->isDead()) {
+	if (getGameState()->getPlayer()->isDead()) {
 		showGameOverButton(true);
 		renderGameOver();
 	} else {
@@ -278,7 +285,7 @@ void renderCamera() {
 }
 
 void setupPlayer() {
-	Player *player = getPlayer();
+	Player *player = getGameState()->getPlayer();
 
 	if (!player->isReady()) {
 		return;
@@ -295,13 +302,13 @@ void setupPlayer() {
 
 void renderGhost() {
 
-	if (!getPlayer()->isReady()) {
+	if (!getGameState()->getPlayer()->isReady()) {
 		return;
 	}
 
 	IwGxLightingOff();
 
-	Ghost *ghost = getGhost();
+	Ghost *ghost = getGameState()->getGhost();
 
 	CIwFVec3 ghostPosition(0, 0, ghost->getDistance());
 
@@ -376,7 +383,7 @@ void renderGhost() {
 			IwGxSetVertStreamModelSpace(verts, 3);
 			IwGxDrawPrims(IW_GX_TRI_LIST, NULL, 3);
 			*/
-			getGhost()->tapped();
+			getGameState()->getGhost()->tapped();
 			clickX = clickY = -1;
 		} else {
 			clickX = clickY = -1;
@@ -394,7 +401,7 @@ void renderVitality() {
 
 	IwGxLightingOff();
 
-	Player *player = getPlayer();
+	Player *player = getGameState()->getPlayer();
 
 	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
 	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
@@ -427,7 +434,7 @@ void renderMana() {
 	
 	IwGxLightingOff();
 
-	Player *player = getPlayer();
+	Player *player = getGameState()->getPlayer();
 
 	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
 	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);

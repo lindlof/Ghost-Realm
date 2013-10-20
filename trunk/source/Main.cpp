@@ -8,6 +8,7 @@
  */
 
 #include "Main.h"
+#include "GameState.h"
 
 #include <time.h>
 
@@ -17,8 +18,6 @@
 #include "IwTexture.h"
 #include "IwGraphics.h"
 #include "IwAnim.h"
-
-static Game *game;
 
 void gameModeChanged();
 
@@ -37,24 +36,23 @@ int main() {
 	CameraViewTerm();
 #endif
 
-	game = new Game();
-	game->setGameMode(MAP_MODE);
+	getGameState()->setGameMode(MAP_MODE);
 
     while (1) {
         s3eDeviceYield(0);
 
         int start = clock();
 
-		if (game->getLastGameMode() != game->getGameMode()) {
+		if (getGameState()->getLastGameMode() != getGameState()->getGameMode()) {
 			gameModeChanged();
-			game->updateLastGameMode();
+			getGameState()->updateLastGameMode();
 		}
 
-		if (game->getGameMode() == CAMERA_MODE) {
+		if (getGameState()->getGameMode() == CAMERA_MODE) {
 			CameraControllerUpdate();
 			CameraModelUpdate();
 			CameraViewUpdate();
-		} else if (game->getGameMode() == MAP_MODE) {
+		} else if (getGameState()->getGameMode() == MAP_MODE) {
 			MapControllerUpdate();
 			MapModelUpdate();
 			MapViewUpdate();
@@ -78,7 +76,7 @@ int main() {
 	MapModelTerm();
 	MapViewTerm();
 
-	delete game;
+	delete getGameState();
 
 	IwAnimTerminate();
 	IwGraphicsTerminate();
@@ -88,48 +86,23 @@ int main() {
 }
 
 void gameModeChanged() {
-	if (game->getLastGameMode() == CAMERA_MODE) {
+	if (getGameState()->getLastGameMode() == CAMERA_MODE) {
 		CameraControllerTerm();
 		CameraModelTerm();
 		CameraViewTerm();
-	} else if (game->getLastGameMode() == MAP_MODE) {
+	} else if (getGameState()->getLastGameMode() == MAP_MODE) {
 		MapControllerTerm();
 		MapModelTerm();
 		MapViewTerm();
 	}
 
-	if (game->getGameMode() == CAMERA_MODE) {
+	if (getGameState()->getGameMode() == CAMERA_MODE) {
 		CameraControllerInit();
 		CameraModelInit();
 		CameraViewInit();
-	} else if (game->getGameMode() == MAP_MODE) {
+	} else if (getGameState()->getGameMode() == MAP_MODE) {
 		MapControllerInit();
 		MapModelInit();
 		MapViewInit();
 	}
-}
-
-Game* getGame() {
-	return game;
-}
-
-Game::Game() {
-	Game::gameMode = NO_GAMEMODE;
-}
-
-void Game::setGameMode(GameMode gameMode) {
-	Game::lastGameMode = Game::gameMode;
-	Game::gameMode = gameMode;
-}
-
-void Game::updateLastGameMode() {
-	Game::lastGameMode = Game::gameMode;
-}
-
-GameMode Game::getGameMode() {
-	return gameMode;
-}
-
-GameMode Game::getLastGameMode() {
-	return lastGameMode;
 }

@@ -7,6 +7,7 @@
  * PARTICULAR PURPOSE.
  */
 
+#include "GameState.h"
 #include "CameraModel.h"
 #include "Player.h"
 #include "Main.h"
@@ -24,7 +25,7 @@ public:
     {
         if (pEvent->GetID() == IWUI_EVENT_BUTTON)
         {
-            getPlayer()->resurrect();
+            getGameState()->getPlayer()->resurrect();
 
             //return true, as event has been handled
             return true;
