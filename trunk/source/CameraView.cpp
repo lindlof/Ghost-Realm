@@ -39,6 +39,7 @@ void renderGameOver();
 void cameraStreamInit(int camDataW, int camDataH);
 static CIwSVec2 cameraVert[4];
 static CIwFVec2 cameraUvs[4];
+
 static CIwFVec2 cameraUvsRotated[4];
 
 static CIwTexture* g_CameraTexture = NULL;
@@ -65,6 +66,17 @@ double inline deg(double d) {
     return d / PI * 180.0f;
 }
 
+// In-place matrix transposition of 90 degrees to transform camera to portrait
+void transpose(uint16 *tomatrix, uint16 *matrix, int row, int col) {
+	for (int i = 0; i<row; i++) {
+		for (int j = 0; j<col; j++) {
+			tomatrix[j*row + i] = matrix[i*col + j];
+		}
+	}
+}
+
+uint16* g_pCameraTexelsRGB565 = NULL;
+
 // Camera callback. Copy the capture frame buffer into a texture ready for rendering.
 static int32 frameReceived(void* systemData, void* userData)
 {
@@ -74,18 +86,20 @@ static int32 frameReceived(void* systemData, void* userData)
     // This is a slow operation compared to memcpy so we don't want to do it every frame.
     if (g_CameraTexture == NULL)
     {
-		cameraStreamInit(data->m_Width, data->m_Height);
+		cameraStreamInit(data->m_Height, data->m_Width);
 
         g_CameraTexture = new CIwTexture();
         g_CameraTexture->SetMipMapping(false);
         g_CameraTexture->SetModifiable(true);
 
-        g_CameraTexture->CopyFromBuffer(data->m_Width, data->m_Height, CIwImage::RGB_565, data->m_Pitch, (uint8*)data->m_Data, NULL);
+		uint cameraRGB565BufferSize = data->m_Width * data->m_Height * 2; //Size in bytes
+        g_pCameraTexelsRGB565 = (uint16*) s3eRealloc(g_pCameraTexelsRGB565, cameraRGB565BufferSize);
+
+        g_CameraTexture->CopyFromBuffer(data->m_Height, data->m_Width, CIwImage::RGB_565, data->m_Height*2, (uint8*)g_pCameraTexelsRGB565, NULL);
         g_CameraTexture->Upload();
     }
 
-    // Copy the camera image data into the texture. Note that it does not get copied to VRAM at this point.
-    memcpy(g_CameraTexture->GetTexels(), data->m_Data, data->m_Height * data->m_Pitch);
+	transpose(g_pCameraTexelsRGB565, (uint16*)data->m_Data, data->m_Height, data->m_Width);
     g_FrameRotation = data->m_Rotation;
 
     return 0;
@@ -94,47 +108,34 @@ static int32 frameReceived(void* systemData, void* userData)
 void cameraStreamInit(int camDataW, int camDataH) {
 	double w = IwGxGetScreenWidth();
 	double h = IwGxGetScreenHeight();
+
+	IwTrace(GHOST_HUNTER, ("camDataW %d camDataH %d w %f h %f", camDataW, camDataH, w, h));
 	{
 		double whRatio = ((double)camDataW) / camDataH;
 
 		if (whRatio > w/h) {
-			w = w * whRatio;
+			w = h * whRatio;
 		} else if (whRatio < w/h) {
-			h = h * 1.f/whRatio;
+			h = w * 1.f/whRatio;
 		}
 	}
 
-	// Full screen screenspace vertex coords
+	IwTrace(GHOST_HUNTER, ("w %f h %f", w, h));
+
 	int16 x1 = (int16)(-abs(w - IwGxGetScreenWidth())/2); // Negative or 0
-	int16 x2 = (int16)(w - x1);
+	int16 x2 = (int16)(IwGxGetScreenWidth()  - x1);
 	int16 y1 = (int16)(-abs(h - IwGxGetScreenHeight())/2); // Negative or 0
-	int16 y2 = (int16)(h - y1);
+	int16 y2 = (int16)(IwGxGetScreenHeight() - y1);
 
 	cameraVert[0].x = x1, cameraVert[0].y = y1;
 	cameraVert[1].x = x1, cameraVert[1].y = y2;
 	cameraVert[2].x = x2, cameraVert[2].y = y2;
 	cameraVert[3].x = x2, cameraVert[3].y = y1;
 
-	{
-		// Camera UV counter-mirrors the image.
-		// Camera UV presents the image counterclockwise. Image is rotated in live.
-		// Camera UV does cut parts of the image that bleed over the screen.
-		// (so that waste doesn't get rendered)
-
-		float uvX = ((float)y1) / h;
-		float uvY = ((float)x1) / w;
-		float uvW = 1.f - uvX;
-		float uvH = 1.f - uvY;
-
-		cameraUvs[0].x = uvX;
-		cameraUvs[0].y = uvY;
-		cameraUvs[1].x = uvX;
-		cameraUvs[1].y = uvY + uvH;
-		cameraUvs[2].x = uvX + uvW;
-		cameraUvs[2].y = uvY + uvH;
-		cameraUvs[3].x = uvX + uvW;
-		cameraUvs[3].y = uvY;
-	}
+	cameraUvs[0] = CIwFVec2(1, 0);
+    cameraUvs[1] = CIwFVec2(1, 1);
+    cameraUvs[2] = CIwFVec2(0, 1);
+    cameraUvs[3] = CIwFVec2(0, 0);
 }
 
 void CameraViewInit()
@@ -264,7 +265,7 @@ void renderCamera() {
 
     // Refresh dynamic texture
     if (g_CameraTexture != NULL)
-        g_CameraTexture->ChangeTexels(g_CameraTexture->GetTexels(), CIwImage::RGB_565);
+        g_CameraTexture->ChangeTexels((uint8*)g_pCameraTexelsRGB565, CIwImage::RGB_565);
 
     CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
     pMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
@@ -272,17 +273,9 @@ void renderCamera() {
 
     IwGxSetMaterial(pMat);
 
-    // rotate UV coordinates based on rotation
-    // (image must rotate against rotation of surface,
-    // assuming that the camera image is NOT auto rotated)
-    for (int j=0; j<4; j++)
-    {
-        cameraUvsRotated[j] = cameraUvs[(4 - (int)g_FrameRotation + j ) % 4];
-    }
-
 	IwGxSetScreenSpaceSlot(-1);
 
-    IwGxSetUVStream(cameraUvsRotated);
+    IwGxSetUVStream(cameraUvs);
     IwGxSetVertStreamScreenSpace(cameraVert, 4);
 
     IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
