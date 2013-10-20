@@ -18,7 +18,7 @@
 
 [S3E]
 DispFixRot="FixedPortrait" # Portrait
-MemSize=10200000
+MemSize=20200000
 MemSizeDebug=100000000
 SysTraceToFile=1
 

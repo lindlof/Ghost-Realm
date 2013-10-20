@@ -18,12 +18,16 @@
 // 24 FPS limit
 #define FRAME_DURATION 1000/24
 
-enum GameMode { CAMERA_MODE, MAP_MODE };
+enum GameMode { NO_GAMEMODE, CAMERA_MODE, MAP_MODE };
 class Game {
 	private:
 	GameMode gameMode;
+	GameMode lastGameMode;
 
 	public:
+	Game();
 	void setGameMode(GameMode gameMode);
+	void updateLastGameMode();
 	GameMode getGameMode();
+	GameMode getLastGameMode();
 };
