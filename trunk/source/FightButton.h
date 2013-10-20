@@ -7,10 +7,17 @@
  * PARTICULAR PURPOSE.
  */
 
-#include "FightButton.h"
+#include "IwGx.h"
 
-void MapViewInit();
-void MapViewTerm();
-bool MapViewUpdate();
+class FightButton {
+	private:
+	CIwTexture* fightTexture;
+	CIwSVec2 buttonXY, buttonWH;
 
-FightButton* getFightButton();
+	public:
+	FightButton();
+	~FightButton();
+
+	void Render();
+	void Touch(int x, int y);
+};

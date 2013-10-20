@@ -7,6 +7,8 @@
  * PARTICULAR PURPOSE.
  */
 
+#include "MapView.h"
+
 #include "IwGx.h"
 #include "IwGxPrint.h"
 #include "IwMaterial.h"
@@ -14,9 +16,8 @@
 #include "IwGraphics.h"
 
 void renderMap();
-void renderFight();
 
-static CIwTexture* fightTexture;
+static FightButton* fightButton;
 
 static CIwTexture* ghostTexture;
 static CIwTexture* playerTexture;
@@ -38,10 +39,6 @@ void MapViewInit()
 	// Set screen clear colour
     IwGxSetColClear(0xff, 0xff, 0xff, 0xff);
     IwGxPrintSetColour(128, 128, 128);
-
-	fightTexture = new CIwTexture;
-	fightTexture->LoadFromFile ("textures/map_fight.png");
-	fightTexture->Upload();
 	
 	ghostTexture = new CIwTexture;
 	ghostTexture->LoadFromFile ("textures/map_ghost.png");
@@ -51,16 +48,13 @@ void MapViewInit()
 	playerTexture->LoadFromFile ("textures/map_player.png");
 	playerTexture->Upload();
 	
-	/*default_uvs[0] = CIwFVec2(0, 0);
-    default_uvs[1] = CIwFVec2(0, 1);
-    default_uvs[2] = CIwFVec2(1, 1);
-    default_uvs[3] = CIwFVec2(1, 0);*/
-	
 	mapTexture = new CIwTexture;
 	mapTexture->LoadFromFile ("textures/map_template.png");
 	mapTexture->Upload();
 	
 	mapInit(mapTexture->GetWidth(), mapTexture->GetHeight());
+
+	fightButton = new FightButton();
 }
 
 void mapInit(int mapW, int mapH) {
@@ -90,9 +84,6 @@ void mapInit(int mapW, int mapH) {
 
 void MapViewTerm() {
 
-	if (fightTexture)
-		delete fightTexture;
-
 	if (ghostTexture)
 		delete ghostTexture;
 
@@ -101,6 +92,9 @@ void MapViewTerm() {
 
 	if (mapTexture)
 		delete mapTexture;
+
+	if (fightButton)
+		delete fightButton;
 }
 
 bool MapViewUpdate() {
@@ -110,7 +104,7 @@ bool MapViewUpdate() {
 
 	renderMap();
 
-	renderFight();
+	fightButton->Render();
 
 	IwGxFlush();
     IwGxSwapBuffers();
@@ -135,27 +129,6 @@ void renderMap() {
     IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
 }
 
-void renderFight() {
-	IwGxLightingOff();
-	
-	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
-    pMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
-	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
-    pMat->SetTexture(fightTexture);
-
-	int16 w = IwGxGetScreenWidth() * 0.7f;
-	if (w > (int16)fightTexture->GetWidth()) w = (int16)fightTexture->GetWidth();
-
-	float whScale = (float)((double)fightTexture->GetWidth() / fightTexture->GetHeight());
-	int16 h = w * 1/whScale;
-	int bottomPadding = IwGxGetScreenHeight() * 0.03f;
-
-	int16 x1 = IwGxGetScreenWidth()/2 - w/2;
-    int16 y1 = IwGxGetScreenHeight() - h - bottomPadding;
-
-	IwGxSetMaterial(pMat);
-    IwGxSetUVStream(mapDefaultUvs);
-
-    CIwSVec2 XY(x1, y1), dXY(w, h);
-	IwGxDrawRectScreenSpace(&XY, &dXY);
+FightButton* getFightButton() {
+	return fightButton;
 }

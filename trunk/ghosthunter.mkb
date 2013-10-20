@@ -32,6 +32,8 @@ files
 	[MapView]
 	MapView.cpp
 	MapView.h
+	FightButton.cpp
+	FightButton.h
 
 	[Component]
 	Ghost.cpp
