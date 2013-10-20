@@ -8,6 +8,7 @@
  */
 
 #include "FightButton.h"
+#include "Main.h"
 
 #include "IwDebug.h"
 #include "IwGx.h"
@@ -69,5 +70,7 @@ void FightButton::Touch(int x, int y) {
 		y > buttonXY.y && y < buttonXY.y + buttonWH.y) {
 
 		IwTrace(GHOST_HUNTER, ("Player wants to fight"));
+
+		getGame()->setGameMode(CAMERA_MODE);
 	}
 }

@@ -31,3 +31,5 @@ class Game {
 	GameMode getGameMode();
 	GameMode getLastGameMode();
 };
+
+Game* getGame();

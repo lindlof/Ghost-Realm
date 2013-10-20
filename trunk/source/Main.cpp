@@ -106,6 +106,10 @@ void gameModeChanged() {
 	}
 }
 
+Game* getGame() {
+	return game;
+}
+
 Game::Game() {
 	Game::gameMode = NO_GAMEMODE;
 }

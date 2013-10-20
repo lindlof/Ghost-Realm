@@ -7,6 +7,9 @@
  * PARTICULAR PURPOSE.
  */
 
+#ifndef _FIGHT_BUTTON_H
+#define _FIGHT_BUTTON_H
+
 #include "IwGx.h"
 
 class FightButton {
@@ -21,3 +24,5 @@ class FightButton {
 	void Render();
 	void Touch(int x, int y);
 };
+
+#endif
