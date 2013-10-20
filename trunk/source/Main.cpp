@@ -28,6 +28,12 @@ int main() {
 	IwGraphicsInit();
 	IwAnimInit();
 
+#ifdef IW_BUILD_RESOURCES
+	// Build resources in camera view
+	CameraViewInit();
+	CameraViewTerm();
+#endif
+
 	game = new Game();
 	game->setGameMode(MAP_MODE);
 
