@@ -50,7 +50,7 @@ public:
 	void init(CIwFMat* modelMatrix);
 
 	// Functions that provide the profit
-	void RenderHealtBar(float healthPercent);
+	void RenderEctoplasmaBar(float healthPercent);
 	int32 GetFaceUnderCursor(int32 x, int32 y);
 
 private:

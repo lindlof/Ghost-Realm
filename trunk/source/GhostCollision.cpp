@@ -155,7 +155,7 @@ uint16      s_TriStrip[22] =
     3, 7, 2, 6,
 };
 
-void GhostCollision::RenderHealtBar(float healthPercent)
+void GhostCollision::RenderEctoplasmaBar(float ectoPercent)
 {
 	IwGxSetModelMatrix(modelMatrix);
 
@@ -168,7 +168,7 @@ void GhostCollision::RenderHealtBar(float healthPercent)
 
 	{
 		const int16 x1 = ghostX;
-		const int16 x2 = ghostX+ghostW*healthPercent;
+		const int16 x2 = ghostX+ghostW*ectoPercent;
 		const int16 y1 = ghostY+0x40;
 		const int16 y2 = ghostY+0x48;
 		const int16 z = 0x6;
