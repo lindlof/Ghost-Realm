@@ -396,7 +396,9 @@ void renderGhost() {
     IwAnimSetSkelContext(NULL);
     IwAnimSetSkinContext(NULL);
 
-	ghostCollision->RenderHealtBar((float)ghost->getEctoplasm() / GHOST_MAX_ECTOPLASM);
+	if (getGameState()->getGhost()->isFound()) {
+		ghostCollision->RenderHealtBar((float)ghost->getEctoplasm() / GHOST_MAX_ECTOPLASM);
+	}
 }
 
 void renderVitality() {
