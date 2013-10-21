@@ -19,8 +19,6 @@
 #include "IwGraphics.h"
 #include "IwAnim.h"
 
-void gameModeChanged();
-
 int main() {
 
 	IwGxInit();
@@ -30,11 +28,13 @@ int main() {
 	// Set screen clear colour
     IwGxSetColClear(0x0, 0x0, 0x0, 0xff);
 
-#ifdef IW_BUILD_RESOURCES
-	// Build resources in camera view
+	MapControllerInit();
+	MapModelInit();
+	MapViewInit();
+
+	CameraControllerInit();
+	CameraModelInit();
 	CameraViewInit();
-	//CameraViewTerm();
-#endif
 
 	getGameState()->setGameMode(MAP_MODE);
 
@@ -42,11 +42,6 @@ int main() {
         s3eDeviceYield(0);
 
         int start = clock();
-
-		if (getGameState()->getLastGameMode() != getGameState()->getGameMode()) {
-			gameModeChanged();
-			getGameState()->updateLastGameMode();
-		}
 
 		if (getGameState()->getGameMode() == CAMERA_MODE) {
 			CameraControllerUpdate();
@@ -83,26 +78,4 @@ int main() {
     IwGxTerminate();
 
     return 0;
-}
-
-void gameModeChanged() {
-	if (getGameState()->getLastGameMode() == CAMERA_MODE) {
-		CameraControllerTerm();
-		CameraModelTerm();
-		CameraViewTerm();
-	} else if (getGameState()->getLastGameMode() == MAP_MODE) {
-		MapControllerTerm();
-		MapModelTerm();
-		MapViewTerm();
-	}
-
-	if (getGameState()->getGameMode() == CAMERA_MODE) {
-		CameraControllerInit();
-		CameraModelInit();
-		CameraViewInit();
-	} else if (getGameState()->getGameMode() == MAP_MODE) {
-		MapControllerInit();
-		MapModelInit();
-		MapViewInit();
-	}
 }
