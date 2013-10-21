@@ -44,6 +44,7 @@ static CIwFVec2 cameraUvs[4];
 
 static CIwFVec2 cameraUvsRotated[4];
 
+uint16* g_pCameraTexelsRGB565 = NULL;
 static CIwTexture* g_CameraTexture = NULL;
 
 static CIwModel*       ghost_Model;
@@ -77,8 +78,6 @@ void transpose(uint16 *tomatrix, uint16 *matrix, int row, int col) {
 	}
 }
 
-uint16* g_pCameraTexelsRGB565 = NULL;
-
 // Camera callback. Copy the capture frame buffer into a texture ready for rendering.
 static int32 frameReceived(void* systemData, void* userData)
 {
@@ -95,7 +94,7 @@ static int32 frameReceived(void* systemData, void* userData)
         g_CameraTexture->SetModifiable(true);
 
 		uint cameraRGB565BufferSize = data->m_Width * data->m_Height * 2; //Size in bytes
-        g_pCameraTexelsRGB565 = (uint16*) s3eRealloc(g_pCameraTexelsRGB565, cameraRGB565BufferSize);
+        g_pCameraTexelsRGB565 = (uint16*) s3eMalloc(cameraRGB565BufferSize);
 
         g_CameraTexture->CopyFromBuffer(data->m_Height, data->m_Width, CIwImage::RGB_565, data->m_Height*2, (uint8*)g_pCameraTexelsRGB565, NULL);
         g_CameraTexture->Upload();
@@ -196,6 +195,9 @@ void CameraViewInit()
 //-----------------------------------------------------------------------------
 void CameraViewTerm()
 {
+	if (g_pCameraTexelsRGB565)
+		delete g_pCameraTexelsRGB565;
+
     if (g_CameraTexture)
         delete g_CameraTexture;
 

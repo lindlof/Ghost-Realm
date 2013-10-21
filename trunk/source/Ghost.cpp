@@ -27,9 +27,6 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	Ghost::player = player;
 	found = false;
 
-	middleMagnetTime = 0;
-	middleMagnet = 0;
-
 	playerHitTime = 0;
 	hitTime = 0;
 	nextHitInterval = 0;
@@ -40,11 +37,16 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	ectoplasm = GHOST_MAX_ECTOPLASM;
 
 	staging = true;
+
+#ifdef GHOST_DEBUG
+	bearing = 0;
+#else
 	do {
 		bearing = IwRandMinMax(0, 360);
 		tries++;
 	} while (abs(bearing - player->getHeading()) < 90 && 
 		tries < 50);
+#endif
 
 	initRotation = IwRandMinMax(0, 360);
 	rotation = initRotation;

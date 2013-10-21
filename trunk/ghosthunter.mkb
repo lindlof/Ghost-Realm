@@ -1,5 +1,7 @@
 #!/usr/bin/env mkb
 
+#define GHOST_DEBUG
+
 # files specifies all files to build
 files
 {

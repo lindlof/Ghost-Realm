@@ -29,9 +29,6 @@ class Ghost {
 
 	int ectoplasm;
 
-	clock_t middleMagnetTime;
-	int middleMagnet;
-
 	float initRotation;
 	float rotation;
 	clock_t foundAnimTime;

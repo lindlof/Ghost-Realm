@@ -33,7 +33,7 @@ int main() {
 #ifdef IW_BUILD_RESOURCES
 	// Build resources in camera view
 	CameraViewInit();
-	CameraViewTerm();
+	//CameraViewTerm();
 #endif
 
 	getGameState()->setGameMode(MAP_MODE);
