@@ -20,6 +20,7 @@ Player::Player() {
 	Player::heading = 0;
 	Player::headingFilter = 0;
 	Player::strike = new Strike();
+	hitTime = 0;
 	init();
 };
 
@@ -50,6 +51,7 @@ bool Player::isReady() {
 
 void Player::playerGotHit(int hit) {
 	Player::mana -= hit;
+	if (hit > 0) hitTime = clock();
 	s3eVibraVibrate(100, 230);
 	IwTrace(GHOST_HUNTER, ("Player vitality %d", getVitality()));
 }
@@ -111,4 +113,8 @@ bool Player::isDead() {
 
 void Player::resurrect() {
 	init();
+}
+
+clock_t Player::getHitTime() {
+	return hitTime;
 }

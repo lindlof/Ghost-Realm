@@ -18,10 +18,14 @@ class Ghost;
 #define PLAYER_MAX_MANA 100.f
 #define HEADING_FILTER 0.2f
 
+#define PLAYER_HIT_LENGTH 600
+#define PLAYER_HIT_FLASHES 3
+
 class Player {
 	private:
 	int ready;
 	int vitality;
+	clock_t hitTime;
 	int mana;
 	double heading;
 	double headingFilter;
@@ -46,6 +50,7 @@ class Player {
 	void wonBattle();
 	bool isDead();
 	void resurrect();
+	clock_t getHitTime();
 };
 
 #endif

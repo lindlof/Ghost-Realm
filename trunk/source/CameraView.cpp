@@ -59,6 +59,8 @@ static CIwFMat* ghostMatrix;
 static GhostCollision* ghostCollision;
 static CameraDefend* cameraDefend;
 
+static int lostManaAnim = 0;
+
 int clickX = 0, clickY = 0;
 
 double inline rad(double d) {
@@ -460,7 +462,27 @@ void renderMana() {
 	x2 = x1 + barLength;
 
 	CIwColour* cols = IW_GX_ALLOC(CIwColour, 4);
-	cols[0].Set(0x00, 0x80, 0xff, 0x70);
+
+	int sinceHit = clock() - player->getHitTime();
+
+	if (sinceHit < PLAYER_HIT_LENGTH) {
+		int animation = PLAYER_HIT_LENGTH / PLAYER_HIT_FLASHES;
+		int halfAnimation = animation / 2;
+
+		float animState = ((float)(sinceHit % animation) / halfAnimation);
+
+		if (animState > 1) {
+			animState = 2 - animState;
+		}
+
+		uint8 g = 0xB0*animState + 0x80*(1-animState);
+		uint8 b = 0xAC*animState + 0xFF*(1-animState);
+		cols->Set(0x00,    g,    b, 0x70);
+	} else {
+		// The default state that displays the image as it is
+		cols->Set(0x00, 0x80, 0xFF, 0x70);
+	}
+
 	cols[1] = cols[2] = cols[3] = cols[0];
 
 	CIwSVec2 XY(x1, y1), dXY(x2-x1, y2-y1);
