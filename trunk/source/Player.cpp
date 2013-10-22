@@ -98,6 +98,8 @@ void Player::accelometerUpdate(int32 x, int32 y, int32 z) {
 
 		// 7-10 successful hits to kill a ghost
 		int hit = IwRandMinMax(GHOST_MAX_ECTOPLASM/100*7, GHOST_MAX_ECTOPLASM/100*10);
+		if (IwRandMinMax(0, 15) == 15) hit *= 2; // Player crit, 1/16 chance
+
 		IwTrace(GHOST_HUNTER, ("Player is hitting %d", hit));
 		if (ghost != NULL) ghost->ghostGotHit(hit);
 	}
