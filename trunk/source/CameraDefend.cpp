@@ -34,9 +34,20 @@ CameraDefend::CameraDefend(Ghost* ghost) {
 	float height = width;
 	float padding = (float)IwGxGetScreenWidth()*0.05f;
 
-	float locPadding = (float)IwGxGetScreenHeight()*0.20f;
+	int mid = IwGxGetScreenHeight()/2;
+	int heightSqrt = sqrt(IwGxGetScreenHeight()/2);
+	bool leftAboveMid;
+
+	float locPadding = (float)IwGxGetScreenHeight()*0.10f;
 	{
-		float leftSpotY = IwRandMinMax(locPadding, IwGxGetScreenHeight()-locPadding-height);
+		// The dot prefers corners
+		int positionFromMid = IwRandMinMax(0, heightSqrt) * IwRandMinMax(0, heightSqrt);
+		positionFromMid = IwGxGetScreenHeight()/2 - positionFromMid;
+		leftAboveMid = IwRandMinMax(0, 9) < 5;
+		int leftSpotY = leftAboveMid ? 
+			mid - positionFromMid + locPadding :
+			mid + positionFromMid - locPadding - height;
+
 		defendVertsLeft[0] = CIwFVec2(padding, leftSpotY);
 		defendVertsLeft[1] = CIwFVec2(padding, leftSpotY+height);
 		defendVertsLeft[2] = CIwFVec2(padding+width, leftSpotY+height);
@@ -44,7 +55,14 @@ CameraDefend::CameraDefend(Ghost* ghost) {
 	}
 
 	{
-		float rightSpotY = IwRandMinMax(locPadding, IwGxGetScreenHeight()-locPadding-height);
+		int positionFromMid = IwRandMinMax(0, heightSqrt) * IwRandMinMax(0, heightSqrt);
+		positionFromMid = IwGxGetScreenHeight()/2 - positionFromMid;
+		// The dot prefers the opposite corner
+		bool rightAboveMid = leftAboveMid ? IwRandMinMax(0, 9) < 2 : IwRandMinMax(0, 9) >= 2;
+		int rightSpotY = rightAboveMid ? 
+			mid - positionFromMid + locPadding :
+			mid + positionFromMid - locPadding - height;
+
 		int screenW = IwGxGetScreenWidth();
 		defendVertsRight[0] = CIwFVec2(screenW-padding-width, rightSpotY);
 		defendVertsRight[1] = CIwFVec2(screenW-padding-width, rightSpotY+height);
