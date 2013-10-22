@@ -241,7 +241,8 @@ bool CameraViewUpdate()
 				cameraDefend->Update();
 				cameraDefend->Render();
 			}
-		} else if (ghostAttack != NULL) {
+		} else if (ghostAttack != NULL && 
+				getGameState()->getGhost()->isAttackDefendable()) {
 			cameraDefend = new CameraDefend(getGameState()->getGhost());
 		}
 	}
