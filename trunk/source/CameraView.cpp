@@ -334,23 +334,12 @@ void renderGhost() {
 	if (sinceHit < GHOST_HIT_LENGTH) {
 		int halfAnimation = GHOST_HIT_LENGTH/2;
 
-		// Hit starts from 0, maxes out at HIT_EFFECT and
-		// then decreases back to 0. This all happens
-		// in the animation length creating fade 
-		// in/fade out effect.
-		int hit;
-
-		// Divide the sinceHit time so that hit maxes
-		// out in HIT_EFFECT*2
-		hit = GHOST_HIT_LIGHT * ((float)sinceHit / halfAnimation);
-
-		if (sinceHit > halfAnimation) {
-			// If we are over the half way let's start
-			// decreasing from HIT_EFFECT
-			hit = GHOST_HIT_LIGHT + (GHOST_HIT_LIGHT - hit);
+		float animState = (float) sinceHit / halfAnimation;
+		if (animState > 1) {
+			animState = 2 - animState;
 		}
 
-		colAmbient.Set(0xff, 0xff-hit, 0xff-hit, 0xff);
+		colAmbient.Set(0xff, 0xff*(1-animState), 0xff*(1-animState), 0xff);
 	} else {
 		// The default state that displays the image as it is
 		colAmbient.Set(0xff, 0xff, 0xff, 0xff);
