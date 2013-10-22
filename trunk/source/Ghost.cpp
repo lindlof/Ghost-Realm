@@ -140,6 +140,7 @@ bool Ghost::ghostUpdate() {
 		}
 	}
 	if (found && getAttack() == NULL && clock() - playerHitTime > nextHitInterval) {
+		attackDefendable = IwRandMinMax(0, 9) > 2; // 30 % of attacks not defendable
 		ghostAttack = new GhostAttack(player, ghostType);
 		playerHitTime = clock();
 		nextHitInterval = IwRandMinMax(4000, 6000);
@@ -217,4 +218,8 @@ void Ghost::tapped() {
 
 GhostAttack* Ghost::getAttack() {
 	return ghostAttack;
+}
+
+bool Ghost::isAttackDefendable() {
+	return attackDefendable;
 }

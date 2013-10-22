@@ -36,6 +36,7 @@ class Ghost {
 	int foundAnimProgress;
 	
 	GhostAttack* ghostAttack;
+	bool attackDefendable;
 	clock_t playerHitTime;
 	clock_t hitTime;
 	int nextHitInterval;
@@ -70,6 +71,7 @@ class Ghost {
 	void tapped();
 	GhostAttack* getAttack();
 	void deleteAttack();
+	bool isAttackDefendable();
 
 };
 
