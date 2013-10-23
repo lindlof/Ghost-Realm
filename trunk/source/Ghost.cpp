@@ -27,10 +27,6 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	Ghost::player = player;
 	found = false;
 
-	playerHitTime = 0;
-	hitTime = 0;
-	nextHitInterval = 0;
-
 	foundAnimTime = 0;
 	foundAnimProgress = 0;
 
@@ -54,6 +50,10 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	tappedTime = 0;
 	tappedCount = 0;
 	ghostAttack = NULL;
+
+	hitTime = 0;
+	playerHitTime = 0;
+	nextHitInterval = 0;
 };
 
 void Ghost::ghostGotHit(int hit) {
@@ -80,6 +80,12 @@ bool Ghost::ghostUpdate() {
 	if (found) {
 
 		if (foundAnimProgress < FOUND_ANIM_STEPS) {
+
+			if (foundAnimProgress == 0) {
+				// Ghost waits for 2 seconds before attacking
+				playerHitTime = clock();
+				nextHitInterval = 2000;
+			}
 
 			if (clock() - foundAnimTime > 3) {
 				foundAnimProgress++;
