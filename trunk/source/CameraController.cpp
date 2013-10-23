@@ -7,11 +7,12 @@
  * PARTICULAR PURPOSE.
  */
 
+#include "GameState.h"
 #include "CameraModel.h"
 #include "CameraView.h"
 
-#include "s3eCompass.h"
 #include "s3e.h"
+#include "s3eCompass.h"
 
 struct Touch {
     int32 x; // position x
@@ -27,13 +28,13 @@ void SingleTouchMotion(s3ePointerMotionEvent* event);
 
 void CameraControllerInit()
 {
-    if (s3eAccelerometerStart() == S3E_RESULT_SUCCESS)
-    {
-        accelometerEnabled = true;
-    }
 	if (s3eCompassAvailable())
     {
         s3eCompassStart();
+    }
+    if (s3eAccelerometerStart() == S3E_RESULT_SUCCESS)
+    {
+        accelometerEnabled = true;
     }
 
 	s3ePointerRegister(S3E_POINTER_BUTTON_EVENT, (s3eCallback)SingleTouch, NULL);
@@ -42,11 +43,11 @@ void CameraControllerInit()
 
 void CameraControllerTerm()
 {
-    s3eAccelerometerStop();
 	if (s3eCompassAvailable()) 
 	{
         s3eCompassStop();
 	}
+    s3eAccelerometerStop();
 }
 
 bool CameraControllerUpdate()
@@ -64,7 +65,7 @@ bool CameraControllerUpdate()
 	bool compassError = S3E_RESULT_SUCCESS != s3eCompassGetHeading(&h);
 	double compassHeading = h.m_Heading;
 
-	compassUpdate(compassHeading, compassError);
+	getGameState()->getPlayer()->compassUpdate(compassHeading, compassError);
 
     return true;
 }

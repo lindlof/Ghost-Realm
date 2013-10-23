@@ -7,6 +7,7 @@
  * PARTICULAR PURPOSE.
  */
 
+#include "GameState.h"
 #include "MapView.h"
 
 #include "IwGx.h"
@@ -14,13 +15,15 @@
 #include "IwMaterial.h"
 #include "IwTexture.h"
 #include "IwGraphics.h"
+#include "Iw2D.h"
 
 void renderMap();
+void renderPlayer();
 
 static FightButton* fightButton;
 
 static CIwTexture* ghostTexture;
-static CIwTexture* playerTexture;
+static CIw2DImage* playerTexture;
 static CIwTexture* mapTexture;
 
 void mapInit(int mapW, int mapH);
@@ -34,15 +37,23 @@ static CIwFVec2 mapDefaultUvs[4] =
     CIwFVec2(1, 0)
 };
 
+double inline rad(double d) {
+    return d / 180.0f * PI;
+}
+
+double inline deg(double d) {
+    return d / PI * 180.0f;
+}
+
 void MapViewInit()
 {	
+	Iw2DInit();
+
 	ghostTexture = new CIwTexture;
 	ghostTexture->LoadFromFile ("textures/map_ghost.png");
 	ghostTexture->Upload();
 
-	playerTexture = new CIwTexture;
-	playerTexture->LoadFromFile ("textures/map_player.png");
-	playerTexture->Upload();
+	playerTexture = Iw2DCreateImage("textures/map_player.png");
 	
 	mapTexture = new CIwTexture;
 	mapTexture->LoadFromFile ("textures/map_template.png");
@@ -91,6 +102,8 @@ void MapViewTerm() {
 
 	if (fightButton)
 		delete fightButton;
+
+	Iw2DTerminate();
 }
 
 bool MapViewUpdate() {
@@ -99,6 +112,7 @@ bool MapViewUpdate() {
     IwGxClear(IW_GX_COLOUR_BUFFER_F | IW_GX_DEPTH_BUFFER_F);
 
 	renderMap();
+	renderPlayer();
 
 	fightButton->Render();
 
@@ -123,6 +137,25 @@ void renderMap() {
     IwGxSetVertStreamScreenSpace(mapVert, 4);
 
     IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
+}
+
+void renderPlayer() {
+	IwGxLightingOff();
+
+	double angle = rad(getGameState()->getPlayer()->getHeading());
+
+	Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
+	CIwFVec2 centre =
+			CIwFVec2((int16)Iw2DGetSurfaceWidth()/2,
+					 (int16)Iw2DGetSurfaceHeight()/2);
+	CIwFMat2D rot;
+	rot.SetRot(angle, (CIwFVec2)centre);
+	Iw2DSetTransformMatrix(rot);
+
+	CIwFVec2 size = CIwFVec2(41, 47);
+	CIwFVec2 topLeft = CIwFVec2(centre.x-size.x/2, centre.y-size.y/2);
+
+	Iw2DDrawImage(playerTexture, topLeft, size);
 }
 
 FightButton* getFightButton() {

@@ -7,22 +7,21 @@
  * PARTICULAR PURPOSE.
  */
 
+#include "GameState.h"
 #include "MapView.h"
 
-#include "s3eCompass.h"
 #include "s3e.h"
+#include "s3eCompass.h"
 
 void MapSingleTouch(s3ePointerEvent* event);
 
 void MapControllerInit() {
-
 	if (s3eCompassAvailable())
     {
         s3eCompassStart();
     }
 
 	s3ePointerRegister(S3E_POINTER_BUTTON_EVENT, (s3eCallback)MapSingleTouch, NULL);
-
 }
 
 void MapControllerTerm() {
@@ -33,6 +32,13 @@ void MapControllerTerm() {
 }
 
 bool MapControllerUpdate() {
+
+	s3eCompassHeading h;
+	bool compassError = S3E_RESULT_SUCCESS != s3eCompassGetHeading(&h);
+	double compassHeading = h.m_Heading;
+
+	getGameState()->getPlayer()->compassUpdate(compassHeading, compassError);
+
 	return true;
 }
 

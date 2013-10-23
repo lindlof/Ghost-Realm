@@ -14,6 +14,8 @@ files
 	CameraModel.h
 	GhostAttack.cpp
 	GhostAttack.h
+	Strike.cpp
+	Strike.h
 
 	[CameraView]
 	CameraView.cpp
@@ -46,8 +48,6 @@ files
 	GhostType.h
 	Player.cpp
 	Player.h
-	Strike.cpp
-	Strike.h
 
 	[Main]
 	Main.cpp
@@ -69,6 +69,7 @@ subprojects
     iwgraphics
     iwanim
 	iwui
+	iw2d
 }
 assets
 {
