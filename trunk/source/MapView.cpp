@@ -18,11 +18,12 @@
 #include "Iw2D.h"
 
 void renderMap();
-void renderPlayer();
+void renderMapGhost();
+void renderMapPlayer();
 
 static FightButton* fightButton;
 
-static CIwTexture* ghostTexture;
+static CIw2DImage* ghostTexture;
 static CIw2DImage* playerTexture;
 static CIwTexture* mapTexture;
 
@@ -49,9 +50,7 @@ void MapViewInit()
 {	
 	Iw2DInit();
 
-	ghostTexture = new CIwTexture;
-	ghostTexture->LoadFromFile ("textures/map_ghost.png");
-	ghostTexture->Upload();
+	ghostTexture = Iw2DCreateImage("textures/map_ghost.png");
 
 	playerTexture = Iw2DCreateImage("textures/map_player.png");
 	
@@ -112,7 +111,8 @@ bool MapViewUpdate() {
     IwGxClear(IW_GX_COLOUR_BUFFER_F | IW_GX_DEPTH_BUFFER_F);
 
 	renderMap();
-	renderPlayer();
+	renderMapGhost();
+	renderMapPlayer();
 
 	fightButton->Render();
 
@@ -139,7 +139,22 @@ void renderMap() {
     IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
 }
 
-void renderPlayer() {
+void renderMapGhost() {
+	IwGxLightingOff();
+
+	Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
+
+	CIwFVec2 centre =
+			CIwFVec2((int16)Iw2DGetSurfaceWidth()/2,
+					 (int16)Iw2DGetSurfaceHeight()/2);
+
+	CIwFVec2 size = CIwFVec2(170, 171);
+	CIwFVec2 topLeft = CIwFVec2(centre.x-40-size.x/2, centre.y-40-size.y/2);
+
+	Iw2DDrawImage(ghostTexture, topLeft, size);
+}
+
+void renderMapPlayer() {
 	IwGxLightingOff();
 
 	double angle = rad(getGameState()->getPlayer()->getHeading());
