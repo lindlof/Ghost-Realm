@@ -44,7 +44,7 @@ class Ghost {
 	clock_t tappedTime;
 	int tappedCount;
 
-	int16 getMidPositionX();
+	double floatingAngle;
 
 	// Ghost is not initially in combat but you find it
 	// from a specific point of compass around you.
@@ -59,7 +59,6 @@ class Ghost {
 
 	float getStrength();
 
-	void floatingUpdate(int32 x, int32 y, int32 z);
 	void setFound();
 	bool isFound();
 	int getEctoplasm();
@@ -73,6 +72,8 @@ class Ghost {
 	void deleteAttack();
 	bool isAttackDefendable();
 
+	void floatingAngleUpdate(float x, float y, float z);
+	double getFloatingAngle();
 };
 
 #endif

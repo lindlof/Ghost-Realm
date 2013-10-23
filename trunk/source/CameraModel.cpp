@@ -10,6 +10,7 @@
 #include "GameState.h"
 #include "CameraModel.h"
 #include "GhostType.h"
+#include "Ghost.h"
 
 #include <math.h>
 #include <time.h>
@@ -20,6 +21,7 @@ int iteration = 0;
 float gravityX, gravityY, gravityZ;
 
 void accelometerUpdate(int32 x, int32 y, int32 z) {
+
 	// alpha is calculated as t / (t + dT)
     // with t, the low-pass filter's time-constant
     // and dT, the event delivery rate
@@ -35,6 +37,8 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
 	float linearAccelerationY = y - gravityY;
 	float linearAccelerationZ = z - gravityZ;
 
+	getGameState()->getGhost()->floatingAngleUpdate(gravityX, gravityY, gravityZ);
+
 	if (iteration < ACCELOMETER_ITERATIONS) {
 		// Accelometer values are useless before the gravity values
 		// have some time to adjust.
@@ -43,8 +47,6 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
 			IwTrace(GHOST_HUNTER, ("CameraModel accelometer initialized"));
 	} else {
 		getGameState()->getPlayer()->accelometerUpdate(linearAccelerationX, linearAccelerationY, 
-			linearAccelerationZ);
-		getGameState()->getGhost()->floatingUpdate(linearAccelerationX, linearAccelerationY, 
 			linearAccelerationZ);
 	}
 }

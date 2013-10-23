@@ -54,6 +54,8 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	hitTime = 0;
 	playerHitTime = 0;
 	nextHitInterval = 0;
+	
+	floatingAngle = 0;
 };
 
 void Ghost::ghostGotHit(int hit) {
@@ -185,20 +187,6 @@ int Ghost::getEctoplasm() {
 	return ectoplasm;
 }
 
-void Ghost::floatingUpdate(int32 x, int32 y, int32 z) {
-	
-	/*if (found && foundAnimProgress == FOUND_ANIM_STEPS && 
-			clock() - floatingTime > 50) {
-		float floatingPower = 50.f;
-
-		int16 midPositionX = getMidPositionX();
-		Ghost::positionX = (positionX + x) * (floatingPower/100) + 
-			(midPositionX * (100-floatingPower)/100);
-
-		floatingTime = clock();
-	}*/
-}
-
 // Ghost must be tapped for aggro
 void Ghost::tapped() {
 	if (player->isDead()) return;
@@ -228,4 +216,32 @@ GhostAttack* Ghost::getAttack() {
 
 bool Ghost::isAttackDefendable() {
 	return attackDefendable;
+}
+
+void Ghost::floatingAngleUpdate(float x, float y, float z) {
+
+	double currentAngle;
+	float ratio = y/960;
+	if (ratio < 0) ratio *= -1;
+	
+	if (y < 0 && x > 0) { // 0 - 90 deg
+		currentAngle = 0*ratio + 90*(1-ratio);
+	} else if (y > 0 && x > 0) { // 90 - 180 deg
+		currentAngle = 180*ratio + 90*(1-ratio);
+	} else if (y > 0 && x < 0) { // 180 - 270 deg
+		currentAngle = 180*ratio + 270*(1-ratio);
+	} else if (y < 0 && x < 0) { // 270 - 360 deg
+		currentAngle = 360*ratio + 270*(1-ratio);
+	}
+
+	if (floatingAngle < 90 && currentAngle > 360-90) {
+		floatingAngle += 360;
+	} else if (floatingAngle > 360-90 && currentAngle < 90) {
+		floatingAngle -= 360;
+	}
+	floatingAngle = floatingAngle*0.1f + currentAngle*0.9f;
+}
+
+double Ghost::getFloatingAngle() {
+	return floatingAngle;
 }
