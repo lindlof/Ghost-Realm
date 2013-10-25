@@ -54,6 +54,5 @@ void PlayerHit::Render() {
 
 		colour.Set(0xFF, 0xFF, 0xFF, 0xFF);
 		Iw2DSetColour(colour);
-
 	}
 }

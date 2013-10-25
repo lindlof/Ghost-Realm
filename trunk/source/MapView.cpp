@@ -141,6 +141,7 @@ void renderMap() {
 void renderMapGhost() {
 	IwGxLightingOff();
 
+	Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
 	Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
 
 	CIwFVec2 centre =
@@ -156,6 +157,7 @@ void renderMapGhost() {
 void renderMapPlayer() {
 	IwGxLightingOff();
 
+	Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
 	double angle = rad(getGameState()->getPlayer()->getHeading());
 
 	Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
@@ -179,6 +181,7 @@ FightButton* getFightButton() {
 void renderMapHealth() {
 	IwGxLightingOff();
 
+	Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
 	Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
 
 	int16 w = (double)IwGxGetScreenWidth() * 0.11f;
