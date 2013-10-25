@@ -430,8 +430,8 @@ void renderMana() {
 			animState = 2 - animState;
 		}
 
-		uint8 g = 0xB0*animState + 0x80*(1-animState);
-		uint8 b = 0xAC*animState + 0xFF*(1-animState);
+		uint8 g = 0xC0*animState + 0x80*(1-animState);
+		uint8 b = 0x9C*animState + 0xFF*(1-animState);
 		cols->Set(0x00,    g,    b, 0x70);
 	} else {
 		// The default state that displays the image as it is
