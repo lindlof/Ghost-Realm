@@ -14,6 +14,7 @@
 #define GHOST_HIT_LENGTH 500
 #define GHOST_HIT_LIGHT 0xf0 // 0x00 - 0xff
 
+void CameraViewPreInit();
 void CameraViewInit();
 void CameraViewTerm();
 bool CameraViewUpdate();

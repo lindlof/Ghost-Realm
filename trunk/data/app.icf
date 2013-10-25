@@ -18,12 +18,12 @@
 
 [S3E]
 DispFixRot="FixedPortrait" # Portrait
-MemSize=20200000
+MemSize=40200000
 MemSizeDebug=100000000
 SysTraceToFile=1
 
 [GX]
-DataCacheSize=2200000
+DataCacheSize=10200000
 NumTPages=20
 
 [TRACE]

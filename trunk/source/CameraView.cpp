@@ -14,6 +14,7 @@
 
 #include "CameraUI.h"
 #include "CameraDefend.h"
+#include "PlayerHit.h"
 
 #include "s3e.h"
 #include "s3eCamera.h"
@@ -57,6 +58,7 @@ static CIwFMat viewMatrix;
 static CIwFMat* ghostMatrix;
 static GhostCollision* ghostCollision;
 static CameraDefend* cameraDefend;
+static PlayerHit* playerHit;
 
 static int lostManaAnim = 0;
 
@@ -139,7 +141,10 @@ void cameraStreamInit(int camDataW, int camDataH) {
     cameraUvs[2] = CIwFVec2(0, 1);
     cameraUvs[3] = CIwFVec2(0, 0);
 }
-
+void CameraViewPreInit()
+{
+	playerHit = new PlayerHit(getGameState()->getPlayer());
+}
 void CameraViewInit()
 {
     // Camera field of view
@@ -213,6 +218,9 @@ void CameraViewTerm()
         s3eCameraUnRegister(S3E_CAMERA_UPDATE_STREAMING, frameReceived);
     }
 
+	if (playerHit)
+		delete playerHit;
+
 	CameraUITerm();
 }
 
@@ -227,6 +235,7 @@ bool CameraViewUpdate()
 	setupPlayer();
 	if (ghostAvailable)
 	  renderGhost();
+	playerHit->Render();
 	renderMana();
 
 	if (ghostAvailable) {

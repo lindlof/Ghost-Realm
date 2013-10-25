@@ -50,8 +50,6 @@ double inline deg(double d) {
 
 void MapViewInit()
 {	
-	Iw2DInit();
-
 	ghostTexture = Iw2DCreateImage("textures/map_ghost.png");
 	playerTexture = Iw2DCreateImage("textures/map_player.png");
 	healthTexture = Iw2DCreateImage("textures/map_health.png");
@@ -103,8 +101,6 @@ void MapViewTerm() {
 
 	if (fightButton)
 		delete fightButton;
-
-	Iw2DTerminate();
 }
 
 bool MapViewUpdate() {
@@ -182,56 +178,8 @@ FightButton* getFightButton() {
 
 void renderMapHealth() {
 	IwGxLightingOff();
-	/*
-	Player *player = getGameState()->getPlayer();
-
-	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
-	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
-	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
-
-	IwGxSetMaterial(pMat);
-
-	// Vertex coords for full vitality
-	int16 x1 = ((double)IwGxGetScreenWidth()/100) * 5;
-    int16 x2 = ((double)IwGxGetScreenWidth()/100) * 95;
-    int16 y1 = ((double)IwGxGetScreenHeight()/100) * 1;
-    int16 y2 = ((double)IwGxGetScreenHeight()/100) * 3;
-
-	// Full length of the bar
-	int16 barLength = x2 - x1;
-	// Multiply the full bar length with current vitality status
-	barLength =  barLength * (float)player->getVitality() / PLAYER_MAX_VITALITY;
-
-	x2 = x1 + barLength;
-
-	CIwColour* cols = IW_GX_ALLOC(CIwColour, 4);
-	cols[0].Set(0xff, 0, 0, 0x70);
-	cols[1] = cols[2] = cols[3] = cols[0];
-
-	CIwSVec2 XY(x1, y1), dXY(x2-x1, y2-y1);
-	IwGxDrawRectScreenSpace(&XY, &dXY, cols);
-	*/
-
-
-	/*
-	int16 w = IwGxGetScreenWidth() * 0.7f;
-		if (w > (int16)fightTexture->GetWidth()) w = (int16)fightTexture->GetWidth();
-
-		float whScale = (float)((double)fightTexture->GetWidth() / fightTexture->GetHeight());
-		int16 h = w * 1/whScale;
-		int bottomPadding = IwGxGetScreenHeight() * 0.03f;
-
-		int16 x1 = IwGxGetScreenWidth()/2 - w/2;
-		int16 y1 = IwGxGetScreenHeight() - h - bottomPadding;
-
-		buttonXY = CIwSVec2(x1, y1);
-		buttonWH = CIwSVec2(w, h);
-		*/
-
-	IwGxLightingOff();
 
 	Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
-
 
 	int16 w = (double)IwGxGetScreenWidth() * 0.11f;
 	if (w > (int16)healthTexture->GetWidth()) w = (int16)healthTexture->GetWidth();

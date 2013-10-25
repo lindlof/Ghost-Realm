@@ -26,6 +26,8 @@ files
 	GhostCollision.h
 	CameraDefend.cpp
 	CameraDefend.h
+	PlayerHit.cpp
+	PlayerHit.h
 
 	[Map]
 	MapController.cpp
@@ -79,6 +81,7 @@ assets
 
     (data)
     textures/defending_dot.png
+	textures/player_blood.png
 	textures/map_fight.png
 	textures/map_ghost.png
 	textures/map_player.png

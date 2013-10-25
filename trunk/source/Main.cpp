@@ -18,15 +18,19 @@
 #include "IwTexture.h"
 #include "IwGraphics.h"
 #include "IwAnim.h"
+#include "Iw2D.h"
 
 int main() {
 
 	IwGxInit();
 	IwGraphicsInit();
 	IwAnimInit();
+	Iw2DInit();
 
 	// Set screen clear colour
     IwGxSetColClear(0x0, 0x0, 0x0, 0xff);
+
+	CameraViewPreInit();
 
 	MapControllerInit();
 	MapModelInit();
@@ -73,6 +77,7 @@ int main() {
 
 	delete getGameState();
 
+	Iw2DTerminate();
 	IwAnimTerminate();
 	IwGraphicsTerminate();
     IwGxTerminate();
