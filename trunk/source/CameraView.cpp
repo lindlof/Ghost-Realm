@@ -34,7 +34,6 @@
 void setupPlayer();
 void renderCamera();
 void renderGhost();
-void renderVitality();
 void renderMana();
 void renderGameOver();
 
@@ -228,7 +227,6 @@ bool CameraViewUpdate()
 	setupPlayer();
 	if (ghostAvailable)
 	  renderGhost();
-	renderVitality();
 	renderMana();
 
 	if (ghostAvailable) {
@@ -393,39 +391,6 @@ void renderGhost() {
 	}
 }
 
-void renderVitality() {
-
-	IwGxLightingOff();
-
-	Player *player = getGameState()->getPlayer();
-
-	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
-	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
-	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
-
-	IwGxSetMaterial(pMat);
-
-	// Vertex coords for full vitality
-	int16 x1 = ((double)IwGxGetScreenWidth()/100) * 5;
-    int16 x2 = ((double)IwGxGetScreenWidth()/100) * 95;
-    int16 y1 = ((double)IwGxGetScreenHeight()/100) * 1;
-    int16 y2 = ((double)IwGxGetScreenHeight()/100) * 3;
-
-	// Full length of the bar
-	int16 barLength = x2 - x1;
-	// Multiply the full bar length with current vitality status
-	barLength =  barLength * (float)player->getVitality() / PLAYER_MAX_VITALITY;
-
-	x2 = x1 + barLength;
-
-	CIwColour* cols = IW_GX_ALLOC(CIwColour, 4);
-	cols[0].Set(0xff, 0, 0, 0x70);
-	cols[1] = cols[2] = cols[3] = cols[0];
-
-	CIwSVec2 XY(x1, y1), dXY(x2-x1, y2-y1);
-	IwGxDrawRectScreenSpace(&XY, &dXY, cols);
-}
-
 void renderMana() {
 	
 	IwGxLightingOff();
@@ -438,15 +403,15 @@ void renderMana() {
 
 	IwGxSetMaterial(pMat);
 
-	// Vertex coords for full vitality
+	// Vertex coords for full mana
 	int16 x1 = ((double)IwGxGetScreenWidth()/100) * 5;
     int16 x2 = ((double)IwGxGetScreenWidth()/100) * 95;
-    int16 y1 = ((double)IwGxGetScreenHeight()/100) * 4;
-    int16 y2 = ((double)IwGxGetScreenHeight()/100) * 6;
+    int16 y1 = ((double)IwGxGetScreenHeight()/100) * 1;
+    int16 y2 = ((double)IwGxGetScreenHeight()/100) * 3;
 
 	// Full length of the bar
 	int16 barLength = x2 - x1;
-	// Multiply the full bar length with current vitality status
+	// Multiply the full bar length with current mana status
 	barLength =  barLength * (float)player->getMana() / PLAYER_MAX_MANA;
 
 	x2 = x1 + barLength;
