@@ -182,7 +182,7 @@ FightButton* getFightButton() {
 
 void renderMapHealth() {
 	IwGxLightingOff();
-
+	/*
 	Player *player = getGameState()->getPlayer();
 
 	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
@@ -210,4 +210,47 @@ void renderMapHealth() {
 
 	CIwSVec2 XY(x1, y1), dXY(x2-x1, y2-y1);
 	IwGxDrawRectScreenSpace(&XY, &dXY, cols);
+	*/
+
+
+	/*
+	int16 w = IwGxGetScreenWidth() * 0.7f;
+		if (w > (int16)fightTexture->GetWidth()) w = (int16)fightTexture->GetWidth();
+
+		float whScale = (float)((double)fightTexture->GetWidth() / fightTexture->GetHeight());
+		int16 h = w * 1/whScale;
+		int bottomPadding = IwGxGetScreenHeight() * 0.03f;
+
+		int16 x1 = IwGxGetScreenWidth()/2 - w/2;
+		int16 y1 = IwGxGetScreenHeight() - h - bottomPadding;
+
+		buttonXY = CIwSVec2(x1, y1);
+		buttonWH = CIwSVec2(w, h);
+		*/
+
+	IwGxLightingOff();
+
+	Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
+
+
+	int16 w = (double)IwGxGetScreenWidth() * 0.11f;
+	if (w > (int16)healthTexture->GetWidth()) w = (int16)healthTexture->GetWidth();
+
+	float whScale = (float)((double)healthTexture->GetWidth() / healthTexture->GetHeight());
+	int16 h = w * 1/whScale;
+
+	int leftPadding = IwGxGetScreenWidth() * 0.20f;
+	int topPadding = IwGxGetScreenHeight() * 0.02f;
+
+	int leftMargin = IwGxGetScreenWidth() * 0.03f;
+	int topMargin = IwGxGetScreenHeight() * 0.05f;
+
+	CIwFVec2 size = CIwFVec2(w, h);
+	int vitality = getGameState()->getPlayer()->getVitality();
+
+	for (int i = 0; i < vitality; i++) {
+		CIwFVec2 topLeft = CIwFVec2(leftPadding + (leftMargin+w)*i, topPadding);
+
+		Iw2DDrawImage(healthTexture, topLeft, size);
+	}
 }

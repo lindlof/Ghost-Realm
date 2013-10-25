@@ -82,6 +82,7 @@ assets
 	textures/map_fight.png
 	textures/map_ghost.png
 	textures/map_player.png
+	textures/map_health.png
 	textures/map_template.png
 }
 #### AUTO GENERATED deployment settings from DeployTool.exe. Do not edit below this line ####

@@ -66,13 +66,13 @@ int Player::getMana() {
 
 void Player::lostBattle() {
 	setGhost(NULL);
-	vitality -= PLAYER_MAX_VITALITY/2;
+	vitality -= 2;
 	if (!isDead()) mana = PLAYER_MAX_MANA;
 }
 
 void Player::wonBattle() {
 	setGhost(NULL);
-	vitality += PLAYER_MAX_VITALITY/6;
+	vitality += 1;
 	if (vitality > PLAYER_MAX_VITALITY) vitality = PLAYER_MAX_VITALITY;
 	mana = PLAYER_MAX_MANA;
 }
