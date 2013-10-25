@@ -27,7 +27,6 @@ PlayerHit::~PlayerHit() {
 
 void PlayerHit::Render() {
 	IwGxLightingOff();
-	IwGxSetColEmissive(true);
 
 	int sinceHit = clock() - player->getHitTime();
 	int animation = 400;
