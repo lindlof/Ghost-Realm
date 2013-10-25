@@ -26,6 +26,7 @@ static FightButton* fightButton;
 
 static CIw2DImage* ghostTexture;
 static CIw2DImage* playerTexture;
+static CIw2DImage* healthTexture;
 static CIwTexture* mapTexture;
 
 void mapInit(int mapW, int mapH);
@@ -52,8 +53,8 @@ void MapViewInit()
 	Iw2DInit();
 
 	ghostTexture = Iw2DCreateImage("textures/map_ghost.png");
-
 	playerTexture = Iw2DCreateImage("textures/map_player.png");
+	healthTexture = Iw2DCreateImage("textures/map_health.png");
 	
 	mapTexture = new CIwTexture;
 	mapTexture->LoadFromFile ("textures/map_template.png");
@@ -150,8 +151,8 @@ void renderMapGhost() {
 			CIwFVec2((int16)Iw2DGetSurfaceWidth()/2,
 					 (int16)Iw2DGetSurfaceHeight()/2);
 
-	CIwFVec2 size = CIwFVec2(170, 171);
-	CIwFVec2 topLeft = CIwFVec2(centre.x-40-size.x/2, centre.y-40-size.y/2);
+	CIwFVec2 size = CIwFVec2(259, 259);
+	CIwFVec2 topLeft = CIwFVec2(centre.x-50-size.x/2, centre.y-50-size.y/2);
 
 	Iw2DDrawImage(ghostTexture, topLeft, size);
 }
@@ -169,7 +170,7 @@ void renderMapPlayer() {
 	rot.SetRot(angle, (CIwFVec2)centre);
 	Iw2DSetTransformMatrix(rot);
 
-	CIwFVec2 size = CIwFVec2(41, 47);
+	CIwFVec2 size = CIwFVec2(53, 57);
 	CIwFVec2 topLeft = CIwFVec2(centre.x-size.x/2, centre.y-size.y/2);
 
 	Iw2DDrawImage(playerTexture, topLeft, size);
