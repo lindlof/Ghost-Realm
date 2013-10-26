@@ -203,10 +203,6 @@ void Ghost::tapped() {
 	// Press and release both increase the count
 	if (tappedCount > 1) {
 		IwTrace(GHOST_HUNTER, ("Player touched a ghost"));
-		if (player->isReady()) {
-			this->setFound();
-			player->setGhost(this);
-		}
 	}
 }
 

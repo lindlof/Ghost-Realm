@@ -9,6 +9,7 @@
 
 #include "Player.h"
 
+#include "GameState.h"
 #include "IwDebug.h"
 #include "IwRandom.h"
 #include "s3eTimer.h"
@@ -91,17 +92,29 @@ double Player::getHeading() {
 
 void Player::accelometerUpdate(int32 x, int32 y, int32 z) {
 	int strikeRes = strike->strikeUpdate(x, y, z);
-	if (ghost != NULL && strikeRes > 0) {
-		int manaLoss = 2;
-		mana -= manaLoss;
-		IwTrace(GHOST_HUNTER, ("Player loses mana as she hits %d, mana: %d", manaLoss, mana));
 
-		// 7-10 successful hits to kill a ghost
-		int hit = IwRandMinMax(GHOST_MAX_ECTOPLASM/100*7, GHOST_MAX_ECTOPLASM/100*10);
-		if (IwRandMinMax(0, 15) == 15) hit *= 2; // Player crit, 1/16 chance
+	if (strikeRes > 0 && isReady()) {
 
-		IwTrace(GHOST_HUNTER, ("Player is hitting %d", hit));
-		if (ghost != NULL) ghost->ghostGotHit(hit);
+		{ // Initial hit?
+			int ghostAngle = abs(getHeading() - getGameState()->getGhost()->getBearing());
+			if (ghostAngle < 30 && ghost == NULL) {
+				setGhost(getGameState()->getGhost());
+				ghost->setFound();
+			}
+		}
+
+		if (ghost != NULL) {
+			int manaLoss = 2;
+			mana -= manaLoss;
+			IwTrace(GHOST_HUNTER, ("Player loses mana as she hits %d, mana: %d", manaLoss, mana));
+
+			// 7-10 successful hits to kill a ghost
+			int hit = IwRandMinMax(GHOST_MAX_ECTOPLASM/100*7, GHOST_MAX_ECTOPLASM/100*10);
+			if (IwRandMinMax(0, 15) == 15) hit *= 2; // Player crit, 1/16 chance
+
+			IwTrace(GHOST_HUNTER, ("Player is hitting %d", hit));
+			if (ghost != NULL) ghost->ghostGotHit(hit);
+		}
 	}
 }
 
