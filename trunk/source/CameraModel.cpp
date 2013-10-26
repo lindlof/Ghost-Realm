@@ -20,6 +20,8 @@
 int iteration = 0;
 float gravityX, gravityY, gravityZ;
 
+FightTutorial* fightTutorial;
+
 void accelometerUpdate(int32 x, int32 y, int32 z) {
 
 	// alpha is calculated as t / (t + dT)
@@ -53,12 +55,13 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
 
 void CameraModelInit() 
 {
-	
+	fightTutorial = new FightTutorial();
 }
 
 void CameraModelTerm() 
 {
-	
+	if (fightTutorial)
+		delete fightTutorial;
 }
 
 bool CameraModelUpdate() 
@@ -81,5 +84,14 @@ bool CameraModelUpdate()
 		gameState->getGhost()->ghostUpdate();
 
 	player->playerUpdate();
+
 	return true;
+}
+
+FightTutorial* getFightTutorial() {
+	return fightTutorial;
+}
+
+bool gameIsHalt() {
+	return fightTutorial->isTutorialOn();
 }

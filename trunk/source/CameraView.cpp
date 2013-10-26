@@ -15,6 +15,7 @@
 #include "CameraUI.h"
 #include "CameraDefend.h"
 #include "PlayerHit.h"
+#include "FightTutorialView.h"
 
 #include "s3e.h"
 #include "s3eCamera.h"
@@ -34,6 +35,7 @@
 
 void setupPlayer();
 void renderCamera();
+void updateGhost();
 void renderGhost();
 void renderMana();
 void renderGameOver();
@@ -59,6 +61,7 @@ static CIwFMat* ghostMatrix;
 static GhostCollision* ghostCollision;
 static CameraDefend* cameraDefend;
 static PlayerHit* playerHit;
+static FightTutorialView* tutorialView;
 
 static int lostManaAnim = 0;
 
@@ -144,6 +147,7 @@ void cameraStreamInit(int camDataW, int camDataH) {
 void CameraViewPreInit()
 {
 	playerHit = new PlayerHit(getGameState()->getPlayer());
+	tutorialView = new FightTutorialView();
 }
 void CameraViewInit()
 {
@@ -193,6 +197,7 @@ void CameraViewInit()
 	CameraUIInit();
 
 	cameraDefend = NULL;
+	tutorialView->setTutorial(getFightTutorial());
 }
 
 //-----------------------------------------------------------------------------
@@ -221,6 +226,9 @@ void CameraViewTerm()
 	if (playerHit)
 		delete playerHit;
 
+	if (tutorialView)
+		delete tutorialView;
+
 	CameraUITerm();
 }
 
@@ -231,10 +239,14 @@ bool CameraViewUpdate()
 	// Clear the screen
     IwGxClear(IW_GX_COLOUR_BUFFER_F | IW_GX_DEPTH_BUFFER_F);
 
+	if (!gameIsHalt()) {
+		updateGhost();
+	}
+
 	renderCamera();
 	setupPlayer();
 	if (ghostAvailable)
-	  renderGhost();
+		renderGhost();
 	playerHit->Render();
 	renderMana();
 
@@ -260,6 +272,8 @@ bool CameraViewUpdate()
 	} else {
 		showGameOverButton(false);
 	}
+
+	tutorialView->Render();
 
 	// Draw background, then clear depth buffer so we can render UI over the top.
     IwGxFlush();
@@ -312,6 +326,14 @@ void setupPlayer() {
     IwGxSetViewMatrix(&viewMatrix);
 }
 
+void updateGhost() {
+	// Update animation player
+    ghost_Player->Update(1.0f / 30.0f);
+
+    // Update IwGx state time stamp
+    IwGxTickUpdate();
+}
+
 void renderGhost() {
 
 	if (!getGameState()->getPlayer()->isReady()) {
@@ -355,12 +377,6 @@ void renderGhost() {
 	
 	IwGxSetLightCol(0, &colAmbient);
 
-	// Update animation player
-    ghost_Player->Update(1.0f / 30.0f);
-
-    // Update IwGx state time stamp
-    IwGxTickUpdate();
-
 	IwGxSetScreenSpaceSlot(1);
     IwAnimSetSkelContext(ghost_Player->GetSkel());
     IwAnimSetSkinContext(ghost_Skin);
@@ -371,19 +387,6 @@ void renderGhost() {
 		int32 faceID = ghostCollision->GetFaceUnderCursor(clickX, clickY);
 		if (faceID != -1)
 		{
-			/*
-			CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
-			pMat->SetColAmbient(0x00ff00ff);
-			pMat->SetCullMode(CIwMaterial::CULL_NONE);
-			IwGxSetMaterial(pMat);
-
-			CIwFVec3* verts = IW_GX_ALLOC(CIwFVec3, 3);
-			verts[0] = ghostCollision->GetVert(faceID);
-			verts[1] = ghostCollision->GetVert(faceID+1);
-			verts[2] = ghostCollision->GetVert(faceID+2);
-			IwGxSetVertStreamModelSpace(verts, 3);
-			IwGxDrawPrims(IW_GX_TRI_LIST, NULL, 3);
-			*/
 			getGameState()->getGhost()->tapped();
 			clickX = clickY = -1;
 		} else {

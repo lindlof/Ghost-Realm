@@ -8,6 +8,8 @@
  */
 
 #include <math.h>
+
+#include "FightTutorial.h"
 #include "Ghost.h"
 
 void CameraModelInit();
@@ -15,3 +17,5 @@ void CameraModelTerm();
 bool CameraModelUpdate();
 
 void accelometerUpdate(int32 x, int32 y, int32 z);
+FightTutorial* getFightTutorial();
+bool gameIsHalt();
