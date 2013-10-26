@@ -12,6 +12,8 @@
 
 #include "IwGx.h"
 
+#include <time.h>
+
 class FightButton {
 	private:
 	CIwTexture* fightTextTexture;
@@ -21,6 +23,9 @@ class FightButton {
 	CIwSVec2 buttonBgXY, buttonBgWH;
 
 	float buttonPercY;
+
+	int tappedCount;
+	clock_t tappedTime;
 
 	public:
 	FightButton();

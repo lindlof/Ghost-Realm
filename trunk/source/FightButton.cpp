@@ -47,6 +47,9 @@ FightButton::FightButton() {
 		buttonTextXY = CIwSVec2(0, IwGxGetScreenHeight()-h);
 		buttonTextWH = CIwSVec2(w, h);
 	}
+
+	tappedTime = 0;
+	tappedCount = 0;
 }
 
 FightButton::~FightButton() {
@@ -86,8 +89,19 @@ void FightButton::Render() {
 
 void FightButton::Touch(int x, int y) {
 	if (y > buttonBgXY.y + buttonBgWH.y*buttonPercY) {
-		IwTrace(GHOST_HUNTER, ("Player wants to fight"));
-
-		getGameState()->setGameMode(CAMERA_MODE);
+		if (tappedCount == 0) {
+			tappedTime = clock();
+		}
+		if (clock() - tappedTime < 1500) {
+			tappedCount++;
+		} else {
+			tappedTime = 0;
+			tappedCount = 0;
+		}
+		// Press and release both increase the count
+		if (tappedCount > 1) {
+			IwTrace(GHOST_HUNTER, ("Player wants to fight"));
+			getGameState()->setGameMode(CAMERA_MODE);
+		}
 	}
 }
