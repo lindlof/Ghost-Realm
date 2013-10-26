@@ -51,3 +51,7 @@ bool FightTutorial::isTutorialOn() {
 TutorialType FightTutorial::getTutorialType() {
 	return currentType;
 }
+
+void FightTutorial::Touch(int x, int y) {
+	currentType = TUTORIAL_NONE;
+}

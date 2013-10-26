@@ -78,6 +78,8 @@ void SingleTouch(s3ePointerEvent* event) {
 	getCameraDefend(&cameraDefend);
 	if (cameraDefend != NULL)
 		cameraDefend->Touch(event->m_x, event->m_y);
+
+	getFightTutorial()->Touch(event->m_x, event->m_y);
 }
 
 void SingleTouchMotion(s3ePointerMotionEvent* event) {

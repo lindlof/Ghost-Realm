@@ -85,6 +85,8 @@ bool CameraModelUpdate()
 
 	player->playerUpdate();
 
+	fightTutorial->triggerTutorial(TUTORIAL_SEARCH);
+
 	return true;
 }
 

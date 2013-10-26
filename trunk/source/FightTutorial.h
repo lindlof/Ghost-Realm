@@ -27,6 +27,8 @@ class FightTutorial {
 	bool isTutorialOn();
 	void triggerTutorial(TutorialType type);
 	void resetShown();
+
+	void Touch(int x, int y);
 };
 
 #endif
