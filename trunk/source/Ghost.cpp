@@ -226,7 +226,7 @@ void Ghost::floatingAngleUpdate(float x, float y, float z) {
 		currentAngle = 180*ratio + 90*(1-ratio);
 	} else if (y > 0 && x < 0) { // 180 - 270 deg
 		currentAngle = 180*ratio + 270*(1-ratio);
-	} else { // 270 - 360 deg
+	} else if (y < 0 && x < 0) { // 270 - 360 deg
 		currentAngle = 360*ratio + 270*(1-ratio);
 	}
 

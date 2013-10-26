@@ -16,8 +16,6 @@ files
 	GhostAttack.h
 	Strike.cpp
 	Strike.h
-	FightTutorial.cpp
-	FightTutorial.h
 
 	[CameraView]
 	CameraView.cpp
@@ -30,8 +28,6 @@ files
 	CameraDefend.h
 	PlayerHit.cpp
 	PlayerHit.h
-	FightTutorialView.cpp
-	FightTutorialView.h
 
 	[Map]
 	MapController.cpp
@@ -92,13 +88,6 @@ assets
 	textures/map_player.png
 	textures/map_health.png
 	textures/map_template.png
-	textures/tutorial/tutorial_bg.png
-	textures/tutorial/tutorial_attack_the_ghost.png
-	textures/tutorial/tutorial_defend_from_the_attacks.png
-	textures/tutorial/tutorial_face_the_ghost_to_attack.png
-	textures/tutorial/tutorial_ghost_won.png
-	textures/tutorial/tutorial_search_the_ghost.png
-	textures/tutorial/tutorial_you_won.png
 }
 #### AUTO GENERATED deployment settings from DeployTool.exe. Do not edit below this line ####
 deployments
