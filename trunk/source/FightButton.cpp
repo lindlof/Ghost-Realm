@@ -26,49 +26,66 @@ static CIwFVec2 uvs[4] =
 
 FightButton::FightButton() {
 
-	fightTexture = new CIwTexture;
-	fightTexture->LoadFromFile ("textures/map_fight.png");
-	fightTexture->Upload();
+	fightBgTexture = new CIwTexture;
+	fightBgTexture->LoadFromFile("textures/from_map_to_camera_bg.png");
+	fightBgTexture->Upload();
+	buttonPercY = 0.4f;
+
+	fightTextTexture = new CIwTexture;
+	fightTextTexture->LoadFromFile("textures/from_map_to_camera_text.png");
+	fightTextTexture->Upload();
 
 	{
-		int16 w = IwGxGetScreenWidth() * 0.7f;
-		if (w > (int16)fightTexture->GetWidth()) w = (int16)fightTexture->GetWidth();
+		int16 w = IwGxGetScreenWidth();
 
-		float whScale = (float)((double)fightTexture->GetWidth() / fightTexture->GetHeight());
+		float whScale = (float)((double)fightBgTexture->GetWidth() / fightBgTexture->GetHeight());
 		int16 h = w * 1/whScale;
-		int bottomPadding = IwGxGetScreenHeight() * 0.03f;
 
-		int16 x1 = IwGxGetScreenWidth()/2 - w/2;
-		int16 y1 = IwGxGetScreenHeight() - h - bottomPadding;
+		buttonBgXY = CIwSVec2(0, IwGxGetScreenHeight()-h);
+		buttonBgWH = CIwSVec2(w, h);
 
-		buttonXY = CIwSVec2(x1, y1);
-		buttonWH = CIwSVec2(w, h);
+		buttonTextXY = CIwSVec2(0, IwGxGetScreenHeight()-h);
+		buttonTextWH = CIwSVec2(w, h);
 	}
 }
 
 FightButton::~FightButton() {
-	if (fightTexture)
-		delete fightTexture;
+	if (fightTextTexture)
+		delete fightTextTexture;
 }
 
 void FightButton::Render() {
-	IwGxLightingOff();
+	{
+		IwGxLightingOff();
+
+		CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
+		pMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
+		pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
+		pMat->SetTexture(fightBgTexture);
+
+		IwGxSetMaterial(pMat);
+		IwGxSetUVStream(uvs);
+
+		IwGxDrawRectScreenSpace(&buttonBgXY, &buttonBgWH);
+	}
+
+	{
+		IwGxLightingOff();
 	
-	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
-    pMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
-	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
-    pMat->SetTexture(fightTexture);
+		CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
+		pMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
+		pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
+		pMat->SetTexture(fightTextTexture);
 
-	IwGxSetMaterial(pMat);
-    IwGxSetUVStream(uvs);
+		IwGxSetMaterial(pMat);
+		IwGxSetUVStream(uvs);
 
-	IwGxDrawRectScreenSpace(&buttonXY, &buttonWH);
+		IwGxDrawRectScreenSpace(&buttonTextXY, &buttonTextWH);
+	}
 }
 
 void FightButton::Touch(int x, int y) {
-	if (x > buttonXY.x && x < buttonXY.x + buttonWH.x &&
-		y > buttonXY.y && y < buttonXY.y + buttonWH.y) {
-
+	if (y > buttonBgXY.y + buttonBgWH.y*buttonPercY) {
 		IwTrace(GHOST_HUNTER, ("Player wants to fight"));
 
 		getGameState()->setGameMode(CAMERA_MODE);

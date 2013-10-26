@@ -14,8 +14,13 @@
 
 class FightButton {
 	private:
-	CIwTexture* fightTexture;
-	CIwSVec2 buttonXY, buttonWH;
+	CIwTexture* fightTextTexture;
+	CIwSVec2 buttonTextXY, buttonTextWH;
+
+	CIwTexture* fightBgTexture;
+	CIwSVec2 buttonBgXY, buttonBgWH;
+
+	float buttonPercY;
 
 	public:
 	FightButton();
