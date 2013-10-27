@@ -19,7 +19,9 @@ class Player;
 class GhostAttack {
 	private:
 	double hit;
-	clock_t hitTime;
+
+	int interval;
+	clock_t lastTime;
 
 	Player *player;
 	bool over;

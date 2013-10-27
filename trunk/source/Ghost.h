@@ -37,9 +37,10 @@ class Ghost {
 	
 	GhostAttack* ghostAttack;
 	bool attackDefendable;
-	clock_t playerHitTime;
 	clock_t hitTime;
-	int nextHitInterval;
+
+	clock_t playerAttackLast;
+	int nextAttackInterval;
 
 	clock_t tappedTime;
 	int tappedCount;

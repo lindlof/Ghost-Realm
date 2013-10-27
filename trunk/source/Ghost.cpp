@@ -8,6 +8,7 @@
  */
 
 #include "Ghost.h"
+#include "CameraModel.h"
 
 #include "IwRandom.h"
 #include "s3eTimer.h"
@@ -52,8 +53,8 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	ghostAttack = NULL;
 
 	hitTime = 0;
-	playerHitTime = 0;
-	nextHitInterval = 0;
+	playerAttackLast = 0;
+	nextAttackInterval = 0;
 	
 	floatingAngle = 0;
 };
@@ -79,14 +80,14 @@ bool Ghost::ghostUpdate() {
 
 	double ghostDistance = abs(bearing - player->getHeading());
 
-	if (found) {
+	if (found && !gameIsHalt()) {
 
 		if (foundAnimProgress < FOUND_ANIM_STEPS) {
 
 			if (foundAnimProgress == 0) {
 				// Ghost waits for 2 seconds before attacking
-				playerHitTime = clock();
-				nextHitInterval = 2000;
+				playerAttackLast = clock();
+				nextAttackInterval = 2000;
 			}
 
 			if (clock() - foundAnimTime > 3) {
@@ -138,7 +139,15 @@ bool Ghost::ghostUpdate() {
 		}
 	}
 
-	// If the ghost is found it may hit the player
+	// Initiate new attacks
+	if (found && getAttack() == NULL && nextAttackInterval <= 0) {
+		attackDefendable = IwRandMinMax(0, 9) > 2; // 30 % of attacks not defendable
+		ghostAttack = new GhostAttack(player, ghostType);
+		playerAttackLast = clock();
+		nextAttackInterval = IwRandMinMax(4000, 6000);
+	}
+
+	// Update attacks
 	if (getAttack() != NULL) {
 		if (getAttack()->isOver()) {
 			delete ghostAttack;
@@ -147,11 +156,14 @@ bool Ghost::ghostUpdate() {
 			getAttack()->Update();
 		}
 	}
-	if (found && getAttack() == NULL && clock() - playerHitTime > nextHitInterval) {
-		attackDefendable = IwRandMinMax(0, 9) > 2; // 30 % of attacks not defendable
-		ghostAttack = new GhostAttack(player, ghostType);
-		playerHitTime = clock();
-		nextHitInterval = IwRandMinMax(4000, 6000);
+
+	// Decrease next attack interval
+	if (!gameIsHalt()) {
+		clock_t currentTime = clock();
+		nextAttackInterval -= currentTime - playerAttackLast;
+		playerAttackLast = currentTime;
+	} else {
+		playerAttackLast = clock();
 	}
 
 	return true;

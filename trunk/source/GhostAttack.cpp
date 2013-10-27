@@ -8,6 +8,7 @@
  */
 
 #include "GhostAttack.h"
+#include "CameraModel.h"
 
 #include "IwRandom.h"
 
@@ -22,13 +23,22 @@ GhostAttack::GhostAttack(Player* player, GhostType ghostType) {
 	this->player = player;
 
 	hit = hit*ghostType.getStrength();
-	hitTime = clock() + IwRandMinMax(2000, 2400);
+	lastTime = clock();
+	interval = IwRandMinMax(2000, 2400);
 
 	over = false;
 }
 
 void GhostAttack::Update() {
-	if (!over && clock() > hitTime) {
+	if (!gameIsHalt()) {
+		clock_t currentTime = clock();
+		interval -= currentTime - lastTime;
+		lastTime = currentTime;
+	} else {
+		lastTime = clock();
+	}
+
+	if (!over && interval <= 0) {
 		player->playerGotHit((int)hit);
 		IwTrace(GHOST_HUNTER, ("Player got hit for %f", hit));
 		over = true;

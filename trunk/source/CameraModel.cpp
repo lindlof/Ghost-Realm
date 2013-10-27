@@ -85,10 +85,8 @@ bool CameraModelUpdate()
 		gameState->setGameMode(MAP_MODE);
 	}
 
-	if (!gameIsHalt()) {
-		if (ghost != NULL)
-			ghost->ghostUpdate();
-	}
+	if (ghost != NULL)
+		ghost->ghostUpdate();
 
 	player->headingUpdate();
 
