@@ -89,14 +89,11 @@ void FightButton::Render() {
 
 void FightButton::Touch(int x, int y) {
 	if (y > buttonBgXY.y + buttonBgWH.y*buttonPercY) {
-		if (tappedCount == 0) {
-			tappedTime = clock();
-		}
 		if (clock() - tappedTime < 1500) {
 			tappedCount++;
 		} else {
-			tappedTime = 0;
-			tappedCount = 0;
+			tappedTime = clock();
+			tappedCount = 1;
 		}
 		// Press and release both increase the count
 		if (tappedCount > 1) {
