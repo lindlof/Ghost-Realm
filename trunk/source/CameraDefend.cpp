@@ -8,6 +8,7 @@
  */
 
 #include "CameraDefend.h"
+#include "CameraModel.h"
 
 #include "IwRandom.h"
 
@@ -71,8 +72,9 @@ CameraDefend::CameraDefend(Ghost* ghost) {
 	}
 
 	drawing = false;
-
 	over = false;
+
+	getFightTutorial()->triggerTutorial(TUTORIAL_DEFEND);
 }
 
 CameraDefend::~CameraDefend() {
