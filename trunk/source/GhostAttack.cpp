@@ -15,9 +15,9 @@
 GhostAttack::GhostAttack(Player* player, GhostType ghostType) {
 	if (IwRandMinMax(0, 11) == 11) {
 		// Critical hit
-		hit = 25;
+		hit = 50;
 	} else {
-		hit = ((double)IwRandMinMax(PLAYER_MAX_MANA*11, PLAYER_MAX_MANA*19))/PLAYER_MAX_MANA;
+		hit = ((double)IwRandMinMax(PLAYER_MAX_MANA*27, PLAYER_MAX_MANA*40))/PLAYER_MAX_MANA;
 	}
 
 	this->player = player;
