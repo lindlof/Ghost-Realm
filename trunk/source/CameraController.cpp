@@ -52,14 +52,16 @@ void CameraControllerTerm()
 
 bool CameraControllerUpdate()
 {
-    if (accelometerEnabled)
-    {
-		int32 x = s3eAccelerometerGetX();
-		int32 y = s3eAccelerometerGetY();
-		int32 z = s3eAccelerometerGetZ();
+	if (!gameIsHalt()) {
+		if (accelometerEnabled)
+		{
+			int32 x = s3eAccelerometerGetX();
+			int32 y = s3eAccelerometerGetY();
+			int32 z = s3eAccelerometerGetZ();
 
-		accelometerUpdate(x, y, z);
-    }
+			accelometerUpdate(x, y, z);
+		}
+	}
 
 	s3eCompassHeading h;
 	bool compassError = S3E_RESULT_SUCCESS != s3eCompassGetHeading(&h);
@@ -71,13 +73,15 @@ bool CameraControllerUpdate()
 }
 
 void SingleTouch(s3ePointerEvent* event) {
-	CameraDefend* cameraDefend;
+	if (!gameIsHalt()) {
+		CameraDefend* cameraDefend;
 	
-	ghostTouch(event->m_x, event->m_y);
+		ghostTouch(event->m_x, event->m_y);
 
-	getCameraDefend(&cameraDefend);
-	if (cameraDefend != NULL)
-		cameraDefend->Touch(event->m_x, event->m_y);
+		getCameraDefend(&cameraDefend);
+		if (cameraDefend != NULL)
+			cameraDefend->Touch(event->m_x, event->m_y);
+	}
 
 	getFightTutorial()->Touch(event->m_x, event->m_y);
 }
