@@ -1,0 +1,10 @@
+// Marmalade group file exported from : D:\asdf\Innovaatioprojekti\models\fabu\v2\viking27.blend
+// Exported 2013-10-25 10:54:26.805000
+CIwResGroup
+{
+	name "viking_v4"
+	".\models\Armature.skel"
+	".\models\viking.geo"
+	".\models\viking.skin"
+	".\anims\Armature.anim"
+}

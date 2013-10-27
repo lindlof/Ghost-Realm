@@ -61,7 +61,7 @@ files
 
 	[Resources]
 	(data/viking)
-    viking.group
+    viking_v4.group
 
 	[UI]
     (data/ui)
@@ -80,7 +80,7 @@ subprojects
 assets
 {
 	(data-ram/data-gles1)
-	viking/viking.group.bin
+	viking/viking_v4.group.bin
 	ui/GameOverButton.group.bin
 
     (data)

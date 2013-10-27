@@ -1,0 +1,6 @@
+// mtl file exported from : 'viking27.blend'
+CIwMaterial
+{
+	name "viking.001"
+	texture0 .\textures\magic.png
+}

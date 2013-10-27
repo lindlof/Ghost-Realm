@@ -169,8 +169,8 @@ void GhostCollision::RenderEctoplasmaBar(float ectoPercent)
 	{
 		const int16 x1 = ghostX;
 		const int16 x2 = ghostX+ghostW*ectoPercent;
-		const int16 y1 = ghostY+0x40;
-		const int16 y2 = ghostY+0x48;
+		const int16 y1 = ghostY+0x20;
+		const int16 y2 = ghostY+0x28;
 		const int16 z = 0x6;
 
 		health_Verts[0] = CIwFVec3(x1, y1, -z);
