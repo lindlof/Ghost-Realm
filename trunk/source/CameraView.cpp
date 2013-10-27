@@ -240,7 +240,7 @@ bool CameraViewUpdate()
 	// Clear the screen
     IwGxClear(IW_GX_COLOUR_BUFFER_F | IW_GX_DEPTH_BUFFER_F);
 
-	if (!gameIsHalt()) {
+	if (!gameIsHalt() && ghostAvailable) {
 		updateGhost();
 	}
 

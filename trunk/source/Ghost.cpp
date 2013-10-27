@@ -26,7 +26,6 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	int tries = 0;
 
 	Ghost::player = player;
-	found = false;
 
 	foundAnimTime = 0;
 	foundAnimProgress = 0;
@@ -36,8 +35,11 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	staging = true;
 
 #ifdef GHOST_DEBUG
+	found = true;
 	bearing = 0;
 #else
+	found = false;
+
 	do {
 		bearing = IwRandMinMax(0, 360);
 		tries++;

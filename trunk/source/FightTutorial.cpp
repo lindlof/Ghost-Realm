@@ -8,6 +8,7 @@
  */
 
 #include "FightTutorial.h"
+#include "GameState.h"
 
 FightTutorial::FightTutorial() {
 	resetShown();
@@ -55,5 +56,9 @@ TutorialType FightTutorial::getTutorialType() {
 }
 
 void FightTutorial::Touch(int x, int y) {
+	if (currentType == TUTORIAL_GHOST_WON ||
+		currentType == TUTORIAL_YOU_WON) {
+		getGameState()->setGameMode(MAP_MODE);
+	}
 	currentType = TUTORIAL_NONE;
 }

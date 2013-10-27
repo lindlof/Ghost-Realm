@@ -19,9 +19,9 @@
 Player::Player() {
 	IwRandSeed((int32)s3eTimerGetMs());
 	ready = 0;
-	Player::heading = 0;
-	Player::headingFilter = 0;
-	Player::strike = new Strike();
+	heading = 0;
+	headingFilter = 0;
+	strike = new Strike();
 	hitTime = 0;
 	init();
 };

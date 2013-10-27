@@ -20,6 +20,9 @@
 int iteration = 0;
 float gravityX, gravityY, gravityZ;
 
+bool fightOver;
+clock_t gameOverTime;
+
 FightTutorial* fightTutorial;
 
 void accelometerUpdate(int32 x, int32 y, int32 z) {
@@ -39,7 +42,8 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
 	float linearAccelerationY = y - gravityY;
 	float linearAccelerationZ = z - gravityZ;
 
-	getGameState()->getGhost()->floatingAngleUpdate(gravityX, gravityY, gravityZ);
+	if (getGameState()->getGhost() != NULL)
+		getGameState()->getGhost()->floatingAngleUpdate(gravityX, gravityY, gravityZ);
 
 	if (iteration < ACCELOMETER_ITERATIONS) {
 		// Accelometer values are useless before the gravity values
@@ -48,8 +52,10 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
 		if (iteration == ACCELOMETER_ITERATIONS)
 			IwTrace(GHOST_HUNTER, ("CameraModel accelometer initialized"));
 	} else {
-		getGameState()->getPlayer()->accelometerUpdate(linearAccelerationX, linearAccelerationY, 
-			linearAccelerationZ);
+		if (!fightOver) {
+			getGameState()->getPlayer()->accelometerUpdate(linearAccelerationX, linearAccelerationY, 
+				linearAccelerationZ);
+		}
 	}
 }
 
@@ -66,6 +72,7 @@ void CameraModelTerm()
 
 void initFight() {
 	fightTutorial->resetShown();
+	fightOver = false;
 }
 
 bool CameraModelUpdate() 
@@ -74,23 +81,32 @@ bool CameraModelUpdate()
 	Player* player = gameState->getPlayer();
 	Ghost* ghost = gameState->getGhost();
 
-	int ectoplasm = gameState->getGhost()->getEctoplasm();
-	if (ectoplasm <= 0) {
-		player->wonBattle();
-		gameState->deleteGhost();
-		gameState->setGameMode(MAP_MODE);
-	} else if (player->getMana() <= 0 && !player->isDead()) {
-		player->lostBattle();
-		gameState->deleteGhost();
+	if (ghost != NULL) {
+		ghost->ghostUpdate();
+
+		int ectoplasm = ghost->getEctoplasm();
+		if (ectoplasm <= 0) {
+			player->wonBattle();
+			gameState->deleteGhost();
+			fightOver = true;
+			gameOverTime = clock() + 5000;
+			getFightTutorial()->triggerTutorial(TUTORIAL_YOU_WON);
+		} else if (player->getMana() <= 0 && !player->isDead()) {
+			player->lostBattle();
+			gameState->deleteGhost();
+			fightOver = true;
+			gameOverTime = clock() + 5000;
+			getFightTutorial()->triggerTutorial(TUTORIAL_GHOST_WON);
+		}
+	}
+
+	if (fightOver && clock() > gameOverTime) {
 		gameState->setGameMode(MAP_MODE);
 	}
 
-	if (ghost != NULL)
-		ghost->ghostUpdate();
+	fightTutorial->triggerTutorial(TUTORIAL_SEARCH);
 
 	player->headingUpdate();
-
-	fightTutorial->triggerTutorial(TUTORIAL_SEARCH);
 
 	return true;
 }
