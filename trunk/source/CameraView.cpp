@@ -178,6 +178,7 @@ void CameraViewInit()
     ghost_Player = new CIwAnimPlayer;
     ghost_Player->SetSkel(ghost_Skel);
     ghost_Player->PlayAnim(ghost_Anims[0], 1, CIwAnimBlendSource::LOOPING_F, BLEND_DURATION);
+	updateGhost();
 
     // Set up camera capture
     if (s3eCameraAvailable())
