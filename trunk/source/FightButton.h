@@ -24,15 +24,14 @@ class FightButton {
 
 	float buttonPercY;
 
-	int tappedCount;
-	clock_t tappedTime;
+	clock_t pressedTime;
 
 	public:
 	FightButton();
 	~FightButton();
 
 	void Render();
-	void Touch(int x, int y);
+	void Touch(int x, int y, bool pressed);
 };
 
 #endif

@@ -46,5 +46,5 @@ void MapSingleTouch(s3ePointerEvent* event) {
 
 	FightButton* fightButton = getFightButton();
 
-	fightButton->Touch(event->m_x, event->m_y);
+	fightButton->Touch(event->m_x, event->m_y, event->m_Pressed);
 }
