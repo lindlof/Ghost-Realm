@@ -25,7 +25,7 @@ bool MapModelUpdate() {
 		getGameState()->setGhost(ghost);
 	}
 
-	getGameState()->getPlayer()->playerUpdate();
+	getGameState()->getPlayer()->headingUpdate();
 
 	return true;
 }

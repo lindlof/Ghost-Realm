@@ -36,7 +36,7 @@ class Player {
 
 	public:
 	Player();
-	bool playerUpdate();
+	bool headingUpdate();
 	bool isReady();
 	void compassUpdate(double heading, bool error);
 	void playerGotHit(int hit);

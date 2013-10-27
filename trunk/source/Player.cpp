@@ -31,7 +31,7 @@ void Player::init() {
 	mana = PLAYER_MAX_MANA;
 }
 
-bool Player::playerUpdate() {
+bool Player::headingUpdate() {
 
 	// Fix going over north point of compass
 	if (headingFilter < 90 && heading > 360-90) {

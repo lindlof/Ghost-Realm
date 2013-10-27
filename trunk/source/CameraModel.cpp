@@ -84,10 +84,12 @@ bool CameraModelUpdate()
 		gameState->setGameMode(MAP_MODE);
 	}
 
-	if (gameState->getGhost() != NULL)
-		gameState->getGhost()->ghostUpdate();
+	if (!gameIsHalt()) {
+		if (gameState->getGhost() != NULL)
+			gameState->getGhost()->ghostUpdate();
+	}
 
-	player->playerUpdate();
+	player->headingUpdate();
 
 	fightTutorial->triggerTutorial(TUTORIAL_SEARCH);
 
