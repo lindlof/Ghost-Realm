@@ -72,6 +72,7 @@ bool CameraModelUpdate()
 {
 	GameState* gameState = getGameState();
 	Player* player = gameState->getPlayer();
+	Ghost* ghost = gameState->getGhost();
 
 	int ectoplasm = gameState->getGhost()->getEctoplasm();
 	if (ectoplasm <= 0) {
@@ -85,8 +86,8 @@ bool CameraModelUpdate()
 	}
 
 	if (!gameIsHalt()) {
-		if (gameState->getGhost() != NULL)
-			gameState->getGhost()->ghostUpdate();
+		if (ghost != NULL)
+			ghost->ghostUpdate();
 	}
 
 	player->headingUpdate();

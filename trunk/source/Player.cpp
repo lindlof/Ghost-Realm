@@ -8,6 +8,7 @@
  */
 
 #include "Player.h"
+#include "CameraModel.h"
 
 #include "GameState.h"
 #include "IwDebug.h"
@@ -93,11 +94,17 @@ double Player::getHeading() {
 void Player::accelometerUpdate(int32 x, int32 y, int32 z) {
 	int strikeRes = strike->strikeUpdate(x, y, z);
 
+	int ghostAngle = abs(getHeading() - getGameState()->getGhost()->getBearing());
+	bool angleOk = ghostAngle < 30;
+
+	if (angleOk && getFightTutorial() != NULL) {
+		getFightTutorial()->triggerTutorial(TUTORIAL_ATTACK);
+	}
+
 	if (strikeRes > 0 && isReady()) {
 
 		{ // Initial hit?
-			int ghostAngle = abs(getHeading() - getGameState()->getGhost()->getBearing());
-			if (ghostAngle < 30 && ghost == NULL) {
+			if (angleOk && ghost == NULL) {
 				setGhost(getGameState()->getGhost());
 				ghost->setFound();
 			}

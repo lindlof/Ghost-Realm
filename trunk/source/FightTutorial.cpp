@@ -23,6 +23,8 @@ void FightTutorial::resetShown() {
 }
 
 void FightTutorial::triggerTutorial(TutorialType type) {
+	if (isTutorialOn()) return;
+
 	if (type == TUTORIAL_ATTACK && !attackShown) {
 		attackShown = true;
 		currentType = type;
