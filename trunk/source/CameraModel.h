@@ -16,6 +16,7 @@ void CameraModelInit();
 void CameraModelTerm();
 bool CameraModelUpdate();
 
+void initFight();
 void accelometerUpdate(int32 x, int32 y, int32 z);
 FightTutorial* getFightTutorial();
 bool gameIsHalt();

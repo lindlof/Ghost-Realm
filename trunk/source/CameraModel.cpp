@@ -64,6 +64,10 @@ void CameraModelTerm()
 		delete fightTutorial;
 }
 
+void initFight() {
+	fightTutorial->resetShown();
+}
+
 bool CameraModelUpdate() 
 {
 	GameState* gameState = getGameState();

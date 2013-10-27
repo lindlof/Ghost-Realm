@@ -9,6 +9,7 @@
 
 #include "FightButton.h"
 #include "GameState.h"
+#include "CameraModel.h"
 
 #include "IwDebug.h"
 #include "IwGx.h"
@@ -95,6 +96,7 @@ void FightButton::Touch(int x, int y, bool pressed) {
 		// Press and release both increase the count
 		if (clock() - pressedTime < 1500 && !pressed) {
 			IwTrace(GHOST_HUNTER, ("Player wants to fight"));
+			initFight();
 			getGameState()->setGameMode(CAMERA_MODE);
 		}
 	} else {
