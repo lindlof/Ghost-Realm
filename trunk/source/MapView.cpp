@@ -141,21 +141,32 @@ void renderMap() {
 void renderMapGhost() {
 	IwGxLightingOff();
 
+	int16 w = IwGxGetScreenWidth()*0.30f;
+
+	float whScale = (float)((double)ghostTexture->GetWidth() / ghostTexture->GetHeight());
+	int16 h = w * 1/whScale;
+
 	Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
 	Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
 
 	CIwFVec2 centre =
-			CIwFVec2((int16)Iw2DGetSurfaceWidth()/2,
-					 (int16)Iw2DGetSurfaceHeight()/2);
+			CIwFVec2((int16)IwGxGetScreenWidth()/2,
+					 (int16)IwGxGetScreenHeight()/2);
 
-	CIwFVec2 size = CIwFVec2(259, 259);
-	CIwFVec2 topLeft = CIwFVec2(centre.x-50-size.x/2, centre.y-50-size.y/2);
+	
+	CIwFVec2 size = CIwFVec2(w, h);
+	CIwFVec2 topLeft = CIwFVec2(centre.x-size.x*0.68f, centre.y-size.y*0.63f);
 
 	Iw2DDrawImage(ghostTexture, topLeft, size);
 }
 
 void renderMapPlayer() {
 	IwGxLightingOff();
+
+	int16 w = IwGxGetScreenWidth()*0.085f;
+
+	float whScale = (float)((double)playerTexture->GetWidth() / playerTexture->GetHeight());
+	int16 h = w * 1/whScale;
 
 	Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
 	double angle = rad(getGameState()->getPlayer()->getHeading());
@@ -168,7 +179,7 @@ void renderMapPlayer() {
 	rot.SetRot(angle, (CIwFVec2)centre);
 	Iw2DSetTransformMatrix(rot);
 
-	CIwFVec2 size = CIwFVec2(53, 57);
+	CIwFVec2 size = CIwFVec2(w, h);
 	CIwFVec2 topLeft = CIwFVec2(centre.x-size.x/2, centre.y-size.y/2);
 
 	Iw2DDrawImage(playerTexture, topLeft, size);
