@@ -41,8 +41,11 @@ bool Player::headingUpdate() {
 		headingFilter -= 360;
 	}
 
-	headingFilter = heading * HEADING_FILTER + 
-		headingFilter * (1.f - HEADING_FILTER);
+	float filterStrength = getGameState()->getGameMode() == CAMERA_MODE ? 
+		HEADING_FILTER_CAMERA : HEADING_FILTER_MAP;
+
+	headingFilter = heading * filterStrength + 
+		headingFilter * (1.f - filterStrength);
 
 	return true;
 }
