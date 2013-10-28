@@ -23,7 +23,6 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	IwRandSeed((int32)s3eTimerGetMs());
 
 	Ghost::ghostType = ghostType;
-	int tries = 0;
 
 	Ghost::player = player;
 
@@ -32,20 +31,8 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 
 	ectoplasm = GHOST_MAX_ECTOPLASM;
 
-	staging = true;
-
-#ifdef GHOST_DEBUG
-	found = true;
-	bearing = 0;
-#else
 	found = false;
-
-	do {
-		bearing = IwRandMinMax(0, 360);
-		tries++;
-	} while (abs(bearing - player->getHeading()) < 90 && 
-		tries < 50);
-#endif
+	bearing = 0;
 
 	initRotation = IwRandMinMax(0, 360);
 	rotation = initRotation;
@@ -60,6 +47,17 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	
 	floatingAngle = 0;
 };
+
+void Ghost::cameraInit() {
+#ifndef GHOST_DEBUG
+	int tries = 0;
+	do {
+		bearing = IwRandMinMax(0, 360);
+		tries++;
+	} while (abs(bearing - player->getHeading()) < 90 && 
+		tries < 50);
+#endif
+}
 
 void Ghost::ghostGotHit(int hit) {
 	// 75% of hits success

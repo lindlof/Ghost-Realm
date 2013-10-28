@@ -49,11 +49,12 @@ class Ghost {
 
 	// Ghost is not initially in combat but you find it
 	// from a specific point of compass around you.
-	bool staging;
 	double bearing;
 
 	public:
 	Ghost(GhostType ghostType, Player *player);
+	void cameraInit();
+
 	bool ghostUpdate();
 	void ghostGotHit(int hit);
 	clock_t getHitTime();

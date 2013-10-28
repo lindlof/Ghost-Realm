@@ -51,7 +51,7 @@ bool Player::headingUpdate() {
 }
 
 bool Player::isReady() {
-	return ready > 10;
+	return ready > 1;
 }
 
 void Player::playerGotHit(int hit) {
