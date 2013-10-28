@@ -88,6 +88,8 @@ void FightButton::Render() {
 }
 
 void FightButton::Touch(int x, int y, bool pressed) {
+	if (getGameState()->getGhost() == NULL) return;
+
 	if (y > buttonBgXY.y + buttonBgWH.y*buttonPercY) {
 		if (pressed) {
 			pressedTime = clock();
