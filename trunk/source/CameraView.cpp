@@ -148,6 +148,7 @@ void CameraViewPreInit()
 {
 	playerHit = new PlayerHit(getGameState()->getPlayer());
 	tutorialView = new FightTutorialView();
+	cameraDefend = new CameraDefend();
 }
 void CameraViewInit()
 {
@@ -197,7 +198,6 @@ void CameraViewInit()
 
 	CameraUIInit();
 
-	cameraDefend = NULL;
 	tutorialView->setTutorial(getFightTutorial());
 }
 
@@ -230,6 +230,9 @@ void CameraViewTerm()
 	if (tutorialView)
 		delete tutorialView;
 
+	if (cameraDefend)
+		delete cameraDefend;
+
 	CameraUITerm();
 }
 
@@ -251,21 +254,8 @@ bool CameraViewUpdate()
 	playerHit->Render();
 	renderMana();
 
-	if (ghostAvailable) {
-		GhostAttack* ghostAttack = getGameState()->getGhost()->getAttack();
-		if (cameraDefend != NULL) {
-			if (cameraDefend->isOver()) {
-				delete cameraDefend;
-				cameraDefend = NULL;
-			} else {
-				cameraDefend->Update();
-				cameraDefend->Render();
-			}
-		} else if (ghostAttack != NULL && 
-				getGameState()->getGhost()->isAttackDefendable()) {
-			cameraDefend = new CameraDefend(getGameState()->getGhost());
-		}
-	}
+	cameraDefend->Update();
+	cameraDefend->Render();
 
 	if (getGameState()->getPlayer()->isDead()) {
 		showGameOverButton(true);

@@ -17,24 +17,23 @@
 
 class CameraDefend {
 	private:
-	Ghost* ghost;
-
 	CIwTexture* defendingDotTexture;
 	CIwFVec2 defendVertsLeft[4];
 	CIwFVec2 defendVertsRight[4];
 
 	CIwFVec2 drawStart;
 	bool drawing;
-	bool over;
+	bool active;
 
 	public:
-	CameraDefend(Ghost* ghost);
+	CameraDefend();
 	~CameraDefend();
+
 	void Update();
 	void Render();
 	void Touch(int32 x, int32 y);
 	void Motion(int32 x, int32 y);
-	bool isOver();
+	bool isActive();
 };
 
 #endif

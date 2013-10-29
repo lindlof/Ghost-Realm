@@ -44,7 +44,8 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	hitTime = 0;
 	playerAttackLast = 0;
 	nextAttackInterval = 0;
-	
+	attackDefendable = false;
+
 	floatingAngle = 0;
 };
 

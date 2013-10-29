@@ -9,6 +9,7 @@
 
 #include "CameraDefend.h"
 #include "CameraModel.h"
+#include "GameState.h"
 
 #include "IwRandom.h"
 
@@ -22,9 +23,7 @@ static CIwFVec2 defend_uvs[4] =
     CIwFVec2(0, 1),
 };
 
-CameraDefend::CameraDefend(Ghost* ghost) {
-	this->ghost = ghost;
-
+CameraDefend::CameraDefend() {
 	defendingDotTexture = new CIwTexture;
 	defendingDotTexture->LoadFromFile ("textures/defending_dot.png");
 	defendingDotTexture->Upload();
@@ -72,9 +71,7 @@ CameraDefend::CameraDefend(Ghost* ghost) {
 	}
 
 	drawing = false;
-	over = false;
-
-	getFightTutorial()->triggerTutorial(TUTORIAL_DEFEND);
+	active = false;
 }
 
 CameraDefend::~CameraDefend() {
@@ -83,34 +80,42 @@ CameraDefend::~CameraDefend() {
 }
 
 void CameraDefend::Render() {
+	if (!isActive()) return;
+
 	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
 
-    pMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
+	pMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
 	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
-    pMat->SetTexture(defendingDotTexture);
-    IwGxSetMaterial(pMat);
+	pMat->SetTexture(defendingDotTexture);
+	IwGxSetMaterial(pMat);
 	IwGxSetUVStream(defend_uvs);
 
 	IwGxSetVertStreamScreenSpace(defendVertsLeft, 4);
-    IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
+	IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
 
 	IwGxSetVertStreamScreenSpace(defendVertsRight, 4);
-    IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
+	IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
 }
 
 void CameraDefend::Update() {
-	if (ghost->getAttack() == NULL || ghost->getAttack()->isOver()) {
-		over = true;
+	Ghost* ghost = getGameState()->getGhost();
+
+	if (ghost != NULL && ghost->isAttackDefendable() && !(ghost->getAttack() == NULL || ghost->getAttack()->isOver())) {
+		active = true;
+		getFightTutorial()->triggerTutorial(TUTORIAL_DEFEND);
+	} else {
+		active = false;
 	}
 }
 
 void CameraDefend::Touch(int32 x, int32 y) {
-	if (isOver()) return;
+	if (!isActive()) return;
 	drawStart = CIwFVec2(x, y);
 }
 
 void CameraDefend::Motion(int32 x, int32 y) {
-	if (isOver()) return;
+	if (!isActive()) return;
+	Ghost* ghost = getGameState()->getGhost();
 
 	CIwFVec2 drawEnd = CIwFVec2(x, y);
 
@@ -119,7 +124,7 @@ void CameraDefend::Motion(int32 x, int32 y) {
 		(dotCollides(defendVertsRight, drawStart) && dotCollides(defendVertsLeft,  drawEnd));
 
 	if (dotsCollideWithDrawing) {
-		over = true;
+		active = false;
 		if (ghost->getAttack() != NULL)
 			ghost->getAttack()->setDefended();
 
@@ -143,6 +148,6 @@ bool dotCollides(CIwFVec2* rect, CIwFVec2 point) {
 	return false;
 }
 
-bool CameraDefend::isOver() {
-	return over;
+bool CameraDefend::isActive() {
+	return active;
 }
