@@ -17,7 +17,9 @@
 
 class CameraDefend {
 	private:
+	CIwMaterial* pMat;
 	CIwTexture* defendingDotTexture;
+
 	CIwFVec2 defendVertsLeft[4];
 	CIwFVec2 defendVertsRight[4];
 
@@ -31,7 +33,7 @@ class CameraDefend {
 
 	void Update();
 	void Render();
-	void Touch(int32 x, int32 y);
+	void Touch(int32 x, int32 y, bool press);
 	void Motion(int32 x, int32 y);
 	bool isActive();
 };

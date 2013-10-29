@@ -15,18 +15,28 @@
 
 bool dotCollides(CIwFVec2* rect, CIwFVec2 point);
 
+static int cells = 4;
+static int rows = 4;
 static CIwFVec2 defend_uvs[4] =
 {
-    CIwFVec2(1, 1),
-    CIwFVec2(1, 0),
-    CIwFVec2(0, 0),
-    CIwFVec2(0, 1),
+    CIwFVec2(0,         0),
+    CIwFVec2(0,         1.f/rows),
+    CIwFVec2(1.f/cells, 1.f/rows),
+    CIwFVec2(1.f/cells, 0),
 };
 
 CameraDefend::CameraDefend() {
 	defendingDotTexture = new CIwTexture;
 	defendingDotTexture->LoadFromFile ("textures/defending_dot.png");
 	defendingDotTexture->Upload();
+
+	pMat = new CIwMaterial;
+	pMat->SetTexture(defendingDotTexture);
+
+	pMat->CreateAnim();
+	pMat->SetAnimCelW(defendingDotTexture->GetWidth()/cells);
+	pMat->SetAnimCelH(defendingDotTexture->GetHeight()/rows);
+    pMat->SetAnimCelPeriod(1);
 
 	IwRandSeed((int32)s3eTimerGetMs());
 	float width = (float)IwGxGetScreenWidth()*0.13f;
@@ -75,6 +85,9 @@ CameraDefend::CameraDefend() {
 }
 
 CameraDefend::~CameraDefend() {
+	if (pMat)
+		delete pMat;
+
 	if (defendingDotTexture)
 		delete defendingDotTexture;
 }
@@ -82,11 +95,11 @@ CameraDefend::~CameraDefend() {
 void CameraDefend::Render() {
 	if (!isActive()) return;
 
-	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
-
 	pMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
 	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
-	pMat->SetTexture(defendingDotTexture);
+
+	if (!drawing) pMat->SetAnimCelID(0);
+
 	IwGxSetMaterial(pMat);
 	IwGxSetUVStream(defend_uvs);
 
@@ -108,9 +121,16 @@ void CameraDefend::Update() {
 	}
 }
 
-void CameraDefend::Touch(int32 x, int32 y) {
+void CameraDefend::Touch(int32 x, int32 y, bool press) {
 	if (!isActive()) return;
-	drawStart = CIwFVec2(x, y);
+
+	if (press) {
+		drawStart = CIwFVec2(x, y);
+		drawing = true;
+	} else {
+		Motion(x, y);
+		drawing = false;
+	}
 }
 
 void CameraDefend::Motion(int32 x, int32 y) {

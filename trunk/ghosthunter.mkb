@@ -1,6 +1,6 @@
 #!/usr/bin/env mkb
 
-#define GHOST_DEBUG
+define GHOST_DEBUG
 
 # files specifies all files to build
 files
@@ -62,6 +62,8 @@ files
 	[Resources]
 	(data/viking)
     viking_v4.group
+	(data/Skelman)
+    skelman.group
 
 	[UI]
     (data/ui)
@@ -80,6 +82,7 @@ subprojects
 assets
 {
 	(data-ram/data-gles1)
+	Skelman/Skelman.group.bin
 	viking/viking_v4.group.bin
 	ui/GameOverButton.group.bin
 

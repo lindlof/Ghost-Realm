@@ -162,7 +162,7 @@ void CameraViewInit()
 #ifdef IW_BUILD_RESOURCES
 	IwGetModelBuilder()->SetPostBuildFn(&BuildCollision);
 #endif
-
+	
 	IwGetResManager()->LoadGroup("viking/viking_v4.group");
 	CIwResGroup* pGroup = IwGetResManager()->GetGroupNamed("viking_v4");
 
@@ -172,6 +172,17 @@ void CameraViewInit()
     ghost_Skel  = (CIwAnimSkel*)pGroup->GetResNamed("Armature", IW_ANIM_RESTYPE_SKELETON);
     ghost_Anims[0]  = (CIwAnim*)pGroup->GetResNamed("Armature", IW_ANIM_RESTYPE_ANIMATION);
 	
+	/*
+	IwGetResManager()->LoadGroup("Skelman/Skelman.group");
+	CIwResGroup* pGroup = IwGetResManager()->GetGroupNamed("Skelman");
+
+    ghost_Model = (CIwModel*)pGroup->GetResNamed("GEO_For_Export", IW_GRAPHICS_RESTYPE_MODEL);
+	ghostCollision = (GhostCollision*)pGroup->GetResNamed("GEO_For_Export", "GhostCollision");
+    ghost_Skin  = (CIwAnimSkin*)pGroup->GetResNamed("GEO_For_Export", IW_ANIM_RESTYPE_SKIN);
+    ghost_Skel  = (CIwAnimSkel*)pGroup->GetResNamed("HIP01", IW_ANIM_RESTYPE_SKELETON);
+    ghost_Anims[0]  = (CIwAnim*)pGroup->GetResNamed("SkeletonDeath", IW_ANIM_RESTYPE_ANIMATION);
+	*/
+
 	ghostMatrix = new CIwFMat();
 	ghostCollision->init(ghostMatrix);
 	
