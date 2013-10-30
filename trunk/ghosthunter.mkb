@@ -61,7 +61,7 @@ files
 
 	[Resources]
 	(data/viking)
-    viking_v4.group
+    viking.group
 	(data/Skelman)
     #skelman.group
 
@@ -83,7 +83,7 @@ assets
 {
 	(data-ram/data-gles1)
 	#Skelman/Skelman.group.bin
-	viking/viking_v4.group.bin
+	viking/viking.group.bin
 	ui/GameOverButton.group.bin
 
     (data)

@@ -163,14 +163,14 @@ void CameraViewInit()
 	IwGetModelBuilder()->SetPostBuildFn(&BuildCollision);
 #endif
 	
-	IwGetResManager()->LoadGroup("viking/viking_v4.group");
-	CIwResGroup* pGroup = IwGetResManager()->GetGroupNamed("viking_v4");
+	IwGetResManager()->LoadGroup("viking/viking.group");
+	CIwResGroup* pGroup = IwGetResManager()->GetGroupNamed("viking");
 
     ghost_Model = (CIwModel*)pGroup->GetResNamed("viking", IW_GRAPHICS_RESTYPE_MODEL);
 	ghostCollision = (GhostCollision*)pGroup->GetResNamed("viking", "GhostCollision");
     ghost_Skin  = (CIwAnimSkin*)pGroup->GetResNamed("viking", IW_ANIM_RESTYPE_SKIN);
     ghost_Skel  = (CIwAnimSkel*)pGroup->GetResNamed("Armature", IW_ANIM_RESTYPE_SKELETON);
-    ghost_Anims[0]  = (CIwAnim*)pGroup->GetResNamed("Armature", IW_ANIM_RESTYPE_ANIMATION);
+    ghost_Anims[0]  = (CIwAnim*)pGroup->GetResNamed("Armature_idle", IW_ANIM_RESTYPE_ANIMATION);
 	
 	/*
 	IwGetResManager()->LoadGroup("Skelman/Skelman.group");

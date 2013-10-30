@@ -1,1053 +1,1150 @@
-// skin file exported from : 'viking27.blend'
+// skin file exported from : 'viking18.blend'
 CIwAnimSkin
 {
 	skeleton "Armature"
 	model "viking"
 	CIwAnimSkinSet
 	{
-		useBones { forearm.L.001 forearm.L.004 }
-		numVerts 3
-		vertWeights { 34, 0.0750267, 0.9249733}
-		vertWeights { 42, 0.0588047, 0.9411953}
-		vertWeights { 43, 0.1328986, 0.8671014}
+		useBones { axe }
+		numVerts 82
+		vertWeights { 0, 1.0000000}
+		vertWeights { 1, 1.0000000}
+		vertWeights { 2, 1.0000000}
+		vertWeights { 3, 1.0000000}
+		vertWeights { 4, 1.0000000}
+		vertWeights { 5, 1.0000000}
+		vertWeights { 6, 1.0000000}
+		vertWeights { 7, 1.0000000}
+		vertWeights { 8, 1.0000000}
+		vertWeights { 9, 1.0000000}
+		vertWeights { 10, 1.0000000}
+		vertWeights { 11, 1.0000000}
+		vertWeights { 12, 1.0000000}
+		vertWeights { 13, 1.0000000}
+		vertWeights { 14, 1.0000000}
+		vertWeights { 15, 1.0000000}
+		vertWeights { 16, 1.0000000}
+		vertWeights { 17, 1.0000000}
+		vertWeights { 18, 1.0000000}
+		vertWeights { 19, 1.0000000}
+		vertWeights { 20, 1.0000000}
+		vertWeights { 21, 1.0000000}
+		vertWeights { 22, 1.0000000}
+		vertWeights { 23, 1.0000000}
+		vertWeights { 24, 1.0000000}
+		vertWeights { 25, 1.0000000}
+		vertWeights { 26, 1.0000000}
+		vertWeights { 27, 1.0000000}
+		vertWeights { 28, 1.0000000}
+		vertWeights { 29, 1.0000000}
+		vertWeights { 30, 1.0000000}
+		vertWeights { 31, 1.0000000}
+		vertWeights { 32, 1.0000000}
+		vertWeights { 33, 1.0000000}
+		vertWeights { 34, 1.0000000}
+		vertWeights { 35, 1.0000000}
+		vertWeights { 36, 1.0000000}
+		vertWeights { 37, 1.0000000}
+		vertWeights { 38, 1.0000000}
+		vertWeights { 39, 1.0000000}
+		vertWeights { 40, 1.0000000}
+		vertWeights { 41, 1.0000000}
+		vertWeights { 42, 1.0000000}
+		vertWeights { 43, 1.0000000}
+		vertWeights { 44, 1.0000000}
+		vertWeights { 45, 1.0000000}
+		vertWeights { 46, 1.0000000}
+		vertWeights { 47, 1.0000000}
+		vertWeights { 48, 1.0000000}
+		vertWeights { 49, 1.0000000}
+		vertWeights { 50, 1.0000000}
+		vertWeights { 51, 1.0000000}
+		vertWeights { 52, 1.0000000}
+		vertWeights { 53, 1.0000000}
+		vertWeights { 54, 1.0000000}
+		vertWeights { 55, 1.0000000}
+		vertWeights { 56, 1.0000000}
+		vertWeights { 57, 1.0000000}
+		vertWeights { 58, 1.0000000}
+		vertWeights { 59, 1.0000000}
+		vertWeights { 60, 1.0000000}
+		vertWeights { 61, 1.0000000}
+		vertWeights { 62, 1.0000000}
+		vertWeights { 63, 1.0000000}
+		vertWeights { 64, 1.0000000}
+		vertWeights { 65, 1.0000000}
+		vertWeights { 66, 1.0000000}
+		vertWeights { 67, 1.0000000}
+		vertWeights { 68, 1.0000000}
+		vertWeights { 69, 1.0000000}
+		vertWeights { 70, 1.0000000}
+		vertWeights { 71, 1.0000000}
+		vertWeights { 72, 1.0000000}
+		vertWeights { 73, 1.0000000}
+		vertWeights { 74, 1.0000000}
+		vertWeights { 75, 1.0000000}
+		vertWeights { 76, 1.0000000}
+		vertWeights { 77, 1.0000000}
+		vertWeights { 78, 1.0000000}
+		vertWeights { 79, 1.0000000}
+		vertWeights { 80, 1.0000000}
+		vertWeights { 81, 1.0000000}
 	}
 	CIwAnimSkinSet
 	{
-		useBones { forearm.L.001 forearm.L.002 forearm.L.005 }
+		useBones { s_pinky }
 		numVerts 2
-		vertWeights { 5, 0.0098019, 0.9096260, 0.0805721}
-		vertWeights { 30, 0.0292713, 0.0959949, 0.8747339}
+		vertWeights { 82, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 86, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { ribs thigh.L shin.L thigh.R }
+		useBones { chest thigh.l shin.L thigh.r }
 		numVerts 5
-		vertWeights { 56, 0.0381937, 0.7865242, 0.1650433, 0.0102389} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 156, 0.1620143, 0.6137087, 0.0855853, 0.1386918} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 198, 0.1386981, 0.8135435, 0.0153258, 0.0324327} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 201, 0.0778384, 0.7509196, 0.1247761, 0.0464660} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 203, 0.1301511, 0.8106023, 0.0261657, 0.0330810} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 138, 0.0381937, 0.7865242, 0.1650433, 0.0102389} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 238, 0.1620143, 0.6137087, 0.0855853, 0.1386918} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 280, 0.1386981, 0.8135435, 0.0153258, 0.0324327} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 283, 0.0778384, 0.7509196, 0.1247761, 0.0464660} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 285, 0.1301511, 0.8106023, 0.0261657, 0.0330810} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { root ribs thigh.L shin.L }
+		useBones { root chest thigh.l shin.L }
 		numVerts 5
-		vertWeights { 53, 0.1008679, 0.0920280, 0.7042865, 0.1028176} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 166, 0.0257199, 0.0074611, 0.8608175, 0.1060015} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 192, 0.2199268, 0.2211389, 0.4648360, 0.0940982} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 199, 0.1917493, 0.3782676, 0.4266270, 0.0033561} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 287, 0.3252491, 0.3069686, 0.3437307, 0.0240517} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 135, 0.1008679, 0.0920280, 0.7042865, 0.1028176} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 248, 0.0257199, 0.0074611, 0.8608175, 0.1060015} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 274, 0.2199268, 0.2211389, 0.4648360, 0.0940982} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 281, 0.1917493, 0.3782676, 0.4266270, 0.0033561} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 369, 0.3252491, 0.3069686, 0.3437307, 0.0240517} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { thigh.R shin.R foot.R }
-		numVerts 2
-		vertWeights { 233, 0.3293228, 0.6580908, 0.0125864}
-		vertWeights { 303, 0.2382524, 0.7140886, 0.0476590}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { root thigh.L shin.L }
-		numVerts 4
-		vertWeights { 49, 0.0153678, 0.8641965, 0.1204357}
-		vertWeights { 54, 0.1963917, 0.7127140, 0.0908943}
-		vertWeights { 62, 0.0303987, 0.5857269, 0.3838744}
-		vertWeights { 63, 0.0084205, 0.6296787, 0.3619008}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { head }
-		numVerts 19
-		vertWeights { 289, 1.0000000}
-		vertWeights { 397, 1.0000000}
-		vertWeights { 398, 1.0000000}
-		vertWeights { 405, 1.0000000}
-		vertWeights { 416, 1.0000000}
-		vertWeights { 417, 1.0000000}
-		vertWeights { 418, 1.0000000}
-		vertWeights { 424, 1.0000000}
-		vertWeights { 433, 1.0000000}
-		vertWeights { 480, 1.0000000}
-		vertWeights { 481, 1.0000000}
-		vertWeights { 483, 1.0000000}
-		vertWeights { 491, 1.0000000}
-		vertWeights { 492, 1.0000000}
-		vertWeights { 494, 1.0000000}
-		vertWeights { 503, 1.0000000}
-		vertWeights { 504, 1.0000000}
-		vertWeights { 505, 1.0000000}
-		vertWeights { 506, 1.0000000}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs head }
-		numVerts 3
-		vertWeights { 499, 0.0305524, 0.9694476}
-		vertWeights { 501, 0.0034960, 0.9965040}
-		vertWeights { 502, 0.0013160, 0.9986840}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { neck head }
+		useBones { s_middlef s_pinky pinky axe }
 		numVerts 1
-		vertWeights { 479, 0.0000000, 1.0000000}
+		vertWeights { 83, 0.0715070, 0.7807500, 0.1387505, 0.0089925} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { ribs thigh.L shin.L }
+		useBones { s_middlef s_pinky pinky }
+		numVerts 2
+		vertWeights { 87, 0.0098019, 0.9096260, 0.0805721}
+		vertWeights { 112, 0.0292713, 0.0959949, 0.8747339} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { root thigh.l shin.L }
+		numVerts 4
+		vertWeights { 131, 0.0153678, 0.8641965, 0.1204357}
+		vertWeights { 136, 0.1963917, 0.7127140, 0.0908943}
+		vertWeights { 144, 0.0303987, 0.5857269, 0.3838744}
+		vertWeights { 145, 0.0084205, 0.6296787, 0.3619008}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { eof_head collar.r upper_arm.r }
+		numVerts 4
+		vertWeights { 346, 0.0012626, 0.1675779, 0.8311595} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 347, 0.0100721, 0.6471459, 0.3427820} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 521, 0.1773630, 0.8226370, 0.0000000}
+		vertWeights { 604, 0.9299005, 0.0700995, 0.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest eof_head collar.r thigh.r }
+		numVerts 1
+		vertWeights { 327, 0.7242510, 0.0161462, 0.2483742, 0.0112286} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { head.001 eof_head collar.r upper_arm.r }
+		numVerts 1
+		vertWeights { 494, 0.0000000, 0.4154747, 0.5845253, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest thigh.l shin.L }
 		numVerts 5
-		vertWeights { 157, 0.0362074, 0.9369555, 0.0268371}
-		vertWeights { 161, 0.0144923, 0.8635897, 0.1219180}
-		vertWeights { 168, 0.0229852, 0.9506976, 0.0263172}
-		vertWeights { 178, 0.1138788, 0.8608806, 0.0252406}
-		vertWeights { 182, 0.4830962, 0.4429598, 0.0739440}
+		vertWeights { 239, 0.0362074, 0.9369555, 0.0268371}
+		vertWeights { 243, 0.0144923, 0.8635897, 0.1219180}
+		vertWeights { 250, 0.0229852, 0.9506976, 0.0263172}
+		vertWeights { 260, 0.1138788, 0.8608806, 0.0252406}
+		vertWeights { 264, 0.4830962, 0.4429598, 0.0739440}
 	}
 	CIwAnimSkinSet
 	{
-		useBones { ribs shoulder.L thigh.L }
+		useBones { chest head.001 eof_head collar.r }
+		numVerts 1
+		vertWeights { 508, 0.0263306, 0.0000000, 0.8677874, 0.1058820} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest collar.l }
+		numVerts 1
+		vertWeights { 128, 0.9164248, 0.0835752} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { root chest thigh.l thigh.r }
+		numVerts 35
+		vertWeights { 245, 0.1845380, 0.5968800, 0.0452819, 0.1733001} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 246, 0.2007016, 0.4649589, 0.1534124, 0.1809271} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 247, 0.1063860, 0.3738493, 0.4037248, 0.1160399}
+		vertWeights { 253, 0.2021198, 0.6193740, 0.1250483, 0.0534579} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 254, 0.2599017, 0.2023737, 0.3817486, 0.1559760} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 255, 0.2628082, 0.5085473, 0.0908806, 0.1377639} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 257, 0.1450195, 0.6888939, 0.0217083, 0.1443783} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 259, 0.1662575, 0.7035930, 0.0928932, 0.0372564} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 262, 0.1764045, 0.4044011, 0.2592377, 0.1599566} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 263, 0.1088010, 0.3731438, 0.4058589, 0.1121963}
+		vertWeights { 266, 0.2351255, 0.2358881, 0.3801035, 0.1488828} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 267, 0.2571589, 0.4441535, 0.1570799, 0.1416078} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 279, 0.0431687, 0.5357654, 0.3865013, 0.0345646} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 284, 0.0419007, 0.6912939, 0.2351477, 0.0316577} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 402, 0.3282987, 0.4206582, 0.1615066, 0.0895364} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 415, 0.2075748, 0.6379970, 0.0058812, 0.1485469} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 416, 0.0995494, 0.0778326, 0.0631519, 0.7594661} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 417, 0.1841617, 0.3570138, 0.1095617, 0.3492627} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 421, 0.1621822, 0.6816790, 0.0001468, 0.1559920} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 422, 0.3992108, 0.4033037, 0.1003529, 0.0971326} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 429, 0.0998603, 0.1005980, 0.0632883, 0.7362534} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 430, 0.1922771, 0.3335742, 0.1072270, 0.3669216} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 432, 0.3503551, 0.3628142, 0.0000091, 0.2868216} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 433, 0.1764768, 0.3881801, 0.2150065, 0.2203366}
+		vertWeights { 436, 0.3499086, 0.3366313, 0.0268192, 0.2866409} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 437, 0.2249820, 0.3503757, 0.2095955, 0.2150468}
+		vertWeights { 439, 0.4027192, 0.2015842, 0.2096037, 0.1860929} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 440, 0.3351505, 0.4513983, 0.1271709, 0.0862802} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 442, 0.3495044, 0.3955714, 0.1580134, 0.0969108} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 443, 0.3742598, 0.3052185, 0.2236762, 0.0968455} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 451, 0.0457818, 0.0462613, 0.0126652, 0.8952917} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 456, 0.0309099, 0.5218635, 0.0140227, 0.4332039} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 458, 0.0505462, 0.0995693, 0.0014222, 0.8484622} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 461, 0.0279484, 0.5390615, 0.0108018, 0.4221883} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 536, 0.1191893, 0.7813532, 0.0000000, 0.0994575} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { s_middlef middlef s_pinky pinky }
+		numVerts 1
+		vertWeights { 93, 0.7816237, 0.1003649, 0.0135477, 0.1044638} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { root thigh.r shin.R }
 		numVerts 4
-		vertWeights { 47, 0.9001587, 0.0998413, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 48, 0.8780514, 0.1219486, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 188, 0.7756925, 0.1919863, 0.0323212} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 477, 0.7652869, 0.2232373, 0.0114758} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 296, 0.0151673, 0.8644482, 0.1203845}
+		vertWeights { 301, 0.1960500, 0.7132851, 0.0906649}
+		vertWeights { 309, 0.0302863, 0.5858452, 0.3838685}
+		vertWeights { 310, 0.0082088, 0.6300922, 0.3616990}
 	}
 	CIwAnimSkinSet
 	{
-		useBones { root ribs thigh.R }
+		useBones { upper_arm.r }
+		numVerts 10
+		vertWeights { 330, 1.0000000}
+		vertWeights { 341, 1.0000000}
+		vertWeights { 359, 1.0000000}
+		vertWeights { 360, 1.0000000}
+		vertWeights { 361, 1.0000000}
+		vertWeights { 362, 1.0000000}
+		vertWeights { 363, 1.0000000}
+		vertWeights { 364, 1.0000000}
+		vertWeights { 365, 1.0000000}
+		vertWeights { 366, 1.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { eof_head collar.l collar.r }
 		numVerts 16
-		vertWeights { 55, 0.0389516, 0.9543823, 0.0066661} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 285, 0.1142163, 0.8595738, 0.0262100} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 324, 0.1204994, 0.3714750, 0.5080256} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 326, 0.1231063, 0.2782153, 0.5986783} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 327, 0.1184307, 0.4147487, 0.4668207}
-		vertWeights { 337, 0.1010749, 0.4407053, 0.4582197} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 343, 0.1230437, 0.2764106, 0.6005457} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 344, 0.1207626, 0.4121350, 0.4671024}
-		vertWeights { 349, 0.2956445, 0.4419510, 0.2624046} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 352, 0.2757333, 0.4686517, 0.2556150} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 370, 0.0948339, 0.5024196, 0.4027465} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 371, 0.0816816, 0.8742661, 0.0440523} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 373, 0.0528243, 0.8995264, 0.0476493} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 377, 0.1172921, 0.6052448, 0.2774631}
-		vertWeights { 421, 0.0361061, 0.9533406, 0.0105533} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 453, 0.0939031, 0.8825291, 0.0235678} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 286, 0.9977323, 0.0017337, 0.0005340} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 287, 0.9785953, 0.0135152, 0.0078895} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 288, 0.9633173, 0.0260226, 0.0106602} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 289, 0.9991266, 0.0007681, 0.0001053} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 290, 0.9978389, 0.0018241, 0.0003370} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 291, 0.9988082, 0.0008865, 0.0003053} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 292, 0.9958685, 0.0034864, 0.0006452} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 463, 0.9956191, 0.0011425, 0.0032384} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 466, 0.9968847, 0.0015033, 0.0016120} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 467, 0.9995993, 0.0002310, 0.0001697} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 469, 0.9983888, 0.0001921, 0.0014191} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 470, 0.9959411, 0.0007354, 0.0033234} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 471, 0.9976299, 0.0005744, 0.0017957} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 472, 0.9847566, 0.0020783, 0.0131651} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 569, 0.9942993, 0.0045705, 0.0011302} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 570, 0.9830979, 0.0030733, 0.0138288} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { upper_arm.R }
-		numVerts 34
-		vertWeights { 248, 1.0000000}
-		vertWeights { 250, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 252, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 254, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 256, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 258, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 259, 1.0000000}
-		vertWeights { 260, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 262, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 269, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 270, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 271, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 272, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 273, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 274, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 275, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 276, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 277, 1.0000000}
-		vertWeights { 278, 1.0000000}
-		vertWeights { 279, 1.0000000}
-		vertWeights { 280, 1.0000000}
-		vertWeights { 281, 1.0000000}
-		vertWeights { 282, 1.0000000}
-		vertWeights { 283, 1.0000000}
-		vertWeights { 284, 1.0000000}
-		vertWeights { 523, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 524, 1.0000000}
-		vertWeights { 525, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 526, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 527, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 528, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 529, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 530, 1.0000000}
-		vertWeights { 531, 1.0000000}
+		useBones { chest eof_head collar.l thigh.l }
+		numVerts 2
+		vertWeights { 271, 0.7508346, 0.1250000, 0.1241651, 0.0000003} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 541, 0.7547982, 0.1250000, 0.1100359, 0.0101659} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { head shoulder.L }
+		useBones { s_thumb }
+		numVerts 5
+		vertWeights { 84, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 97, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 118, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 121, 1.0000000}
+		vertWeights { 122, 1.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { collar.r upper_arm.r }
+		numVerts 5
+		vertWeights { 331, 0.0448159, 0.9551841} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 333, 0.0323620, 0.9676380} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 335, 0.0357915, 0.9642085} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 337, 0.0684035, 0.9315965} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 339, 0.0589983, 0.9410017}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { s_middlef middlef s_thumb }
+		numVerts 1
+		vertWeights { 91, 0.7939183, 0.0201898, 0.1858920} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { upper_arm.l }
 		numVerts 8
-		vertWeights { 82, 0.9972619, 0.0027381}
-		vertWeights { 394, 0.9974428, 0.0025572}
-		vertWeights { 399, 0.9953223, 0.0046777}
-		vertWeights { 410, 0.9734142, 0.0265858}
-		vertWeights { 429, 0.9917112, 0.0082888}
-		vertWeights { 478, 0.9918443, 0.0081557}
-		vertWeights { 490, 0.9826310, 0.0173690} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 521, 0.8303951, 0.1696049} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 174, 1.0000000}
+		vertWeights { 176, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 197, 1.0000000}
+		vertWeights { 198, 1.0000000}
+		vertWeights { 199, 1.0000000}
+		vertWeights { 200, 1.0000000}
+		vertWeights { 201, 1.0000000}
+		vertWeights { 204, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { ribs head shoulder.L thigh.L }
+		useBones { chest upper_arm.l thigh.l }
 		numVerts 2
-		vertWeights { 189, 0.7508346, 0.1250000, 0.1241651, 0.0000003} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 459, 0.7547982, 0.1250000, 0.1100359, 0.0101659} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 256, 0.9296526, 0.0000000, 0.0703474} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 258, 0.9746903, 0.0000000, 0.0253097} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { neck head shoulder.L }
+		useBones { chest eof_head collar.r }
 		numVerts 2
-		vertWeights { 393, 0.0000000, 0.9961832, 0.0038168}
-		vertWeights { 485, 0.0000000, 0.9965369, 0.0034631}
+		vertWeights { 579, 0.1296802, 0.8026500, 0.0676698} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 582, 0.0522157, 0.9240480, 0.0237363} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { ribs neck head shoulder.L }
+		useBones { root shin.L thigh.r shin.R }
+		numVerts 1
+		vertWeights { 444, 0.3472502, 0.0476370, 0.5573894, 0.0477234} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest head.001 collar.r upper_arm.r }
 		numVerts 3
-		vertWeights { 403, 0.0172292, 0.0000000, 0.8964674, 0.0863035} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 469, 0.5743106, 0.0000000, 0.1326960, 0.2929934} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 470, 0.4073275, 0.0108932, 0.0380841, 0.5436951} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 520, 0.9136935, 0.0000000, 0.0863065, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 545, 0.7100290, 0.0000000, 0.2899710, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 590, 0.2355795, 0.0000000, 0.7644205, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { forearm.L.003 forearm.L.006 }
-		numVerts 4
-		vertWeights { 2, 0.9196371, 0.0803629} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 36, 0.0702910, 0.9297090} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 39, 0.0119936, 0.9880064}
-		vertWeights { 40, 0.0535093, 0.9464907}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { upper_arm.L }
-		numVerts 8
-		vertWeights { 92, 1.0000000}
-		vertWeights { 94, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 115, 1.0000000}
-		vertWeights { 116, 1.0000000}
-		vertWeights { 117, 1.0000000}
-		vertWeights { 118, 1.0000000}
-		vertWeights { 119, 1.0000000}
-		vertWeights { 122, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs upper_arm.L thigh.L }
+		useBones { eof_head upper_arm.l }
 		numVerts 2
-		vertWeights { 174, 0.9296526, 0.0000000, 0.0703474} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 176, 0.9746903, 0.0000000, 0.0253097} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 180, 0.0000000, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 202, 0.0552780, 0.9447220} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { root thigh.R shin.R }
+		useBones { root chest shin.L shin.R }
+		numVerts 1
+		vertWeights { 435, 0.3805679, 0.5284217, 0.0468874, 0.0441230} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { middlef s_thumb }
+		numVerts 1
+		vertWeights { 117, 0.9933158, 0.0066842}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest collar.l upper_arm.l thigh.l }
 		numVerts 4
-		vertWeights { 214, 0.0151673, 0.8644482, 0.1203845}
-		vertWeights { 219, 0.1960500, 0.7132851, 0.0906649}
-		vertWeights { 227, 0.0302863, 0.5858452, 0.3838685}
-		vertWeights { 228, 0.0082088, 0.6300922, 0.3616990}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs neck shoulder.R upper_arm.R }
-		numVerts 3
-		vertWeights { 438, 0.9136935, 0.0000000, 0.0863065, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 463, 0.7100290, 0.0000000, 0.2899710, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 508, 0.2355795, 0.0000000, 0.7644205, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { head upper_arm.L }
-		numVerts 2
-		vertWeights { 98, 0.0000000, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 120, 0.0552780, 0.9447220} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 160, 0.2037179, 0.1963733, 0.5991868, 0.0007220} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 162, 0.7597611, 0.2202626, 0.0000000, 0.0199763} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 269, 0.9484928, 0.0515072, 0.0000000, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 533, 0.8982131, 0.0714269, 0.0000045, 0.0303556} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
 	}
 	CIwAnimSkinSet
 	{
 		useBones { foot.L }
 		numVerts 1
-		vertWeights { 137, 1.0000000}
+		vertWeights { 219, 1.0000000}
 	}
 	CIwAnimSkinSet
 	{
-		useBones { shoulder.L upper_arm.L }
+		useBones { collar.l upper_arm.l }
 		numVerts 3
-		vertWeights { 90, 0.0092144, 0.9907856}
-		vertWeights { 99, 0.1544402, 0.8455598}
-		vertWeights { 452, 0.7667935, 0.2332065}
+		vertWeights { 172, 0.0092144, 0.9907856}
+		vertWeights { 181, 0.1544402, 0.8455598}
+		vertWeights { 534, 0.7667935, 0.2332065}
 	}
 	CIwAnimSkinSet
 	{
-		useBones { head shoulder.R upper_arm.R }
-		numVerts 4
-		vertWeights { 264, 0.0012626, 0.1675779, 0.8311595} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 265, 0.0100721, 0.6471459, 0.3427820} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 439, 0.1773630, 0.8226370, 0.0000000}
-		vertWeights { 522, 0.9299005, 0.0700995, 0.0000000}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs shoulder.L upper_arm.L thigh.L }
-		numVerts 4
-		vertWeights { 78, 0.2037179, 0.1963733, 0.5991868, 0.0007220} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 80, 0.7597611, 0.2202626, 0.0000000, 0.0199763} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 187, 0.9484928, 0.0515072, 0.0000000, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 451, 0.8982131, 0.0714269, 0.0000045, 0.0303556} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { forearm.L forearm.L.001 forearm.L.002 forearm.L.003 }
-		numVerts 1
-		vertWeights { 13, 0.7706150, 0.0229221, 0.0953724, 0.1110905} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs neck shoulder.L upper_arm.L }
-		numVerts 2
-		vertWeights { 446, 0.2651781, 0.0000321, 0.7347898, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 450, 0.1654879, 0.0000000, 0.8345121, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { head shoulder.L upper_arm.L }
+		useBones { eof_head collar.r }
 		numVerts 9
-		vertWeights { 84, 0.0000000, 0.0116108, 0.9883892} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 86, 0.0000000, 0.0168843, 0.9831157}
-		vertWeights { 88, 0.0020664, 0.3123318, 0.6856019}
-		vertWeights { 100, 0.0012690, 0.6327239, 0.3660071}
-		vertWeights { 101, 0.1663623, 0.8286309, 0.0050067}
-		vertWeights { 400, 0.9776250, 0.0206509, 0.0017241} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 404, 0.9572306, 0.0400384, 0.0027310} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 409, 0.4676715, 0.5323285, 0.0000000}
-		vertWeights { 449, 0.0447651, 0.8486163, 0.1066186}
+		vertWeights { 329, 0.9965443, 0.0034557}
+		vertWeights { 473, 0.9957368, 0.0042632}
+		vertWeights { 474, 0.9982276, 0.0017724} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 477, 0.9960004, 0.0039996} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 489, 0.9992911, 0.0007089} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 493, 0.9987878, 0.0012122} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 564, 0.9974917, 0.0025083}
+		vertWeights { 566, 0.9985709, 0.0014291}
+		vertWeights { 571, 0.9961419, 0.0038581}
 	}
 	CIwAnimSkinSet
 	{
-		useBones { ribs head shoulder.L upper_arm.L }
-		numVerts 9
-		vertWeights { 79, 0.8139710, 0.0000000, 0.1860290, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 96, 0.0256184, 0.0000000, 0.0228735, 0.9515082} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 103, 0.0944945, 0.0081771, 0.5338318, 0.3634967} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 423, 0.0089715, 0.9546163, 0.0360024, 0.0004098} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 436, 0.3597450, 0.5442701, 0.0959849, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 448, 0.0093394, 0.2964288, 0.6816617, 0.0125701} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 471, 0.6608477, 0.2404508, 0.0948897, 0.0038117} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 472, 0.5252584, 0.3251402, 0.1198604, 0.0297410} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 495, 0.0590323, 0.9045162, 0.0364515, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs head shoulder.R thigh.R }
-		numVerts 2
-		vertWeights { 245, 0.7242510, 0.0161462, 0.2483742, 0.0112286} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 458, 0.7612768, 0.1250000, 0.1092309, 0.0044922} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { upper_arm.L upper_arm.L.001 }
-		numVerts 15
-		vertWeights { 83, 0.9085580, 0.0914420} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 85, 0.9609567, 0.0390433} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 87, 0.9978729, 0.0021271} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 89, 0.9359011, 0.0640989} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 91, 0.8693388, 0.1306612} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 95, 0.8309838, 0.1690162} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 97, 0.8329483, 0.1670517} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 104, 0.8106231, 0.1893769} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 105, 0.9029859, 0.0970141} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 106, 0.7840004, 0.2159996} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 108, 0.1406829, 0.8593171} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 109, 0.7287713, 0.2712287} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 110, 0.3588579, 0.6411421} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 121, 0.9950909, 0.0049091} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 486, 0.5000000, 0.5000000}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs thigh.R shin.R }
-		numVerts 5
-		vertWeights { 317, 0.2946204, 0.4479036, 0.2574760}
-		vertWeights { 322, 0.0098358, 0.8685869, 0.1215773}
-		vertWeights { 330, 0.1583745, 0.6557446, 0.1858809}
-		vertWeights { 341, 0.4489696, 0.4505181, 0.1005122}
-		vertWeights { 345, 0.4835579, 0.4431920, 0.0732501}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { neck head shoulder.R }
-		numVerts 1
-		vertWeights { 430, 0.0000000, 0.9912394, 0.0087606} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs shoulder.R thigh.R }
-		numVerts 2
-		vertWeights { 212, 0.8839387, 0.1049053, 0.0111560} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 366, 0.8279209, 0.1642743, 0.0078048} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs upper_arm.R }
-		numVerts 1
-		vertWeights { 263, 0.0083082, 0.9916918} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs shoulder.R upper_arm.R thigh.R }
-		numVerts 10
-		vertWeights { 211, 0.8959314, 0.0882169, 0.0000000, 0.0158517} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 213, 0.8532860, 0.1157462, 0.0000292, 0.0309387} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 243, 0.4682269, 0.5219330, 0.0000000, 0.0098401} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 244, 0.7730513, 0.2159393, 0.0000000, 0.0110094} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 363, 0.8998395, 0.0376732, 0.0000221, 0.0624651} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 364, 0.8986215, 0.0656901, 0.0017320, 0.0339565} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 365, 0.7247300, 0.2539904, 0.0000000, 0.0212796} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 401, 0.9346721, 0.0540421, 0.0011815, 0.0101043} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 443, 0.9368924, 0.0414007, 0.0070007, 0.0147062} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 476, 0.6878762, 0.2802167, 0.0000000, 0.0319071} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { root ribs thigh.R shin.R }
-		numVerts 2
-		vertWeights { 218, 0.1004011, 0.0908662, 0.7067366, 0.1019961} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 328, 0.0255502, 0.0067989, 0.8616364, 0.1060145} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { root ribs thigh.L }
-		numVerts 4
-		vertWeights { 193, 0.1436912, 0.7774439, 0.0788649} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 194, 0.0784421, 0.8715382, 0.0500197} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 196, 0.0497413, 0.9025960, 0.0476628} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 200, 0.1429652, 0.7529542, 0.1040806} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { head upper_arm.L upper_arm.L.001 }
-		numVerts 2
-		vertWeights { 93, 0.0093856, 0.7849641, 0.2056503} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 111, 0.0093856, 0.2276082, 0.7630062} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs shoulder.L }
-		numVerts 1
-		vertWeights { 46, 0.9164248, 0.0835752} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { root ribs upper_arm.R thigh.R }
-		numVerts 2
-		vertWeights { 220, 0.0357789, 0.9162251, 0.0000000, 0.0479960} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
-		vertWeights { 420, 0.0359000, 0.9221618, 0.0000000, 0.0419382} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { root ribs shoulder.L thigh.R }
-		numVerts 1
-		vertWeights { 402, 0.0234006, 0.8958360, 0.0245708, 0.0561925} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { head upper_arm.R }
-		numVerts 5
-		vertWeights { 406, 0.9340820, 0.0659180}
-		vertWeights { 419, 0.9472099, 0.0527901}
-		vertWeights { 425, 0.9384766, 0.0615234}
-		vertWeights { 432, 0.9365824, 0.0634176}
-		vertWeights { 493, 0.9384766, 0.0615234}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { thigh.R shin.R }
-		numVerts 25
-		vertWeights { 215, 0.8407546, 0.1592454}
-		vertWeights { 217, 0.8350707, 0.1649293}
-		vertWeights { 223, 0.7354393, 0.2645607}
-		vertWeights { 224, 0.4405165, 0.5594835}
-		vertWeights { 225, 0.2433587, 0.7566413}
-		vertWeights { 226, 0.5060155, 0.4939845}
-		vertWeights { 229, 0.4995868, 0.5004132}
-		vertWeights { 230, 0.5748591, 0.4251409}
-		vertWeights { 231, 0.3186954, 0.6813046}
-		vertWeights { 232, 0.1232339, 0.8767661}
-		vertWeights { 234, 0.1925593, 0.8074407}
-		vertWeights { 235, 0.2979810, 0.7020190}
-		vertWeights { 236, 0.1521346, 0.8478654}
-		vertWeights { 237, 0.2446216, 0.7553784}
-		vertWeights { 238, 0.2999513, 0.7000487}
-		vertWeights { 239, 0.2612426, 0.7387574}
-		vertWeights { 240, 0.5696766, 0.4303234}
-		vertWeights { 241, 0.3989382, 0.6010618}
-		vertWeights { 304, 0.1746816, 0.8253184}
-		vertWeights { 305, 0.0993811, 0.9006189}
-		vertWeights { 306, 0.1381644, 0.8618356}
-		vertWeights { 307, 0.2286290, 0.7713710}
-		vertWeights { 308, 0.1878275, 0.8121725}
-		vertWeights { 309, 0.0900482, 0.9099518}
-		vertWeights { 312, 0.2157199, 0.7842801}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { forearm.L forearm.L.002 }
-		numVerts 2
-		vertWeights { 0, 0.2774556, 0.7225444} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 4, 0.1582160, 0.8417840} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { upper_arm.L.001 forearm.L forearm.L.003 }
-		numVerts 6
-		vertWeights { 3, 0.0031580, 0.0446296, 0.9522124} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
-		vertWeights { 7, 0.0196914, 0.0510198, 0.9292888} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 124, 0.1729234, 0.7193052, 0.1077714} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
-		vertWeights { 125, 0.0995627, 0.8444186, 0.0560186} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 127, 0.5778968, 0.3043461, 0.1177571} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 130, 0.5822495, 0.2980490, 0.1197015} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs neck shoulder.L thigh.R }
-		numVerts 1
-		vertWeights { 473, 0.9399784, 0.0000000, 0.0424473, 0.0175743} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { root thigh.L shin.L shin.R }
-		numVerts 1
-		vertWeights { 286, 0.4829038, 0.4846508, 0.0162010, 0.0162443} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { upper_arm.L.001 forearm.L forearm.L.002 }
-		numVerts 2
-		vertWeights { 128, 0.0181576, 0.9302021, 0.0516403} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 129, 0.0250276, 0.9109447, 0.0640276} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs head shoulder.L }
-		numVerts 4
-		vertWeights { 422, 0.0780492, 0.6164264, 0.3055244} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 428, 0.1764877, 0.4427424, 0.3807699} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 461, 0.0787101, 0.3875490, 0.5337409} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 498, 0.0074000, 0.9885194, 0.0040805} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { foot.R }
-		numVerts 1
-		vertWeights { 297, 1.0000000}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { root thigh.L thigh.R shin.R }
-		numVerts 4
-		vertWeights { 216, 0.1851428, 0.1260488, 0.6189797, 0.0698287} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 222, 0.0948080, 0.0718757, 0.6867301, 0.1465862} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 332, 0.1480612, 0.1290966, 0.6355268, 0.0873155} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 368, 0.0955445, 0.0765937, 0.6993587, 0.1285031} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { thigh.L shin.L foot.L }
-		numVerts 2
-		vertWeights { 68, 0.3293983, 0.6579916, 0.0126102}
-		vertWeights { 143, 0.2383640, 0.7139617, 0.0476742}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { forearm.L.004 }
-		numVerts 6
-		vertWeights { 20, 1.0000000}
-		vertWeights { 21, 1.0000000}
-		vertWeights { 22, 1.0000000}
-		vertWeights { 23, 1.0000000}
-		vertWeights { 32, 1.0000000}
-		vertWeights { 33, 1.0000000}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { upper_arm.L.001 forearm.L }
-		numVerts 1
-		vertWeights { 123, 0.0046663, 0.9953337} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs thigh.L }
+		useBones { chest collar.l upper_arm.l }
 		numVerts 8
-		vertWeights { 158, 0.8800832, 0.1199168} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 162, 0.9214097, 0.0785903} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 167, 0.9473849, 0.0526151} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 169, 0.8945459, 0.1054541} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 179, 0.8119527, 0.1880473} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 183, 0.7602115, 0.2397885}
-		vertWeights { 190, 0.9198621, 0.0801379} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 195, 0.9401856, 0.0598144} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 159, 0.0790097, 0.1039314, 0.8170589} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 163, 0.1523353, 0.1167562, 0.7309085} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 184, 0.1881929, 0.4328964, 0.3789107} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 268, 0.9720909, 0.0279091, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 529, 0.4182273, 0.5816483, 0.0001244} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 537, 0.2030884, 0.7969116, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 589, 0.1486842, 0.8513158, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 598, 0.0271603, 0.9727397, 0.0001001} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { head upper_arm.L.001 forearm.L forearm.L.002 }
-		numVerts 1
-		vertWeights { 126, 0.0000000, 0.0035178, 0.9953981, 0.0010842} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs shoulder.R thigh.L thigh.R }
-		numVerts 1
-		vertWeights { 462, 0.8924790, 0.0080557, 0.0000000, 0.0994653} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { forearm.L.005 }
-		numVerts 4
-		vertWeights { 24, 1.0000000}
-		vertWeights { 25, 1.0000000}
-		vertWeights { 26, 1.0000000}
-		vertWeights { 27, 1.0000000}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { shin.R foot.R }
-		numVerts 16
-		vertWeights { 291, 0.3905969, 0.6094031}
-		vertWeights { 292, 0.5628792, 0.4371208}
-		vertWeights { 293, 0.2111769, 0.7888231}
-		vertWeights { 294, 0.9462772, 0.0537228}
-		vertWeights { 295, 0.1167731, 0.8832269}
-		vertWeights { 296, 0.9475766, 0.0524234}
-		vertWeights { 298, 0.9445245, 0.0554755}
-		vertWeights { 299, 0.1114969, 0.8885031}
-		vertWeights { 300, 0.9149532, 0.0850468}
-		vertWeights { 301, 0.2074185, 0.7925815}
-		vertWeights { 302, 0.8791434, 0.1208566}
-		vertWeights { 310, 0.2529251, 0.7470749}
-		vertWeights { 311, 0.8932032, 0.1067968}
-		vertWeights { 313, 0.1569679, 0.8430321}
-		vertWeights { 314, 0.9524024, 0.0475976}
-		vertWeights { 315, 0.0674211, 0.9325789}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { root ribs thigh.L thigh.R }
-		numVerts 35
-		vertWeights { 163, 0.1845380, 0.5968800, 0.0452819, 0.1733001} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 164, 0.2007016, 0.4649589, 0.1534124, 0.1809271} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 165, 0.1063860, 0.3738493, 0.4037248, 0.1160399}
-		vertWeights { 171, 0.2021198, 0.6193740, 0.1250483, 0.0534579} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 172, 0.2599017, 0.2023737, 0.3817486, 0.1559760} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 173, 0.2628082, 0.5085473, 0.0908806, 0.1377639} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 175, 0.1450195, 0.6888939, 0.0217083, 0.1443783} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 177, 0.1662575, 0.7035930, 0.0928932, 0.0372564} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 180, 0.1764045, 0.4044011, 0.2592377, 0.1599566} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 181, 0.1088010, 0.3731438, 0.4058589, 0.1121963}
-		vertWeights { 184, 0.2351255, 0.2358881, 0.3801035, 0.1488828} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 185, 0.2571589, 0.4441535, 0.1570799, 0.1416078} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 197, 0.0431687, 0.5357654, 0.3865013, 0.0345646} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 202, 0.0419007, 0.6912939, 0.2351477, 0.0316577} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 320, 0.3282987, 0.4206582, 0.1615066, 0.0895364} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 333, 0.2075748, 0.6379970, 0.0058812, 0.1485469} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 334, 0.0995494, 0.0778326, 0.0631519, 0.7594661} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 335, 0.1841617, 0.3570138, 0.1095617, 0.3492627} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 339, 0.1621822, 0.6816790, 0.0001468, 0.1559920} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 340, 0.3992108, 0.4033037, 0.1003529, 0.0971326} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 347, 0.0998603, 0.1005980, 0.0632883, 0.7362534} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 348, 0.1922771, 0.3335742, 0.1072270, 0.3669216} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 350, 0.3503551, 0.3628142, 0.0000091, 0.2868216} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 351, 0.1764768, 0.3881801, 0.2150065, 0.2203366}
-		vertWeights { 354, 0.3499086, 0.3366313, 0.0268192, 0.2866409} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 355, 0.2249820, 0.3503757, 0.2095955, 0.2150468}
-		vertWeights { 357, 0.4027192, 0.2015842, 0.2096037, 0.1860929} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 358, 0.3351505, 0.4513983, 0.1271709, 0.0862802} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 360, 0.3495044, 0.3955714, 0.1580134, 0.0969108} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 361, 0.3742598, 0.3052185, 0.2236762, 0.0968455} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 369, 0.0457818, 0.0462613, 0.0126652, 0.8952917} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 374, 0.0309099, 0.5218635, 0.0140227, 0.4332039} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 376, 0.0505462, 0.0995693, 0.0014222, 0.8484622} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 379, 0.0279484, 0.5390615, 0.0108018, 0.4221883} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 454, 0.1191893, 0.7813532, 0.0000000, 0.0994575} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { head upper_arm.L upper_arm.L.001 forearm.L }
-		numVerts 1
-		vertWeights { 112, 0.0093856, 0.1477357, 0.8029536, 0.0399251} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs thigh.L thigh.R shin.R }
-		numVerts 5
-		vertWeights { 221, 0.0330829, 0.0079192, 0.7942353, 0.1647627} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 316, 0.1846830, 0.0000000, 0.7175297, 0.0977873} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 375, 0.1152026, 0.0168248, 0.8644946, 0.0034781} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 378, 0.0727649, 0.0421253, 0.7616612, 0.1234486} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 380, 0.1133511, 0.0214865, 0.8474920, 0.0176703} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { forearm.L.002 forearm.L.005 }
-		numVerts 2
-		vertWeights { 31, 0.1101661, 0.8898339}
-		vertWeights { 45, 0.1575555, 0.8424445}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { shoulder.R upper_arm.R }
-		numVerts 5
-		vertWeights { 249, 0.0448159, 0.9551841} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 251, 0.0323620, 0.9676380} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 253, 0.0357915, 0.9642085} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 255, 0.0684035, 0.9315965} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 257, 0.0589983, 0.9410017}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { forearm.L forearm.L.001 forearm.L.002 forearm.L.005 }
-		numVerts 1
-		vertWeights { 1, 0.0121147, 0.0712817, 0.7782902, 0.1383134} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs shoulder.R upper_arm.R }
-		numVerts 6
-		vertWeights { 242, 0.0413446, 0.0687386, 0.8899168} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 246, 0.0976277, 0.1033532, 0.7990191} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 261, 0.0429385, 0.0513041, 0.9057574} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 267, 0.0654226, 0.2142986, 0.7202788} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 440, 0.4091901, 0.5908099, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 442, 0.1886478, 0.7385209, 0.0728313} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		useBones { upper_arm.r arm.r }
+		numVerts 24
+		vertWeights { 332, 0.9835001, 0.0164999} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 334, 0.9471827, 0.0528173} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 336, 0.9242848, 0.0757152} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 338, 0.8889046, 0.1110954} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 340, 0.8498509, 0.1501491} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 342, 0.8760277, 0.1239723} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 344, 0.9763468, 0.0236532} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 351, 0.5100420, 0.4899580} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 352, 0.5632810, 0.4367190} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 353, 0.6420405, 0.3579595} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 354, 0.6431752, 0.3568248} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 355, 0.6060306, 0.3939694} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 356, 0.5806944, 0.4193056} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 357, 0.5452900, 0.4547100} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 358, 0.5197146, 0.4802854} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 605, 0.5539085, 0.4460915} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 606, 0.5305669, 0.4694331}
+		vertWeights { 607, 0.5803578, 0.4196422} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 608, 0.5995009, 0.4004991} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 609, 0.5485770, 0.4514230} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 610, 0.5663207, 0.4336793} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 611, 0.6009207, 0.3990793} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 612, 0.5636872, 0.4363128}
+		vertWeights { 613, 0.5351327, 0.4648673}
 	}
 	CIwAnimSkinSet
 	{
 		useBones { shin.L foot.L }
 		numVerts 16
-		vertWeights { 131, 0.3906134, 0.6093866}
-		vertWeights { 132, 0.5631178, 0.4368822}
-		vertWeights { 133, 0.2107769, 0.7892231}
-		vertWeights { 134, 0.9468529, 0.0531471}
-		vertWeights { 135, 0.1162287, 0.8837713}
-		vertWeights { 136, 0.9479135, 0.0520865}
-		vertWeights { 138, 0.9444526, 0.0555474}
-		vertWeights { 139, 0.1120768, 0.8879232}
-		vertWeights { 140, 0.9144186, 0.0855814}
-		vertWeights { 141, 0.2078459, 0.7921541}
-		vertWeights { 142, 0.8784655, 0.1215345}
-		vertWeights { 150, 0.2526769, 0.7473231}
-		vertWeights { 151, 0.8939323, 0.1060677}
-		vertWeights { 153, 0.1564391, 0.8435609}
-		vertWeights { 154, 0.9533525, 0.0466475}
-		vertWeights { 155, 0.0674138, 0.9325862}
+		vertWeights { 213, 0.3906134, 0.6093866}
+		vertWeights { 214, 0.5631178, 0.4368822}
+		vertWeights { 215, 0.2107769, 0.7892231}
+		vertWeights { 216, 0.9468529, 0.0531471}
+		vertWeights { 217, 0.1162287, 0.8837713}
+		vertWeights { 218, 0.9479135, 0.0520865}
+		vertWeights { 220, 0.9444526, 0.0555474}
+		vertWeights { 221, 0.1120768, 0.8879232}
+		vertWeights { 222, 0.9144186, 0.0855814}
+		vertWeights { 223, 0.2078459, 0.7921541}
+		vertWeights { 224, 0.8784655, 0.1215345}
+		vertWeights { 232, 0.2526769, 0.7473231}
+		vertWeights { 233, 0.8939323, 0.1060677}
+		vertWeights { 235, 0.1564391, 0.8435609}
+		vertWeights { 236, 0.9533525, 0.0466475}
+		vertWeights { 237, 0.0674138, 0.9325862}
 	}
 	CIwAnimSkinSet
 	{
-		useBones { head shoulder.R }
-		numVerts 10
-		vertWeights { 247, 0.9965443, 0.0034557}
-		vertWeights { 391, 0.9957368, 0.0042632}
-		vertWeights { 392, 0.9982276, 0.0017724} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 395, 0.9960004, 0.0039996} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 396, 0.9971238, 0.0028762} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 407, 0.9992911, 0.0007089} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 411, 0.9987878, 0.0012122} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 482, 0.9974917, 0.0025083}
-		vertWeights { 484, 0.9985709, 0.0014291}
-		vertWeights { 489, 0.9961419, 0.0038581}
+		useBones { eof_head collar.l upper_arm.l }
+		numVerts 9
+		vertWeights { 166, 0.0000000, 0.0116108, 0.9883892} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 168, 0.0000000, 0.0168843, 0.9831157}
+		vertWeights { 170, 0.0020664, 0.3123318, 0.6856019}
+		vertWeights { 182, 0.0012690, 0.6327239, 0.3660071}
+		vertWeights { 183, 0.1663623, 0.8286309, 0.0050067}
+		vertWeights { 482, 0.9776250, 0.0206509, 0.0017241} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 486, 0.9572306, 0.0400384, 0.0027310} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 491, 0.4676715, 0.5323285, 0.0000000}
+		vertWeights { 531, 0.0447651, 0.8486163, 0.1066186}
 	}
 	CIwAnimSkinSet
 	{
-		useBones { forearm.L forearm.L.003 }
+		useBones { chest eof_head collar.l upper_arm.l }
+		numVerts 9
+		vertWeights { 161, 0.8139710, 0.0000000, 0.1860290, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 178, 0.0256184, 0.0000000, 0.0228735, 0.9515082} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 185, 0.0944945, 0.0081771, 0.5338318, 0.3634967} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 505, 0.0089715, 0.9546163, 0.0360024, 0.0004098} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 518, 0.3597450, 0.5442701, 0.0959849, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 530, 0.0093394, 0.2964288, 0.6816617, 0.0125701} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 553, 0.6608477, 0.2404508, 0.0948897, 0.0038117} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 554, 0.5252584, 0.3251402, 0.1198604, 0.0297410} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 577, 0.0590323, 0.9045162, 0.0364515, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { s_pinky s_thumb }
 		numVerts 1
-		vertWeights { 15, 0.1000763, 0.8999237} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 96, 0.5598036, 0.4401964} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { neck head shoulder.R upper_arm.R }
-		numVerts 1
-		vertWeights { 412, 0.0000000, 0.4154747, 0.5845253, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs neck head shoulder.R }
-		numVerts 2
-		vertWeights { 426, 0.0263306, 0.0000000, 0.8677874, 0.1058820} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 460, 0.0923623, 0.0000000, 0.3523097, 0.5553280} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs shoulder.L shoulder.R thigh.L }
-		numVerts 1
-		vertWeights { 475, 0.7436115, 0.1961719, 0.0560301, 0.0041866} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { head shoulder.L shoulder.R }
-		numVerts 16
-		vertWeights { 204, 0.9977323, 0.0017337, 0.0005340} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 205, 0.9785953, 0.0135152, 0.0078895} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 206, 0.9633173, 0.0260226, 0.0106602} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 207, 0.9991266, 0.0007681, 0.0001053} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 208, 0.9978389, 0.0018241, 0.0003370} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 209, 0.9988082, 0.0008865, 0.0003053} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 210, 0.9958685, 0.0034864, 0.0006452} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 381, 0.9956191, 0.0011425, 0.0032384} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 384, 0.9968847, 0.0015033, 0.0016120} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 385, 0.9995993, 0.0002310, 0.0001697} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 387, 0.9983888, 0.0001921, 0.0014191} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 388, 0.9959411, 0.0007354, 0.0033234} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 389, 0.9976299, 0.0005744, 0.0017957} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 390, 0.9847566, 0.0020783, 0.0131651} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 487, 0.9942993, 0.0045705, 0.0011302} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 488, 0.9830979, 0.0030733, 0.0138288} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs head shoulder.L shoulder.R }
-		numVerts 15
-		vertWeights { 413, 0.0012943, 0.9611080, 0.0281082, 0.0094895} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 415, 0.0010345, 0.9720170, 0.0138859, 0.0130626} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 434, 0.2583968, 0.6993404, 0.0224933, 0.0197695} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 467, 0.6760989, 0.2576371, 0.0352157, 0.0310483} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 9 bones).
-		vertWeights { 468, 0.3944214, 0.5462060, 0.0298724, 0.0295003} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
-		vertWeights { 474, 0.4652651, 0.3792011, 0.0622136, 0.0933201} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
-		vertWeights { 496, 0.0702720, 0.9152318, 0.0068439, 0.0076524} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 509, 0.1024592, 0.4819078, 0.1430398, 0.2725932} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 510, 0.0989679, 0.4847105, 0.0533413, 0.3629802} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 512, 0.0318395, 0.7008022, 0.2125903, 0.0547680} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 513, 0.0116776, 0.8982890, 0.0508414, 0.0391921} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 514, 0.0118564, 0.8914846, 0.0205033, 0.0761557} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 515, 0.0125627, 0.8750118, 0.0142727, 0.0981528} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 518, 0.0219806, 0.7763586, 0.1694492, 0.0322116} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 519, 0.0033217, 0.8290249, 0.1647061, 0.0029474} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { neck head shoulder.L shoulder.R }
-		numVerts 5
-		vertWeights { 290, 0.0000000, 0.9772283, 0.0116067, 0.0111650} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 382, 0.0000000, 0.9930960, 0.0034116, 0.0034925} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 383, 0.0000000, 0.9811841, 0.0068968, 0.0119192} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 386, 0.0000000, 0.9664672, 0.0094661, 0.0240667} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 414, 0.0000000, 0.9509395, 0.0124591, 0.0366014} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { forearm.L.001 forearm.L.004 forearm.L.002 forearm.L.005 }
-		numVerts 1
-		vertWeights { 11, 0.7816237, 0.1003649, 0.0135477, 0.1044638} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { root shin.L thigh.R shin.R }
-		numVerts 1
-		vertWeights { 362, 0.3472502, 0.0476370, 0.5573894, 0.0477234} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { forearm.L.004 forearm.L.003 }
-		numVerts 1
-		vertWeights { 35, 0.9933158, 0.0066842}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs shoulder.L upper_arm.L }
-		numVerts 8
-		vertWeights { 77, 0.0790097, 0.1039314, 0.8170589} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 81, 0.1523353, 0.1167562, 0.7309085} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 102, 0.1881929, 0.4328964, 0.3789107} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 186, 0.9720909, 0.0279091, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-		vertWeights { 447, 0.4182273, 0.5816483, 0.0001244} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 455, 0.2030884, 0.7969116, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 507, 0.1486842, 0.8513158, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 516, 0.0271603, 0.9727397, 0.0001001} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs shoulder.L upper_arm.L shoulder.R }
-		numVerts 1
-		vertWeights { 457, 0.9545979, 0.0126530, 0.0198478, 0.0129013} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 10 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { forearm.L forearm.L.002 forearm.L.003 }
-		numVerts 1
-		vertWeights { 14, 0.7743984, 0.1262926, 0.0993090} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { forearm.L.001 forearm.L.004 forearm.L.003 forearm.L.006 }
-		numVerts 1
-		vertWeights { 9, 0.7257177, 0.0184554, 0.1699231, 0.0859037} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { head shoulder.L upper_arm.L shoulder.R }
-		numVerts 1
-		vertWeights { 511, 0.5318675, 0.3767964, 0.0000000, 0.0913361} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs head shoulder.R }
-		numVerts 4
-		vertWeights { 431, 0.2058557, 0.3422372, 0.4519071} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 465, 0.3822857, 0.1524809, 0.4652335} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 497, 0.1296802, 0.8026500, 0.0676698} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 500, 0.0522157, 0.9240480, 0.0237363} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { upper_arm.L upper_arm.L.001 forearm.L }
-		numVerts 3
-		vertWeights { 107, 0.0946626, 0.8972837, 0.0080537} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 113, 0.0697271, 0.8874576, 0.0428153} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 114, 0.0923453, 0.8838560, 0.0237987} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs head shoulder.R upper_arm.R }
+		useBones { chest eof_head collar.r upper_arm.r }
 		numVerts 13
-		vertWeights { 266, 0.0050375, 0.0309461, 0.8316721, 0.1323442} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 268, 0.0778877, 0.0027991, 0.3996489, 0.5196643} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 408, 0.0553502, 0.5749583, 0.3696916, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 427, 0.1020704, 0.5264441, 0.3714855, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 435, 0.3901277, 0.4721243, 0.1377480, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 437, 0.0190187, 0.1275695, 0.6301520, 0.2232598} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 441, 0.0314013, 0.0703460, 0.8982526, 0.0000001} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 444, 0.1996291, 0.0498722, 0.7204301, 0.0300686} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 445, 0.1653223, 0.0431483, 0.7915294, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 464, 0.6469324, 0.2449195, 0.1081481, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 466, 0.5037783, 0.3490809, 0.1471408, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 517, 0.0541040, 0.2282102, 0.7176858, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 520, 0.0019078, 0.8968349, 0.1012573, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 348, 0.0050375, 0.0309461, 0.8316721, 0.1323442} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 350, 0.0778877, 0.0027991, 0.3996489, 0.5196643} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 490, 0.0553502, 0.5749583, 0.3696916, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 509, 0.1020704, 0.5264441, 0.3714855, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 517, 0.3901277, 0.4721243, 0.1377480, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 519, 0.0190187, 0.1275695, 0.6301520, 0.2232598} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 523, 0.0314013, 0.0703460, 0.8982526, 0.0000001} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 526, 0.1996291, 0.0498722, 0.7204301, 0.0300686} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 527, 0.1653223, 0.0431483, 0.7915294, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 546, 0.6469324, 0.2449195, 0.1081481, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 548, 0.5037783, 0.3490809, 0.1471408, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 599, 0.0541040, 0.2282102, 0.7176858, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 602, 0.0019078, 0.8968349, 0.1012573, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { ribs }
+		useBones { arm.l }
 		numVerts 1
-		vertWeights { 288, 1.0000000}
+		vertWeights { 205, 1.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { root thigh.L thigh.R }
-		numVerts 1
-		vertWeights { 325, 0.9902056, 0.0048399, 0.0049546}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { root ribs shin.L shin.R }
-		numVerts 1
-		vertWeights { 353, 0.3805679, 0.5284217, 0.0468874, 0.0441230} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs thigh.R }
-		numVerts 8
-		vertWeights { 318, 0.7704717, 0.2295283}
-		vertWeights { 323, 0.8477606, 0.1522394} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 329, 0.8926725, 0.1073275} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 331, 0.7720463, 0.2279537}
-		vertWeights { 342, 0.7660748, 0.2339252}
-		vertWeights { 346, 0.7814805, 0.2185195}
-		vertWeights { 367, 0.7558800, 0.2441200} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 372, 0.8186298, 0.1813702} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { thigh.L shin.L thigh.R shin.R }
-		numVerts 6
-		vertWeights { 159, 0.5042817, 0.0560106, 0.4132207, 0.0264870} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 160, 0.5688489, 0.0728118, 0.3472658, 0.0110735} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 319, 0.4493839, 0.0261259, 0.4742712, 0.0502190} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 321, 0.3472883, 0.0110129, 0.5688522, 0.0728466} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 356, 0.4566019, 0.0414200, 0.4623664, 0.0396117} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 359, 0.4739368, 0.0260266, 0.4739166, 0.0261201} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { forearm.L forearm.L.001 forearm.L.003 }
-		numVerts 1
-		vertWeights { 12, 0.1718470, 0.0585581, 0.7695949} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { forearm.L.006 }
-		numVerts 6
-		vertWeights { 16, 1.0000000}
-		vertWeights { 17, 1.0000000}
-		vertWeights { 18, 1.0000000}
-		vertWeights { 19, 1.0000000}
-		vertWeights { 37, 1.0000000}
-		vertWeights { 38, 1.0000000}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { root thigh.L shin.L thigh.R }
-		numVerts 4
-		vertWeights { 51, 0.1851870, 0.6188815, 0.0698351, 0.1260963} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 57, 0.0948397, 0.6866676, 0.1465774, 0.0719154} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 170, 0.1480566, 0.6355525, 0.0873019, 0.1290889} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 191, 0.0955685, 0.6993214, 0.1284832, 0.0766269} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-	}
-	CIwAnimSkinSet
-	{
-		useBones { thigh.L shin.L }
-		numVerts 25
-		vertWeights { 50, 0.8402459, 0.1597541}
-		vertWeights { 52, 0.8347555, 0.1652445}
-		vertWeights { 58, 0.7343115, 0.2656885}
-		vertWeights { 59, 0.4406360, 0.5593640}
-		vertWeights { 60, 0.2428810, 0.7571190}
-		vertWeights { 61, 0.5058923, 0.4941077}
-		vertWeights { 64, 0.4994226, 0.5005774}
-		vertWeights { 65, 0.5748093, 0.4251907}
-		vertWeights { 66, 0.3185878, 0.6814122}
-		vertWeights { 67, 0.1227496, 0.8772504}
-		vertWeights { 69, 0.1923699, 0.8076301}
-		vertWeights { 70, 0.2979079, 0.7020921}
-		vertWeights { 71, 0.1515301, 0.8484699}
-		vertWeights { 72, 0.2443484, 0.7556516}
-		vertWeights { 73, 0.3004089, 0.6995911}
-		vertWeights { 74, 0.2607323, 0.7392677}
-		vertWeights { 75, 0.5688832, 0.4311168}
-		vertWeights { 76, 0.3987864, 0.6012136}
-		vertWeights { 144, 0.1743966, 0.8256034}
-		vertWeights { 145, 0.0987920, 0.9012080}
-		vertWeights { 146, 0.1379688, 0.8620312}
-		vertWeights { 147, 0.2286922, 0.7713078}
-		vertWeights { 148, 0.1884277, 0.8115723}
-		vertWeights { 149, 0.0895956, 0.9104044}
-		vertWeights { 152, 0.2156331, 0.7843669}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs upper_arm.R thigh.R }
+		useBones { root chest thigh.r shin.R }
 		numVerts 2
-		vertWeights { 336, 0.7974359, 0.0000000, 0.2025641} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
-		vertWeights { 338, 0.8772556, 0.0192288, 0.1035156} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 300, 0.1004011, 0.0908662, 0.7067366, 0.1019961} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 410, 0.0255502, 0.0067989, 0.8616364, 0.1060145} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
 	}
 	CIwAnimSkinSet
 	{
-		useBones { forearm.L.001 forearm.L.003 forearm.L.006 }
-		numVerts 3
-		vertWeights { 6, 0.0534481, 0.9189480, 0.0276039} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 10, 0.0883939, 0.8525481, 0.0590579} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
-		vertWeights { 41, 0.0640476, 0.0151803, 0.9207721}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { ribs shoulder.L upper_arm.L thigh.R }
+		useBones { chest }
 		numVerts 1
-		vertWeights { 456, 0.9463680, 0.0164203, 0.0002020, 0.0370098} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 370, 1.0000000}
 	}
 	CIwAnimSkinSet
 	{
-		useBones { forearm.L.001 forearm.L.005 }
-		numVerts 3
-		vertWeights { 28, 0.0973510, 0.9026490}
-		vertWeights { 29, 0.1029581, 0.8970419}
-		vertWeights { 44, 0.1825479, 0.8174521}
-	}
-	CIwAnimSkinSet
-	{
-		useBones { forearm.L.001 forearm.L.004 forearm.L.005 }
+		useBones { s_middlef s_pinky s_thumb }
 		numVerts 1
-		vertWeights { 8, 0.9414268, 0.0335351, 0.0250381}
+		vertWeights { 95, 0.0999285, 0.4157744, 0.4842971} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest head.001 collar.l upper_arm.l }
+		numVerts 2
+		vertWeights { 528, 0.2651781, 0.0000321, 0.7347898, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 532, 0.1654879, 0.0000000, 0.8345121, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { eof_head arm.l s_pinky }
+		numVerts 1
+		vertWeights { 208, 0.0000000, 0.7644099, 0.2355901} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { upper_arm.l arm.l }
+		numVerts 18
+		vertWeights { 165, 0.9085580, 0.0914420} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 167, 0.9609567, 0.0390433} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 169, 0.9978729, 0.0021271} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 171, 0.9359011, 0.0640989} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 173, 0.8693388, 0.1306612} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 177, 0.8309838, 0.1690162} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 179, 0.8329483, 0.1670517} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 186, 0.8106231, 0.1893769} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 187, 0.9029859, 0.0970141} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 188, 0.7840004, 0.2159996} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 189, 0.0954312, 0.9045688} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 190, 0.1406829, 0.8593171} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 191, 0.7287713, 0.2712287} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 192, 0.3588579, 0.6411421} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 195, 0.0728460, 0.9271540} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 196, 0.0945966, 0.9054034} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 203, 0.9950909, 0.0049091} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 568, 0.5000000, 0.5000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest collar.r thigh.r }
+		numVerts 2
+		vertWeights { 294, 0.8839387, 0.1049053, 0.0111560} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 448, 0.8279209, 0.1642743, 0.0078048} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { eof_head upper_arm.r }
+		numVerts 5
+		vertWeights { 488, 0.9340820, 0.0659180}
+		vertWeights { 501, 0.9472099, 0.0527901}
+		vertWeights { 507, 0.9384766, 0.0615234}
+		vertWeights { 514, 0.9365824, 0.0634176}
+		vertWeights { 575, 0.9384766, 0.0615234}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { root thigh.l shin.L shin.R }
+		numVerts 1
+		vertWeights { 368, 0.4829038, 0.4846508, 0.0162010, 0.0162443} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { eof_head collar.l upper_arm.l collar.r }
+		numVerts 1
+		vertWeights { 593, 0.5318675, 0.3767964, 0.0000000, 0.0913361} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest upper_arm.r thigh.r }
+		numVerts 2
+		vertWeights { 418, 0.7974359, 0.0000000, 0.2025641} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 420, 0.8772556, 0.0192288, 0.1035156} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { head.001 eof_head collar.l collar.r }
+		numVerts 5
+		vertWeights { 372, 0.0000000, 0.9772283, 0.0116067, 0.0111650} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 464, 0.0000000, 0.9930960, 0.0034116, 0.0034925} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 465, 0.0000000, 0.9811841, 0.0068968, 0.0119192} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 468, 0.0000000, 0.9664672, 0.0094661, 0.0240667} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 496, 0.0000000, 0.9509395, 0.0124591, 0.0366014} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { root thigh.l thigh.r }
+		numVerts 1
+		vertWeights { 407, 0.9902056, 0.0048399, 0.0049546}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest collar.r upper_arm.r }
+		numVerts 6
+		vertWeights { 324, 0.0413446, 0.0687386, 0.8899168} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 328, 0.0976277, 0.1033532, 0.7990191} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 343, 0.0429385, 0.0513041, 0.9057574} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 349, 0.0654226, 0.2142986, 0.7202788} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 522, 0.4091901, 0.5908099, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 524, 0.1886478, 0.7385209, 0.0728313} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest thigh.r shin.R }
+		numVerts 5
+		vertWeights { 399, 0.2946204, 0.4479036, 0.2574760}
+		vertWeights { 404, 0.0098358, 0.8685869, 0.1215773}
+		vertWeights { 412, 0.1583745, 0.6557446, 0.1858809}
+		vertWeights { 423, 0.4489696, 0.4505181, 0.1005122}
+		vertWeights { 427, 0.4835579, 0.4431920, 0.0732501}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { root chest thigh.r }
+		numVerts 16
+		vertWeights { 137, 0.0389516, 0.9543823, 0.0066661} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 367, 0.1142163, 0.8595738, 0.0262100} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 406, 0.1204994, 0.3714750, 0.5080256} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 408, 0.1231063, 0.2782153, 0.5986783} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 409, 0.1184307, 0.4147487, 0.4668207}
+		vertWeights { 419, 0.1010749, 0.4407053, 0.4582197} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 425, 0.1230437, 0.2764106, 0.6005457} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 426, 0.1207626, 0.4121350, 0.4671024}
+		vertWeights { 431, 0.2956445, 0.4419510, 0.2624046} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 434, 0.2757333, 0.4686517, 0.2556150} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 452, 0.0948339, 0.5024196, 0.4027465} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 453, 0.0816816, 0.8742661, 0.0440523} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 455, 0.0528243, 0.8995264, 0.0476493} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 459, 0.1172921, 0.6052448, 0.2774631}
+		vertWeights { 503, 0.0361061, 0.9533406, 0.0105533} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 535, 0.0939031, 0.8825291, 0.0235678} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { root thigh.l shin.L thigh.r }
+		numVerts 4
+		vertWeights { 133, 0.1851870, 0.6188815, 0.0698351, 0.1260963} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 139, 0.0948397, 0.6866676, 0.1465774, 0.0719154} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 252, 0.1480566, 0.6355525, 0.0873019, 0.1290889} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 273, 0.0955685, 0.6993214, 0.1284832, 0.0766269} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { eof_head upper_arm.l arm.l }
+		numVerts 3
+		vertWeights { 175, 0.0093856, 0.7849641, 0.2056503} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 193, 0.0093856, 0.2276082, 0.7630062} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 194, 0.0097759, 0.1538794, 0.8363448} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest collar.r arm.r thigh.r }
+		numVerts 1
+		vertWeights { 540, 0.8700307, 0.1248353, 0.0000000, 0.0051340} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest thigh.r }
+		numVerts 8
+		vertWeights { 400, 0.7704717, 0.2295283}
+		vertWeights { 405, 0.8477606, 0.1522394} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 411, 0.8926725, 0.1073275} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 413, 0.7720463, 0.2279537}
+		vertWeights { 424, 0.7660748, 0.2339252}
+		vertWeights { 428, 0.7814805, 0.2185195}
+		vertWeights { 449, 0.7558800, 0.2441200} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 454, 0.8186298, 0.1813702} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest collar.l thigh.l }
+		numVerts 4
+		vertWeights { 129, 0.9001587, 0.0998413, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 130, 0.8780514, 0.1219486, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 270, 0.7756925, 0.1919863, 0.0323212} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 559, 0.7652869, 0.2232373, 0.0114758} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { head.001 eof_head }
+		numVerts 1
+		vertWeights { 561, 0.0000000, 1.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { root chest upper_arm.r thigh.r }
+		numVerts 2
+		vertWeights { 302, 0.0357789, 0.9162251, 0.0000000, 0.0479960} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 502, 0.0359000, 0.9221618, 0.0000000, 0.0419382} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { root chest collar.l thigh.r }
+		numVerts 1
+		vertWeights { 484, 0.0234006, 0.8958360, 0.0245708, 0.0561925} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest collar.l collar.r arm.r }
+		numVerts 1
+		vertWeights { 539, 0.9739282, 0.0129092, 0.0131626, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 10 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { head.001 eof_head collar.r }
+		numVerts 1
+		vertWeights { 512, 0.0000000, 0.9912394, 0.0087606} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { thigh.r shin.R }
+		numVerts 25
+		vertWeights { 297, 0.8407546, 0.1592454}
+		vertWeights { 299, 0.8350707, 0.1649293}
+		vertWeights { 305, 0.7354393, 0.2645607}
+		vertWeights { 306, 0.4405165, 0.5594835}
+		vertWeights { 307, 0.2433587, 0.7566413}
+		vertWeights { 308, 0.5060155, 0.4939845}
+		vertWeights { 311, 0.4995868, 0.5004132}
+		vertWeights { 312, 0.5748591, 0.4251409}
+		vertWeights { 313, 0.3186954, 0.6813046}
+		vertWeights { 314, 0.1232339, 0.8767661}
+		vertWeights { 316, 0.1925593, 0.8074407}
+		vertWeights { 317, 0.2979810, 0.7020190}
+		vertWeights { 318, 0.1521346, 0.8478654}
+		vertWeights { 319, 0.2446216, 0.7553784}
+		vertWeights { 320, 0.2999513, 0.7000487}
+		vertWeights { 321, 0.2612426, 0.7387574}
+		vertWeights { 322, 0.5696766, 0.4303234}
+		vertWeights { 323, 0.3989382, 0.6010618}
+		vertWeights { 386, 0.1746816, 0.8253184}
+		vertWeights { 387, 0.0993811, 0.9006189}
+		vertWeights { 388, 0.1381644, 0.8618356}
+		vertWeights { 389, 0.2286290, 0.7713710}
+		vertWeights { 390, 0.1878275, 0.8121725}
+		vertWeights { 391, 0.0900482, 0.9099518}
+		vertWeights { 394, 0.2157199, 0.7842801}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { arm.l s_pinky }
+		numVerts 2
+		vertWeights { 210, 0.2601453, 0.7398547} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 211, 0.2810349, 0.7189651} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest head.001 collar.l thigh.r }
+		numVerts 1
+		vertWeights { 555, 0.9399784, 0.0000000, 0.0424473, 0.0175743} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { thigh.l shin.L thigh.r shin.R }
+		numVerts 6
+		vertWeights { 241, 0.5042817, 0.0560106, 0.4132207, 0.0264870} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 242, 0.5688489, 0.0728118, 0.3472658, 0.0110735} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 401, 0.4493839, 0.0261259, 0.4742712, 0.0502190} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 403, 0.3472883, 0.0110129, 0.5688522, 0.0728466} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 438, 0.4566019, 0.0414200, 0.4623664, 0.0396117} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 441, 0.4739368, 0.0260266, 0.4739166, 0.0261201} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { arm.l s_thumb }
+		numVerts 6
+		vertWeights { 85, 0.0033055, 0.9966945} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 89, 0.0207500, 0.9792500} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 206, 0.6160548, 0.3839452} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 207, 0.6399400, 0.3600600} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 209, 0.8307246, 0.1692754} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 212, 0.8294732, 0.1705268} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest collar.l upper_arm.l thigh.r }
+		numVerts 1
+		vertWeights { 538, 0.9463680, 0.0164203, 0.0002020, 0.0370098} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { eof_head collar.l }
+		numVerts 8
+		vertWeights { 164, 0.9972619, 0.0027381}
+		vertWeights { 476, 0.9974428, 0.0025572}
+		vertWeights { 481, 0.9953223, 0.0046777}
+		vertWeights { 492, 0.9734142, 0.0265858}
+		vertWeights { 511, 0.9917112, 0.0082888}
+		vertWeights { 560, 0.9918443, 0.0081557}
+		vertWeights { 572, 0.9826310, 0.0173690} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 603, 0.8303951, 0.1696049} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { eof_head collar.r arm.r }
+		numVerts 1
+		vertWeights { 478, 0.9971238, 0.0028762, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest upper_arm.r }
+		numVerts 1
+		vertWeights { 345, 0.0083082, 0.9916918} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { thumb }
+		numVerts 6
+		vertWeights { 98, 1.0000000}
+		vertWeights { 99, 1.0000000}
+		vertWeights { 100, 1.0000000}
+		vertWeights { 101, 1.0000000}
+		vertWeights { 119, 1.0000000}
+		vertWeights { 120, 1.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest eof_head collar.l collar.r }
+		numVerts 12
+		vertWeights { 495, 0.0012943, 0.9611080, 0.0281082, 0.0094895} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 497, 0.0010345, 0.9720170, 0.0138859, 0.0130626} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 556, 0.4652651, 0.3792011, 0.0622136, 0.0933201} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+		vertWeights { 578, 0.0702720, 0.9152318, 0.0068439, 0.0076524} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 591, 0.1024592, 0.4819078, 0.1430398, 0.2725932} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 592, 0.0989679, 0.4847105, 0.0533413, 0.3629802} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 594, 0.0318395, 0.7008022, 0.2125903, 0.0547680} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 595, 0.0116776, 0.8982890, 0.0508414, 0.0391921} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 596, 0.0118564, 0.8914846, 0.0205033, 0.0761557} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 597, 0.0125627, 0.8750118, 0.0142727, 0.0981528} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 600, 0.0219806, 0.7763586, 0.1694492, 0.0322116} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 601, 0.0033217, 0.8290249, 0.1647061, 0.0029474} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { foot.R }
+		numVerts 1
+		vertWeights { 379, 1.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { root thigh.l thigh.r shin.R }
+		numVerts 4
+		vertWeights { 298, 0.1851428, 0.1260488, 0.6189797, 0.0698287} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 304, 0.0948080, 0.0718757, 0.6867301, 0.1465862} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 414, 0.1480612, 0.1290966, 0.6355268, 0.0873155} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 450, 0.0955445, 0.0765937, 0.6993587, 0.1285031} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { head.001 eof_head collar.l }
+		numVerts 2
+		vertWeights { 475, 0.0000000, 0.9961832, 0.0038168}
+		vertWeights { 567, 0.0000000, 0.9965369, 0.0034631}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest collar.l collar.r thigh.l }
+		numVerts 1
+		vertWeights { 557, 0.7436115, 0.1961719, 0.0560301, 0.0041866} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { thigh.l shin.L }
+		numVerts 25
+		vertWeights { 132, 0.8402459, 0.1597541}
+		vertWeights { 134, 0.8347555, 0.1652445}
+		vertWeights { 140, 0.7343115, 0.2656885}
+		vertWeights { 141, 0.4406360, 0.5593640}
+		vertWeights { 142, 0.2428810, 0.7571190}
+		vertWeights { 143, 0.5058923, 0.4941077}
+		vertWeights { 146, 0.4994226, 0.5005774}
+		vertWeights { 147, 0.5748093, 0.4251907}
+		vertWeights { 148, 0.3185878, 0.6814122}
+		vertWeights { 149, 0.1227496, 0.8772504}
+		vertWeights { 151, 0.1923699, 0.8076301}
+		vertWeights { 152, 0.2979079, 0.7020921}
+		vertWeights { 153, 0.1515301, 0.8484699}
+		vertWeights { 154, 0.2443484, 0.7556516}
+		vertWeights { 155, 0.3004089, 0.6995911}
+		vertWeights { 156, 0.2607323, 0.7392677}
+		vertWeights { 157, 0.5688832, 0.4311168}
+		vertWeights { 158, 0.3987864, 0.6012136}
+		vertWeights { 226, 0.1743966, 0.8256034}
+		vertWeights { 227, 0.0987920, 0.9012080}
+		vertWeights { 228, 0.1379688, 0.8620312}
+		vertWeights { 229, 0.2286922, 0.7713078}
+		vertWeights { 230, 0.1884277, 0.8115723}
+		vertWeights { 231, 0.0895956, 0.9104044}
+		vertWeights { 234, 0.2156331, 0.7843669}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { middlef }
+		numVerts 6
+		vertWeights { 102, 1.0000000}
+		vertWeights { 103, 1.0000000}
+		vertWeights { 104, 1.0000000}
+		vertWeights { 105, 1.0000000}
+		vertWeights { 114, 1.0000000}
+		vertWeights { 115, 1.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { s_middlef middlef }
+		numVerts 3
+		vertWeights { 116, 0.0750267, 0.9249733}
+		vertWeights { 124, 0.0588047, 0.9411953}
+		vertWeights { 125, 0.1328986, 0.8671014}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest head.001 eof_head collar.l }
+		numVerts 3
+		vertWeights { 485, 0.0172292, 0.0000000, 0.8964674, 0.0863035} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 551, 0.5743106, 0.0000000, 0.1326960, 0.2929934} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 552, 0.4073275, 0.0108932, 0.0380841, 0.5436951} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { s_middlef s_thumb }
+		numVerts 3
+		vertWeights { 88, 0.0549653, 0.9450347} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 94, 0.0707093, 0.9292907} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 123, 0.8083970, 0.1916030}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { thigh.l shin.L foot.L }
+		numVerts 2
+		vertWeights { 150, 0.3293983, 0.6579916, 0.0126102}
+		vertWeights { 225, 0.2383640, 0.7139617, 0.0476742}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { s_middlef s_thumb thumb }
+		numVerts 1
+		vertWeights { 92, 0.0926290, 0.8933941, 0.0139769} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest thigh.l }
+		numVerts 8
+		vertWeights { 240, 0.8800832, 0.1199168} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 244, 0.9214097, 0.0785903} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 249, 0.9473849, 0.0526151} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 251, 0.8945459, 0.1054541} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 261, 0.8119527, 0.1880473} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 265, 0.7602115, 0.2397885}
+		vertWeights { 272, 0.9198621, 0.0801379} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 277, 0.9401856, 0.0598144} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest eof_head collar.r arm.r }
+		numVerts 4
+		vertWeights { 513, 0.2058557, 0.3422372, 0.4519071, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 542, 0.0923623, 0.3523097, 0.5553280, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 547, 0.3822857, 0.1524809, 0.4652335, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 550, 0.4065665, 0.5630249, 0.0304086, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest eof_head collar.l }
+		numVerts 4
+		vertWeights { 504, 0.0780492, 0.6164264, 0.3055244} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 510, 0.1764877, 0.4427424, 0.3807699} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 543, 0.0787101, 0.3875490, 0.5337409} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 580, 0.0074000, 0.9885194, 0.0040805} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest collar.r thigh.l thigh.r }
+		numVerts 1
+		vertWeights { 544, 0.8924790, 0.0080557, 0.0000000, 0.0994653} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 8 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { pinky }
+		numVerts 4
+		vertWeights { 106, 1.0000000}
+		vertWeights { 107, 1.0000000}
+		vertWeights { 108, 1.0000000}
+		vertWeights { 109, 1.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { shin.R foot.R }
+		numVerts 16
+		vertWeights { 373, 0.3905969, 0.6094031}
+		vertWeights { 374, 0.5628792, 0.4371208}
+		vertWeights { 375, 0.2111769, 0.7888231}
+		vertWeights { 376, 0.9462772, 0.0537228}
+		vertWeights { 377, 0.1167731, 0.8832269}
+		vertWeights { 378, 0.9475766, 0.0524234}
+		vertWeights { 380, 0.9445245, 0.0554755}
+		vertWeights { 381, 0.1114969, 0.8885031}
+		vertWeights { 382, 0.9149532, 0.0850468}
+		vertWeights { 383, 0.2074185, 0.7925815}
+		vertWeights { 384, 0.8791434, 0.1208566}
+		vertWeights { 392, 0.2529251, 0.7470749}
+		vertWeights { 393, 0.8932032, 0.1067968}
+		vertWeights { 395, 0.1569679, 0.8430321}
+		vertWeights { 396, 0.9524024, 0.0475976}
+		vertWeights { 397, 0.0674211, 0.9325789}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { root chest thigh.l }
+		numVerts 4
+		vertWeights { 275, 0.1436912, 0.7774439, 0.0788649} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 276, 0.0784421, 0.8715382, 0.0500197} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 278, 0.0497413, 0.9025960, 0.0476628} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 282, 0.1429652, 0.7529542, 0.1040806} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest collar.r upper_arm.r thigh.r }
+		numVerts 10
+		vertWeights { 293, 0.8959314, 0.0882169, 0.0000000, 0.0158517} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 295, 0.8532860, 0.1157462, 0.0000292, 0.0309387} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 325, 0.4682269, 0.5219330, 0.0000000, 0.0098401} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 326, 0.7730513, 0.2159393, 0.0000000, 0.0110094} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 445, 0.8998395, 0.0376732, 0.0000221, 0.0624651} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 446, 0.8986215, 0.0656901, 0.0017320, 0.0339565} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 447, 0.7247300, 0.2539904, 0.0000000, 0.0212796} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 6 bones).
+		vertWeights { 483, 0.9346721, 0.0540421, 0.0011815, 0.0101043} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 525, 0.9368924, 0.0414007, 0.0070007, 0.0147062} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 558, 0.6878762, 0.2802167, 0.0000000, 0.0319071} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { s_middlef pinky }
+		numVerts 3
+		vertWeights { 110, 0.0973510, 0.9026490}
+		vertWeights { 111, 0.1029581, 0.8970419}
+		vertWeights { 126, 0.1825479, 0.8174521}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest thigh.l thigh.r shin.R }
+		numVerts 5
+		vertWeights { 303, 0.0330829, 0.0079192, 0.7942353, 0.1647627} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 398, 0.1846830, 0.0000000, 0.7175297, 0.0977873} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 457, 0.1152026, 0.0168248, 0.8644946, 0.0034781} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 460, 0.0727649, 0.0421253, 0.7616612, 0.1234486} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+		vertWeights { 462, 0.1133511, 0.0214865, 0.8474920, 0.0176703} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 5 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { s_middlef middlef pinky }
+		numVerts 1
+		vertWeights { 90, 0.9414268, 0.0335351, 0.0250381}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { eof_head }
+		numVerts 19
+		vertWeights { 371, 1.0000000}
+		vertWeights { 479, 1.0000000}
+		vertWeights { 480, 1.0000000}
+		vertWeights { 487, 1.0000000}
+		vertWeights { 498, 1.0000000}
+		vertWeights { 499, 1.0000000}
+		vertWeights { 500, 1.0000000}
+		vertWeights { 506, 1.0000000}
+		vertWeights { 515, 1.0000000}
+		vertWeights { 562, 1.0000000}
+		vertWeights { 563, 1.0000000}
+		vertWeights { 565, 1.0000000}
+		vertWeights { 573, 1.0000000}
+		vertWeights { 574, 1.0000000}
+		vertWeights { 576, 1.0000000}
+		vertWeights { 585, 1.0000000}
+		vertWeights { 586, 1.0000000}
+		vertWeights { 587, 1.0000000}
+		vertWeights { 588, 1.0000000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { chest eof_head }
+		numVerts 3
+		vertWeights { 581, 0.0305524, 0.9694476}
+		vertWeights { 583, 0.0034960, 0.9965040}
+		vertWeights { 584, 0.0013160, 0.9986840}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { s_pinky pinky }
+		numVerts 2
+		vertWeights { 113, 0.1101661, 0.8898339}
+		vertWeights { 127, 0.1575555, 0.8424445}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { eof_head collar.l collar.r arm.r }
+		numVerts 2
+		vertWeights { 516, 0.9430116, 0.0303306, 0.0266578, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 7 bones).
+		vertWeights { 549, 0.7954190, 0.1087237, 0.0958573, 0.0000000} // vertex is associated to more than 4 bones in blender !! skip some bone association (was associated to 9 bones).
+	}
+	CIwAnimSkinSet
+	{
+		useBones { thigh.r shin.R foot.R }
+		numVerts 2
+		vertWeights { 315, 0.3293228, 0.6580908, 0.0125864}
+		vertWeights { 385, 0.2382524, 0.7140886, 0.0476590}
 	}
 }
