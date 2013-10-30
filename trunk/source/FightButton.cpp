@@ -30,7 +30,6 @@ FightButton::FightButton() {
 	fightBgTexture = new CIwTexture;
 	fightBgTexture->LoadFromFile("textures/from_map_to_camera_bg.png");
 	fightBgTexture->Upload();
-	buttonPercY = 0.4f;
 
 	fightTextTexture = new CIwTexture;
 	fightTextTexture->LoadFromFile("textures/from_map_to_camera_text.png");
@@ -90,7 +89,11 @@ void FightButton::Render() {
 void FightButton::Touch(int x, int y, bool pressed) {
 	if (getGameState()->getGhost() == NULL) return;
 
-	if (y > buttonBgXY.y + buttonBgWH.y*buttonPercY) {
+	if (x > buttonBgWH.x*0.03 &&
+		x < buttonBgWH.x*0.97 &&
+		y > buttonBgXY.y + buttonBgWH.y*0.43 && 
+		y < buttonBgXY.y + buttonBgWH.y*0.98) {
+
 		if (pressed) {
 			pressedTime = clock();
 		}

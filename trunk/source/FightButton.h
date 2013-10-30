@@ -22,8 +22,6 @@ class FightButton {
 	CIwTexture* fightBgTexture;
 	CIwSVec2 buttonBgXY, buttonBgWH;
 
-	float buttonPercY;
-
 	clock_t pressedTime;
 
 	public:
