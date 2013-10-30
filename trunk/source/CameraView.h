@@ -10,6 +10,7 @@
 #include "s3e.h"
 #include "GhostCollision.h"
 #include "CameraDefend.h"
+#include "FightTutorialView.h"
 
 #define GHOST_HIT_LENGTH 500
 #define GHOST_HIT_LIGHT 0xf0 // 0x00 - 0xff
@@ -21,4 +22,5 @@ bool CameraViewUpdate();
 
 void ghostTouch(int32 x, int32 y);
 
-void getCameraDefend(CameraDefend** cameraDefend);
+FightTutorialView* getFightTutorialView();
+CameraDefend* getCameraDefend();

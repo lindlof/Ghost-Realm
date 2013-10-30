@@ -7,6 +7,9 @@
  * PARTICULAR PURPOSE.
  */
 
+#ifndef _FIGHT_TUTORIAL_VIEW_H
+#define _FIGHT_TUTORIAL_VIEW_H
+
 #include "FightTutorial.h"
 
 #include "IwGraphics.h"
@@ -33,4 +36,7 @@ class FightTutorialView {
 	void setTutorial(FightTutorial* fightTutorial);
 
 	void Render();
+	void Touch(int x, int y, bool press);
 };
+
+#endif

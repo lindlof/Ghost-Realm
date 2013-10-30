@@ -24,11 +24,10 @@ class FightTutorial {
 	~FightTutorial();
 
 	TutorialType getTutorialType();
+	void setTutorialType(TutorialType type);
 	bool isTutorialOn();
 	void triggerTutorial(TutorialType type);
 	void resetShown();
-
-	void Touch(int x, int y);
 };
 
 #endif

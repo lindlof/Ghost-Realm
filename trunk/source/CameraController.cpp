@@ -74,22 +74,20 @@ bool CameraControllerUpdate()
 
 void SingleTouch(s3ePointerEvent* event) {
 	if (!gameIsHalt()) {
-		CameraDefend* cameraDefend;
+		CameraDefend* cameraDefend = getCameraDefend();
 	
 		ghostTouch(event->m_x, event->m_y);
 
-		getCameraDefend(&cameraDefend);
 		if (cameraDefend != NULL)
 			cameraDefend->Touch(event->m_x, event->m_y, event->m_Pressed);
 	}
 
-	getFightTutorial()->Touch(event->m_x, event->m_y);
+	getFightTutorialView()->Touch(event->m_x, event->m_y, event->m_Pressed);
 }
 
 void SingleTouchMotion(s3ePointerMotionEvent* event) {
-	CameraDefend* cameraDefend;
+	CameraDefend* cameraDefend = getCameraDefend();
 
-	getCameraDefend(&cameraDefend);
 	if (cameraDefend != NULL)
 		cameraDefend->Motion(event->m_x, event->m_y);
 }

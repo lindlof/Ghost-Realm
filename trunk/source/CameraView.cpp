@@ -477,6 +477,10 @@ void ghostTouch(int32 x, int32 y) {
 	clickY = y;
 }
 
-void getCameraDefend(CameraDefend** cameraDefendRet) {
-	*cameraDefendRet = cameraDefend;
+CameraDefend* getCameraDefend() {
+	return cameraDefend;
+}
+
+FightTutorialView* getFightTutorialView() {
+	return tutorialView;
 }

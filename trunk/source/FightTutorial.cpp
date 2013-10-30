@@ -55,10 +55,6 @@ TutorialType FightTutorial::getTutorialType() {
 	return currentType;
 }
 
-void FightTutorial::Touch(int x, int y) {
-	if (currentType == TUTORIAL_GHOST_WON ||
-		currentType == TUTORIAL_YOU_WON) {
-		getGameState()->setGameMode(MAP_MODE);
-	}
-	currentType = TUTORIAL_NONE;
+void FightTutorial::setTutorialType(TutorialType type) {
+	currentType = type;
 }

@@ -8,6 +8,7 @@
  */
 
 #include "FightTutorialView.h"
+#include "GameState.h"
 
 FightTutorialView::FightTutorialView() {
 	bgTexture = Iw2DCreateImage("textures/tutorial/tutorial_bg.png");
@@ -71,13 +72,28 @@ void FightTutorialView::Render() {
 
 void FightTutorialView::drawText(CIw2DImage* text) {
 	int16 w = IwGxGetScreenWidth();
-	if (w > text->GetWidth()) w = text->GetWidth();
+	//if (w > text->GetWidth()) w = text->GetWidth();
 
 	float whScale = (float)((double)text->GetWidth() / text->GetHeight());
 	int16 h = w * 1/whScale;
 
 	CIwFVec2 size = CIwFVec2(w, h);
-	CIwFVec2 topLeft = CIwFVec2(IwGxGetScreenWidth()/2 - w/2, IwGxGetScreenHeight()*0.95f - h);
+	CIwFVec2 topLeft = CIwFVec2(IwGxGetScreenWidth()/2 - w/2, IwGxGetScreenHeight()*1.f - h);
 
 	Iw2DDrawImage(text, topLeft, size);
+}
+
+void FightTutorialView::Touch(int x, int y, bool press) {
+	if (press &&
+		x > IwGxGetScreenWidth()*0.03 &&
+		x < IwGxGetScreenWidth()*0.97 &&
+		y > IwGxGetScreenHeight()*0.81 &&
+		y < IwGxGetScreenHeight()*0.99) {
+
+		if (tutorial->getTutorialType() == TUTORIAL_GHOST_WON ||
+			tutorial->getTutorialType() == TUTORIAL_YOU_WON) {
+			getGameState()->setGameMode(MAP_MODE);
+		}
+		tutorial->setTutorialType(TUTORIAL_NONE);
+	}
 }
