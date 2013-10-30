@@ -12,7 +12,6 @@
 #include "CameraView.h"
 #include "CameraModel.h"
 
-#include "CameraUI.h"
 #include "CameraDefend.h"
 #include "PlayerHit.h"
 #include "FightTutorialView.h"
@@ -38,7 +37,6 @@ void renderCamera();
 void updateGhost();
 void renderGhost();
 void renderMana();
-void renderGameOver();
 
 void cameraStreamInit(int camDataW, int camDataH);
 static CIwSVec2 cameraVert[4];
@@ -207,8 +205,6 @@ void CameraViewInit()
         s3eDebugTraceLine("Camera Extension not available!");
     }
 
-	CameraUIInit();
-
 	tutorialView->setTutorial(getFightTutorial());
 }
 
@@ -243,8 +239,6 @@ void CameraViewTerm()
 
 	if (cameraDefend)
 		delete cameraDefend;
-
-	CameraUITerm();
 }
 
 bool CameraViewUpdate()
@@ -268,21 +262,11 @@ bool CameraViewUpdate()
 	cameraDefend->Update();
 	cameraDefend->Render();
 
-	if (getGameState()->getPlayer()->isDead()) {
-		showGameOverButton(true);
-		renderGameOver();
-	} else {
-		showGameOverButton(false);
-	}
-
 	tutorialView->Render();
 
 	// Draw background, then clear depth buffer so we can render UI over the top.
     IwGxFlush();
 	IwGxClear(IW_GX_DEPTH_BUFFER_F);
-
-	CameraUIUpdate();
-	CameraUIRender();
 
 	IwGxFlush();
     IwGxSwapBuffers();
@@ -457,18 +441,6 @@ void renderMana() {
 	cols[1] = cols[2] = cols[3] = cols[0];
 
 	CIwSVec2 XY(x1, y1), dXY(x2-x1, y2-y1);
-	IwGxDrawRectScreenSpace(&XY, &dXY, cols);
-}
-
-void renderGameOver() {
-	IwGxLightingOff();
-
-
-	CIwColour* cols = IW_GX_ALLOC(CIwColour, 4);
-	cols[0].Set(0xff, 0x66, 0x66, 0x40);
-	cols[1] = cols[2] = cols[3] = cols[0];
-
-	CIwSVec2 XY(0, 0), dXY(IwGxGetScreenWidth(), IwGxGetScreenHeight());
 	IwGxDrawRectScreenSpace(&XY, &dXY, cols);
 }
 

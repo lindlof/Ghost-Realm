@@ -26,6 +26,7 @@ class FightTutorialView {
 	CIw2DImage* faceWarnTexture;
 	CIw2DImage* ghostWonTexture;
 	CIw2DImage* searchTexture;
+	CIw2DImage* youDiedTexture;
 	CIw2DImage* youWonTexture;
 
 	void drawText(CIw2DImage* text);

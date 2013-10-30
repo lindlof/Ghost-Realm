@@ -11,13 +11,13 @@
 #define _FIGHT_TUTORIAL_H
 
 enum TutorialType { TUTORIAL_NONE, TUTORIAL_ATTACK, TUTORIAL_DEFEND, TUTORIAL_FACE_WARN, 
-	TUTORIAL_GHOST_WON,TUTORIAL_SEARCH, TUTORIAL_YOU_WON };
+	TUTORIAL_GHOST_WON,TUTORIAL_SEARCH, TUTORIAL_YOU_DIED, TUTORIAL_YOU_WON };
 
 class FightTutorial {
 	private:
 	TutorialType currentType;
 
-	bool attackShown, defendShown, faceWarnShown, ghostWonShown, searchShown, youWonShown;
+	bool attackShown, defendShown, faceWarnShown, ghostWonShown, searchShown, youDiedShown, youWonShown;
 
 	public:
 	FightTutorial();

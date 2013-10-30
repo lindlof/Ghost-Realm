@@ -20,7 +20,7 @@ FightTutorial::~FightTutorial() {
 }
 
 void FightTutorial::resetShown() {
-	attackShown = defendShown = faceWarnShown = ghostWonShown = searchShown = youWonShown = false;
+	attackShown = defendShown = faceWarnShown = ghostWonShown = searchShown = youDiedShown = youWonShown = false;
 }
 
 void FightTutorial::triggerTutorial(TutorialType type) {
@@ -40,6 +40,9 @@ void FightTutorial::triggerTutorial(TutorialType type) {
 		currentType = type;
 	} else if (type == TUTORIAL_SEARCH    && !searchShown) {
 		searchShown = true;
+		currentType = type;
+	} else if (type == TUTORIAL_YOU_DIED   && !youWonShown) {
+		youWonShown = true;
 		currentType = type;
 	} else if (type == TUTORIAL_YOU_WON   && !youWonShown) {
 		youWonShown = true;

@@ -22,8 +22,6 @@ files
 	[CameraView]
 	CameraView.cpp
 	CameraView.h
-	CameraUI.cpp
-	CameraUI.h
 	GhostCollision.cpp
 	GhostCollision.h
 	CameraDefend.cpp
@@ -64,11 +62,6 @@ files
     viking.group
 	(data/Skelman)
     #skelman.group
-
-	[UI]
-    (data/ui)
-    GameOverButton.group
-    GameOverButton.ui
 }
 subprojects
 {
@@ -84,7 +77,6 @@ assets
 	(data-ram/data-gles1)
 	#Skelman/Skelman.group.bin
 	viking/viking.group.bin
-	ui/GameOverButton.group.bin
 
     (data)
     textures/defending_dot.png
@@ -101,6 +93,7 @@ assets
 	textures/tutorial/tutorial_face_the_ghost_to_attack.png
 	textures/tutorial/tutorial_ghost_won.png
 	textures/tutorial/tutorial_search_the_ghost.png
+	textures/tutorial/tutorial_you_died.png
 	textures/tutorial/tutorial_you_won.png
 }
 #### AUTO GENERATED deployment settings from DeployTool.exe. Do not edit below this line ####

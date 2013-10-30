@@ -90,14 +90,20 @@ bool CameraModelUpdate()
 			player->wonBattle();
 			gameState->deleteGhost();
 			fightOver = true;
-			gameOverTime = clock() + 5000;
+			gameOverTime = clock() + 10000;
 			getFightTutorial()->triggerTutorial(TUTORIAL_YOU_WON);
-		} else if (player->getMana() <= 0 && !player->isDead()) {
+		} else if (player->getMana() <= 0) {
 			player->lostBattle();
 			gameState->deleteGhost();
 			fightOver = true;
-			gameOverTime = clock() + 5000;
-			getFightTutorial()->triggerTutorial(TUTORIAL_GHOST_WON);
+			gameOverTime = clock() + 10000;
+
+			if (player->isDead()) {
+				fightTutorial->triggerTutorial(TUTORIAL_YOU_DIED);
+				getGameState()->getPlayer()->resurrect();
+			} else {
+				getFightTutorial()->triggerTutorial(TUTORIAL_GHOST_WON);
+			}
 		}
 	}
 
