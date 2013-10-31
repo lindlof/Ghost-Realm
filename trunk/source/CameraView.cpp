@@ -32,6 +32,8 @@
 
 #define BLEND_DURATION 0.25f
 
+void initFightView();
+
 void setupPlayer();
 void renderCamera();
 void updateGhost();
@@ -47,8 +49,11 @@ static CIwFVec2 cameraUvsRotated[4];
 uint16* g_pCameraTexelsRGB565 = NULL;
 static CIwTexture* g_CameraTexture = NULL;
 
+enum GhostAnimation {GHOST_ANIM_IDLE, GHOST_ANIM_AGRO};
+bool agroPlayed;
+
 static CIwModel*       ghost_Model;
-static CIwAnim*        ghost_Anims[1];
+static CIwAnim*        ghost_Anims[2];
 static CIwAnimSkel*    ghost_Skel;
 static CIwAnimSkin*    ghost_Skin;
 static CIwAnimPlayer*  ghost_Player;
@@ -71,6 +76,10 @@ double inline rad(double d) {
 
 double inline deg(double d) {
     return d / PI * 180.0f;
+}
+
+void initFightView() {
+	agroPlayed = false;
 }
 
 // In-place matrix transposition of 90 degrees to transform camera to portrait
@@ -168,7 +177,8 @@ void CameraViewInit()
 	ghostCollision = (GhostCollision*)pGroup->GetResNamed("viking", "GhostCollision");
     ghost_Skin  = (CIwAnimSkin*)pGroup->GetResNamed("viking", IW_ANIM_RESTYPE_SKIN);
     ghost_Skel  = (CIwAnimSkel*)pGroup->GetResNamed("Armature", IW_ANIM_RESTYPE_SKELETON);
-    ghost_Anims[0]  = (CIwAnim*)pGroup->GetResNamed("Armature_idle", IW_ANIM_RESTYPE_ANIMATION);
+    ghost_Anims[GHOST_ANIM_IDLE]  = (CIwAnim*)pGroup->GetResNamed("Armature_idle", IW_ANIM_RESTYPE_ANIMATION);
+	ghost_Anims[GHOST_ANIM_AGRO]  = (CIwAnim*)pGroup->GetResNamed("Armature_agro", IW_ANIM_RESTYPE_ANIMATION);
 	
 	/*
 	IwGetResManager()->LoadGroup("Skelman/Skelman.group");
@@ -243,6 +253,9 @@ void CameraViewTerm()
 
 bool CameraViewUpdate()
 {
+	if (viewFightInitRequired())
+		initFightView();
+
 	bool ghostAvailable = getGameState()->getGhost() != NULL;
 
 	// Clear the screen
@@ -313,6 +326,10 @@ void setupPlayer() {
 }
 
 void updateGhost() {
+	if (ghost_Player->IsCurrentAnimComplete()) {
+		ghost_Player->PlayAnim(ghost_Anims[GHOST_ANIM_IDLE], 1, CIwAnimBlendSource::LOOPING_F, BLEND_DURATION);
+	}
+
 	// Update animation player
     ghost_Player->Update(1.0f / 30.0f);
 
@@ -340,6 +357,10 @@ void renderGhost() {
 
     IwGxSetModelMatrix(ghostMatrix);
 
+	if (ghost->isFound() && !agroPlayed) {
+		ghost_Player->PlayAnim(ghost_Anims[GHOST_ANIM_AGRO], 1, 0, BLEND_DURATION);
+		agroPlayed = true;
+	}
 	
 	IwGxLightingAmbient(true);
 	IwGxSetLightType(0, IW_GX_LIGHT_AMBIENT);

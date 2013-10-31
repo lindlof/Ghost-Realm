@@ -22,6 +22,7 @@ float gravityX, gravityY, gravityZ;
 
 bool fightOver;
 clock_t gameOverTime;
+bool fightViewInit;
 
 FightTutorial* fightTutorial;
 
@@ -62,6 +63,7 @@ void accelometerUpdate(int32 x, int32 y, int32 z) {
 void CameraModelInit() 
 {
 	fightTutorial = new FightTutorial();
+	fightViewInit = true;
 }
 
 void CameraModelTerm() 
@@ -74,6 +76,7 @@ void initFight() {
 	fightTutorial->resetShown();
 	fightOver = false;
 	getGameState()->getGhost()->cameraInit();
+	fightViewInit = true;
 }
 
 bool CameraModelUpdate() 
@@ -124,4 +127,10 @@ FightTutorial* getFightTutorial() {
 
 bool gameIsHalt() {
 	return fightTutorial->isTutorialOn();
+}
+
+bool viewFightInitRequired() {
+	bool init = fightViewInit;
+	fightViewInit = false;
+	return init;
 }
