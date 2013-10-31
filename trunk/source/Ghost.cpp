@@ -46,6 +46,8 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	attackDefendable = false;
 
 	floatingAngle = 0;
+
+	animDodge = false;
 };
 
 void Ghost::cameraInit() {
@@ -69,6 +71,7 @@ void Ghost::ghostGotHit(int hit) {
 	} else {
 		IwTrace(GHOST_HUNTER, ("Ghost dodged a hit, ectoplasm: %d", ectoplasm));
 		s3eVibraVibrate(300, 20);
+		animDodge = true;
 	}
 }
 
@@ -262,4 +265,10 @@ void Ghost::floatingAngleUpdate(float x, float y, float z) {
 
 double Ghost::getFloatingAngle() {
 	return floatingAngle;
+}
+
+bool Ghost::isAnimDodge() {
+	bool dodge = animDodge;
+	animDodge = false;
+	return dodge;
 }

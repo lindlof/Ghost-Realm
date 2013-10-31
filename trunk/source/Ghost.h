@@ -51,6 +51,8 @@ class Ghost {
 	// from a specific point of compass around you.
 	double bearing;
 
+	bool animDodge;
+
 	public:
 	Ghost(GhostType ghostType, Player *player);
 	void cameraInit();
@@ -76,6 +78,8 @@ class Ghost {
 
 	void floatingAngleUpdate(float x, float y, float z);
 	double getFloatingAngle();
+
+	bool isAnimDodge();
 };
 
 #endif
