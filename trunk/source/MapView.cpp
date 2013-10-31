@@ -9,6 +9,7 @@
 
 #include "GameState.h"
 #include "MapView.h"
+#include "MapRoamingGhost.h"
 
 #include "IwGx.h"
 #include "IwGxPrint.h"
@@ -18,13 +19,12 @@
 #include "Iw2D.h"
 
 void renderMap();
-void renderMapGhost();
 void renderMapPlayer();
 void renderMapHealth();
 
 static FightButton* fightButton;
+static MapRoamingGhost* mapGhost;
 
-static CIw2DImage* ghostTexture;
 static CIw2DImage* playerTexture;
 static CIw2DImage* healthTexture;
 static CIwTexture* mapTexture;
@@ -49,8 +49,7 @@ double inline deg(double d) {
 }
 
 void MapViewInit()
-{	
-	ghostTexture = Iw2DCreateImage("textures/map_ghost.png");
+{
 	playerTexture = Iw2DCreateImage("textures/map_player.png");
 	healthTexture = Iw2DCreateImage("textures/map_health.png");
 	
@@ -61,6 +60,7 @@ void MapViewInit()
 	mapInit(mapTexture->GetWidth(), mapTexture->GetHeight());
 
 	fightButton = new FightButton();
+	mapGhost = new MapRoamingGhost();
 }
 
 void mapInit(int mapW, int mapH) {
@@ -90,9 +90,6 @@ void mapInit(int mapW, int mapH) {
 
 void MapViewTerm() {
 
-	if (ghostTexture)
-		delete ghostTexture;
-
 	if (playerTexture)
 		delete playerTexture;
 
@@ -101,6 +98,9 @@ void MapViewTerm() {
 
 	if (fightButton)
 		delete fightButton;
+
+	if (mapGhost)
+		delete mapGhost;
 }
 
 bool MapViewUpdate() {
@@ -109,11 +109,13 @@ bool MapViewUpdate() {
     IwGxClear(IW_GX_COLOUR_BUFFER_F | IW_GX_DEPTH_BUFFER_F);
 
 	renderMap();
-	renderMapGhost();
 	renderMapPlayer();
 	renderMapHealth();
 
 	fightButton->Render();
+
+	mapGhost->Update();
+	mapGhost->Render();
 
 	IwGxFlush();
     IwGxSwapBuffers();
@@ -136,28 +138,6 @@ void renderMap() {
     IwGxSetVertStreamScreenSpace(mapVert, 4);
 
     IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
-}
-
-void renderMapGhost() {
-	IwGxLightingOff();
-
-	int16 w = IwGxGetScreenWidth()*0.30f;
-
-	float whScale = (float)((double)ghostTexture->GetWidth() / ghostTexture->GetHeight());
-	int16 h = w * 1/whScale;
-
-	Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
-	Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
-
-	CIwFVec2 centre =
-			CIwFVec2((int16)IwGxGetScreenWidth()/2,
-					 (int16)IwGxGetScreenHeight()/2);
-
-	
-	CIwFVec2 size = CIwFVec2(w, h);
-	CIwFVec2 topLeft = CIwFVec2(centre.x-size.x*0.68f, centre.y-size.y*0.63f);
-
-	Iw2DDrawImage(ghostTexture, topLeft, size);
 }
 
 void renderMapPlayer() {

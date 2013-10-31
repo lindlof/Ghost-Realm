@@ -42,6 +42,8 @@ files
 	MapView.h
 	FightButton.cpp
 	FightButton.h
+	MapRoamingGhost.cpp
+	MapRoamingGhost.h
 
 	[Component]
 	GameState.cpp
