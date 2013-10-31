@@ -52,6 +52,7 @@ class Ghost {
 	double bearing;
 
 	bool animDodge;
+	bool animAttack;
 
 	public:
 	Ghost(GhostType ghostType, Player *player);
@@ -79,7 +80,8 @@ class Ghost {
 	void floatingAngleUpdate(float x, float y, float z);
 	double getFloatingAngle();
 
-	bool isAnimDodge();
+	bool pollAnimDodge();
+	bool pollAnimAttack();
 };
 
 #endif

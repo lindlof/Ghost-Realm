@@ -49,11 +49,11 @@ static CIwFVec2 cameraUvsRotated[4];
 uint16* g_pCameraTexelsRGB565 = NULL;
 static CIwTexture* g_CameraTexture = NULL;
 
-enum GhostAnimation {GHOST_ANIM_IDLE, GHOST_ANIM_AGRO, GHOST_ANIM_DODGE};
+enum GhostAnimation {GHOST_ANIM_IDLE, GHOST_ANIM_AGRO, GHOST_ANIM_DODGE, GHOST_ANIM_ATTACK};
 bool agroPlayed;
 
 static CIwModel*       ghost_Model;
-static CIwAnim*        ghost_Anims[3];
+static CIwAnim*        ghost_Anims[4];
 static CIwAnimSkel*    ghost_Skel;
 static CIwAnimSkin*    ghost_Skin;
 static CIwAnimPlayer*  ghost_Player;
@@ -180,6 +180,7 @@ void CameraViewInit()
     ghost_Anims[GHOST_ANIM_IDLE]  = (CIwAnim*)pGroup->GetResNamed("Armature_idle", IW_ANIM_RESTYPE_ANIMATION);
 	ghost_Anims[GHOST_ANIM_AGRO]  = (CIwAnim*)pGroup->GetResNamed("Armature_agro", IW_ANIM_RESTYPE_ANIMATION);
 	ghost_Anims[GHOST_ANIM_DODGE]  = (CIwAnim*)pGroup->GetResNamed("Armature_dodge", IW_ANIM_RESTYPE_ANIMATION);
+	ghost_Anims[GHOST_ANIM_ATTACK]  = (CIwAnim*)pGroup->GetResNamed("Armature_attack", IW_ANIM_RESTYPE_ANIMATION);
 	
 	/*
 	IwGetResManager()->LoadGroup("Skelman/Skelman.group");
@@ -361,8 +362,10 @@ void renderGhost() {
 	if (ghost->isFound() && !agroPlayed) {
 		ghost_Player->PlayAnim(ghost_Anims[GHOST_ANIM_AGRO], 1, 0, BLEND_DURATION);
 		agroPlayed = true;
-	} else if (ghost->isAnimDodge()) {
+	} else if (ghost->pollAnimDodge()) {
 		ghost_Player->PlayAnim(ghost_Anims[GHOST_ANIM_DODGE], 1, 0, BLEND_DURATION);
+	} else if (ghost->pollAnimAttack()) {
+		ghost_Player->PlayAnim(ghost_Anims[GHOST_ANIM_ATTACK], 1, 0, BLEND_DURATION);
 	}
 	
 	IwGxLightingAmbient(true);

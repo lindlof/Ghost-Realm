@@ -47,7 +47,7 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 
 	floatingAngle = 0;
 
-	animDodge = false;
+	animDodge = animAttack = false;
 };
 
 void Ghost::cameraInit() {
@@ -156,6 +156,7 @@ bool Ghost::ghostUpdate() {
 		ghostAttack = new GhostAttack(player, ghostType);
 		playerAttackLast = clock();
 		nextAttackInterval = IwRandMinMax(4000, 6000);
+		animAttack = true;
 	}
 
 	// Update attacks
@@ -267,8 +268,14 @@ double Ghost::getFloatingAngle() {
 	return floatingAngle;
 }
 
-bool Ghost::isAnimDodge() {
+bool Ghost::pollAnimDodge() {
 	bool dodge = animDodge;
 	animDodge = false;
 	return dodge;
+}
+
+bool Ghost::pollAnimAttack() {
+	bool attack = animAttack;
+	animAttack = false;
+	return attack;
 }
