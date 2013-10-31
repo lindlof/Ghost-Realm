@@ -19,6 +19,8 @@ class MapRoamingGhost {
 	CIw2DImage* ghostTexture;
 	CIwFMat2D *matrix;
 
+	float randomModifier;
+	clock_t roamingModifierUpdate;
 	clock_t roamingUpdate;
 
 	int ghostRoamingAngle;

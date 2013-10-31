@@ -41,7 +41,10 @@ MapRoamingGhost::MapRoamingGhost(char *texture, CIwFVec2 centre) {
 
 	ghostRoamingAngle = IwRandMinMax(0, 359);
 	ghostRoamingRadius = 0;
-	roamingUpdate = clock();
+
+	roamingUpdate = 0;
+	roamingModifierUpdate = 0;
+	randomModifier = 0;
 }
 
 MapRoamingGhost::~MapRoamingGhost() {
@@ -63,11 +66,16 @@ void MapRoamingGhost::Render() {
 
 void MapRoamingGhost::Update() {
 
+	if (clock() > roamingModifierUpdate) {
+		// Random modifier to keep the speed of the ghost random over period of time
+		randomModifier = (float)IwRandMinMax(10, 130)/100;
+		roamingModifierUpdate = clock() + IwRandMinMax(1200, 2200);
+	}
 	if (clock() > roamingUpdate) {
 		ghostRoamingAngle++;
 		if (ghostRoamingAngle > 359)
 			ghostRoamingAngle = 0;
-		roamingUpdate = clock() + IwRandMinMax(50, 80);
+		roamingUpdate = clock() + IwRandMinMax(50, 80) * randomModifier;
 	}
 	ghostRoamingRadius = IwRandMinMax(0, 1) ? ghostRoamingRadius + 1 : ghostRoamingRadius - 1;
 	if (ghostRoamingRadius < 20) ghostRoamingRadius = 20;
