@@ -1,6 +1,14 @@
-// mtl file exported from : 'viking18.blend'
-CIwMaterial
+// mtl file exported from : 'viking19.blend' 
+CIwMaterial 
 {
 	name "viking"
-	texture0 .\textures\texture3.png
+	colDiffuse { 255 255 255 222 }
+	colAmbient { 255 255 255 222 }
+	texture0 ".\textures\texture4.png"
+	shadeMode "GOURAUD"
+	modulateMode "RGB"
+	alphaMode "ADD"
+	cullMode "BACK"
+	zDepthOfs 1
+	blendMode "ADD"
 }
