@@ -86,6 +86,7 @@ assets
 	textures/from_map_to_camera_text.png
 	textures/from_map_to_camera_bg.png
 	textures/map_ghost.png
+	textures/map_ghost_xtra.png
 	textures/map_player.png
 	textures/map_health.png
 	textures/map_template.png

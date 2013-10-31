@@ -13,6 +13,9 @@
 
 class MapRoamingGhost {
 	private:
+	CIwFVec2 centre;
+	CIwFVec2 size;
+
 	CIw2DImage* ghostTexture;
 	CIwFMat2D *matrix;
 
@@ -22,9 +25,11 @@ class MapRoamingGhost {
 	int ghostRoamingRadius;
 
 	public:
-	MapRoamingGhost();
+	MapRoamingGhost(char *texture, CIwFVec2 centre);
 	~MapRoamingGhost();
 
 	void Render();
 	void Update();
+
+	void modifyCentreWithTexture(float x, float y);
 };

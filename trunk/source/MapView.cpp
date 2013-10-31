@@ -24,6 +24,7 @@ void renderMapHealth();
 
 static FightButton* fightButton;
 static MapRoamingGhost* mapGhost;
+static MapRoamingGhost* mapGhost2;
 
 static CIw2DImage* playerTexture;
 static CIw2DImage* healthTexture;
@@ -60,7 +61,12 @@ void MapViewInit()
 	mapInit(mapTexture->GetWidth(), mapTexture->GetHeight());
 
 	fightButton = new FightButton();
-	mapGhost = new MapRoamingGhost();
+	mapGhost = new MapRoamingGhost("textures/map_ghost.png", 
+		CIwFVec2(IwGxGetScreenWidth()/2, IwGxGetScreenHeight()/2));
+	mapGhost->modifyCentreWithTexture(-0.18f, -0.13f);
+
+	mapGhost2 = new MapRoamingGhost("textures/map_ghost_xtra.png",
+		CIwFVec2(IwGxGetScreenWidth()*0.80f, IwGxGetScreenHeight()*0.70f));
 }
 
 void mapInit(int mapW, int mapH) {
@@ -101,6 +107,9 @@ void MapViewTerm() {
 
 	if (mapGhost)
 		delete mapGhost;
+
+	if (mapGhost2)
+		delete mapGhost2;
 }
 
 bool MapViewUpdate() {
@@ -116,6 +125,8 @@ bool MapViewUpdate() {
 
 	mapGhost->Update();
 	mapGhost->Render();
+	mapGhost2->Update();
+	mapGhost2->Render();
 
 	IwGxFlush();
     IwGxSwapBuffers();

@@ -20,11 +20,24 @@ double inline deg(double d) {
     return d / PI * 180.0f;
 }
 
-MapRoamingGhost::MapRoamingGhost() {
+MapRoamingGhost::MapRoamingGhost(char *texture, CIwFVec2 centre) {
 	IwRandSeed((int32)s3eTimerGetMs());
 
-	ghostTexture = Iw2DCreateImage("textures/map_ghost.png");
+	ghostTexture = Iw2DCreateImage(texture);
 	matrix = new CIwFMat2D();
+
+	{
+		this->centre = centre;
+
+		int16 w = IwGxGetScreenWidth()*0.30f;
+
+		float whScale = (float)((double)ghostTexture->GetWidth() / ghostTexture->GetHeight());
+		int16 h = w * 1/whScale;
+
+		Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
+
+		this->size = CIwFVec2(w, h);
+	}
 
 	ghostRoamingAngle = 0;
 	ghostRoamingRadius = 0;
@@ -40,19 +53,6 @@ MapRoamingGhost::~MapRoamingGhost() {
 }
 
 void MapRoamingGhost::Render() {
-
-	int16 w = IwGxGetScreenWidth()*0.30f;
-
-	float whScale = (float)((double)ghostTexture->GetWidth() / ghostTexture->GetHeight());
-	int16 h = w * 1/whScale;
-
-	Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
-
-	CIwFVec2 size = CIwFVec2(w, h);
-	CIwFVec2 centre =
-			CIwFVec2((int16)IwGxGetScreenWidth()/2 - size.x*0.18f,
-					 (int16)IwGxGetScreenHeight()/2 - size.y*0.13f);
-	
 	CIwFVec2 topLeft = CIwFVec2(centre.x-size.x/2-ghostRoamingRadius, centre.y-size.y/2);
 
 	matrix->SetRot(rad(ghostRoamingAngle), centre);
@@ -70,4 +70,9 @@ void MapRoamingGhost::Update() {
 	ghostRoamingRadius = IwRandMinMax(0, 1) ? ghostRoamingRadius + 1 : ghostRoamingRadius - 1;
 	if (ghostRoamingRadius < 20) ghostRoamingRadius = 20;
 	if (ghostRoamingRadius > 100) ghostRoamingRadius = 100;
+}
+
+void MapRoamingGhost::modifyCentreWithTexture(float x, float y) {
+	centre.x += size.x*x;
+	centre.y += size.y*y;
 }
