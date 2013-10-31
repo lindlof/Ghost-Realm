@@ -39,7 +39,7 @@ MapRoamingGhost::MapRoamingGhost(char *texture, CIwFVec2 centre) {
 		this->size = CIwFVec2(w, h);
 	}
 
-	ghostRoamingAngle = 0;
+	ghostRoamingAngle = IwRandMinMax(0, 359);
 	ghostRoamingRadius = 0;
 	roamingUpdate = clock();
 }
@@ -65,6 +65,8 @@ void MapRoamingGhost::Update() {
 
 	if (clock() > roamingUpdate) {
 		ghostRoamingAngle++;
+		if (ghostRoamingAngle > 359)
+			ghostRoamingAngle = 0;
 		roamingUpdate = clock() + IwRandMinMax(50, 80);
 	}
 	ghostRoamingRadius = IwRandMinMax(0, 1) ? ghostRoamingRadius + 1 : ghostRoamingRadius - 1;
