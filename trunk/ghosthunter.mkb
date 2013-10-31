@@ -103,6 +103,10 @@ assets
 deployments
 {
 	["Default"]
+	android-icon='data/icon/icon_48.png'
+	android-icon-hdpi='data/icon/icon_72.png'
+	android-icon-ldpi='data/icon/icon_36.png'
+	android-icon-mdpi='data/icon/icon_48.png'
 	android-manifest='deploy/AndroidManifest.xml'
 	name='Ghost Hunter'
 }
