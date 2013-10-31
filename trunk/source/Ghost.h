@@ -31,6 +31,9 @@ class Ghost {
 
 	float initRotation;
 	float rotation;
+
+	bool foundUnintialized;
+	clock_t foundInitTime;
 	clock_t foundAnimTime;
 	float scale;
 	int foundAnimProgress;
@@ -41,9 +44,6 @@ class Ghost {
 
 	clock_t playerAttackLast;
 	int nextAttackInterval;
-
-	clock_t tappedTime;
-	int tappedCount;
 
 	double floatingAngle;
 

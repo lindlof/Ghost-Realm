@@ -26,6 +26,8 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 
 	Ghost::player = player;
 
+	foundUnintialized = true;
+	foundInitTime = 0;
 	foundAnimTime = 0;
 	foundAnimProgress = 0;
 
@@ -36,9 +38,6 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 
 	initRotation = IwRandMinMax(0, 360);
 	rotation = initRotation;
-
-	tappedTime = 0;
-	tappedCount = 0;
 	ghostAttack = NULL;
 
 	hitTime = 0;
@@ -81,7 +80,15 @@ bool Ghost::ghostUpdate() {
 
 	double ghostDistance = abs(bearing - player->getHeading());
 
-	if (found && !gameIsHalt()) {
+	if (found && !gameIsHalt()) { // Ghost initialization and movement
+
+		if (foundUnintialized) {
+			foundInitTime = clock() + 1000;
+			foundUnintialized = false;
+			return true;
+		} else if (clock() < foundInitTime) {
+			return true;
+		}
 
 		if (foundAnimProgress < FOUND_ANIM_STEPS) {
 
@@ -202,6 +209,7 @@ int Ghost::getEctoplasm() {
 
 // Ghost must be tapped for aggro
 void Ghost::tapped() {
+	/*
 	if (player->isDead()) return;
 
 	if (tappedCount == 0) {
@@ -217,6 +225,7 @@ void Ghost::tapped() {
 	if (tappedCount > 1) {
 		IwTrace(GHOST_HUNTER, ("Player touched a ghost"));
 	}
+	*/
 }
 
 GhostAttack* Ghost::getAttack() {
