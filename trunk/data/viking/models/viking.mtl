@@ -7,8 +7,7 @@ CIwMaterial
 	texture0 ".\textures\texture4.png"
 	shadeMode "GOURAUD"
 	modulateMode "RGB"
-	alphaMode "ADD"
+	alphaMode "BLEND"
 	cullMode "BACK"
 	zDepthOfs 1
-	blendMode "ADD"
 }
