@@ -20,6 +20,7 @@ class GhostAttack;
 class Player;
 
 #define GHOST_MAX_ECTOPLASM 100.f
+#define GHOST_ATTACK_ANIM_WAIT 1220 // Longer wait -> ghost hits later
 
 class Ghost {
 	private:
@@ -28,6 +29,7 @@ class Ghost {
 	bool found;
 
 	int ectoplasm;
+	clock_t lastUpdate;
 
 	float initRotation;
 	float rotation;
@@ -42,7 +44,6 @@ class Ghost {
 	bool attackDefendable;
 	clock_t hitTime;
 
-	clock_t playerAttackLast;
 	int nextAttackInterval;
 
 	double floatingAngle;
@@ -53,6 +54,7 @@ class Ghost {
 
 	bool animDodge;
 	bool animAttack;
+	int animAttackInterval;
 
 	public:
 	Ghost(GhostType ghostType, Player *player);

@@ -23,7 +23,6 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	IwRandSeed((int32)s3eTimerGetMs());
 
 	Ghost::ghostType = ghostType;
-
 	Ghost::player = player;
 
 	foundUnintialized = true;
@@ -32,6 +31,7 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	foundAnimProgress = 0;
 
 	ectoplasm = GHOST_MAX_ECTOPLASM;
+	lastUpdate = 0;
 
 	found = false;
 	bearing = 0;
@@ -41,7 +41,6 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	ghostAttack = NULL;
 
 	hitTime = 0;
-	playerAttackLast = 0;
 	nextAttackInterval = 0;
 	attackDefendable = false;
 
@@ -97,7 +96,6 @@ bool Ghost::ghostUpdate() {
 
 			if (foundAnimProgress == 0) {
 				// Ghost waits for 2 seconds before attacking
-				playerAttackLast = clock();
 				nextAttackInterval = 2000;
 			}
 
@@ -154,9 +152,9 @@ bool Ghost::ghostUpdate() {
 	if (found && getAttack() == NULL && nextAttackInterval <= 0) {
 		attackDefendable = IwRandMinMax(0, 9) > 2; // 30 % of attacks not defendable
 		ghostAttack = new GhostAttack(player, ghostType);
-		playerAttackLast = clock();
 		nextAttackInterval = IwRandMinMax(4000, 6000);
 		animAttack = true;
+		animAttackInterval = GHOST_ATTACK_ANIM_WAIT;
 	}
 
 	// Update attacks
@@ -172,10 +170,14 @@ bool Ghost::ghostUpdate() {
 	// Decrease next attack interval
 	if (!gameIsHalt()) {
 		clock_t currentTime = clock();
-		nextAttackInterval -= currentTime - playerAttackLast;
-		playerAttackLast = currentTime;
+		if (nextAttackInterval >= 0)
+			nextAttackInterval -= currentTime - lastUpdate;
+		if (animAttackInterval >= 0)
+			animAttackInterval -= currentTime - lastUpdate;
+
+		lastUpdate = currentTime;
 	} else {
-		playerAttackLast = clock();
+		lastUpdate = clock();
 	}
 
 	return true;
@@ -275,6 +277,7 @@ bool Ghost::pollAnimDodge() {
 }
 
 bool Ghost::pollAnimAttack() {
+	if (animAttackInterval > 0) return false;
 	bool attack = animAttack;
 	animAttack = false;
 	return attack;
