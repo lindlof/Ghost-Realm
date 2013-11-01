@@ -49,11 +49,12 @@ static CIwFVec2 cameraUvsRotated[4];
 uint16* g_pCameraTexelsRGB565 = NULL;
 static CIwTexture* g_CameraTexture = NULL;
 
-enum GhostAnimation {GHOST_ANIM_IDLE, GHOST_ANIM_AGRO, GHOST_ANIM_DODGE, GHOST_ANIM_ATTACK};
-bool agroPlayed;
+enum GhostAnimation {GHOST_ANIM_IDLE, GHOST_ANIM_AGRO, GHOST_ANIM_DODGE, 
+	GHOST_ANIM_ATTACK, GHOST_ANIM_CAPTURED};
+bool agroPlayed, capturedPlayed;
 
 static CIwModel*       ghost_Model;
-static CIwAnim*        ghost_Anims[4];
+static CIwAnim*        ghost_Anims[5];
 static CIwAnimSkel*    ghost_Skel;
 static CIwAnimSkin*    ghost_Skin;
 static CIwAnimPlayer*  ghost_Player;
@@ -79,7 +80,7 @@ double inline deg(double d) {
 }
 
 void initFightView() {
-	agroPlayed = false;
+	agroPlayed = capturedPlayed = false;
 }
 
 // In-place matrix transposition of 90 degrees to transform camera to portrait
@@ -181,6 +182,7 @@ void CameraViewInit()
 	ghost_Anims[GHOST_ANIM_AGRO]  = (CIwAnim*)pGroup->GetResNamed("Armature_agro", IW_ANIM_RESTYPE_ANIMATION);
 	ghost_Anims[GHOST_ANIM_DODGE]  = (CIwAnim*)pGroup->GetResNamed("Armature_dodge", IW_ANIM_RESTYPE_ANIMATION);
 	ghost_Anims[GHOST_ANIM_ATTACK]  = (CIwAnim*)pGroup->GetResNamed("Armature_attack", IW_ANIM_RESTYPE_ANIMATION);
+	ghost_Anims[GHOST_ANIM_CAPTURED]  = (CIwAnim*)pGroup->GetResNamed("Armature_captured", IW_ANIM_RESTYPE_ANIMATION);
 	
 	/*
 	IwGetResManager()->LoadGroup("Skelman/Skelman.group");
@@ -263,7 +265,8 @@ bool CameraViewUpdate()
 	// Clear the screen
     IwGxClear(IW_GX_COLOUR_BUFFER_F | IW_GX_DEPTH_BUFFER_F);
 
-	if (!gameIsHalt() && ghostAvailable) {
+	if (ghostAvailable && 
+		(!gameIsHalt() || getGameState()->getGhost()->isDead())) {
 		updateGhost();
 	}
 
@@ -328,7 +331,7 @@ void setupPlayer() {
 }
 
 void updateGhost() {
-	if (ghost_Player->IsCurrentAnimComplete()) {
+	if (ghost_Player->IsCurrentAnimComplete() && !getGameState()->getGhost()->isDead()) {
 		ghost_Player->PlayAnim(ghost_Anims[GHOST_ANIM_IDLE], 1, CIwAnimBlendSource::LOOPING_F, BLEND_DURATION);
 	}
 
@@ -359,7 +362,10 @@ void renderGhost() {
 
     IwGxSetModelMatrix(ghostMatrix);
 
-	if (ghost->isFound() && !agroPlayed) {
+	if (ghost->isDead() && !capturedPlayed) {
+		ghost_Player->PlayAnim(ghost_Anims[GHOST_ANIM_CAPTURED], 1, 0, BLEND_DURATION);
+		capturedPlayed = true;
+	} else if (ghost->isFound() && !agroPlayed) {
 		ghost_Player->PlayAnim(ghost_Anims[GHOST_ANIM_AGRO], 1, 0, BLEND_DURATION);
 		agroPlayed = true;
 	} else if (ghost->pollAnimDodge()) {
@@ -411,7 +417,7 @@ void renderGhost() {
     IwAnimSetSkelContext(NULL);
     IwAnimSetSkinContext(NULL);
 
-	if (getGameState()->getGhost()->isFound()) {
+	if (ghost->isFound() && !ghost->isDead()) {
 		ghostCollision->RenderEctoplasmaBar((float)ghost->getEctoplasm() / GHOST_MAX_ECTOPLASM);
 	}
 }
