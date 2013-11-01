@@ -30,7 +30,7 @@ class FightTutorial {
 	~FightTutorial();
 
 	TutorialType getTutorialType();
-	void setTutorialType(TutorialType type);
+	void tutorialTouched();
 	bool isTutorialOn();
 	void triggerTutorial(TutorialType type);
 	void resetShown();

@@ -20,7 +20,7 @@ class GhostAttack;
 class Player;
 
 #define GHOST_MAX_ECTOPLASM 100.f
-#define GHOST_ATTACK_ANIM_WAIT 1220 // Longer wait -> ghost hits later
+#define GHOST_ATTACK_ANIM_WAIT 1820 // Longer wait -> ghost hits later
 
 class Ghost {
 	private:

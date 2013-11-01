@@ -120,12 +120,7 @@ void FightTutorialView::Touch(int x, int y, bool pressed) {
 		}
 
 		if (clock() - pressedTime < 1500 && !pressed) {
-			if (tutorial->getTutorialType() == TUTORIAL_GHOST_WON ||
-				tutorial->getTutorialType() == TUTORIAL_YOU_DIED ||
-				tutorial->getTutorialType() == TUTORIAL_YOU_WON) {
-				getGameState()->setGameMode(MAP_MODE);
-			}
-			tutorial->setTutorialType(TUTORIAL_NONE);
+			tutorial->tutorialTouched();
 		}
 	} else {
 		pressedTime = 0;

@@ -61,12 +61,15 @@ TutorialType FightTutorial::getTutorialType() {
 	return currentType;
 }
 
-void FightTutorial::setTutorialType(TutorialType type) {
-	if (type == TUTORIAL_NONE && 
-			clock() < tutorialShowTime + TUTORIAL_MIN_TIME) {
-		return;
-	}
+void FightTutorial::tutorialTouched() {
+	if (clock() > tutorialShowTime + TUTORIAL_MIN_TIME) {
+		if (currentType == TUTORIAL_GHOST_WON ||
+			currentType == TUTORIAL_YOU_DIED ||
+			currentType == TUTORIAL_YOU_WON) {
+				getGameState()->setGameMode(MAP_MODE);
+		}
 
-	currentType = type;
-	tutorialShowTime = clock();
+		currentType = TUTORIAL_NONE;
+		tutorialShowTime = 0;
+	}
 }
