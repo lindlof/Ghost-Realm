@@ -14,14 +14,23 @@
 
 #include <time.h>
 #include "IwGraphics.h"
+#include "Iw2D.h"
 
 class CameraDefend {
 	private:
-	CIwMaterial* pMat;
-	CIwTexture* defendingDotTexture;
+	CIwMaterial* animMat;
+	CIw2DImage* dotTexture;
+	CIwTexture* animTexture;
 
-	CIwFVec2 defendVertsLeft[4];
-	CIwFVec2 defendVertsRight[4];
+	CIwFVec2 dotVertsTopLeftLeft;
+	CIwFVec2 dotVertsSizeLeft;
+	CIwFVec2 dotVertsTopLeftRight;
+	CIwFVec2 dotVertsSizeRight;
+
+	CIwFVec2 animVertsLeft[4];
+	CIwFVec2 animVertsRight[4];
+
+	int dotAngle;
 
 	CIwFVec2 drawStart;
 	bool drawing;
