@@ -10,12 +10,18 @@
 #ifndef _FIGHT_TUTORIAL_H
 #define _FIGHT_TUTORIAL_H
 
+#include "time.h"
+
+#define TUTORIAL_MIN_TIME 500
+
 enum TutorialType { TUTORIAL_NONE, TUTORIAL_ATTACK, TUTORIAL_DEFEND, TUTORIAL_FACE_WARN, 
 	TUTORIAL_GHOST_WON,TUTORIAL_SEARCH, TUTORIAL_YOU_DIED, TUTORIAL_YOU_WON };
 
 class FightTutorial {
 	private:
 	TutorialType currentType;
+
+	clock_t tutorialShowTime;
 
 	bool attackShown, defendShown, faceWarnShown, ghostWonShown, searchShown, youDiedShown, youWonShown;
 

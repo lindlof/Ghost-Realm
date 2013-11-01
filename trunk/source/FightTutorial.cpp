@@ -13,6 +13,7 @@
 FightTutorial::FightTutorial() {
 	resetShown();
 	currentType = TUTORIAL_NONE;
+	tutorialShowTime = 0;
 }
 
 FightTutorial::~FightTutorial() {
@@ -48,6 +49,8 @@ void FightTutorial::triggerTutorial(TutorialType type) {
 		youWonShown = true;
 		currentType = type;
 	}
+
+	tutorialShowTime = clock();
 }
 
 bool FightTutorial::isTutorialOn() {
@@ -59,5 +62,11 @@ TutorialType FightTutorial::getTutorialType() {
 }
 
 void FightTutorial::setTutorialType(TutorialType type) {
+	if (type == TUTORIAL_NONE && 
+			clock() < tutorialShowTime + TUTORIAL_MIN_TIME) {
+		return;
+	}
+
 	currentType = type;
+	tutorialShowTime = clock();
 }
