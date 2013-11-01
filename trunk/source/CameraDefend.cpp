@@ -123,6 +123,7 @@ CameraDefend::~CameraDefend() {
 void CameraDefend::Render() {
 	if (!isActive()) return;
 
+	Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
 	Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
 
 	CIwFMat2D rot;
@@ -142,6 +143,8 @@ void CameraDefend::Render() {
 		animMat->SetAnimCelID(0);
 		return;
 	}
+
+	IwGxLightingOff();
 
 	animMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
 	animMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
