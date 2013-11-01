@@ -45,6 +45,8 @@ class CameraDefend {
 	void Touch(int32 x, int32 y, bool press);
 	void Motion(int32 x, int32 y);
 	bool isActive();
+
+	void reinit();
 };
 
 #endif

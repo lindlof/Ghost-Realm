@@ -23,8 +23,8 @@ static CIwFVec2 dot_uvs[4] =
     CIwFVec2(1, 0),
 };
 
-static int cells = 3;
-static int rows = 3;
+static int cells = 4;
+static int rows = 4;
 static CIwFVec2 anim_uvs[4] =
 {
     CIwFVec2(0,         0),
@@ -42,6 +42,8 @@ double inline deg(double d) {
 }
 
 CameraDefend::CameraDefend() {
+	IwRandSeed((int32)s3eTimerGetMs());
+
 	dotTexture = Iw2DCreateImage("textures/defending_dot.png");
 	dotAngle = 0;
 
@@ -55,9 +57,13 @@ CameraDefend::CameraDefend() {
 	animMat->CreateAnim();
 	animMat->SetAnimCelW((double)animTexture->GetWidth()/cells);
 	animMat->SetAnimCelH((double)animTexture->GetHeight()/rows);
-    animMat->SetAnimCelPeriod(4);
+    animMat->SetAnimCelPeriod(2);
+	
+	reinit();
+	active = false;
+}
 
-	IwRandSeed((int32)s3eTimerGetMs());
+void CameraDefend::reinit() {
 	float width = (float)IwGxGetScreenWidth()*0.15f;
 	//width = width > 120 ? 120 : width;
 	float height = width;
@@ -106,7 +112,6 @@ CameraDefend::CameraDefend() {
 	}
 
 	drawing = false;
-	active = false;
 }
 
 CameraDefend::~CameraDefend() {
@@ -167,6 +172,9 @@ void CameraDefend::Update() {
 	Ghost* ghost = getGameState()->getGhost();
 
 	if (ghost != NULL && ghost->isAttackDefendable() && !(ghost->getAttack() == NULL || ghost->getAttack()->isOver())) {
+		if (!active) {
+			reinit();
+		}
 		active = true;
 		getFightTutorial()->triggerTutorial(TUTORIAL_DEFEND);
 	} else {
@@ -175,9 +183,7 @@ void CameraDefend::Update() {
 }
 
 void CameraDefend::Touch(int32 x, int32 y, bool press) {
-	if (!isActive()) return;
-
-	if (press) {
+	if (isActive() && press) {
 		drawStart = CIwFVec2(x, y);
 		drawing = true;
 	} else {
@@ -209,7 +215,7 @@ void CameraDefend::Motion(int32 x, int32 y) {
 }
 
 bool dotCollides(CIwFVec2* rectTopLeft, CIwFVec2* rectSize, CIwFVec2 point) {
-	float collisionModifier = 0.3f;
+	float collisionModifier = 0.0f;
 	float leftPoint  = rectTopLeft->x*(1-collisionModifier);
 	float rightPoint = (rectTopLeft->x + rectSize->x)*(1+collisionModifier);
 	float upPoint    = rectTopLeft->y*(1-collisionModifier);
