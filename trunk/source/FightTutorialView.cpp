@@ -12,6 +12,7 @@
 
 FightTutorialView::FightTutorialView() {
 	bgTexture = Iw2DCreateImage("textures/tutorial/tutorial_bg.png");
+	buttonTexture = Iw2DCreateImage("textures/tutorial/tutorial_button.png");
 
 	attackTexture = Iw2DCreateImage("textures/tutorial/tutorial_attack_the_ghost.png");
 	defendTexture = Iw2DCreateImage("textures/tutorial/tutorial_defend_from_the_attacks.png");
@@ -22,6 +23,17 @@ FightTutorialView::FightTutorialView() {
 	youWonTexture = Iw2DCreateImage("textures/tutorial/tutorial_you_won.png");
 
 	pressedTime = 0;
+
+	{
+		int16 w = IwGxGetScreenWidth();
+		//if (w > text->GetWidth()) w = text->GetWidth();
+
+		float whScale = (float)((double)buttonTexture->GetWidth() / buttonTexture->GetHeight());
+		int16 h = w * 1/whScale;
+
+		buttonSize = CIwFVec2(w, h);
+		buttonTopLeft = CIwFVec2(IwGxGetScreenWidth()/2 - w/2, IwGxGetScreenHeight()/2 - h/2);
+	}
 }
 
 void FightTutorialView::setTutorial(FightTutorial* fightTutorial) {
@@ -29,6 +41,11 @@ void FightTutorialView::setTutorial(FightTutorial* fightTutorial) {
 }
 
 FightTutorialView::~FightTutorialView() {
+	if (bgTexture)
+		delete bgTexture;
+	if (buttonTexture)
+		delete buttonTexture;
+
 	if (attackTexture)
 		delete attackTexture;
 	if (defendTexture)
@@ -60,6 +77,8 @@ void FightTutorialView::Render() {
 
 	Iw2DDrawImage(bgTexture, bgTopLeft, bgSize);
 
+	Iw2DDrawImage(buttonTexture, buttonTopLeft, buttonSize);
+
 	if (type == TUTORIAL_ATTACK) {
 		drawText(attackTexture);
 	} else if (type == TUTORIAL_DEFEND) {
@@ -85,16 +104,16 @@ void FightTutorialView::drawText(CIw2DImage* text) {
 	int16 h = w * 1/whScale;
 
 	CIwFVec2 size = CIwFVec2(w, h);
-	CIwFVec2 topLeft = CIwFVec2(IwGxGetScreenWidth()/2 - w/2, IwGxGetScreenHeight()*1.f - h);
+	CIwFVec2 topLeft = CIwFVec2(IwGxGetScreenWidth()/2 - w/2, IwGxGetScreenHeight()/2 - h/2);
 
 	Iw2DDrawImage(text, topLeft, size);
 }
 
 void FightTutorialView::Touch(int x, int y, bool pressed) {
-	if (x > IwGxGetScreenWidth()*0.03 &&
-		x < IwGxGetScreenWidth()*0.97 &&
-		y > IwGxGetScreenHeight()*0.81 &&
-		y < IwGxGetScreenHeight()*0.99) {
+	if (x > buttonTopLeft.x + buttonSize.x*0.03 &&
+		x < buttonTopLeft.x + buttonSize.x*0.97 &&
+		y > buttonTopLeft.y + buttonSize.y*0.23 &&
+		y < buttonTopLeft.y + buttonSize.y*0.77) {
 
 		if (pressed) {
 			pressedTime = clock();

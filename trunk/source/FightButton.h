@@ -16,11 +16,8 @@
 
 class FightButton {
 	private:
-	CIwTexture* fightTextTexture;
-	CIwSVec2 buttonTextXY, buttonTextWH;
-
-	CIwTexture* fightBgTexture;
-	CIwSVec2 buttonBgXY, buttonBgWH;
+	CIwTexture* fightTexture;
+	CIwSVec2 buttonXY, buttonWH;
 
 	clock_t pressedTime;
 

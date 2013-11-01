@@ -27,33 +27,26 @@ static CIwFVec2 uvs[4] =
 
 FightButton::FightButton() {
 
-	fightBgTexture = new CIwTexture;
-	fightBgTexture->LoadFromFile("textures/from_map_to_camera_bg.png");
-	fightBgTexture->Upload();
-
-	fightTextTexture = new CIwTexture;
-	fightTextTexture->LoadFromFile("textures/from_map_to_camera_text.png");
-	fightTextTexture->Upload();
+	fightTexture = new CIwTexture;
+	fightTexture->LoadFromFile("textures/from_map_to_camera.png");
+	fightTexture->Upload();
 
 	{
 		int16 w = IwGxGetScreenWidth();
 
-		float whScale = (float)((double)fightBgTexture->GetWidth() / fightBgTexture->GetHeight());
+		float whScale = (float)((double)fightTexture->GetWidth() / fightTexture->GetHeight());
 		int16 h = w * 1/whScale;
 
-		buttonBgXY = CIwSVec2(0, IwGxGetScreenHeight()-h);
-		buttonBgWH = CIwSVec2(w, h);
-
-		buttonTextXY = CIwSVec2(0, IwGxGetScreenHeight()-h);
-		buttonTextWH = CIwSVec2(w, h);
+		buttonXY = CIwSVec2(0, IwGxGetScreenHeight()-h);
+		buttonWH = CIwSVec2(w, h);
 	}
 
 	pressedTime = 0;
 }
 
 FightButton::~FightButton() {
-	if (fightTextTexture)
-		delete fightTextTexture;
+	if (fightTexture)
+		delete fightTexture;
 }
 
 void FightButton::Render() {
@@ -63,36 +56,22 @@ void FightButton::Render() {
 		CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
 		pMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
 		pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
-		pMat->SetTexture(fightBgTexture);
+		pMat->SetTexture(fightTexture);
 
 		IwGxSetMaterial(pMat);
 		IwGxSetUVStream(uvs);
 
-		IwGxDrawRectScreenSpace(&buttonBgXY, &buttonBgWH);
-	}
-
-	{
-		IwGxLightingOff();
-	
-		CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
-		pMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
-		pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
-		pMat->SetTexture(fightTextTexture);
-
-		IwGxSetMaterial(pMat);
-		IwGxSetUVStream(uvs);
-
-		IwGxDrawRectScreenSpace(&buttonTextXY, &buttonTextWH);
+		IwGxDrawRectScreenSpace(&buttonXY, &buttonWH);
 	}
 }
 
 void FightButton::Touch(int x, int y, bool pressed) {
 	if (getGameState()->getGhost() == NULL) return;
 
-	if (x > buttonBgWH.x*0.03 &&
-		x < buttonBgWH.x*0.97 &&
-		y > buttonBgXY.y + buttonBgWH.y*0.43 && 
-		y < buttonBgXY.y + buttonBgWH.y*0.98) {
+	if (x > buttonWH.x*0.03 &&
+		x < buttonWH.x*0.97 &&
+		y > buttonXY.y + buttonWH.y*0.43 && 
+		y < buttonXY.y + buttonWH.y*0.98) {
 
 		if (pressed) {
 			pressedTime = clock();

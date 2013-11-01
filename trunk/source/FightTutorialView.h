@@ -21,6 +21,9 @@ class FightTutorialView {
 	FightTutorial* tutorial;
 
 	CIw2DImage* bgTexture;
+	CIw2DImage* buttonTexture;
+	CIwFVec2 buttonSize;
+	CIwFVec2 buttonTopLeft;
 
 	CIw2DImage* attackTexture;
 	CIw2DImage* defendTexture;

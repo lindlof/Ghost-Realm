@@ -83,14 +83,14 @@ assets
     (data)
     textures/defending_dot.png
 	textures/player_blood.png
-	textures/from_map_to_camera_text.png
-	textures/from_map_to_camera_bg.png
+	textures/from_map_to_camera.png
 	textures/map_ghost.png
 	textures/map_ghost_xtra.png
 	textures/map_player.png
 	textures/map_health.png
 	textures/map_template.png
 	textures/tutorial/tutorial_bg.png
+	textures/tutorial/tutorial_button.png
 	textures/tutorial/tutorial_attack_the_ghost.png
 	textures/tutorial/tutorial_defend_from_the_attacks.png
 	textures/tutorial/tutorial_face_the_ghost_to_attack.png
