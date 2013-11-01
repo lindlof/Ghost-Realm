@@ -66,7 +66,9 @@ void FightTutorial::tutorialAcknowledged() {
 		if (currentType == TUTORIAL_GHOST_WON ||
 			currentType == TUTORIAL_YOU_DIED ||
 			currentType == TUTORIAL_YOU_WON) {
-				getGameState()->setGameMode(MAP_MODE);
+
+			getGameState()->deleteGhost();
+			getGameState()->setGameMode(MAP_MODE);
 		}
 
 		currentType = TUTORIAL_NONE;

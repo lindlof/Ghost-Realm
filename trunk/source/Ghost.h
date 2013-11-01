@@ -69,6 +69,7 @@ class Ghost {
 	void setFound();
 	bool isFound();
 	int getEctoplasm();
+	bool isDead();
 	
 	int getDistance();
 	double getBearing();

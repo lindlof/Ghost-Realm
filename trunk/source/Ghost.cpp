@@ -199,6 +199,10 @@ bool Ghost::isFound() {
 	return found;
 }
 
+bool Ghost::isDead() {
+	return getEctoplasm() <= 0;
+}
+
 double Ghost::getBearing() {
 	return bearing;
 }

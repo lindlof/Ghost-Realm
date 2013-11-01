@@ -88,16 +88,13 @@ bool CameraModelUpdate()
 	if (ghost != NULL) {
 		ghost->ghostUpdate();
 
-		int ectoplasm = ghost->getEctoplasm();
-		if (ectoplasm <= 0) {
+		if (!fightOver && ghost->isDead()) {
 			player->wonBattle();
-			gameState->deleteGhost();
 			fightOver = true;
 			gameOverTime = clock() + 10000;
 			getFightTutorial()->triggerTutorial(TUTORIAL_YOU_WON);
-		} else if (player->getMana() <= 0) {
+		} else if (!fightOver && player->getMana() <= 0) {
 			player->lostBattle();
-			gameState->deleteGhost();
 			fightOver = true;
 			gameOverTime = clock() + 10000;
 
@@ -110,14 +107,13 @@ bool CameraModelUpdate()
 		}
 	}
 
-	if (fightOver && clock() > gameOverTime) {
-		fightTutorial->tutorialAcknowledged();
-		gameState->setGameMode(MAP_MODE);
-	}
-
 	fightTutorial->triggerTutorial(TUTORIAL_SEARCH);
 
 	player->headingUpdate();
+
+	if (fightOver && clock() > gameOverTime) {
+		fightTutorial->tutorialAcknowledged();
+	}
 
 	return true;
 }
