@@ -61,7 +61,7 @@ TutorialType FightTutorial::getTutorialType() {
 	return currentType;
 }
 
-void FightTutorial::tutorialTouched() {
+void FightTutorial::tutorialAcknowledged() {
 	if (clock() > tutorialShowTime + TUTORIAL_MIN_TIME) {
 		if (currentType == TUTORIAL_GHOST_WON ||
 			currentType == TUTORIAL_YOU_DIED ||

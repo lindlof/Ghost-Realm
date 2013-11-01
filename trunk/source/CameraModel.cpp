@@ -111,6 +111,7 @@ bool CameraModelUpdate()
 	}
 
 	if (fightOver && clock() > gameOverTime) {
+		fightTutorial->tutorialAcknowledged();
 		gameState->setGameMode(MAP_MODE);
 	}
 

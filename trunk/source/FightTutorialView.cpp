@@ -120,7 +120,7 @@ void FightTutorialView::Touch(int x, int y, bool pressed) {
 		}
 
 		if (clock() - pressedTime < 1500 && !pressed) {
-			tutorial->tutorialTouched();
+			tutorial->tutorialAcknowledged();
 		}
 	} else {
 		pressedTime = 0;
