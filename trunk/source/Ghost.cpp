@@ -150,7 +150,7 @@ bool Ghost::ghostUpdate() {
 
 	// Initiate new attacks
 	if (found && getAttack() == NULL && nextAttackInterval <= 0) {
-		attackDefendable = IwRandMinMax(0, 9) > 2; // 30 % of attacks not defendable
+		attackDefendable = IwRandMinMax(0, 9) < 8; // 20 % of attacks not defendable
 		ghostAttack = new GhostAttack(player, ghostType);
 		nextAttackInterval = IwRandMinMax(4000, 6000);
 		animAttack = true;
