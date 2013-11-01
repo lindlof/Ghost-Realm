@@ -24,7 +24,7 @@ GhostAttack::GhostAttack(Player* player, GhostType ghostType) {
 
 	hit = hit*ghostType.getStrength();
 	lastTime = clock();
-	interval = IwRandMinMax(2000, 2400);
+	interval = 3000;
 
 	over = false;
 }
