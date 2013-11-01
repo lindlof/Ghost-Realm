@@ -39,8 +39,8 @@ CameraDefend::CameraDefend() {
     pMat->SetAnimCelPeriod(1);
 
 	IwRandSeed((int32)s3eTimerGetMs());
-	float width = (float)IwGxGetScreenWidth()*0.13f;
-	width = width > 120 ? 120 : width;
+	float width = (float)IwGxGetScreenWidth()*0.15f;
+	//width = width > 120 ? 120 : width;
 	float height = width;
 	float padding = (float)IwGxGetScreenWidth()*0.05f;
 
