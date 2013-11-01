@@ -20,6 +20,8 @@ FightTutorialView::FightTutorialView() {
 	searchTexture = Iw2DCreateImage("textures/tutorial/tutorial_search_the_ghost.png");
 	youDiedTexture = Iw2DCreateImage("textures/tutorial/tutorial_you_died.png");
 	youWonTexture = Iw2DCreateImage("textures/tutorial/tutorial_you_won.png");
+
+	pressedTime = 0;
 }
 
 void FightTutorialView::setTutorial(FightTutorial* fightTutorial) {
@@ -88,18 +90,25 @@ void FightTutorialView::drawText(CIw2DImage* text) {
 	Iw2DDrawImage(text, topLeft, size);
 }
 
-void FightTutorialView::Touch(int x, int y, bool press) {
-	if (press &&
-		x > IwGxGetScreenWidth()*0.03 &&
+void FightTutorialView::Touch(int x, int y, bool pressed) {
+	if (x > IwGxGetScreenWidth()*0.03 &&
 		x < IwGxGetScreenWidth()*0.97 &&
 		y > IwGxGetScreenHeight()*0.81 &&
 		y < IwGxGetScreenHeight()*0.99) {
 
-		if (tutorial->getTutorialType() == TUTORIAL_GHOST_WON ||
-			tutorial->getTutorialType() == TUTORIAL_YOU_DIED ||
-			tutorial->getTutorialType() == TUTORIAL_YOU_WON) {
-			getGameState()->setGameMode(MAP_MODE);
+		if (pressed) {
+			pressedTime = clock();
 		}
-		tutorial->setTutorialType(TUTORIAL_NONE);
+
+		if (clock() - pressedTime < 1500 && !pressed) {
+			if (tutorial->getTutorialType() == TUTORIAL_GHOST_WON ||
+				tutorial->getTutorialType() == TUTORIAL_YOU_DIED ||
+				tutorial->getTutorialType() == TUTORIAL_YOU_WON) {
+				getGameState()->setGameMode(MAP_MODE);
+			}
+			tutorial->setTutorialType(TUTORIAL_NONE);
+		}
+	} else {
+		pressedTime = 0;
 	}
 }

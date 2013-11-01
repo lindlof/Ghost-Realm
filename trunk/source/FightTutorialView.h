@@ -14,6 +14,7 @@
 
 #include "IwGraphics.h"
 #include "Iw2D.h"
+#include "time.h"
 
 class FightTutorialView {
 	private:
@@ -29,6 +30,8 @@ class FightTutorialView {
 	CIw2DImage* youDiedTexture;
 	CIw2DImage* youWonTexture;
 
+	clock_t pressedTime;
+
 	void drawText(CIw2DImage* text);
 
 	public:
@@ -37,7 +40,7 @@ class FightTutorialView {
 	void setTutorial(FightTutorial* fightTutorial);
 
 	void Render();
-	void Touch(int x, int y, bool press);
+	void Touch(int x, int y, bool pressed);
 };
 
 #endif
