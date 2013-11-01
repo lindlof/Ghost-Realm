@@ -185,7 +185,9 @@ void CameraDefend::Update() {
 void CameraDefend::Touch(int32 x, int32 y, bool press) {
 	if (isActive() && press) {
 		drawStart = CIwFVec2(x, y);
-		drawing = true;
+		if (dotCollides(&dotVertsTopLeftLeft, &dotVertsSizeLeft,  drawStart) || dotCollides(&dotVertsTopLeftRight, &dotVertsSizeRight, drawStart)) {
+			drawing = true;
+		}
 	} else {
 		Motion(x, y);
 		drawing = false;
