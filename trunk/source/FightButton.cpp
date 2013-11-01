@@ -98,7 +98,6 @@ void FightButton::Touch(int x, int y, bool pressed) {
 			pressedTime = clock();
 		}
 
-		// Press and release both increase the count
 		if (clock() - pressedTime < 1500 && !pressed) {
 			IwTrace(GHOST_HUNTER, ("Player wants to fight"));
 			initFight();
