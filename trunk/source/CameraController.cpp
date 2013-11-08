@@ -14,17 +14,12 @@
 #include "s3e.h"
 #include "s3eCompass.h"
 
-struct Touch {
-    int32 x; // position x
-    int32 y; // position y
-};
-
-#define MAX_TOUCHES 1
-Touch g_Touches[MAX_TOUCHES];
-
 static bool accelometerEnabled = false;
 void SingleTouch(s3ePointerEvent* event);
 void SingleTouchMotion(s3ePointerMotionEvent* event);
+void MultiTouch(s3ePointerTouchEvent* event);
+void MultiTouchMotion(s3ePointerTouchMotionEvent* event);
+
 
 void CameraControllerInit()
 {
@@ -39,6 +34,9 @@ void CameraControllerInit()
 
 	s3ePointerRegister(S3E_POINTER_BUTTON_EVENT, (s3eCallback)SingleTouch, NULL);
 	s3ePointerRegister(S3E_POINTER_MOTION_EVENT, (s3eCallback)SingleTouchMotion, NULL);
+
+	s3ePointerRegister(S3E_POINTER_TOUCH_EVENT, (s3eCallback)MultiTouch, NULL);
+    s3ePointerRegister(S3E_POINTER_TOUCH_MOTION_EVENT, (s3eCallback)MultiTouchMotion, NULL);
 }
 
 void CameraControllerTerm()
@@ -74,20 +72,29 @@ bool CameraControllerUpdate()
 
 void SingleTouch(s3ePointerEvent* event) {
 	if (!gameIsHalt()) {
-		CameraDefend* cameraDefend = getCameraDefend();
-	
 		ghostTouch(event->m_x, event->m_y);
-
-		if (cameraDefend != NULL)
-			cameraDefend->Touch(event->m_x, event->m_y, event->m_Pressed);
 	}
 
 	getFightTutorialView()->Touch(event->m_x, event->m_y, event->m_Pressed);
 }
 
 void SingleTouchMotion(s3ePointerMotionEvent* event) {
-	CameraDefend* cameraDefend = getCameraDefend();
+	
+}
+
+void MultiTouch(s3ePointerTouchEvent* event) {
+    if (!gameIsHalt()) {
+		CameraDefend* cameraDefend = getCameraDefend();
+
+		if (cameraDefend != NULL)
+			cameraDefend->Touch(event->m_x, event->m_y, event->m_Pressed, event->m_TouchID);
+	}
+}
+
+void MultiTouchMotion(s3ePointerTouchMotionEvent* event)
+{
+    CameraDefend* cameraDefend = getCameraDefend();
 
 	if (cameraDefend != NULL)
-		cameraDefend->Motion(event->m_x, event->m_y);
+		cameraDefend->Motion(event->m_x, event->m_y, event->m_TouchID);
 }

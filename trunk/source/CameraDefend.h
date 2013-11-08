@@ -16,6 +16,14 @@
 #include "IwGraphics.h"
 #include "Iw2D.h"
 
+#define DEFEND_TOUCHES_MAX 5
+
+class DefendTouch {
+	public:
+	bool drawing;
+	CIwFVec2 drawStart;
+};
+
 class CameraDefend {
 	private:
 	CIwMaterial* animMat;
@@ -31,10 +39,9 @@ class CameraDefend {
 	CIwFVec2 animVertsRight[4];
 
 	int dotAngle;
-
-	CIwFVec2 drawStart;
-	bool drawing;
 	bool active;
+
+	DefendTouch* touch[DEFEND_TOUCHES_MAX];
 
 	public:
 	CameraDefend();
@@ -42,8 +49,8 @@ class CameraDefend {
 
 	void Update();
 	void Render();
-	void Touch(int32 x, int32 y, bool press);
-	void Motion(int32 x, int32 y);
+	void Touch(int32 x, int32 y, bool press, uint32 id);
+	void Motion(int32 x, int32 y, uint32 id);
 	bool isActive();
 
 	void reinit();

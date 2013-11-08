@@ -44,6 +44,11 @@ double inline deg(double d) {
 CameraDefend::CameraDefend() {
 	IwRandSeed((int32)s3eTimerGetMs());
 
+	for (int i = 0; i < DEFEND_TOUCHES_MAX; i++) {
+		touch[i] = new DefendTouch;
+		touch[i]->drawing = false;
+	}
+
 	dotTexture = Iw2DCreateImage("textures/defending_dot.png");
 	dotAngle = 0;
 
@@ -111,7 +116,9 @@ void CameraDefend::reinit() {
 		animVertsRight[3] = CIwFVec2(dotVertsTopLeftRight.x + width*2, dotVertsTopLeftRight.y - height);
 	}
 
-	drawing = false;
+	for (int i = 0; i < DEFEND_TOUCHES_MAX; i++) {
+		touch[i]->drawing = false;
+	}
 }
 
 CameraDefend::~CameraDefend() {
@@ -123,6 +130,11 @@ CameraDefend::~CameraDefend() {
 
 	if (animTexture)
 		delete animTexture;
+
+	for (int i = 0; i < DEFEND_TOUCHES_MAX; i++) {
+		if (touch[i])
+			delete touch[i];
+	}
 }
 
 void CameraDefend::Render() {
@@ -144,9 +156,14 @@ void CameraDefend::Render() {
 	Iw2DSetTransformMatrix(rot);
 	Iw2DDrawImage(dotTexture, dotVertsTopLeftRight, dotVertsSizeRight);
 
-	if (!drawing) {
-		animMat->SetAnimCelID(0);
-		return;
+	for (int i = 0; i < DEFEND_TOUCHES_MAX; i++) {
+		// Is any touch drawing?
+		if (touch[i]->drawing) break;
+
+		if (i == DEFEND_TOUCHES_MAX - 1) {
+			animMat->SetAnimCelID(0);
+			return;
+		}
 	}
 
 	IwGxLightingOff();
@@ -182,27 +199,30 @@ void CameraDefend::Update() {
 	}
 }
 
-void CameraDefend::Touch(int32 x, int32 y, bool press) {
+void CameraDefend::Touch(int32 x, int32 y, bool press, uint32 id) {
+	if (id > DEFEND_TOUCHES_MAX) return;
+
 	if (isActive() && press) {
-		drawStart = CIwFVec2(x, y);
-		if (dotCollides(&dotVertsTopLeftLeft, &dotVertsSizeLeft,  drawStart) || dotCollides(&dotVertsTopLeftRight, &dotVertsSizeRight, drawStart)) {
-			drawing = true;
+		touch[id]->drawStart = CIwFVec2(x, y);
+		if (dotCollides(&dotVertsTopLeftLeft, &dotVertsSizeLeft,  touch[id]->drawStart) || 
+				dotCollides(&dotVertsTopLeftRight, &dotVertsSizeRight, touch[id]->drawStart)) {
+			touch[id]->drawing = true;
 		}
 	} else {
-		Motion(x, y);
-		drawing = false;
+		Motion(x, y, id);
+		touch[id]->drawing = false;
 	}
 }
 
-void CameraDefend::Motion(int32 x, int32 y) {
+void CameraDefend::Motion(int32 x, int32 y, uint32 id) {
 	if (!isActive()) return;
 	Ghost* ghost = getGameState()->getGhost();
 
 	CIwFVec2 drawEnd = CIwFVec2(x, y);
 
 	bool dotsCollideWithDrawing = 
-		(dotCollides(&dotVertsTopLeftLeft, &dotVertsSizeLeft,  drawStart) && dotCollides(&dotVertsTopLeftRight, &dotVertsSizeRight, drawEnd)) ||
-		(dotCollides(&dotVertsTopLeftRight, &dotVertsSizeRight, drawStart) && dotCollides(&dotVertsTopLeftLeft, &dotVertsSizeLeft,  drawEnd));
+		(dotCollides(&dotVertsTopLeftLeft, &dotVertsSizeLeft,  touch[id]->drawStart) && dotCollides(&dotVertsTopLeftRight, &dotVertsSizeRight, drawEnd)) ||
+		(dotCollides(&dotVertsTopLeftRight, &dotVertsSizeRight, touch[id]->drawStart) && dotCollides(&dotVertsTopLeftLeft, &dotVertsSizeLeft,  drawEnd));
 
 	if (dotsCollideWithDrawing) {
 		active = false;
