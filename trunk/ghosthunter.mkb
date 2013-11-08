@@ -90,6 +90,7 @@ assets
 	textures/map_player.png
 	textures/map_health.png
 	textures/map_template.png
+	textures/map_xp_bar.png
 	textures/tutorial/tutorial_bg.png
 	textures/tutorial/tutorial_button.png
 	textures/tutorial/tutorial_attack_the_ghost.png

@@ -21,6 +21,7 @@
 void renderMap();
 void renderMapPlayer();
 void renderMapHealth();
+void renderMapXpBar();
 
 static FightButton* fightButton;
 static MapRoamingGhost* mapGhost;
@@ -28,6 +29,7 @@ static MapRoamingGhost* mapGhost2;
 
 static CIw2DImage* playerTexture;
 static CIw2DImage* healthTexture;
+static CIw2DImage* xpBarTexture;
 static CIwTexture* mapTexture;
 
 void mapInit(int mapW, int mapH);
@@ -53,6 +55,7 @@ void MapViewInit()
 {
 	playerTexture = Iw2DCreateImage("textures/map_player.png");
 	healthTexture = Iw2DCreateImage("textures/map_health.png");
+	xpBarTexture  = Iw2DCreateImage("textures/map_xp_bar.png");
 	
 	mapTexture = new CIwTexture;
 	mapTexture->LoadFromFile ("textures/map_template.png");
@@ -110,6 +113,9 @@ void MapViewTerm() {
 
 	if (mapGhost2)
 		delete mapGhost2;
+
+	if (xpBarTexture)
+		delete xpBarTexture;
 }
 
 bool MapViewUpdate() {
@@ -120,6 +126,7 @@ bool MapViewUpdate() {
 	renderMap();
 	renderMapPlayer();
 	renderMapHealth();
+	renderMapXpBar();
 
 	fightButton->Render();
 
@@ -206,4 +213,25 @@ void renderMapHealth() {
 
 		Iw2DDrawImage(healthTexture, topLeft, size);
 	}
+}
+
+void renderMapXpBar() {
+	IwGxLightingOff();
+
+	Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
+	Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
+
+	int16 w = (double)IwGxGetScreenWidth() * 0.11f;
+	if (w > (int16)xpBarTexture->GetWidth()) w = (int16)xpBarTexture->GetWidth();
+
+	float whScale = (float)((double)xpBarTexture->GetWidth() / xpBarTexture->GetHeight());
+	int16 h = w * 1/whScale;
+
+	int rightPadding = IwGxGetScreenWidth() * 0.20f;
+	int topPadding  = IwGxGetScreenHeight() * 0.02f;
+
+	CIwFVec2 size = CIwFVec2(w, h);
+	CIwFVec2 topLeft = CIwFVec2(IwGxGetScreenWidth() - rightPadding - w, topPadding);
+
+	Iw2DDrawImage(xpBarTexture, topLeft, size);
 }
