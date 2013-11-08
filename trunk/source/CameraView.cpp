@@ -81,6 +81,10 @@ double inline deg(double d) {
 
 void initFightView() {
 	agroPlayed = capturedPlayed = false;
+
+	// Reset animation
+	ghost_Player->PlayAnim(ghost_Anims[GHOST_ANIM_IDLE], 1, CIwAnimBlendSource::LOOPING_F, 0);
+	updateGhost();
 }
 
 // In-place matrix transposition of 90 degrees to transform camera to portrait
@@ -154,6 +158,7 @@ void cameraStreamInit(int camDataW, int camDataH) {
 }
 void CameraViewPreInit()
 {
+	// For some reason loading images in early stage of init solves lagginess/buggyness
 	playerHit = new PlayerHit(getGameState()->getPlayer());
 	tutorialView = new FightTutorialView();
 	cameraDefend = new CameraDefend();
@@ -201,8 +206,6 @@ void CameraViewInit()
     // Create animation player
     ghost_Player = new CIwAnimPlayer;
     ghost_Player->SetSkel(ghost_Skel);
-    ghost_Player->PlayAnim(ghost_Anims[0], 1, CIwAnimBlendSource::LOOPING_F, BLEND_DURATION);
-	updateGhost();
 
     // Set up camera capture
     if (s3eCameraAvailable())
