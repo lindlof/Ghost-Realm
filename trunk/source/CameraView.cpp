@@ -39,7 +39,6 @@ void setupPlayer();
 void renderCamera();
 void updateGhost();
 void renderGhost();
-void renderMana();
 
 void cameraStreamInit(int camDataW, int camDataH);
 static CIwSVec2 cameraVert[4];
@@ -426,60 +425,6 @@ void renderGhost() {
 	if (ghost->isFound() && !ghost->isDead()) {
 		ghostCollision->RenderEctoplasmaBar((float)ghost->getEctoplasm() / GHOST_MAX_ECTOPLASM);
 	}
-}
-
-void renderMana() {
-	IwGxLightingOff();
-
-	Player *player = getGameState()->getPlayer();
-
-	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
-	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
-	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
-
-	IwGxSetMaterial(pMat);
-
-	// Vertex coords for full mana
-	int16 x1 = ((double)IwGxGetScreenWidth()/100) * 5;
-    int16 x2 = ((double)IwGxGetScreenWidth()/100) * 95;
-    int16 y1 = ((double)IwGxGetScreenHeight()/100) * 1;
-    int16 y2 = ((double)IwGxGetScreenHeight()/100) * 3;
-
-	// Full length of the bar
-	int16 barLength = x2 - x1;
-	// Multiply the full bar length with current mana status
-	barLength =  barLength * (float)player->getMana() / PLAYER_MAX_MANA;
-
-	x2 = x1 + barLength;
-
-	CIwColour* cols = IW_GX_ALLOC(CIwColour, 4);
-
-	int sinceHit = clock() - player->getHitTime();
-
-	if (sinceHit < PLAYER_HIT_LENGTH) {
-		int animation = PLAYER_HIT_LENGTH / PLAYER_HIT_FLASHES;
-		int halfAnimation = animation / 2;
-
-		float animState = ((float)(sinceHit % animation) / halfAnimation);
-
-		if (animState > 1) {
-			animState = 2 - animState;
-		}
-
-		uint8 r = 0xFF*animState + 0x00*(1-animState);
-		uint8 g = 0xFF*animState + 0x80*(1-animState);
-		uint8 b = 0xFF*animState + 0xFF*(1-animState);
-		uint8 a = 0xFF*animState + 0x70*(1-animState);
-		cols->Set(   r,    g,    b,    a);
-	} else {
-		// The default state that displays the image as it is
-		cols->Set(0x00, 0x80, 0xFF, 0x70);
-	}
-
-	cols[1] = cols[2] = cols[3] = cols[0];
-
-	CIwSVec2 XY(x1, y1), dXY(x2-x1, y2-y1);
-	IwGxDrawRectScreenSpace(&XY, &dXY, cols);
 }
 
 void ghostTouch(int32 x, int32 y) {
