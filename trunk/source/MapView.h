@@ -7,10 +7,10 @@
  * PARTICULAR PURPOSE.
  */
 
-#include "FightButton.h"
+#include "MapRoamingGhost.h"
 
 void MapViewInit();
 void MapViewTerm();
 bool MapViewUpdate();
 
-FightButton* getFightButton();
+MapRoamingGhost* getRoamingGhost();

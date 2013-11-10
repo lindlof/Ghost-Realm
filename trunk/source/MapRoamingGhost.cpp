@@ -9,8 +9,12 @@
 
 #include "MapRoamingGhost.h"
 
+#include "GameState.h"
+#include "CameraModel.h"
+
 #include "IwGraphics.h"
 #include "IwRandom.h"
+#include "cmath"
 
 double inline rad(double d) {
     return d / 180.0f * PI;
@@ -29,7 +33,7 @@ MapRoamingGhost::MapRoamingGhost(char *texture, CIwFVec2 centre) {
 	{
 		this->centre = centre;
 
-		int16 w = IwGxGetScreenWidth()*0.30f;
+		int16 w = IwGxGetScreenWidth()*0.29f;
 
 		float whScale = (float)((double)ghostTexture->GetWidth() / ghostTexture->GetHeight());
 		int16 h = w * 1/whScale;
@@ -45,6 +49,12 @@ MapRoamingGhost::MapRoamingGhost(char *texture, CIwFVec2 centre) {
 	roamingUpdate = 0;
 	roamingModifierUpdate = 0;
 	randomModifier = 0;
+
+	noticeTexture = NULL;
+	notice = false;
+
+	tapAreaTopLeft = CIwFVec2(0, 0);
+	tapAreaSize = CIwFVec2(0, 0);
 }
 
 MapRoamingGhost::~MapRoamingGhost() {
@@ -53,15 +63,44 @@ MapRoamingGhost::~MapRoamingGhost() {
 
 	if (matrix)
 		delete matrix;
+
+	if (noticeTexture)
+		delete noticeTexture;
 }
 
 void MapRoamingGhost::Render() {
-	CIwFVec2 topLeft = CIwFVec2(centre.x-size.x/2-ghostRoamingRadius, centre.y-size.y/2);
+	CIwFVec2 topLeft = CIwFVec2(centre.x-size.x/2+ghostRoamingRadius, centre.y-size.y/2);
 
 	matrix->SetRot(rad(ghostRoamingAngle), centre);
 	Iw2DSetTransformMatrix(*matrix);
 
 	Iw2DDrawImage(ghostTexture, topLeft, size);
+
+	if (notice) {
+		Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
+		Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
+
+		int16 w = (double)IwGxGetScreenWidth()*0.35;
+
+		float whScale = (float)((double)noticeTexture->GetWidth() / noticeTexture->GetHeight());
+		int16 h = w * 1/whScale;
+	
+		double roamingX = cos(rad(ghostRoamingAngle)) * ghostRoamingRadius;
+		double roamingY = sin(rad(ghostRoamingAngle)) * ghostRoamingRadius;
+
+		float ghostEmptyPadding = 0.17f;
+		CIwFVec2 noticeTopLeft = CIwFVec2(
+			topLeft.x - (w - size.x)/2 + roamingX, 
+			topLeft.y - h + size.y*ghostEmptyPadding + roamingY - 1);
+		CIwFVec2 noticeSize = CIwFVec2(w, h);
+		Iw2DDrawImage(noticeTexture, noticeTopLeft, noticeSize);
+
+		tapAreaTopLeft = CIwFVec2(topLeft.x < noticeTopLeft.x ? topLeft.x : noticeTopLeft.x, noticeTopLeft.y);
+		tapAreaSize = CIwFVec2(size.x > noticeSize.x ? size.x : noticeSize.x, topLeft.y + size.y - noticeTopLeft.y);
+	} else {
+		tapAreaTopLeft = CIwFVec2(0, 0);
+		tapAreaSize = CIwFVec2(0, 0);
+	}
 }
 
 void MapRoamingGhost::Update() {
@@ -85,4 +124,32 @@ void MapRoamingGhost::Update() {
 void MapRoamingGhost::modifyCentreWithTexture(float x, float y) {
 	centre.x += size.x*x;
 	centre.y += size.y*y;
+}
+
+void MapRoamingGhost::setNotice(bool notice) {
+	if (notice && !noticeTexture)
+		noticeTexture = Iw2DCreateImage("textures/map_fight_notice.png");
+	this->notice = notice;
+}
+
+void MapRoamingGhost::Touch(int x, int y, bool pressed) {
+	if (getGameState()->getGhost() == NULL) return;
+
+	if (x > tapAreaTopLeft.x &&
+		x < tapAreaTopLeft.x + tapAreaSize.x &&
+		y > tapAreaTopLeft.y && 
+		y < tapAreaTopLeft.y + tapAreaSize.y) {
+
+		if (pressed) {
+			pressedTime = clock();
+		}
+
+		if (clock() - pressedTime < 1500 && !pressed) {
+			IwTrace(GHOST_HUNTER, ("Player wants to fight"));
+			initFight();
+			getGameState()->setGameMode(CAMERA_MODE);
+		}
+	} else {
+		pressedTime = 0;
+	}
 }

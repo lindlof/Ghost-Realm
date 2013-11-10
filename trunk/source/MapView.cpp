@@ -23,7 +23,6 @@ void renderMapPlayer();
 void renderMapHealth();
 void renderMapXpBar();
 
-static FightButton* fightButton;
 static MapRoamingGhost* mapGhost;
 static MapRoamingGhost* mapGhost2;
 
@@ -63,10 +62,10 @@ void MapViewInit()
 	
 	mapInit(mapTexture->GetWidth(), mapTexture->GetHeight());
 
-	fightButton = new FightButton();
 	mapGhost = new MapRoamingGhost("textures/map_ghost.png", 
 		CIwFVec2(IwGxGetScreenWidth()/2, IwGxGetScreenHeight()/2));
 	mapGhost->modifyCentreWithTexture(-0.18f, -0.13f);
+	mapGhost->setNotice(true);
 
 	mapGhost2 = new MapRoamingGhost("textures/map_ghost_xtra.png",
 		CIwFVec2(IwGxGetScreenWidth()*0.80f, IwGxGetScreenHeight()*0.70f));
@@ -105,9 +104,6 @@ void MapViewTerm() {
 	if (mapTexture)
 		delete mapTexture;
 
-	if (fightButton)
-		delete fightButton;
-
 	if (mapGhost)
 		delete mapGhost;
 
@@ -127,8 +123,6 @@ bool MapViewUpdate() {
 	renderMapPlayer();
 	renderMapXpBar();
 	renderMapHealth();
-
-	fightButton->Render();
 
 	mapGhost->Update();
 	mapGhost->Render();
@@ -183,8 +177,8 @@ void renderMapPlayer() {
 	Iw2DDrawImage(playerTexture, topLeft, size);
 }
 
-FightButton* getFightButton() {
-	return fightButton;
+MapRoamingGhost* getRoamingGhost() {
+	return mapGhost;
 }
 
 void renderMapXpBar() {

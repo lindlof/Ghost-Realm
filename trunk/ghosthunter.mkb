@@ -42,8 +42,6 @@ files
 	[MapView]
 	MapView.cpp
 	MapView.h
-	FightButton.cpp
-	FightButton.h
 	MapRoamingGhost.cpp
 	MapRoamingGhost.h
 
@@ -86,7 +84,7 @@ assets
     textures/defending_dot.png
 	textures/defending_anim.png
 	textures/player_blood.png
-	textures/from_map_to_camera.png
+	textures/map_fight_notice.png
 	textures/map_ghost.png
 	textures/map_ghost_xtra.png
 	textures/map_player.png

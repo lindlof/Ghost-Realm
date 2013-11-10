@@ -44,8 +44,8 @@ bool MapControllerUpdate() {
 
 void MapSingleTouch(s3ePointerEvent* event) {
 	if (getGameState()->getGameMode() == MAP_MODE) {
-		FightButton* fightButton = getFightButton();
+		MapRoamingGhost* mapGhost = getRoamingGhost();
 
-		fightButton->Touch(event->m_x, event->m_y, event->m_Pressed);
+		mapGhost->Touch(event->m_x, event->m_y, event->m_Pressed);
 	}
 }

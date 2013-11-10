@@ -7,6 +7,9 @@
  * PARTICULAR PURPOSE.
  */
 
+#ifndef _MAP_ROAMING_GHOST_H
+#define _MAP_ROAMING_GHOST_H
+
 #include "Iw2D.h"
 #include "s3eTimer.h"
 #include "time.h"
@@ -16,8 +19,15 @@ class MapRoamingGhost {
 	CIwFVec2 centre;
 	CIwFVec2 size;
 
+	CIwFVec2 tapAreaTopLeft;
+	CIwFVec2 tapAreaSize;
+	clock_t pressedTime;
+
 	CIw2DImage* ghostTexture;
 	CIwFMat2D *matrix;
+
+	bool notice;
+	CIw2DImage* noticeTexture;
 
 	float randomModifier;
 	clock_t roamingModifierUpdate;
@@ -32,6 +42,10 @@ class MapRoamingGhost {
 
 	void Render();
 	void Update();
+	void Touch(int x, int y, bool pressed);
 
 	void modifyCentreWithTexture(float x, float y);
+	void setNotice(bool notice);
 };
+
+#endif
