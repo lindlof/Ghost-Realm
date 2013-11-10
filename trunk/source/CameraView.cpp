@@ -15,6 +15,7 @@
 #include "CameraDefend.h"
 #include "PlayerHit.h"
 #include "FightTutorialView.h"
+#include "ManaBar.h"
 
 #include "s3e.h"
 #include "s3eCamera.h"
@@ -66,6 +67,7 @@ static GhostCollision* ghostCollision;
 static CameraDefend* cameraDefend;
 static PlayerHit* playerHit;
 static FightTutorialView* tutorialView;
+static ManaBar* manaBar;
 
 static int lostManaAnim = 0;
 
@@ -162,6 +164,7 @@ void CameraViewPreInit()
 	playerHit = new PlayerHit(getGameState()->getPlayer());
 	tutorialView = new FightTutorialView();
 	cameraDefend = new CameraDefend();
+	manaBar = new ManaBar();
 }
 void CameraViewInit()
 {
@@ -256,6 +259,9 @@ void CameraViewTerm()
 
 	if (cameraDefend)
 		delete cameraDefend;
+
+	if (manaBar)
+		delete manaBar;
 }
 
 bool CameraViewUpdate()
@@ -278,16 +284,13 @@ bool CameraViewUpdate()
 	if (ghostAvailable)
 		renderGhost();
 	playerHit->Render();
-	renderMana();
+	//renderMana();
 
+	manaBar->Render();
 	cameraDefend->Update();
 	cameraDefend->Render();
 
 	tutorialView->Render();
-
-	// Draw background, then clear depth buffer so we can render UI over the top.
-    IwGxFlush();
-	IwGxClear(IW_GX_DEPTH_BUFFER_F);
 
 	IwGxFlush();
     IwGxSwapBuffers();
@@ -426,7 +429,6 @@ void renderGhost() {
 }
 
 void renderMana() {
-	
 	IwGxLightingOff();
 
 	Player *player = getGameState()->getPlayer();
