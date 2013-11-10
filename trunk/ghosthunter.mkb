@@ -114,5 +114,5 @@ deployments
 	android-icon-ldpi='data/icon/icon_36.png'
 	android-icon-mdpi='data/icon/icon_48.png'
 	android-manifest='deploy/AndroidManifest.xml'
-	name='Ghost Hunter'
+	name='Ghost Realm'
 }
