@@ -1,4 +1,4 @@
-// geo file exported from : 'viking19.blend'
+// geo file exported from : 'viking22.blend'
 CIwModel
 {
 	name "viking"
