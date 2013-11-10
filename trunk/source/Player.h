@@ -47,6 +47,7 @@ class Player {
 
 	int getVitality();
 	int getMana();
+	void resetMana();
 	void lostBattle();
 	void wonBattle();
 	bool isDead();

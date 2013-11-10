@@ -73,6 +73,8 @@ void CameraModelTerm()
 }
 
 void initFight() {
+	getGameState()->getPlayer()->resetMana();
+
 	fightTutorial->resetShown();
 	fightOver = false;
 	getGameState()->getGhost()->cameraInit();

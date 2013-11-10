@@ -69,17 +69,19 @@ int Player::getMana() {
 	return Player::mana;
 }
 
+void Player::resetMana() {
+	mana = PLAYER_MAX_MANA;
+}
+
 void Player::lostBattle() {
 	setGhost(NULL);
 	vitality -= 2;
-	if (!isDead()) mana = PLAYER_MAX_MANA;
 }
 
 void Player::wonBattle() {
 	setGhost(NULL);
 	vitality += 1;
 	if (vitality > PLAYER_MAX_VITALITY) vitality = PLAYER_MAX_VITALITY;
-	mana = PLAYER_MAX_MANA;
 }
 
 void Player::compassUpdate(double heading, bool error) {
