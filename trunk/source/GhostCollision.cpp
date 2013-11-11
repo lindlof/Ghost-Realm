@@ -155,9 +155,14 @@ uint16      s_TriStrip[22] =
     3, 7, 2, 6,
 };
 
-void GhostCollision::RenderEctoplasmaBar(float ectoPercent)
+void GhostCollision::RenderEctoplasmaBar(float ectoPercent, double ghostRotation)
 {
-	IwGxSetModelMatrix(modelMatrix);
+	CIwFMat ectoMatrix = CIwFMat();
+	ectoMatrix.CopyRot(*modelMatrix);
+	ectoMatrix.CopyTrans(*modelMatrix);
+	ectoMatrix.PostRotateY(-ghostRotation+PI);
+
+	IwGxSetModelMatrix(&ectoMatrix);
 
 	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
 	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);

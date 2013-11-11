@@ -425,12 +425,13 @@ void renderGhost() {
 	Ghost *ghost = getGameState()->getGhost();
 
 	CIwFVec3 ghostPosition(0, 0, ghost->getDistance());
+	double ghostRotation = rad(ghost->getRotation());
 
     // Place the markers on the edge of the compass radius
     // rotated to their correct bearing to current location
 	ghostMatrix->SetRotY(rad(ghost->getBearing()));
 	ghostMatrix->SetTrans(ghostMatrix->RotateVec(ghostPosition));
-	ghostMatrix->PostRotateY(rad(ghost->getRotation()));
+	ghostMatrix->PostRotateY(ghostRotation);
 
     IwGxSetModelMatrix(ghostMatrix);
 
@@ -490,7 +491,7 @@ void renderGhost() {
     IwAnimSetSkinContext(NULL);
 
 	if (ghost->isFound() && !ghost->isDead()) {
-		ghostCollision->RenderEctoplasmaBar((float)ghost->getEctoplasm() / GHOST_MAX_ECTOPLASM);
+		ghostCollision->RenderEctoplasmaBar((float)ghost->getEctoplasm() / GHOST_MAX_ECTOPLASM, ghostRotation);
 	}
 }
 
