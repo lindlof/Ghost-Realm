@@ -63,7 +63,7 @@ files
 	(data/viking)
     viking.group
 	(data/Skelman)
-    #skelman.group
+    skelman.group
 }
 subprojects
 {
@@ -77,7 +77,7 @@ subprojects
 assets
 {
 	(data-ram/data-gles1)
-	#Skelman/Skelman.group.bin
+	Skelman/Skelman.group.bin
 	viking/viking.group.bin
 
     (data)

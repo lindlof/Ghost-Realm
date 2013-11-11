@@ -11,6 +11,7 @@
 
 #include "CameraView.h"
 #include "CameraModel.h"
+#include "GhostType.h"
 
 #include "CameraDefend.h"
 #include "PlayerHit.h"
@@ -33,6 +34,10 @@
 
 #define BLEND_DURATION 0.25f
 
+void LoadViking();
+void LoadSkelman();
+void DeleteGhost();
+
 void initFightView();
 
 void setupPlayer();
@@ -54,15 +59,21 @@ enum GhostAnimation {GHOST_ANIM_IDLE, GHOST_ANIM_AGRO, GHOST_ANIM_DODGE,
 bool agroPlayed, capturedPlayed;
 
 static CIwModel*       ghost_Model;
+static GhostCollision* ghostCollision;
 static CIwAnim*        ghost_Anims[5];
 static CIwAnimSkel*    ghost_Skel;
 static CIwAnimSkin*    ghost_Skin;
 static CIwAnimPlayer*  ghost_Player;
 
+static CIwModel*       ghostStore_Model[2];
+static GhostCollision* ghostStoreCollision[2];
+static CIwAnim*        ghostStore_Anims[2][5];
+static CIwAnimSkel*    ghostStore_Skel[2];
+static CIwAnimSkin*    ghostStore_Skin[2];
+
 static s3eCameraFrameRotation g_FrameRotation = S3E_CAMERA_FRAME_ROT90;
 static CIwFMat viewMatrix;
 static CIwFMat* ghostMatrix;
-static GhostCollision* ghostCollision;
 static CameraDefend* cameraDefend;
 static PlayerHit* playerHit;
 static FightTutorialView* tutorialView;
@@ -82,6 +93,37 @@ double inline deg(double d) {
 
 void initFightView() {
 	agroPlayed = capturedPlayed = false;
+
+	GhostType ghostType = getGameState()->getGhost()->getGhostType();
+
+	if (ghostType == GhostType::VIKING) {
+		ghost_Model = ghostStore_Model[0];
+		ghostCollision = ghostStoreCollision[0];
+		for (int i = 0; i < 5; i++) {
+			ghost_Anims[i] = ghostStore_Anims[0][i];
+		}
+		ghost_Skel = ghostStore_Skel[0];
+		ghost_Skin = ghostStore_Skin[0];
+	} else if (ghostType == GhostType::SKELMAN) {
+		ghost_Model = ghostStore_Model[1];
+		ghostCollision = ghostStoreCollision[1];
+		for (int i = 0; i < 5; i++) {
+			ghost_Anims[i] = ghostStore_Anims[1][i];
+		}
+		ghost_Skel = ghostStore_Skel[1];
+		ghost_Skin = ghostStore_Skin[1];
+	}
+
+	if (ghostMatrix)
+		delete ghostMatrix;
+	if (ghost_Player)
+		delete ghost_Player;
+	
+	ghostMatrix = new CIwFMat();
+	ghostCollision->init(ghostMatrix);
+	
+    ghost_Player = new CIwAnimPlayer;
+    ghost_Player->SetSkel(ghost_Skel);
 
 	// Reset animation
 	ghost_Player->PlayAnim(ghost_Anims[GHOST_ANIM_IDLE], 1, CIwAnimBlendSource::LOOPING_F, 0);
@@ -171,43 +213,25 @@ void CameraViewInit()
 	IwGxSetPerspMul((float) IwGxGetScreenWidth() / 1.3);
     IwGxSetFarZNearZ(0x2000,0x10);
 
+	ghost_Model = NULL;
+	ghostCollision = NULL;
+	ghost_Skin = NULL;
+	ghost_Skel = NULL;
+	for (int i = 0; i < 5; i++) {
+		ghost_Anims[i] = NULL;
+	}
+	ghostMatrix = NULL;
+	ghost_Player = NULL;
+
 	// Initiate collision builder before loading models
 	IW_CLASS_REGISTER(GhostCollision);
 
 #ifdef IW_BUILD_RESOURCES
 	IwGetModelBuilder()->SetPostBuildFn(&BuildCollision);
 #endif
-	
-	IwGetResManager()->LoadGroup("viking/viking.group");
-	CIwResGroup* pGroup = IwGetResManager()->GetGroupNamed("viking");
 
-    ghost_Model = (CIwModel*)pGroup->GetResNamed("viking", IW_GRAPHICS_RESTYPE_MODEL);
-	ghostCollision = (GhostCollision*)pGroup->GetResNamed("viking", "GhostCollision");
-    ghost_Skin  = (CIwAnimSkin*)pGroup->GetResNamed("viking", IW_ANIM_RESTYPE_SKIN);
-    ghost_Skel  = (CIwAnimSkel*)pGroup->GetResNamed("Armature", IW_ANIM_RESTYPE_SKELETON);
-    ghost_Anims[GHOST_ANIM_IDLE]  = (CIwAnim*)pGroup->GetResNamed("Armature_idle", IW_ANIM_RESTYPE_ANIMATION);
-	ghost_Anims[GHOST_ANIM_AGRO]  = (CIwAnim*)pGroup->GetResNamed("Armature_agro", IW_ANIM_RESTYPE_ANIMATION);
-	ghost_Anims[GHOST_ANIM_DODGE]  = (CIwAnim*)pGroup->GetResNamed("Armature_dodge", IW_ANIM_RESTYPE_ANIMATION);
-	ghost_Anims[GHOST_ANIM_ATTACK]  = (CIwAnim*)pGroup->GetResNamed("Armature_attack", IW_ANIM_RESTYPE_ANIMATION);
-	ghost_Anims[GHOST_ANIM_CAPTURED]  = (CIwAnim*)pGroup->GetResNamed("Armature_captured", IW_ANIM_RESTYPE_ANIMATION);
-	
-	/*
-	IwGetResManager()->LoadGroup("Skelman/Skelman.group");
-	CIwResGroup* pGroup = IwGetResManager()->GetGroupNamed("Skelman");
-
-    ghost_Model = (CIwModel*)pGroup->GetResNamed("GEO_For_Export", IW_GRAPHICS_RESTYPE_MODEL);
-	ghostCollision = (GhostCollision*)pGroup->GetResNamed("GEO_For_Export", "GhostCollision");
-    ghost_Skin  = (CIwAnimSkin*)pGroup->GetResNamed("GEO_For_Export", IW_ANIM_RESTYPE_SKIN);
-    ghost_Skel  = (CIwAnimSkel*)pGroup->GetResNamed("HIP01", IW_ANIM_RESTYPE_SKELETON);
-    ghost_Anims[0]  = (CIwAnim*)pGroup->GetResNamed("SkeletonDeath", IW_ANIM_RESTYPE_ANIMATION);
-	*/
-
-	ghostMatrix = new CIwFMat();
-	ghostCollision->init(ghostMatrix);
-	
-    // Create animation player
-    ghost_Player = new CIwAnimPlayer;
-    ghost_Player->SetSkel(ghost_Skel);
+	LoadSkelman();
+	LoadViking();
 
     // Set up camera capture
     if (s3eCameraAvailable())
@@ -239,10 +263,8 @@ void CameraViewTerm()
     if (g_CameraTexture)
         delete g_CameraTexture;
 
-	delete ghost_Player;
-
-	delete ghostMatrix;
-	delete ghostCollision;
+	DeleteGhost();
+	IW_CLASS_REMOVE(GhostCollision);
 
     if (s3eCameraAvailable())
     {
@@ -261,6 +283,51 @@ void CameraViewTerm()
 
 	if (manaBar)
 		delete manaBar;
+}
+
+void LoadViking() {
+	IwGetResManager()->LoadGroup("viking/viking.group");
+	CIwResGroup* pGroup = IwGetResManager()->GetGroupNamed("viking");
+
+	ghostStore_Model[0] = (CIwModel*)pGroup->GetResNamed("viking", IW_GRAPHICS_RESTYPE_MODEL);
+	ghostStoreCollision[0] = (GhostCollision*)pGroup->GetResNamed("viking", "GhostCollision");
+	ghostStore_Skin[0]  = (CIwAnimSkin*)pGroup->GetResNamed("viking", IW_ANIM_RESTYPE_SKIN);
+	ghostStore_Skel[0]  = (CIwAnimSkel*)pGroup->GetResNamed("Armature", IW_ANIM_RESTYPE_SKELETON);
+	ghostStore_Anims[0][GHOST_ANIM_IDLE]  = (CIwAnim*)pGroup->GetResNamed("Armature_idle", IW_ANIM_RESTYPE_ANIMATION);
+	ghostStore_Anims[0][GHOST_ANIM_AGRO]  = (CIwAnim*)pGroup->GetResNamed("Armature_agro", IW_ANIM_RESTYPE_ANIMATION);
+	ghostStore_Anims[0][GHOST_ANIM_DODGE]  = (CIwAnim*)pGroup->GetResNamed("Armature_dodge", IW_ANIM_RESTYPE_ANIMATION);
+	ghostStore_Anims[0][GHOST_ANIM_ATTACK]  = (CIwAnim*)pGroup->GetResNamed("Armature_attack", IW_ANIM_RESTYPE_ANIMATION);
+	ghostStore_Anims[0][GHOST_ANIM_CAPTURED]  = (CIwAnim*)pGroup->GetResNamed("Armature_captured", IW_ANIM_RESTYPE_ANIMATION);
+}
+
+void LoadSkelman() {
+	IwGetResManager()->LoadGroup("Skelman/Skelman.group");
+	CIwResGroup* pGroup = IwGetResManager()->GetGroupNamed("Skelman");
+
+	ghostStore_Model[1] = (CIwModel*)pGroup->GetResNamed("GEO_For_Export", IW_GRAPHICS_RESTYPE_MODEL);
+	ghostStoreCollision[1] = (GhostCollision*)pGroup->GetResNamed("GEO_For_Export", "GhostCollision");
+	ghostStore_Skin[1]  = (CIwAnimSkin*)pGroup->GetResNamed("GEO_For_Export", IW_ANIM_RESTYPE_SKIN);
+	ghostStore_Skel[1]  = (CIwAnimSkel*)pGroup->GetResNamed("HIP01", IW_ANIM_RESTYPE_SKELETON);
+	ghostStore_Anims[1][GHOST_ANIM_IDLE]  = (CIwAnim*)pGroup->GetResNamed("Skelman_Idle", IW_ANIM_RESTYPE_ANIMATION);
+	ghostStore_Anims[1][GHOST_ANIM_AGRO]  = (CIwAnim*)pGroup->GetResNamed("Skelman_Idle", IW_ANIM_RESTYPE_ANIMATION);
+	ghostStore_Anims[1][GHOST_ANIM_DODGE]  = (CIwAnim*)pGroup->GetResNamed("Skelman_Idle", IW_ANIM_RESTYPE_ANIMATION);
+	ghostStore_Anims[1][GHOST_ANIM_ATTACK]  = (CIwAnim*)pGroup->GetResNamed("Skelman_Attack", IW_ANIM_RESTYPE_ANIMATION);
+	ghostStore_Anims[1][GHOST_ANIM_CAPTURED]  = (CIwAnim*)pGroup->GetResNamed("Skelman_Death", IW_ANIM_RESTYPE_ANIMATION);
+}
+
+void DeleteGhost() {
+	if (ghost_Model)
+		delete ghost_Model;
+	if (ghostCollision)
+		delete ghostCollision;
+	if (ghost_Skin)
+		delete ghost_Skin;
+	if (ghost_Skel)
+		delete ghost_Skel;
+	for (int i = 0; i < 5; i++) {
+		if (ghost_Anims[i])
+			delete ghost_Anims[i];
+	}
 }
 
 bool CameraViewUpdate()

@@ -10,8 +10,11 @@
 #include "GameState.h"
 #include "Ghost.h"
 
-void MapModelInit() {
+#include "IwRandom.h"
+#include "s3eTimer.h"
 
+void MapModelInit() {
+	IwRandSeed((int32)s3eTimerGetMs());
 }
 
 void MapModelTerm() {
@@ -21,7 +24,13 @@ void MapModelTerm() {
 bool MapModelUpdate() {
 
 	if (getGameState()->getGhost() == NULL) {
-		Ghost* ghost = new Ghost(GhostType::VIKING, getGameState()->getPlayer());
+		int rand = IwRandMinMax(0, 2);
+		GhostType type;
+
+		if (rand == 0) type = GhostType::VIKING;
+		else if (rand == 1) type = GhostType::SKELMAN;
+
+		Ghost* ghost = new Ghost(type, getGameState()->getPlayer());
 		getGameState()->setGhost(ghost);
 	}
 

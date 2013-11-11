@@ -1,0 +1,6 @@
+// Source file: Skel_exp_test03.max
+CIwMaterial
+{
+	name "GEO_For_Export/GEO_For_Export"
+	texture0 "Skelman.png"
+}

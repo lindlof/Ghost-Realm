@@ -9,9 +9,11 @@
 
 #include "GhostType.h"
 
-const GhostType GhostType::VIKING = GhostType(700, 1200, 1);
+const GhostType GhostType::VIKING  = GhostType(0, 700, 1200, 1);
+const GhostType GhostType::SKELMAN = GhostType(1, 400, 900, 1);
 
-GhostType::GhostType(int distance, int initialDistance, float strength) {
+GhostType::GhostType(int id, int distance, int initialDistance, float strength) {
+	this->id = id;
 	this->distance = distance;  
     this->initialDistance = initialDistance;  
 	this->strength = strength;
@@ -27,4 +29,8 @@ int GhostType::getInitialDistance() {
 
 float GhostType::getStrength() {
 	return strength;
+}
+
+bool GhostType::operator==(const GhostType& type) const {
+	return this->id == type.id;
 }

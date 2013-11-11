@@ -13,21 +13,23 @@
 class GhostType {
 	public:
 	static const GhostType VIKING;
+	static const GhostType SKELMAN;
 
 	GhostType() {}
 
-	private: 
+	private:
+	int id;
 	int distance;
 	int initialDistance;
 	float strength;
 
-	GhostType(int distance, int initialDistance, float strength);
+	GhostType(int id, int distance, int initialDistance, float strength);
 
 	public:
 	int getDistance();
 	int getInitialDistance();
 	float getStrength();
-
+	bool operator==(const GhostType&) const;
 };
 
 #endif

@@ -47,7 +47,7 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	floatingAngle = 0;
 
 	animDodge = animAttack = false;
-};
+}
 
 void Ghost::cameraInit() {
 #ifndef GHOST_DEBUG
@@ -285,4 +285,8 @@ bool Ghost::pollAnimAttack() {
 	bool attack = animAttack;
 	animAttack = false;
 	return attack;
+}
+
+GhostType Ghost::getGhostType() {
+	return ghostType;
 }

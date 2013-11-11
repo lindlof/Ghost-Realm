@@ -85,6 +85,8 @@ class Ghost {
 
 	bool pollAnimDodge();
 	bool pollAnimAttack();
+
+	GhostType getGhostType();
 };
 
 #endif

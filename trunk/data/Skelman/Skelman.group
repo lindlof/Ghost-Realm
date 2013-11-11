@@ -1,0 +1,12 @@
+// Source file: Skel_exp_test03.max 
+// Exported By: <Unknown> on 10/29/13 22:13:28 
+CIwResGroup 
+{
+	name "Skelman"
+	"./models/GEO_For_Export.geo"
+	"./models/HIP01.skel"
+	"./models/GEO_For_Export.skin"
+	"./models/anims/Skelman_Death.anim"
+	"./models/anims/Skelman_Attack.anim"
+	"./models/anims/Skelman_Idle.anim"
+}
