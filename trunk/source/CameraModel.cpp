@@ -73,7 +73,12 @@ void CameraModelTerm()
 }
 
 void initFight() {
-	getGameState()->getPlayer()->resetMana();
+	Player* player = getGameState()->getPlayer();
+	if (player->isDead()) {
+		player->resurrect();
+	} else {
+		player->resetMana();
+	}
 
 	fightTutorial->resetShown();
 	fightOver = false;
@@ -102,7 +107,6 @@ bool CameraModelUpdate()
 
 			if (player->isDead()) {
 				fightTutorial->triggerTutorial(TUTORIAL_YOU_DIED);
-				getGameState()->getPlayer()->resurrect();
 			} else {
 				getFightTutorial()->triggerTutorial(TUTORIAL_GHOST_WON);
 			}
