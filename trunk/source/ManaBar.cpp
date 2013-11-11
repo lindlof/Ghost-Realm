@@ -40,6 +40,8 @@ ManaBar::~ManaBar() {
 void ManaBar::Render() {
 	IwGxLightingOff();
 
+	float mana = getGameState()->getPlayer()->getMana() / PLAYER_MAX_MANA;
+
 	{
 		Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
 		Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
@@ -47,7 +49,7 @@ void ManaBar::Render() {
 		Iw2DDrawImage(borderTexture, borderTopLeft, borderSize);
 	}
 
-	{
+	if (mana > 0) {
 		// Bar start
 		float y = borderTopLeft.y + (float)borderSize.y*0.22;
 		float h = (float)borderSize.y*0.56;
@@ -63,7 +65,6 @@ void ManaBar::Render() {
 		whScale = (float)((double)endTexture->GetWidth() / endTexture->GetHeight());
 		w = h * whScale;
 
-		float mana = getGameState()->getPlayer()->getMana() / PLAYER_MAX_MANA;
 		int endMaxX = borderTopLeft.x + borderSize.x - (float)borderSize.x*0.007 - w;
 		int endMinX = startTopLeft.x + startSize.x;
 		int endX = (double)(endMaxX - endMinX)*mana + endMinX;
