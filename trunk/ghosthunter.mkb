@@ -95,6 +95,10 @@ assets
 	textures/mana/mana_bar_center.png
 	textures/mana/mana_bar_end.png
 	textures/mana/mana_bar_start.png
+	textures/ectoplasma/ecto_bar_border.png
+	textures/ectoplasma/ecto_bar_center.png
+	textures/ectoplasma/ecto_bar_end.png
+	textures/ectoplasma/ecto_bar_start.png
 	textures/tutorial/tutorial_bg.png
 	textures/tutorial/tutorial_button.png
 	textures/tutorial/tutorial_attack_the_ghost.png

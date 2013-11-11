@@ -30,7 +30,8 @@ class GhostCollision : public CIwResource {
 public:
     IW_MANAGED_DECLARE(GhostCollision);
 
-    GhostCollision() : m_pModel(NULL) {};
+    GhostCollision();
+	~GhostCollision();
 
 #ifdef IW_BUILD_RESOURCES
     void AddFace(CIwFace* pFace, CIwModel* pModel);
@@ -68,6 +69,11 @@ private:
 	float ghostX;
 	float ghostW;
 	void ResolveLocation();
+
+	CIwTexture* borderTexture;
+	CIwTexture* centerTexture;
+	CIwTexture* endTexture;
+	CIwTexture* startTexture;
 };
 
 #ifdef IW_BUILD_RESOURCES

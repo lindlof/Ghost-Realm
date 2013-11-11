@@ -46,7 +46,36 @@ void BuildCollision(const char* pUserString, CIwModel* pModel)
 
 #endif
 
+GhostCollision::GhostCollision() {
+	m_pModel = NULL;
 
+	borderTexture = new CIwTexture;
+	borderTexture->LoadFromFile ("textures/ectoplasma/ecto_bar_border.png");
+	borderTexture->Upload();
+
+	centerTexture = new CIwTexture;
+	centerTexture->LoadFromFile ("textures/ectoplasma/ecto_bar_center.png");
+	centerTexture->Upload();
+
+	endTexture = new CIwTexture;
+	endTexture->LoadFromFile ("textures/ectoplasma/ecto_bar_end.png");
+	endTexture->Upload();
+
+	startTexture = new CIwTexture;
+	startTexture->LoadFromFile ("textures/ectoplasma/ecto_bar_start.png");
+	startTexture->Upload();
+}
+
+GhostCollision::~GhostCollision() {
+	if (borderTexture)
+		delete borderTexture;
+	if (centerTexture)
+		delete centerTexture;
+	if (endTexture)
+		delete endTexture;
+	if (startTexture)
+		delete startTexture;
+}
 
 void GhostCollision::init(CIwFMat* modelMatrix) {
 	GhostCollision::modelMatrix = modelMatrix;
@@ -128,22 +157,10 @@ void GhostCollision::Resolve()
 }
 
 // Vertex data
-CIwFVec3    health_Verts[8];
-
-// Vertex colours
-CIwColour lightHealth = {0xe5, 0x0b, 0x00, 0xa0};
-CIwColour darkHealth  = lightHealth;
-CIwColour health_Cols[8] =
-{
-    darkHealth,
-    darkHealth,
-    lightHealth,
-    lightHealth,
-    darkHealth,
-    darkHealth,
-    lightHealth,
-    lightHealth,
-};
+CIwFVec3    border_Verts[8];
+CIwFVec3    start_Verts[8];
+CIwFVec3    end_Verts[8];
+CIwFVec3    center_Verts[8];
 
 // Index stream
 uint16      s_TriStrip[22] =
@@ -155,42 +172,167 @@ uint16      s_TriStrip[22] =
     3, 7, 2, 6,
 };
 
+// Index stream for textured material
+uint16      s_QuadStrip[4] =
+{
+	0, 3, 1, 2,
+};
+
+CIwFVec2 s_UVs[4] =
+{
+    CIwFVec2(0, 0),
+    CIwFVec2(1, 0),
+    CIwFVec2(1, 1),
+    CIwFVec2(0, 1),
+};
+
+CIwColour   s_Cols[8] =
+{
+	{0x00, 0x00, 0x00},
+	{0x00, 0x00, 0x00},
+	{0x00, 0x00, 0x00},
+	{0x00, 0x00, 0x00},
+	{0x00, 0x00, 0x00},
+	{0x00, 0x00, 0x00},
+	{0x00, 0x00, 0x00},
+	{0x00, 0x00, 0x00},
+};
+
 void GhostCollision::RenderEctoplasmaBar(float ectoPercent, double ghostRotation)
 {
 	CIwFMat ectoMatrix = CIwFMat();
 	ectoMatrix.CopyRot(*modelMatrix);
 	ectoMatrix.CopyTrans(*modelMatrix);
-	ectoMatrix.PostRotateY(-ghostRotation+PI);
+	ectoMatrix.PostRotateY(PI-ghostRotation);
 
 	IwGxSetModelMatrix(&ectoMatrix);
-
-	CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
-	pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
-	pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
-	IwGxSetMaterial(pMat);
+	IwGxSetScreenSpaceSlot(1);
 
 	if (ghostW < 0 || ghostX < 0 || ghostY < 0) ResolveLocation();
 
-	{
-		const int16 x1 = ghostX;
-		const int16 x2 = ghostX+ghostW*ectoPercent;
-		const int16 y1 = ghostY+0x20;
-		const int16 y2 = ghostY+0x28;
-		const int16 z = 0x6;
+	const int16 w = 180;
+	const int16 border_x1 = ghostX+ghostW/2 - w;
+	const int16 border_x2 = ghostX+ghostW/2 + w;
 
-		health_Verts[0] = CIwFVec3(x1, y1, -z);
-		health_Verts[1] = CIwFVec3(x2, y1, -z);
-		health_Verts[2] = CIwFVec3(x2, y2, -z);
-		health_Verts[3] = CIwFVec3(x1, y2, -z);
-		health_Verts[4] = CIwFVec3(x1, y1,  z);
-		health_Verts[5] = CIwFVec3(x2, y1,  z);
-		health_Verts[6] = CIwFVec3(x2, y2,  z);
-		health_Verts[7] = CIwFVec3(x1, y2,  z);
+	const int16 border_y1 = ghostY+0x20;
+	const int16 border_y2 = ghostY+0x30;
+	const int16 z = 0x6;
+
+	{
+		CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
+		pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
+		pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
+		pMat->SetTexture(borderTexture);
+
+		int16 x1 = border_x1, x2 = border_x2, 
+			y1 = border_y1, y2 = border_y2;
+		border_Verts[0] = CIwFVec3(x1, y2, -z);
+		border_Verts[1] = CIwFVec3(x2, y2, -z);
+		border_Verts[2] = CIwFVec3(x2, y1, -z);
+		border_Verts[3] = CIwFVec3(x1, y1, -z);
+		border_Verts[4] = CIwFVec3(x1, y2,  z);
+		border_Verts[5] = CIwFVec3(x2, y2,  z);
+		border_Verts[6] = CIwFVec3(x2, y1,  z);
+		border_Verts[7] = CIwFVec3(x1, y1,  z);
+
+		IwGxSetMaterial(pMat);
+		IwGxSetVertStream(border_Verts, 8);
+		//IwGxSetColStream(s_Cols, 8);
+		IwGxSetUVStream(s_UVs);
+		IwGxDrawPrims(IW_GX_QUAD_STRIP, s_QuadStrip, 4);
 	}
 
-	IwGxSetVertStream(health_Verts, 8);
-    IwGxSetColStream(health_Cols, 8);
-    IwGxDrawPrims(IW_GX_TRI_STRIP, s_TriStrip, 22);
+	int16 start_y1 = border_y1 + abs((float)(border_y2 - border_y1)*0.235);
+	int16 start_y2 = start_y1  + abs((float)(border_y2 - border_y1)*0.625);
+	int16 startEndW = (start_y2 - start_y1);
+	int16 start_x1 = border_x1 + abs((float)(border_x2 - border_x1)*0.007);
+	int16 start_x2 = start_x1 + startEndW;
+	
+	{
+		CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
+		pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
+		pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
+		pMat->SetTexture(startTexture);
+
+		int16 x1 = start_x1, x2 = start_x2, 
+			y1 = start_y1, y2 = start_y2;
+		start_Verts[0] = CIwFVec3(x1, y2, -z);
+		start_Verts[1] = CIwFVec3(x2, y2, -z);
+		start_Verts[2] = CIwFVec3(x2, y1, -z);
+		start_Verts[3] = CIwFVec3(x1, y1, -z);
+		start_Verts[4] = CIwFVec3(x1, y2,  z);
+		start_Verts[5] = CIwFVec3(x2, y2,  z);
+		start_Verts[6] = CIwFVec3(x2, y1,  z);
+		start_Verts[7] = CIwFVec3(x1, y1,  z);
+
+		IwGxSetMaterial(pMat);
+		IwGxSetVertStream(start_Verts, 8);
+		//IwGxSetColStream(s_Cols, 8);
+		IwGxSetUVStream(s_UVs);
+		IwGxDrawPrims(IW_GX_QUAD_STRIP, s_QuadStrip, 4);
+	}
+
+	int16 end_y1 = start_y1;
+	int16 end_y2 = start_y2;
+	
+	int endMaxX = border_x2 - abs((float)(border_x2 - border_x1)*0.007) - startEndW;
+	int endMinX = start_x2;
+	int16 end_x1 = (double)(endMaxX - endMinX)*ectoPercent + endMinX;
+	int16 end_x2 = end_x1 + startEndW;
+	
+	{
+		CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
+		pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
+		pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
+		pMat->SetTexture(endTexture);
+
+		int16 x1 = end_x1, x2 = end_x2, 
+			y1 = end_y1, y2 = end_y2;
+		end_Verts[0] = CIwFVec3(x1, y2, -z);
+		end_Verts[1] = CIwFVec3(x2, y2, -z);
+		end_Verts[2] = CIwFVec3(x2, y1, -z);
+		end_Verts[3] = CIwFVec3(x1, y1, -z);
+		end_Verts[4] = CIwFVec3(x1, y2,  z);
+		end_Verts[5] = CIwFVec3(x2, y2,  z);
+		end_Verts[6] = CIwFVec3(x2, y1,  z);
+		end_Verts[7] = CIwFVec3(x1, y1,  z);
+
+		IwGxSetMaterial(pMat);
+		IwGxSetVertStream(end_Verts, 8);
+		//IwGxSetColStream(s_Cols, 8);
+		IwGxSetUVStream(s_UVs);
+		IwGxDrawPrims(IW_GX_QUAD_STRIP, s_QuadStrip, 4);
+	}
+	
+	int16 center_y1 = start_y1;
+	int16 center_y2 = start_y2;
+	int16 center_x1 = start_x2 - 1;
+	int16 center_x2 = end_x1 + 1;
+	
+	{
+		CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
+		pMat->SetModulateMode(CIwMaterial::MODULATE_RGB);
+		pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
+		pMat->SetTexture(centerTexture);
+
+		int16 x1 = center_x1, x2 = center_x2, 
+			y1 = center_y1, y2 = center_y2;
+		center_Verts[0] = CIwFVec3(x1, y2, -z);
+		center_Verts[1] = CIwFVec3(x2, y2, -z);
+		center_Verts[2] = CIwFVec3(x2, y1, -z);
+		center_Verts[3] = CIwFVec3(x1, y1, -z);
+		center_Verts[4] = CIwFVec3(x1, y2,  z);
+		center_Verts[5] = CIwFVec3(x2, y2,  z);
+		center_Verts[6] = CIwFVec3(x2, y1,  z);
+		center_Verts[7] = CIwFVec3(x1, y1,  z);
+
+		IwGxSetMaterial(pMat);
+		IwGxSetVertStream(center_Verts, 8);
+		//IwGxSetColStream(s_Cols, 8);
+		IwGxSetUVStream(s_UVs);
+		IwGxDrawPrims(IW_GX_QUAD_STRIP, s_QuadStrip, 4);
+	}
+	
 }
 
 // Resolve ghost modelspace location
