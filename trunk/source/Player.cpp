@@ -15,6 +15,7 @@
 #include "IwRandom.h"
 #include "s3eTimer.h"
 #include "s3eVibra.h"
+#include "s3eAudio.h"
 
 Player::Player() {
 	IwRandSeed((int32)s3eTimerGetMs());
@@ -58,6 +59,7 @@ void Player::playerGotHit(int hit) {
 	Player::mana -= hit;
 	if (hit > 0) hitTime = clock();
 	s3eVibraVibrate(100, 230);
+	s3eAudioPlay("sounds/camera_player_takes_damage.mp3");
 	IwTrace(GHOST_HUNTER, ("Player vitality %d", getVitality()));
 }
 
@@ -74,11 +76,13 @@ void Player::resetMana() {
 }
 
 void Player::lostBattle() {
+	s3eAudioPlay("sounds/camera_player_lose.mp3");
 	setGhost(NULL);
 	vitality -= 2;
 }
 
 void Player::wonBattle() {
+	s3eAudioPlay("sounds/camera_player_win.mp3");
 	setGhost(NULL);
 	vitality += 1;
 	if (vitality > PLAYER_MAX_VITALITY) vitality = PLAYER_MAX_VITALITY;
@@ -125,7 +129,9 @@ void Player::accelometerUpdate(int32 x, int32 y, int32 z) {
 			if (IwRandMinMax(0, 15) == 15) hit *= 2; // Player crit, 1/16 chance
 
 			IwTrace(GHOST_HUNTER, ("Player is hitting %d", hit));
-			if (ghost != NULL) ghost->ghostGotHit(hit);
+			if (ghost != NULL) {
+				ghost->ghostGotHit(hit);
+			}
 		}
 	}
 }

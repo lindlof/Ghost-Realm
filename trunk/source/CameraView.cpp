@@ -56,7 +56,6 @@ static CIwTexture* g_CameraTexture = NULL;
 
 enum GhostAnimation {GHOST_ANIM_IDLE, GHOST_ANIM_AGRO, GHOST_ANIM_DODGE, 
 	GHOST_ANIM_ATTACK, GHOST_ANIM_CAPTURED};
-bool agroPlayed, capturedPlayed;
 
 static CIwModel*       ghost_Model;
 static GhostCollision* ghostCollision;
@@ -92,8 +91,6 @@ double inline deg(double d) {
 }
 
 void initFightView() {
-	agroPlayed = capturedPlayed = false;
-
 	GhostType ghostType = getGameState()->getGhost()->getGhostType();
 
 	if (ghostType == GhostType::VIKING) {
@@ -435,12 +432,10 @@ void renderGhost() {
 
     IwGxSetModelMatrix(ghostMatrix);
 
-	if (ghost->isDead() && !capturedPlayed) {
+	if (ghost->pollAnimCaptured()) {
 		ghost_Player->PlayAnim(ghost_Anims[GHOST_ANIM_CAPTURED], 1, 0, BLEND_DURATION);
-		capturedPlayed = true;
-	} else if (ghost->isFound() && !agroPlayed) {
+	} else if (ghost->pollAnimAgro()) {
 		ghost_Player->PlayAnim(ghost_Anims[GHOST_ANIM_AGRO], 1, 0, BLEND_DURATION);
-		agroPlayed = true;
 	} else if (ghost->pollAnimDodge()) {
 		ghost_Player->PlayAnim(ghost_Anims[GHOST_ANIM_DODGE], 1, 0, BLEND_DURATION);
 	} else if (ghost->pollAnimAttack()) {

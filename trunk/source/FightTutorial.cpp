@@ -10,6 +10,8 @@
 #include "FightTutorial.h"
 #include "GameState.h"
 
+#include "s3eAudio.h"
+
 FightTutorial::FightTutorial() {
 	resetShown();
 	currentType = TUTORIAL_NONE;
@@ -27,19 +29,25 @@ void FightTutorial::resetShown() {
 void FightTutorial::triggerTutorial(TutorialType type) {
 	if (isTutorialOn()) return;
 
+	bool sound = false;
+
 	if (type == TUTORIAL_ATTACK && !attackShown) {
+		sound = true;
 		attackShown = true;
 		currentType = type;
 	} else if (type == TUTORIAL_DEFEND    && !defendShown) {
+		sound = true;
 		defendShown = true;
 		currentType = type;
 	} else if (type == TUTORIAL_FACE_WARN && !faceWarnShown) {
+		sound = true;
 		faceWarnShown = true;
 		currentType = type;
 	} else if (type == TUTORIAL_GHOST_WON && !ghostWonShown) {
 		ghostWonShown = true;
 		currentType = type;
 	} else if (type == TUTORIAL_SEARCH    && !searchShown) {
+		sound = true;
 		searchShown = true;
 		currentType = type;
 	} else if (type == TUTORIAL_YOU_DIED   && !youWonShown) {
@@ -48,6 +56,10 @@ void FightTutorial::triggerTutorial(TutorialType type) {
 	} else if (type == TUTORIAL_YOU_WON   && !youWonShown) {
 		youWonShown = true;
 		currentType = type;
+	}
+
+	if (sound) {
+		s3eAudioPlay("sounds/camera_tutorial.mp3");
 	}
 
 	tutorialShowTime = clock();

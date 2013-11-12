@@ -55,6 +55,9 @@ class Ghost {
 	bool animDodge;
 	bool animAttack;
 	int animAttackInterval;
+	bool agroPlayed;
+	bool capturedPlayed;
+	bool poll(bool& poll);
 
 	public:
 	Ghost(GhostType ghostType, Player *player);
@@ -85,6 +88,8 @@ class Ghost {
 
 	bool pollAnimDodge();
 	bool pollAnimAttack();
+	bool pollAnimAgro();
+	bool pollAnimCaptured();
 
 	GhostType getGhostType();
 };

@@ -108,6 +108,17 @@ assets
 	textures/tutorial/tutorial_search_the_ghost.png
 	textures/tutorial/tutorial_you_died.png
 	textures/tutorial/tutorial_you_won.png
+
+	sounds/camera_ghost_attack.mp3
+	sounds/camera_ghost_attack_miss.mp3
+	sounds/camera_ghost_first_contact_agro.mp3
+	sounds/camera_ghost_takes_damage.mp3
+	sounds/camera_player_attack_hit.mp3
+	sounds/camera_player_attack_miss.mp3
+	sounds/camera_player_lose.mp3
+	sounds/camera_player_takes_damage.mp3
+	sounds/camera_player_win.mp3
+	sounds/camera_tutorial.mp3
 }
 #### AUTO GENERATED deployment settings from DeployTool.exe. Do not edit below this line ####
 deployments

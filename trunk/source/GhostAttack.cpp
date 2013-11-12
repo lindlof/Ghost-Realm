@@ -10,6 +10,7 @@
 #include "GhostAttack.h"
 #include "CameraModel.h"
 
+#include "s3eAudio.h"
 #include "IwRandom.h"
 
 GhostAttack::GhostAttack(Player* player, GhostType ghostType) {
@@ -46,6 +47,7 @@ void GhostAttack::Update() {
 }
 
 void GhostAttack::setDefended() {
+	s3eAudioPlay("sounds/camera_ghost_attack_miss.mp3");
 	over = true;
 }
 
