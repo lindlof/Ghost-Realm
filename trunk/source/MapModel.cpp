@@ -34,7 +34,11 @@ bool MapModelUpdate() {
 		getGameState()->setGhost(ghost);
 	}
 
-	getGameState()->getPlayer()->headingUpdate();
+	Player* player = getGameState()->getPlayer();
+	if (player->isDead()) {
+		player->resurrect();
+	}
+	player->headingUpdate();
 
 	return true;
 }

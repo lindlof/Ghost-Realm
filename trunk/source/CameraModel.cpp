@@ -73,12 +73,7 @@ void CameraModelTerm()
 }
 
 void initFight() {
-	Player* player = getGameState()->getPlayer();
-	if (player->isDead()) {
-		player->resurrect();
-	} else {
-		player->resetMana();
-	}
+	getGameState()->getPlayer()->resetMana();
 
 	fightTutorial->resetShown();
 	fightOver = false;
