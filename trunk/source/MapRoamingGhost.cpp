@@ -80,7 +80,7 @@ void MapRoamingGhost::Render() {
 		Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
 		Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
 
-		int16 w = (double)IwGxGetScreenWidth()*0.45;
+		int16 w = (double)IwGxGetScreenWidth()*0.63;
 
 		float whScale = (float)((double)noticeTexture->GetWidth() / noticeTexture->GetHeight());
 		int16 h = w * 1/whScale;
