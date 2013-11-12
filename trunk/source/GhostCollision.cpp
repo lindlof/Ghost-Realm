@@ -77,9 +77,11 @@ GhostCollision::~GhostCollision() {
 		delete startTexture;
 }
 
-void GhostCollision::init(CIwFMat* modelMatrix) {
+void GhostCollision::init(CIwFMat* modelMatrix, GhostType ghostType) {
 	GhostCollision::modelMatrix = modelMatrix;
 	ghostY = ghostX = ghostW = -1;
+
+	ectobarScale = (float)ghostType.getDistance() / GHOST_TYPE_REFERENCE_DISTANCE;
 }
 
 #ifdef IW_BUILD_RESOURCES
@@ -211,11 +213,11 @@ void GhostCollision::RenderEctoplasmaBar(float ectoPercent, double ghostRotation
 	if (ghostW < 0 || ghostX < 0 || ghostY < 0) ResolveLocation();
 
 	const int16 w = 180;
-	const int16 border_x1 = ghostX+ghostW/2 - w;
-	const int16 border_x2 = ghostX+ghostW/2 + w;
+	const int16 border_x1 = ghostX+ghostW/2 - (float)w*ectobarScale;
+	const int16 border_x2 = ghostX+ghostW/2 + (float)w*ectobarScale;
 
 	const int16 border_y1 = ghostY+0x20;
-	const int16 border_y2 = ghostY+0x30;
+	const int16 border_y2 = ghostY+0x20 + (float)0x10*ectobarScale;
 	const int16 z = 0x6;
 
 	{

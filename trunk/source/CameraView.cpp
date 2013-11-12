@@ -120,7 +120,7 @@ void initFightView() {
 		delete ghost_Player;
 	
 	ghostMatrix = new CIwFMat();
-	ghostCollision->init(ghostMatrix);
+	ghostCollision->init(ghostMatrix, ghostType);
 	
     ghost_Player = new CIwAnimPlayer;
     ghost_Player->SetSkel(ghost_Skel);

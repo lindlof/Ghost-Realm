@@ -10,6 +10,8 @@
 #ifndef _GHOST_TYPE_H
 #define _GHOST_TYPE_H
 
+#define GHOST_TYPE_REFERENCE_DISTANCE 700
+
 class GhostType {
 	public:
 	static const GhostType VIKING;

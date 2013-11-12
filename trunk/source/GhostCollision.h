@@ -23,6 +23,8 @@
 // It is then used to generate some procedural geometry based on a sub set of the model's faces
 //-----------------------------------------------------------------------------
 
+#include "GhostType.h"
+
 #include "IwMaterial.h"
 #include "IwGraphics.h"
 
@@ -42,13 +44,13 @@ public:
     void Resolve();
 	void Render();
 
+	void init(CIwFMat* modelMatrix, GhostType ghostType);
+
     // helper function for looking up verts from CIwModel's vertex block
     CIwFVec3& GetVert(int32 i)
     {
         return ((CIwFVec3*)m_pModel->GetVerts())[m_Points[i]];
     }
-
-	void init(CIwFMat* modelMatrix);
 
 	// Functions that provide the profit
 	void RenderEctoplasmaBar(float healthPercent, double ghostRotation);
@@ -70,6 +72,7 @@ private:
 	float ghostW;
 	void ResolveLocation();
 
+	float ectobarScale;
 	CIwTexture* borderTexture;
 	CIwTexture* centerTexture;
 	CIwTexture* endTexture;
