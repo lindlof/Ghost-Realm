@@ -27,6 +27,9 @@ int main() {
 	IwAnimInit();
 	Iw2DInit();
 
+	IwTrace(GHOST_HUNTER, ("Ghost Realm booting..."));
+	IwTrace(GHOST_HUNTER, ("Audio channels: %d", s3eAudioGetInt(S3E_AUDIO_NUM_CHANNELS)));
+
 	// Set screen clear colour
     IwGxSetColClear(0x0, 0x0, 0x0, 0xff);
 
