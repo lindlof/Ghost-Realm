@@ -15,7 +15,7 @@
 #include "IwDebug.h"
 #include "s3eVibra.h"
 #include "IwGx.h"
-#include "s3eAudio.h"
+#include "Audio.h"
 
 #define FOUND_ANIM_STEPS 200
 #define ANIM_TURN_DEGS_PER_STEP 1.8f
@@ -69,13 +69,13 @@ void Ghost::ghostGotHit(int hit) {
 		IwTrace(GHOST_HUNTER, ("Ghost got hit, ectoplasm: %d", ectoplasm));
 		hitTime = clock();
 		s3eVibraVibrate(100, 100);
-		s3eAudioPlay("sounds/camera_player_attack_hit.mp3");
-		s3eAudioPlay("sounds/camera_ghost_takes_damage.mp3");
+		Audio::Play("sounds/camera_player_attack_hit.mp3");
+		Audio::Play("sounds/camera_ghost_takes_damage.mp3");
 	} else {
 		IwTrace(GHOST_HUNTER, ("Ghost dodged a hit, ectoplasm: %d", ectoplasm));
 		s3eVibraVibrate(300, 20);
 		animDodge = true;
-		s3eAudioPlay("sounds/camera_player_attack_miss.mp3");
+		Audio::Play("sounds/camera_player_attack_miss.mp3");
 	}
 }
 
@@ -284,13 +284,13 @@ bool Ghost::pollAnimDodge() {
 }
 bool Ghost::pollAnimAttack() {
 	if (animAttackInterval > 0) return false;
-	if (animAttack) s3eAudioPlay("sounds/camera_ghost_attack.mp3");
+	if (animAttack) Audio::Play("sounds/camera_ghost_attack.mp3");
 	return poll(animAttack);
 }
 bool Ghost::pollAnimAgro() {
 	if (!isFound() || agroPlayed) return false;
 	agroPlayed = true;
-	s3eAudioPlay("sounds/camera_ghost_first_contact_agro.mp3");
+	Audio::Play("sounds/camera_ghost_first_contact_agro.mp3");
 	return true;
 }
 bool Ghost::pollAnimCaptured() {

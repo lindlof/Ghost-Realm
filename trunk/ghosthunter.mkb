@@ -46,6 +46,8 @@ files
 	MapRoamingGhost.h
 
 	[Component]
+	Audio.cpp
+	Audio.h
 	GameState.cpp
 	GameState.h
 	Ghost.cpp

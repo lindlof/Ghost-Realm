@@ -10,7 +10,7 @@
 #include "FightTutorial.h"
 #include "GameState.h"
 
-#include "s3eAudio.h"
+#include "Audio.h"
 
 FightTutorial::FightTutorial() {
 	resetShown();
@@ -59,7 +59,7 @@ void FightTutorial::triggerTutorial(TutorialType type) {
 	}
 
 	if (sound) {
-		s3eAudioPlay("sounds/camera_tutorial.mp3");
+		Audio::Play("sounds/camera_tutorial.mp3");
 	}
 
 	tutorialShowTime = clock();
