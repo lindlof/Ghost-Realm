@@ -10,6 +10,14 @@
 #include "FightTutorialView.h"
 #include "GameState.h"
 
+CIwFVec2 FightTutorialView::attack_anim_uvs[4] =
+{
+    CIwFVec2(0,                   0),
+    CIwFVec2(0,                   1.f/attackAnimRows),
+    CIwFVec2(1.f/attackAnimCells, 1.f/attackAnimRows),
+    CIwFVec2(1.f/attackAnimCells, 0),
+};
+
 FightTutorialView::FightTutorialView() {
 	bgTexture = Iw2DCreateImage("textures/tutorial/tutorial_bg.png");
 	buttonTexture = Iw2DCreateImage("textures/tutorial/tutorial_button.png");
@@ -21,30 +29,36 @@ FightTutorialView::FightTutorialView() {
 	searchTexture = Iw2DCreateImage("textures/tutorial/tutorial_search_the_ghost.png");
 	youDiedTexture = Iw2DCreateImage("textures/tutorial/tutorial_you_died.png");
 	youWonTexture = Iw2DCreateImage("textures/tutorial/tutorial_you_won.png");
-	/*
-	attackAnimTexture = new CIwTexture;
-	attackAnimTexture->LoadFromFile("textures/tutorial/attack_animation.png");
-	attackAnimTexture->Upload();
+	
+	{ // Attack animation
+		attackAnimTexture = new CIwTexture;
+		attackAnimTexture->LoadFromFile("textures/tutorial/attack_animation.png");
+		attackAnimTexture->Upload();
 
-	attackAnimMat = new CIwMaterial;
-	attackAnimMat->SetTexture(attackAnimTexture);
-	attackAnimMat->CreateAnim();
-	attackAnimMat->SetAnimCelW((double)attackAnimTexture->GetWidth()/cells);
-	attackAnimMat->SetAnimCelH((double)attackAnimTexture->GetHeight()/rows);
-    attackAnimMat->SetAnimCelPeriod(2);
-	*/
-	pressedTime = 0;
+		attackAnimMat = new CIwMaterial;
+		attackAnimMat->SetTexture(attackAnimTexture);
 
-	{
-		int16 w = IwGxGetScreenWidth();
-		//if (w > text->GetWidth()) w = text->GetWidth();
+		attackAnimMat->CreateAnim();
+		attackAnimMat->SetAnimCelW((double)attackAnimTexture->GetWidth()/attackAnimCells);
+		attackAnimMat->SetAnimCelH((double)attackAnimTexture->GetHeight()/attackAnimRows);
+		attackAnimMat->SetAnimCelPeriod(5);
 
-		float whScale = (float)((double)buttonTexture->GetWidth() / buttonTexture->GetHeight());
-		int16 h = w * 1/whScale;
+		int h = 445;
+		float whScale = (float)((double)attackAnimTexture->GetWidth() / attackAnimTexture->GetHeight());
+		int16 w = h * whScale;
 
-		buttonSize = CIwFVec2(w, h);
-		buttonTopLeft = CIwFVec2(IwGxGetScreenWidth()/2 - w/2, IwGxGetScreenHeight()/2 - h/2);
+		int x1 = IwGxGetScreenWidth()*0.33f;
+		int x2 = x1 + w;
+		int y1 = IwGxGetScreenHeight()*0.51f - h;
+		int y2 = y1 + h;
+
+		attackAnimVerts[0] = CIwFVec2(x1, y1);
+		attackAnimVerts[1] = CIwFVec2(x1, y2);
+		attackAnimVerts[2] = CIwFVec2(x2, y2);
+		attackAnimVerts[3] = CIwFVec2(x2, y1);
 	}
+
+	pressedTime = 0;
 }
 
 void FightTutorialView::setTutorial(FightTutorial* fightTutorial) {
@@ -71,14 +85,17 @@ FightTutorialView::~FightTutorialView() {
 		delete youDiedTexture;
 	if (youWonTexture)
 		delete youWonTexture;
+
+	if (attackAnimTexture)
+		delete attackAnimTexture;
+	if (attackAnimMat)
+		delete attackAnimMat;
 }
 
 void FightTutorialView::Render() {
 	TutorialType type = tutorial->getTutorialType();
 
-	if (type == TUTORIAL_NONE) {
-		return;
-	}
+	if (type == TUTORIAL_NONE) return;
 
 	Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
 	Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
@@ -88,36 +105,67 @@ void FightTutorialView::Render() {
 
 	Iw2DDrawImage(bgTexture, bgTopLeft, bgSize);
 
-	Iw2DDrawImage(buttonTexture, buttonTopLeft, buttonSize);
-
 	if (type == TUTORIAL_ATTACK) {
-		drawText(attackTexture);
+		drawText(attackTexture, true);
+		drawAttackAnim();
 	} else if (type == TUTORIAL_DEFEND) {
-		drawText(defendTexture);
+		drawText(defendTexture, false);
 	} else if (type == TUTORIAL_FACE_WARN) {
-		drawText(faceWarnTexture);
+		drawText(faceWarnTexture, false);
 	} else if (type == TUTORIAL_GHOST_WON) {
-		drawText(ghostWonTexture);
+		drawText(ghostWonTexture, false);
 	} else if (type == TUTORIAL_SEARCH) {
-		drawText(searchTexture);
+		drawText(searchTexture, false);
 	} else if (type == TUTORIAL_YOU_DIED) {
-		drawText(youDiedTexture);
+		drawText(youDiedTexture, false);
 	} else if (type == TUTORIAL_YOU_WON) {
-		drawText(youWonTexture);
+		drawText(youWonTexture, false);
 	}
 }
 
-void FightTutorialView::drawText(CIw2DImage* text) {
-	int16 w = IwGxGetScreenWidth();
-	//if (w > text->GetWidth()) w = text->GetWidth();
+void FightTutorialView::drawText(CIw2DImage* text, bool animated) {
 
-	float whScale = (float)((double)text->GetWidth() / text->GetHeight());
-	int16 h = w * 1/whScale;
+	float verticalMul = animated ? 0.75f : 0.5f;
 
-	CIwFVec2 size = CIwFVec2(w, h);
-	CIwFVec2 topLeft = CIwFVec2(IwGxGetScreenWidth()/2 - w/2, IwGxGetScreenHeight()/2 - h/2);
+	{ // Button
+		int16 w = IwGxGetScreenWidth();
+		//if (w > text->GetWidth()) w = text->GetWidth();
 
-	Iw2DDrawImage(text, topLeft, size);
+		float whScale = (float)((double)buttonTexture->GetWidth() / buttonTexture->GetHeight());
+		int16 h = w * 1/whScale;
+
+		buttonSize = CIwFVec2(w, h);
+		buttonTopLeft = CIwFVec2(IwGxGetScreenWidth()/2 - w/2, IwGxGetScreenHeight()*verticalMul - h/2);
+
+		Iw2DDrawImage(buttonTexture, buttonTopLeft, buttonSize);
+	}
+
+	{ // Text
+		int16 w = IwGxGetScreenWidth();
+		//if (w > text->GetWidth()) w = text->GetWidth();
+
+		float whScale = (float)((double)text->GetWidth() / text->GetHeight());
+		int16 h = w * 1/whScale;
+
+		CIwFVec2 size = CIwFVec2(w, h);
+		CIwFVec2 topLeft = CIwFVec2(IwGxGetScreenWidth()/2 - w/2, IwGxGetScreenHeight()/2 - h/2);
+		if (animated) topLeft = CIwFVec2(IwGxGetScreenWidth()/2 - w/2, IwGxGetScreenHeight()*verticalMul - h/2);
+
+		Iw2DDrawImage(text, topLeft, size);
+	}
+}
+
+void FightTutorialView::drawAttackAnim() {
+	IwGxLightingOff();
+
+	attackAnimMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
+	attackAnimMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
+
+	IwGxSetMaterial(attackAnimMat);
+	IwGxSetUVStream(attack_anim_uvs);
+
+	IwGxSetVertStreamScreenSpace(attackAnimVerts, 4);
+	IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
 }
 
 void FightTutorialView::Touch(int x, int y, bool pressed) {

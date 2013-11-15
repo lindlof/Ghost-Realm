@@ -368,6 +368,8 @@ bool CameraViewUpdate()
 	IwGxFlush();
     IwGxSwapBuffers();
 
+	IwGxTickUpdate();
+
 	return true;
 }
 
@@ -416,9 +418,6 @@ void updateGhost() {
 
 	// Update animation player
     ghost_Player->Update(1.0f / 30.0f);
-
-    // Update IwGx state time stamp
-    IwGxTickUpdate();
 }
 
 void renderGhost() {
