@@ -16,6 +16,7 @@ FightTutorial::FightTutorial() {
 	resetShown();
 	currentType = TUTORIAL_NONE;
 	tutorialShowTime = 0;
+	dismissTime = 0;
 }
 
 FightTutorial::~FightTutorial() {
@@ -28,6 +29,7 @@ void FightTutorial::resetShown() {
 
 void FightTutorial::triggerTutorial(TutorialType type) {
 	if (isTutorialOn()) return;
+	if (clock() < dismissTime + 500) return; // 0,5s delay between tuts
 
 	bool sound = false;
 
@@ -85,5 +87,6 @@ void FightTutorial::tutorialAcknowledged() {
 
 		currentType = TUTORIAL_NONE;
 		tutorialShowTime = 0;
+		dismissTime = clock();
 	}
 }

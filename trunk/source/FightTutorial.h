@@ -22,6 +22,7 @@ class FightTutorial {
 	TutorialType currentType;
 
 	clock_t tutorialShowTime;
+	clock_t dismissTime;
 
 	bool attackShown, defendShown, faceWarnShown, ghostWonShown, searchShown, youDiedShown, youWonShown;
 
