@@ -18,6 +18,14 @@ CIwFVec2 FightTutorialView::attack_anim_uvs[4] =
     CIwFVec2(1.f/attackAnimCells, 0),
 };
 
+CIwFVec2 FightTutorialView::defend_anim_uvs[4] =
+{
+    CIwFVec2(0,                   0),
+    CIwFVec2(0,                   1.f/defendAnimRows),
+    CIwFVec2(1.f/defendAnimCells, 1.f/defendAnimRows),
+    CIwFVec2(1.f/defendAnimCells, 0),
+};
+
 FightTutorialView::FightTutorialView() {
 	bgTexture = Iw2DCreateImage("textures/tutorial/tutorial_bg.png");
 	buttonTexture = Iw2DCreateImage("textures/tutorial/tutorial_button.png");
@@ -58,6 +66,34 @@ FightTutorialView::FightTutorialView() {
 		attackAnimVerts[3] = CIwFVec2(x2, y1);
 	}
 
+	{ // Defend animation
+		defendAnimTexture = new CIwTexture;
+		defendAnimTexture->LoadFromFile("textures/tutorial/defend_animation.png");
+		defendAnimTexture->Upload();
+
+		defendAnimMat = new CIwMaterial;
+		defendAnimMat->SetTexture(defendAnimTexture);
+
+		defendAnimMat->CreateAnim();
+		defendAnimMat->SetAnimCelW((double)defendAnimTexture->GetWidth()/defendAnimCells);
+		defendAnimMat->SetAnimCelH((double)defendAnimTexture->GetHeight()/defendAnimRows);
+		defendAnimMat->SetAnimCelPeriod(5);
+
+		int h = 373;
+		float whScale = (float)((double)defendAnimTexture->GetWidth() / defendAnimTexture->GetHeight());
+		int16 w = h * whScale;
+
+		int x1 = IwGxGetScreenWidth()*0.36f-w;
+		int x2 = x1 + w;
+		int y1 = IwGxGetScreenHeight()*0.15f;
+		int y2 = y1 + h;
+
+		defendAnimVerts[0] = CIwFVec2(x1, y1);
+		defendAnimVerts[1] = CIwFVec2(x1, y2);
+		defendAnimVerts[2] = CIwFVec2(x2, y2);
+		defendAnimVerts[3] = CIwFVec2(x2, y1);
+	}
+
 	pressedTime = 0;
 }
 
@@ -90,6 +126,10 @@ FightTutorialView::~FightTutorialView() {
 		delete attackAnimTexture;
 	if (attackAnimMat)
 		delete attackAnimMat;
+	if (defendAnimTexture)
+		delete defendAnimTexture;
+	if (defendAnimMat)
+		delete defendAnimMat;
 }
 
 void FightTutorialView::Render() {
@@ -109,7 +149,8 @@ void FightTutorialView::Render() {
 		drawText(attackTexture, true);
 		drawAttackAnim();
 	} else if (type == TUTORIAL_DEFEND) {
-		drawText(defendTexture, false);
+		drawText(defendTexture, true);
+		drawDefendAnim();
 	} else if (type == TUTORIAL_FACE_WARN) {
 		drawText(faceWarnTexture, false);
 	} else if (type == TUTORIAL_GHOST_WON) {
@@ -165,6 +206,19 @@ void FightTutorialView::drawAttackAnim() {
 	IwGxSetUVStream(attack_anim_uvs);
 
 	IwGxSetVertStreamScreenSpace(attackAnimVerts, 4);
+	IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
+}
+
+void FightTutorialView::drawDefendAnim() {
+	IwGxLightingOff();
+
+	defendAnimMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
+	defendAnimMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
+
+	IwGxSetMaterial(defendAnimMat);
+	IwGxSetUVStream(defend_anim_uvs);
+
+	IwGxSetVertStreamScreenSpace(defendAnimVerts, 4);
 	IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
 }
 

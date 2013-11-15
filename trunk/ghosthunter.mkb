@@ -113,6 +113,7 @@ assets
 	textures/tutorial/tutorial_you_died.png
 	textures/tutorial/tutorial_you_won.png
 	textures/tutorial/attack_animation.png
+	textures/tutorial/defend_animation.png
 	textures/attack/attack_1.png
 	textures/attack/attack_2.png
 	textures/attack/attack_3.png
