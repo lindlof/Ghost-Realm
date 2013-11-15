@@ -21,7 +21,18 @@ FightTutorialView::FightTutorialView() {
 	searchTexture = Iw2DCreateImage("textures/tutorial/tutorial_search_the_ghost.png");
 	youDiedTexture = Iw2DCreateImage("textures/tutorial/tutorial_you_died.png");
 	youWonTexture = Iw2DCreateImage("textures/tutorial/tutorial_you_won.png");
+	/*
+	attackAnimTexture = new CIwTexture;
+	attackAnimTexture->LoadFromFile("textures/tutorial/attack_animation.png");
+	attackAnimTexture->Upload();
 
+	attackAnimMat = new CIwMaterial;
+	attackAnimMat->SetTexture(attackAnimTexture);
+	attackAnimMat->CreateAnim();
+	attackAnimMat->SetAnimCelW((double)attackAnimTexture->GetWidth()/cells);
+	attackAnimMat->SetAnimCelH((double)attackAnimTexture->GetHeight()/rows);
+    attackAnimMat->SetAnimCelPeriod(2);
+	*/
 	pressedTime = 0;
 
 	{

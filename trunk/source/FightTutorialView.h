@@ -33,6 +33,9 @@ class FightTutorialView {
 	CIw2DImage* youDiedTexture;
 	CIw2DImage* youWonTexture;
 
+	CIwTexture* attackAnimTexture;
+	CIwMaterial* attackAnimMat;
+
 	clock_t pressedTime;
 
 	void drawText(CIw2DImage* text);
