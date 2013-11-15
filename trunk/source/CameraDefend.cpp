@@ -206,6 +206,9 @@ void CameraDefend::Touch(int32 x, int32 y, bool press, uint32 id) {
 		touch[id]->drawStart = CIwFVec2(x, y);
 		if (dotCollides(&dotVertsTopLeftLeft, &dotVertsSizeLeft,  touch[id]->drawStart) || 
 				dotCollides(&dotVertsTopLeftRight, &dotVertsSizeRight, touch[id]->drawStart)) {
+
+			if (getFightTutorial() != NULL)
+				getFightTutorial()->counterTrigger(TUTORIAL_DEFEND);
 			touch[id]->drawing = true;
 		}
 	} else {

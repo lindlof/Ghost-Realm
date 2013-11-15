@@ -34,6 +34,7 @@ class FightTutorial {
 	void tutorialAcknowledged();
 	bool isTutorialOn();
 	void triggerTutorial(TutorialType type);
+	void counterTrigger(TutorialType type);
 	void resetShown();
 };
 

@@ -108,8 +108,10 @@ void Player::accelometerUpdate(int32 x, int32 y, int32 z) {
 	int ghostAngle = abs(getHeading() - getGameState()->getGhost()->getBearing());
 	bool angleOk = ghostAngle < 45;
 
-	if (angleOk && getFightTutorial() != NULL) {
-		getFightTutorial()->triggerTutorial(TUTORIAL_ATTACK);
+	FightTutorial* tutorial = getFightTutorial();
+	if (angleOk && tutorial != NULL) {
+		tutorial->counterTrigger(TUTORIAL_SEARCH);
+		tutorial->triggerTutorial(TUTORIAL_ATTACK);
 	}
 
 	if (strikeRes > 0 && isReady()) {
@@ -121,7 +123,10 @@ void Player::accelometerUpdate(int32 x, int32 y, int32 z) {
 			}
 		}
 
-		if (ghost != NULL) {
+		if (getFightTutorial() != NULL)
+				getFightTutorial()->counterTrigger(TUTORIAL_ATTACK);
+
+		if (!gameIsHalt() && ghost != NULL) {
 			int manaLoss = 2;
 			mana -= manaLoss;
 			IwTrace(GHOST_HUNTER, ("Player loses mana as she hits %d, mana: %d", manaLoss, mana));
@@ -131,10 +136,9 @@ void Player::accelometerUpdate(int32 x, int32 y, int32 z) {
 			if (IwRandMinMax(0, 15) == 15) hit *= 2; // Player crit, 1/16 chance
 
 			IwTrace(GHOST_HUNTER, ("Player is hitting %d", hit));
-			if (ghost != NULL) {
-				animAttack = true;
-				ghost->ghostGotHit(hit);
-			}
+			
+			animAttack = true;
+			ghost->ghostGotHit(hit);
 		}
 	}
 }

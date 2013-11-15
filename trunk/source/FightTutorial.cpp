@@ -27,6 +27,12 @@ void FightTutorial::resetShown() {
 	attackShown = defendShown = faceWarnShown = ghostWonShown = searchShown = youDiedShown = youWonShown = false;
 }
 
+void FightTutorial::counterTrigger(TutorialType type) {
+	if (currentType == type) {
+		tutorialAcknowledged();
+	}
+}
+
 void FightTutorial::triggerTutorial(TutorialType type) {
 	if (isTutorialOn()) return;
 	if (clock() < dismissTime + 500) return; // 0,5s delay between tuts

@@ -50,15 +50,13 @@ void CameraControllerTerm()
 
 bool CameraControllerUpdate()
 {
-	if (!gameIsHalt()) {
-		if (accelometerEnabled)
-		{
-			int32 x = s3eAccelerometerGetX();
-			int32 y = s3eAccelerometerGetY();
-			int32 z = s3eAccelerometerGetZ();
+	if (accelometerEnabled)
+	{
+		int32 x = s3eAccelerometerGetX();
+		int32 y = s3eAccelerometerGetY();
+		int32 z = s3eAccelerometerGetZ();
 
-			accelometerUpdate(x, y, z);
-		}
+		accelometerUpdate(x, y, z);
 	}
 
 	s3eCompassHeading h;
@@ -83,18 +81,18 @@ void SingleTouchMotion(s3ePointerMotionEvent* event) {
 }
 
 void MultiTouch(s3ePointerTouchEvent* event) {
-    if (!gameIsHalt()) {
-		CameraDefend* cameraDefend = getCameraDefend();
+	CameraDefend* cameraDefend = getCameraDefend();
 
-		if (cameraDefend != NULL)
+	if (cameraDefend != NULL)
 			cameraDefend->Touch(event->m_x, event->m_y, event->m_Pressed, event->m_TouchID);
-	}
 }
 
 void MultiTouchMotion(s3ePointerTouchMotionEvent* event)
 {
-    CameraDefend* cameraDefend = getCameraDefend();
+	if (!gameIsHalt()) {
+		CameraDefend* cameraDefend = getCameraDefend();
 
-	if (cameraDefend != NULL)
-		cameraDefend->Motion(event->m_x, event->m_y, event->m_TouchID);
+		if (cameraDefend != NULL)
+			cameraDefend->Motion(event->m_x, event->m_y, event->m_TouchID);
+	}
 }
