@@ -25,6 +25,8 @@ Player::Player() {
 	strike = new Strike();
 	hitTime = 0;
 	init();
+
+	animAttack = false;
 };
 
 void Player::init() {
@@ -130,6 +132,7 @@ void Player::accelometerUpdate(int32 x, int32 y, int32 z) {
 
 			IwTrace(GHOST_HUNTER, ("Player is hitting %d", hit));
 			if (ghost != NULL) {
+				animAttack = true;
 				ghost->ghostGotHit(hit);
 			}
 		}
@@ -150,4 +153,14 @@ void Player::resurrect() {
 
 clock_t Player::getHitTime() {
 	return hitTime;
+}
+
+bool Player::pollAnimAttack() {
+	return poll(animAttack);
+}
+
+bool Player::poll(bool& poll) {
+	bool temp = poll;
+	poll = false;
+	return temp;
 }

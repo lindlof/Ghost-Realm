@@ -17,6 +17,7 @@
 #include "PlayerHit.h"
 #include "FightTutorialView.h"
 #include "ManaBar.h"
+#include "PlayerAttackView.h"
 
 #include "s3e.h"
 #include "s3eCamera.h"
@@ -77,6 +78,7 @@ static CameraDefend* cameraDefend;
 static PlayerHit* playerHit;
 static FightTutorialView* tutorialView;
 static ManaBar* manaBar;
+static PlayerAttackView* playerAttackView;
 
 static int lostManaAnim = 0;
 
@@ -203,6 +205,7 @@ void CameraViewPreInit()
 	tutorialView = new FightTutorialView();
 	cameraDefend = new CameraDefend();
 	manaBar = new ManaBar();
+	playerAttackView = new PlayerAttackView(getGameState()->getPlayer());
 }
 void CameraViewInit()
 {
@@ -280,6 +283,9 @@ void CameraViewTerm()
 
 	if (manaBar)
 		delete manaBar;
+
+	if (playerAttackView)
+		delete playerAttackView;
 }
 
 void LoadViking() {
@@ -346,8 +352,9 @@ bool CameraViewUpdate()
 	setupPlayer();
 	if (ghostAvailable)
 		renderGhost();
+	playerAttackView->Render();
+
 	playerHit->Render();
-	//renderMana();
 
 	manaBar->Render();
 	cameraDefend->Update();

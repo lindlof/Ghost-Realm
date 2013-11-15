@@ -35,6 +35,9 @@ class Player {
 
 	void init();
 
+	bool animAttack;
+	bool poll(bool& poll);
+
 	public:
 	Player();
 	bool headingUpdate();
@@ -53,6 +56,8 @@ class Player {
 	bool isDead();
 	void resurrect();
 	clock_t getHitTime();
+
+	bool pollAnimAttack();
 };
 
 #endif

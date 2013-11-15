@@ -32,6 +32,8 @@ files
 	FightTutorialView.h
 	ManaBar.cpp
 	ManaBar.h
+	PlayerAttackView.cpp
+	PlayerAttackView.h
 
 	[Map]
 	MapController.cpp
@@ -110,6 +112,10 @@ assets
 	textures/tutorial/tutorial_search_the_ghost.png
 	textures/tutorial/tutorial_you_died.png
 	textures/tutorial/tutorial_you_won.png
+	textures/attack/attack_1.png
+	textures/attack/attack_2.png
+	textures/attack/attack_3.png
+	textures/attack/attack_4.png
 
 	sounds/camera_ghost_attack.mp3
 	sounds/camera_ghost_attack_miss.mp3
