@@ -10,7 +10,7 @@
 #include "GhostType.h"
 
 const GhostType GhostType::VIKING  = GhostType(0, 700, 1200, 1);
-const GhostType GhostType::SKELMAN = GhostType(1, 400, 900, 1);
+const GhostType GhostType::SKELMAN = GhostType(1, 400, 700, 1);
 
 GhostType::GhostType(int id, int distance, int initialDistance, float strength) {
 	this->id = id;
