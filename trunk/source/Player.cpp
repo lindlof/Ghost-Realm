@@ -106,7 +106,7 @@ void Player::accelometerUpdate(int32 x, int32 y, int32 z) {
 	int strikeRes = strike->strikeUpdate(x, y, z);
 
 	int ghostAngle = abs(getHeading() - getGameState()->getGhost()->getBearing());
-	bool angleOk = ghostAngle < 45;
+	bool angleOk = ghostAngle < 40;
 
 	FightTutorial* tutorial = getFightTutorial();
 	if (angleOk && tutorial != NULL) {
