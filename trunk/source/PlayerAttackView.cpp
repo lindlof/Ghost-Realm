@@ -50,7 +50,7 @@ void PlayerAttackView::Render() {
 
 void PlayerAttackView::renderAttack(CIw2DImage* attack) {
 
-	float h = IwGxGetScreenHeight()*0.7f;
+	float h = IwGxGetScreenHeight()*1.0f;
 
 	float whScale = (float)((double)attack->GetWidth() / attack->GetHeight());
 	int16 w = h * whScale;
