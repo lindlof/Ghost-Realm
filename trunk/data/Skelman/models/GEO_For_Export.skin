@@ -1,4 +1,4 @@
-// Source file: Skel_exp_test03.max
+// Source file: Skel_Anim_AttackV2.max
 CIwAnimSkin
 {
 	skeleton "HIP01"
@@ -9,21 +9,21 @@ CIwAnimSkin
 		numVerts 12
 		vertWeights {0,1}
 		vertWeights {237,1}
-		vertWeights {605,1}
-		vertWeights {608,1}
-		vertWeights {620,1}
-		vertWeights {623,1}
-		vertWeights {1482,1}
-		vertWeights {1566,1}
-		vertWeights {1567,1}
-		vertWeights {1569,1}
-		vertWeights {1582,1}
-		vertWeights {1585,1}
+		vertWeights {629,1}
+		vertWeights {632,1}
+		vertWeights {644,1}
+		vertWeights {647,1}
+		vertWeights {1514,1}
+		vertWeights {1598,1}
+		vertWeights {1599,1}
+		vertWeights {1601,1}
+		vertWeights {1614,1}
+		vertWeights {1617,1}
 	}
 	CIwAnimSkinSet
 	{
 		useBones { Chest01 Spine02 Spine01 }
-		numVerts 56
+		numVerts 60
 		vertWeights {1,0.65479,0.24521,0.10000}
 		vertWeights {33,0.65479,0.24521,0.10000}
 		vertWeights {39,0.81000,0.09000,0.10000}
@@ -34,52 +34,56 @@ CIwAnimSkin
 		vertWeights {245,0.81000,0.09000,0.10000}
 		vertWeights {247,0.65479,0.24521,0.10000}
 		vertWeights {248,0.65479,0.24521,0.10000}
-		vertWeights {622,0.65479,0.24521,0.10000}
-		vertWeights {648,0.65479,0.24521,0.10000}
-		vertWeights {649,0.81000,0.09000,0.10000}
-		vertWeights {650,0.65479,0.24521,0.10000}
-		vertWeights {656,0.65479,0.24521,0.10000}
-		vertWeights {657,0.65479,0.24521,0.10000}
-		vertWeights {661,0.65479,0.24521,0.10000}
-		vertWeights {662,0.65479,0.24521,0.10000}
-		vertWeights {663,0.65479,0.24521,0.10000}
-		vertWeights {664,0.65479,0.24521,0.10000}
-		vertWeights {665,0.81000,0.09000,0.10000}
-		vertWeights {668,0.81000,0.09000,0.10000}
-		vertWeights {670,0.65479,0.24521,0.10000}
+		vertWeights {646,0.65479,0.24521,0.10000}
 		vertWeights {672,0.65479,0.24521,0.10000}
+		vertWeights {673,0.81000,0.09000,0.10000}
 		vertWeights {674,0.65479,0.24521,0.10000}
-		vertWeights {676,0.81000,0.09000,0.10000}
-		vertWeights {678,0.65479,0.24521,0.10000}
 		vertWeights {680,0.65479,0.24521,0.10000}
 		vertWeights {681,0.65479,0.24521,0.10000}
-		vertWeights {682,0.65479,0.24521,0.10000}
 		vertWeights {685,0.65479,0.24521,0.10000}
 		vertWeights {686,0.65479,0.24521,0.10000}
-		vertWeights {1583,0.65479,0.24521,0.10000}
-		vertWeights {1584,0.65479,0.24521,0.10000}
-		vertWeights {1611,0.65479,0.24521,0.10000}
-		vertWeights {1613,0.65479,0.24521,0.10000}
-		vertWeights {1615,0.81000,0.09000,0.10000}
-		vertWeights {1618,0.65479,0.24521,0.10000}
-		vertWeights {1620,0.65479,0.24521,0.10000}
-		vertWeights {1622,0.65479,0.24521,0.10000}
-		vertWeights {1624,0.65479,0.24521,0.10000}
-		vertWeights {1626,0.65479,0.24521,0.10000}
-		vertWeights {1627,0.65479,0.24521,0.10000}
-		vertWeights {1629,0.65479,0.24521,0.10000}
-		vertWeights {1630,0.81000,0.09000,0.10000}
-		vertWeights {1632,0.81000,0.09000,0.10000}
-		vertWeights {1634,0.65479,0.24521,0.10000}
-		vertWeights {1638,0.65479,0.24521,0.10000}
-		vertWeights {1639,0.65479,0.24521,0.10000}
+		vertWeights {687,0.65479,0.24521,0.10000}
+		vertWeights {688,0.65479,0.24521,0.10000}
+		vertWeights {690,0.65479,0.24521,0.10000}
+		vertWeights {691,0.81000,0.09000,0.10000}
+		vertWeights {694,0.81000,0.09000,0.10000}
+		vertWeights {696,0.65479,0.24521,0.10000}
+		vertWeights {698,0.65479,0.24521,0.10000}
+		vertWeights {700,0.65479,0.24521,0.10000}
+		vertWeights {702,0.81000,0.09000,0.10000}
+		vertWeights {704,0.65479,0.24521,0.10000}
+		vertWeights {706,0.65479,0.24521,0.10000}
+		vertWeights {707,0.65479,0.24521,0.10000}
+		vertWeights {708,0.65479,0.24521,0.10000}
+		vertWeights {711,0.65479,0.24521,0.10000}
+		vertWeights {712,0.65479,0.24521,0.10000}
+		vertWeights {713,0.65479,0.24521,0.10000}
+		vertWeights {1615,0.65479,0.24521,0.10000}
+		vertWeights {1616,0.65479,0.24521,0.10000}
 		vertWeights {1643,0.65479,0.24521,0.10000}
-		vertWeights {1644,0.81000,0.09000,0.10000}
 		vertWeights {1645,0.65479,0.24521,0.10000}
-		vertWeights {1646,0.65479,0.24521,0.10000}
-		vertWeights {1648,0.65479,0.24521,0.10000}
+		vertWeights {1647,0.81000,0.09000,0.10000}
 		vertWeights {1650,0.65479,0.24521,0.10000}
 		vertWeights {1652,0.65479,0.24521,0.10000}
+		vertWeights {1654,0.65479,0.24521,0.10000}
+		vertWeights {1656,0.65479,0.24521,0.10000}
+		vertWeights {1658,0.65479,0.24521,0.10000}
+		vertWeights {1659,0.65479,0.24521,0.10000}
+		vertWeights {1662,0.65479,0.24521,0.10000}
+		vertWeights {1663,0.65479,0.24521,0.10000}
+		vertWeights {1664,0.81000,0.09000,0.10000}
+		vertWeights {1666,0.81000,0.09000,0.10000}
+		vertWeights {1668,0.65479,0.24521,0.10000}
+		vertWeights {1672,0.65479,0.24521,0.10000}
+		vertWeights {1673,0.65479,0.24521,0.10000}
+		vertWeights {1677,0.65479,0.24521,0.10000}
+		vertWeights {1678,0.81000,0.09000,0.10000}
+		vertWeights {1679,0.65479,0.24521,0.10000}
+		vertWeights {1680,0.65479,0.24521,0.10000}
+		vertWeights {1682,0.65479,0.24521,0.10000}
+		vertWeights {1684,0.65479,0.24521,0.10000}
+		vertWeights {1686,0.65479,0.24521,0.10000}
+		vertWeights {1688,0.65479,0.24521,0.10000}
 	}
 	CIwAnimSkinSet
 	{
@@ -88,19 +92,19 @@ CIwAnimSkin
 		vertWeights {2,0.40000,0.60000}
 		vertWeights {56,0.50000,0.50000}
 		vertWeights {259,0.50000,0.50000}
-		vertWeights {715,0.50000,0.50000}
-		vertWeights {731,0.50000,0.50000}
-		vertWeights {1304,0.50000,0.50000}
-		vertWeights {1305,0.40000,0.60000}
-		vertWeights {1306,0.50000,0.50000}
-		vertWeights {1322,0.50000,0.50000}
-		vertWeights {1682,0.40000,0.60000}
-		vertWeights {1683,0.50000,0.50000}
-		vertWeights {1697,0.50000,0.50000}
-		vertWeights {2278,0.50000,0.50000}
-		vertWeights {2280,0.40000,0.60000}
-		vertWeights {2282,0.50000,0.50000}
-		vertWeights {2294,0.50000,0.50000}
+		vertWeights {747,0.50000,0.50000}
+		vertWeights {763,0.50000,0.50000}
+		vertWeights {1336,0.50000,0.50000}
+		vertWeights {1337,0.40000,0.60000}
+		vertWeights {1338,0.50000,0.50000}
+		vertWeights {1354,0.50000,0.50000}
+		vertWeights {1722,0.40000,0.60000}
+		vertWeights {1723,0.50000,0.50000}
+		vertWeights {1737,0.50000,0.50000}
+		vertWeights {2327,0.50000,0.50000}
+		vertWeights {2329,0.40000,0.60000}
+		vertWeights {2331,0.50000,0.50000}
+		vertWeights {2343,0.50000,0.50000}
 	}
 	CIwAnimSkinSet
 	{
@@ -117,63 +121,63 @@ CIwAnimSkin
 		vertWeights {322,0.28290,0.71710}
 		vertWeights {323,0.25253,0.74747}
 		vertWeights {324,0.27597,0.72403}
-		vertWeights {526,0.79989,0.20011}
-		vertWeights {1007,0.79989,0.20011}
-		vertWeights {1008,0.53790,0.46210}
-		vertWeights {1009,0.79989,0.20011}
-		vertWeights {1014,0.53790,0.46210}
-		vertWeights {1018,0.53790,0.46210}
-		vertWeights {1025,0.53790,0.46210}
-		vertWeights {1026,0.25253,0.74747}
-		vertWeights {1028,0.37133,0.62867}
-		vertWeights {1032,0.37133,0.62867}
-		vertWeights {1033,0.28290,0.71710}
-		vertWeights {1034,0.25253,0.74747}
-		vertWeights {1035,0.51985,0.48015}
-		vertWeights {1036,0.53790,0.46210}
-		vertWeights {1037,0.51985,0.48015}
-		vertWeights {1038,0.25253,0.74747}
-		vertWeights {1039,0.37133,0.62867}
-		vertWeights {1041,0.37133,0.62867}
-		vertWeights {1043,0.25253,0.74747}
-		vertWeights {1044,0.28290,0.71710}
-		vertWeights {1045,0.25253,0.74747}
-		vertWeights {1048,0.28290,0.71710}
-		vertWeights {1049,0.37133,0.62867}
-		vertWeights {1050,0.28290,0.71710}
-		vertWeights {1053,0.25253,0.74747}
-		vertWeights {1054,0.27597,0.72403}
-		vertWeights {1056,0.25253,0.74747}
-		vertWeights {1481,0.79989,0.20011}
-		vertWeights {1484,0.79989,0.20011}
-		vertWeights {1976,0.79989,0.20011}
-		vertWeights {1978,0.53790,0.46210}
-		vertWeights {1979,0.79989,0.20011}
-		vertWeights {1980,0.51985,0.48015}
-		vertWeights {1985,0.53790,0.46210}
-		vertWeights {1987,0.53790,0.46210}
-		vertWeights {1996,0.25253,0.74747}
-		vertWeights {1998,0.53790,0.46210}
-		vertWeights {2000,0.37133,0.62867}
-		vertWeights {2002,0.37133,0.62867}
-		vertWeights {2004,0.28290,0.71710}
-		vertWeights {2005,0.51985,0.48015}
-		vertWeights {2006,0.25253,0.74747}
-		vertWeights {2007,0.53790,0.46210}
-		vertWeights {2008,0.25253,0.74747}
-		vertWeights {2009,0.51985,0.48015}
-		vertWeights {2010,0.27597,0.72403}
-		vertWeights {2011,0.37133,0.62867}
-		vertWeights {2015,0.37133,0.62867}
-		vertWeights {2016,0.25253,0.74747}
-		vertWeights {2017,0.28290,0.71710}
-		vertWeights {2019,0.25253,0.74747}
-		vertWeights {2020,0.28290,0.71710}
-		vertWeights {2022,0.37133,0.62867}
-		vertWeights {2024,0.28290,0.71710}
-		vertWeights {2026,0.25253,0.74747}
-		vertWeights {2030,0.25253,0.74747}
-		vertWeights {2031,0.27597,0.72403}
+		vertWeights {550,0.79989,0.20011}
+		vertWeights {1039,0.79989,0.20011}
+		vertWeights {1040,0.53790,0.46210}
+		vertWeights {1041,0.79989,0.20011}
+		vertWeights {1046,0.53790,0.46210}
+		vertWeights {1050,0.53790,0.46210}
+		vertWeights {1057,0.53790,0.46210}
+		vertWeights {1058,0.25253,0.74747}
+		vertWeights {1060,0.37133,0.62867}
+		vertWeights {1064,0.37133,0.62867}
+		vertWeights {1065,0.28290,0.71710}
+		vertWeights {1066,0.25253,0.74747}
+		vertWeights {1067,0.51985,0.48015}
+		vertWeights {1068,0.53790,0.46210}
+		vertWeights {1069,0.51985,0.48015}
+		vertWeights {1070,0.25253,0.74747}
+		vertWeights {1071,0.37133,0.62867}
+		vertWeights {1073,0.37133,0.62867}
+		vertWeights {1075,0.25253,0.74747}
+		vertWeights {1076,0.28290,0.71710}
+		vertWeights {1077,0.25253,0.74747}
+		vertWeights {1080,0.28290,0.71710}
+		vertWeights {1081,0.37133,0.62867}
+		vertWeights {1082,0.28290,0.71710}
+		vertWeights {1085,0.25253,0.74747}
+		vertWeights {1086,0.27597,0.72403}
+		vertWeights {1088,0.25253,0.74747}
+		vertWeights {1513,0.79989,0.20011}
+		vertWeights {1516,0.79989,0.20011}
+		vertWeights {2024,0.79989,0.20011}
+		vertWeights {2026,0.53790,0.46210}
+		vertWeights {2027,0.79989,0.20011}
+		vertWeights {2028,0.51985,0.48015}
+		vertWeights {2033,0.53790,0.46210}
+		vertWeights {2035,0.53790,0.46210}
+		vertWeights {2044,0.25253,0.74747}
+		vertWeights {2046,0.53790,0.46210}
+		vertWeights {2048,0.37133,0.62867}
+		vertWeights {2050,0.37133,0.62867}
+		vertWeights {2052,0.28290,0.71710}
+		vertWeights {2053,0.51985,0.48015}
+		vertWeights {2054,0.25253,0.74747}
+		vertWeights {2055,0.53790,0.46210}
+		vertWeights {2056,0.25253,0.74747}
+		vertWeights {2057,0.51985,0.48015}
+		vertWeights {2058,0.27597,0.72403}
+		vertWeights {2059,0.37133,0.62867}
+		vertWeights {2063,0.37133,0.62867}
+		vertWeights {2064,0.25253,0.74747}
+		vertWeights {2065,0.28290,0.71710}
+		vertWeights {2067,0.25253,0.74747}
+		vertWeights {2068,0.28290,0.71710}
+		vertWeights {2070,0.37133,0.62867}
+		vertWeights {2072,0.28290,0.71710}
+		vertWeights {2074,0.25253,0.74747}
+		vertWeights {2078,0.25253,0.74747}
+		vertWeights {2079,0.27597,0.72403}
 	}
 	CIwAnimSkinSet
 	{
@@ -184,33 +188,33 @@ CIwAnimSkin
 		vertWeights {124,0.98450,0.01550}
 		vertWeights {325,0.95509,0.04491}
 		vertWeights {326,0.98450,0.01550}
-		vertWeights {1042,0.95162,0.04838}
-		vertWeights {1046,0.98450,0.01550}
-		vertWeights {1047,0.95509,0.04491}
-		vertWeights {1051,0.95509,0.04491}
-		vertWeights {1052,0.98450,0.01550}
-		vertWeights {1464,0.95509,0.04491}
-		vertWeights {1466,0.95509,0.04491}
-		vertWeights {1468,0.98450,0.01550}
-		vertWeights {1470,0.98450,0.01550}
-		vertWeights {1472,0.98450,0.01550}
-		vertWeights {1476,0.95509,0.04491}
-		vertWeights {1477,0.95162,0.04838}
-		vertWeights {1478,0.95509,0.04491}
-		vertWeights {2012,0.95162,0.04838}
-		vertWeights {2014,0.95162,0.04838}
-		vertWeights {2018,0.98450,0.01550}
-		vertWeights {2021,0.95509,0.04491}
-		vertWeights {2023,0.95509,0.04491}
-		vertWeights {2025,0.98450,0.01550}
-		vertWeights {2448,0.95509,0.04491}
-		vertWeights {2449,0.98450,0.01550}
-		vertWeights {2450,0.95509,0.04491}
-		vertWeights {2454,0.98450,0.01550}
-		vertWeights {2456,0.98450,0.01550}
-		vertWeights {2460,0.95509,0.04491}
-		vertWeights {2462,0.95509,0.04491}
-		vertWeights {2464,0.95162,0.04838}
+		vertWeights {1074,0.95162,0.04838}
+		vertWeights {1078,0.98450,0.01550}
+		vertWeights {1079,0.95509,0.04491}
+		vertWeights {1083,0.95509,0.04491}
+		vertWeights {1084,0.98450,0.01550}
+		vertWeights {1496,0.95509,0.04491}
+		vertWeights {1498,0.95509,0.04491}
+		vertWeights {1500,0.98450,0.01550}
+		vertWeights {1502,0.98450,0.01550}
+		vertWeights {1504,0.98450,0.01550}
+		vertWeights {1508,0.95509,0.04491}
+		vertWeights {1509,0.95162,0.04838}
+		vertWeights {1510,0.95509,0.04491}
+		vertWeights {2060,0.95162,0.04838}
+		vertWeights {2062,0.95162,0.04838}
+		vertWeights {2066,0.98450,0.01550}
+		vertWeights {2069,0.95509,0.04491}
+		vertWeights {2071,0.95509,0.04491}
+		vertWeights {2073,0.98450,0.01550}
+		vertWeights {2499,0.95509,0.04491}
+		vertWeights {2500,0.98450,0.01550}
+		vertWeights {2501,0.95509,0.04491}
+		vertWeights {2505,0.98450,0.01550}
+		vertWeights {2507,0.98450,0.01550}
+		vertWeights {2511,0.95509,0.04491}
+		vertWeights {2513,0.95509,0.04491}
+		vertWeights {2515,0.95162,0.04838}
 	}
 	CIwAnimSkinSet
 	{
@@ -219,13 +223,13 @@ CIwAnimSkin
 		vertWeights {5,0.19375,0.43471,0.37154}
 		vertWeights {455,0.13590,0.49087,0.37322}
 		vertWeights {480,0.29346,0.37500,0.33154}
-		vertWeights {1307,0.19375,0.43471,0.37154}
-		vertWeights {1348,0.19375,0.43471,0.37154}
-		vertWeights {1349,0.19375,0.43471,0.37154}
-		vertWeights {2279,0.19375,0.43471,0.37154}
-		vertWeights {2281,0.19375,0.43471,0.37154}
-		vertWeights {2323,0.19375,0.43471,0.37154}
-		vertWeights {2325,0.19375,0.43471,0.37154}
+		vertWeights {1339,0.19375,0.43471,0.37154}
+		vertWeights {1380,0.19375,0.43471,0.37154}
+		vertWeights {1381,0.19375,0.43471,0.37154}
+		vertWeights {2328,0.19375,0.43471,0.37154}
+		vertWeights {2330,0.19375,0.43471,0.37154}
+		vertWeights {2372,0.19375,0.43471,0.37154}
+		vertWeights {2374,0.19375,0.43471,0.37154}
 	}
 	CIwAnimSkinSet
 	{
@@ -309,38 +313,6 @@ CIwAnimSkin
 		vertWeights {441,1}
 		vertWeights {442,1}
 		vertWeights {443,1}
-		vertWeights {1372,1}
-		vertWeights {1373,1}
-		vertWeights {1374,1}
-		vertWeights {1375,1}
-		vertWeights {1376,1}
-		vertWeights {1377,1}
-		vertWeights {1378,1}
-		vertWeights {1379,1}
-		vertWeights {1380,1}
-		vertWeights {1381,1}
-		vertWeights {1382,1}
-		vertWeights {1383,1}
-		vertWeights {1384,1}
-		vertWeights {1385,1}
-		vertWeights {1386,1}
-		vertWeights {1387,1}
-		vertWeights {1388,1}
-		vertWeights {1389,1}
-		vertWeights {1390,1}
-		vertWeights {1391,1}
-		vertWeights {1392,1}
-		vertWeights {1393,1}
-		vertWeights {1394,1}
-		vertWeights {1395,1}
-		vertWeights {1396,1}
-		vertWeights {1397,1}
-		vertWeights {1398,1}
-		vertWeights {1399,1}
-		vertWeights {1400,1}
-		vertWeights {1401,1}
-		vertWeights {1402,1}
-		vertWeights {1403,1}
 		vertWeights {1404,1}
 		vertWeights {1405,1}
 		vertWeights {1406,1}
@@ -395,68 +367,49 @@ CIwAnimSkin
 		vertWeights {1455,1}
 		vertWeights {1456,1}
 		vertWeights {1457,1}
+		vertWeights {1458,1}
+		vertWeights {1459,1}
+		vertWeights {1460,1}
 		vertWeights {1461,1}
 		vertWeights {1462,1}
 		vertWeights {1463,1}
+		vertWeights {1464,1}
 		vertWeights {1465,1}
+		vertWeights {1466,1}
 		vertWeights {1467,1}
+		vertWeights {1468,1}
 		vertWeights {1469,1}
+		vertWeights {1470,1}
 		vertWeights {1471,1}
+		vertWeights {1472,1}
 		vertWeights {1473,1}
+		vertWeights {1474,1}
 		vertWeights {1475,1}
+		vertWeights {1476,1}
+		vertWeights {1477,1}
+		vertWeights {1478,1}
 		vertWeights {1479,1}
 		vertWeights {1480,1}
-		vertWeights {2346,1}
-		vertWeights {2347,1}
-		vertWeights {2348,1}
-		vertWeights {2349,1}
-		vertWeights {2350,1}
-		vertWeights {2351,1}
-		vertWeights {2352,1}
-		vertWeights {2353,1}
-		vertWeights {2354,1}
-		vertWeights {2355,1}
-		vertWeights {2356,1}
-		vertWeights {2357,1}
-		vertWeights {2358,1}
-		vertWeights {2359,1}
-		vertWeights {2360,1}
-		vertWeights {2361,1}
-		vertWeights {2362,1}
-		vertWeights {2363,1}
-		vertWeights {2364,1}
-		vertWeights {2365,1}
-		vertWeights {2366,1}
-		vertWeights {2367,1}
-		vertWeights {2368,1}
-		vertWeights {2369,1}
-		vertWeights {2370,1}
-		vertWeights {2371,1}
-		vertWeights {2372,1}
-		vertWeights {2373,1}
-		vertWeights {2374,1}
-		vertWeights {2375,1}
-		vertWeights {2376,1}
-		vertWeights {2377,1}
-		vertWeights {2378,1}
-		vertWeights {2379,1}
-		vertWeights {2380,1}
-		vertWeights {2381,1}
-		vertWeights {2382,1}
-		vertWeights {2383,1}
-		vertWeights {2384,1}
-		vertWeights {2385,1}
-		vertWeights {2386,1}
-		vertWeights {2387,1}
-		vertWeights {2388,1}
-		vertWeights {2389,1}
-		vertWeights {2390,1}
-		vertWeights {2391,1}
-		vertWeights {2392,1}
-		vertWeights {2393,1}
-		vertWeights {2394,1}
-		vertWeights {2395,1}
-		vertWeights {2396,1}
+		vertWeights {1481,1}
+		vertWeights {1482,1}
+		vertWeights {1483,1}
+		vertWeights {1484,1}
+		vertWeights {1485,1}
+		vertWeights {1486,1}
+		vertWeights {1487,1}
+		vertWeights {1488,1}
+		vertWeights {1489,1}
+		vertWeights {1493,1}
+		vertWeights {1494,1}
+		vertWeights {1495,1}
+		vertWeights {1497,1}
+		vertWeights {1499,1}
+		vertWeights {1501,1}
+		vertWeights {1503,1}
+		vertWeights {1505,1}
+		vertWeights {1507,1}
+		vertWeights {1511,1}
+		vertWeights {1512,1}
 		vertWeights {2397,1}
 		vertWeights {2398,1}
 		vertWeights {2399,1}
@@ -502,17 +455,29 @@ CIwAnimSkin
 		vertWeights {2439,1}
 		vertWeights {2440,1}
 		vertWeights {2441,1}
+		vertWeights {2442,1}
 		vertWeights {2443,1}
+		vertWeights {2444,1}
 		vertWeights {2445,1}
+		vertWeights {2446,1}
 		vertWeights {2447,1}
+		vertWeights {2448,1}
+		vertWeights {2449,1}
+		vertWeights {2450,1}
 		vertWeights {2451,1}
 		vertWeights {2452,1}
 		vertWeights {2453,1}
+		vertWeights {2454,1}
+		vertWeights {2455,1}
+		vertWeights {2456,1}
 		vertWeights {2457,1}
 		vertWeights {2458,1}
 		vertWeights {2459,1}
+		vertWeights {2460,1}
 		vertWeights {2461,1}
+		vertWeights {2462,1}
 		vertWeights {2463,1}
+		vertWeights {2464,1}
 		vertWeights {2465,1}
 		vertWeights {2466,1}
 		vertWeights {2467,1}
@@ -541,29 +506,17 @@ CIwAnimSkin
 		vertWeights {2490,1}
 		vertWeights {2491,1}
 		vertWeights {2492,1}
-		vertWeights {2493,1}
 		vertWeights {2494,1}
-		vertWeights {2495,1}
 		vertWeights {2496,1}
-		vertWeights {2497,1}
 		vertWeights {2498,1}
-		vertWeights {2499,1}
-		vertWeights {2500,1}
-		vertWeights {2501,1}
 		vertWeights {2502,1}
 		vertWeights {2503,1}
 		vertWeights {2504,1}
-		vertWeights {2505,1}
-		vertWeights {2506,1}
-		vertWeights {2507,1}
 		vertWeights {2508,1}
 		vertWeights {2509,1}
 		vertWeights {2510,1}
-		vertWeights {2511,1}
 		vertWeights {2512,1}
-		vertWeights {2513,1}
 		vertWeights {2514,1}
-		vertWeights {2515,1}
 		vertWeights {2516,1}
 		vertWeights {2517,1}
 		vertWeights {2518,1}
@@ -627,6 +580,57 @@ CIwAnimSkin
 		vertWeights {2576,1}
 		vertWeights {2577,1}
 		vertWeights {2578,1}
+		vertWeights {2579,1}
+		vertWeights {2580,1}
+		vertWeights {2581,1}
+		vertWeights {2582,1}
+		vertWeights {2583,1}
+		vertWeights {2584,1}
+		vertWeights {2585,1}
+		vertWeights {2586,1}
+		vertWeights {2587,1}
+		vertWeights {2588,1}
+		vertWeights {2589,1}
+		vertWeights {2590,1}
+		vertWeights {2591,1}
+		vertWeights {2592,1}
+		vertWeights {2593,1}
+		vertWeights {2594,1}
+		vertWeights {2595,1}
+		vertWeights {2596,1}
+		vertWeights {2597,1}
+		vertWeights {2598,1}
+		vertWeights {2599,1}
+		vertWeights {2600,1}
+		vertWeights {2601,1}
+		vertWeights {2602,1}
+		vertWeights {2603,1}
+		vertWeights {2604,1}
+		vertWeights {2605,1}
+		vertWeights {2606,1}
+		vertWeights {2607,1}
+		vertWeights {2608,1}
+		vertWeights {2609,1}
+		vertWeights {2610,1}
+		vertWeights {2611,1}
+		vertWeights {2612,1}
+		vertWeights {2613,1}
+		vertWeights {2614,1}
+		vertWeights {2615,1}
+		vertWeights {2616,1}
+		vertWeights {2617,1}
+		vertWeights {2618,1}
+		vertWeights {2619,1}
+		vertWeights {2620,1}
+		vertWeights {2621,1}
+		vertWeights {2622,1}
+		vertWeights {2623,1}
+		vertWeights {2624,1}
+		vertWeights {2625,1}
+		vertWeights {2626,1}
+		vertWeights {2627,1}
+		vertWeights {2628,1}
+		vertWeights {2629,1}
 	}
 	CIwAnimSkinSet
 	{
@@ -636,28 +640,28 @@ CIwAnimSkin
 		vertWeights {9,1}
 		vertWeights {10,1}
 		vertWeights {12,1}
-		vertWeights {525,1}
-		vertWeights {529,1}
-		vertWeights {531,1}
-		vertWeights {532,1}
-		vertWeights {533,1}
-		vertWeights {534,1}
-		vertWeights {546,1}
-		vertWeights {548,1}
-		vertWeights {594,1}
-		vertWeights {597,1}
-		vertWeights {598,1}
-		vertWeights {606,1}
-		vertWeights {609,1}
-		vertWeights {612,1}
-		vertWeights {1003,1}
-		vertWeights {1005,1}
-		vertWeights {1006,1}
-		vertWeights {1010,1}
-		vertWeights {1013,1}
-		vertWeights {1015,1}
-		vertWeights {1017,1}
-		vertWeights {1019,1}
+		vertWeights {549,1}
+		vertWeights {553,1}
+		vertWeights {555,1}
+		vertWeights {556,1}
+		vertWeights {557,1}
+		vertWeights {558,1}
+		vertWeights {570,1}
+		vertWeights {572,1}
+		vertWeights {618,1}
+		vertWeights {621,1}
+		vertWeights {622,1}
+		vertWeights {630,1}
+		vertWeights {633,1}
+		vertWeights {636,1}
+		vertWeights {1035,1}
+		vertWeights {1037,1}
+		vertWeights {1038,1}
+		vertWeights {1042,1}
+		vertWeights {1045,1}
+		vertWeights {1047,1}
+		vertWeights {1049,1}
+		vertWeights {1051,1}
 	}
 	CIwAnimSkinSet
 	{
@@ -665,16 +669,16 @@ CIwAnimSkin
 		numVerts 12
 		vertWeights {11,0.56000,0.44000}
 		vertWeights {31,0.56000,0.44000}
-		vertWeights {528,0.56000,0.44000}
-		vertWeights {538,0.56000,0.44000}
-		vertWeights {541,0.56000,0.44000}
-		vertWeights {544,0.56000,0.44000}
-		vertWeights {550,0.56000,0.44000}
-		vertWeights {607,0.56000,0.44000}
-		vertWeights {613,0.56000,0.44000}
-		vertWeights {621,0.56000,0.44000}
-		vertWeights {627,0.56000,0.44000}
-		vertWeights {652,0.56000,0.44000}
+		vertWeights {552,0.56000,0.44000}
+		vertWeights {562,0.56000,0.44000}
+		vertWeights {565,0.56000,0.44000}
+		vertWeights {568,0.56000,0.44000}
+		vertWeights {574,0.56000,0.44000}
+		vertWeights {631,0.56000,0.44000}
+		vertWeights {637,0.56000,0.44000}
+		vertWeights {645,0.56000,0.44000}
+		vertWeights {651,0.56000,0.44000}
+		vertWeights {676,0.56000,0.44000}
 	}
 	CIwAnimSkinSet
 	{
@@ -696,86 +700,86 @@ CIwAnimSkin
 		vertWeights {29,0.49999,0.50001}
 		vertWeights {30,0.50833,0.49167}
 		vertWeights {32,0.23376,0.76624}
-		vertWeights {530,0.89633,0.10367}
-		vertWeights {535,0.54743,0.45257}
-		vertWeights {536,0.70890,0.29110}
-		vertWeights {543,0.36925,0.63075}
-		vertWeights {545,0.96256,0.03744}
-		vertWeights {547,0.89633,0.10367}
-		vertWeights {549,0.96256,0.03744}
-		vertWeights {551,0.96256,0.03744}
-		vertWeights {552,0.36925,0.63075}
-		vertWeights {553,0.17736,0.82264}
-		vertWeights {554,0.96256,0.03744}
-		vertWeights {555,0.50103,0.49897}
-		vertWeights {556,0.17736,0.82264}
-		vertWeights {557,0.21963,0.78037}
-		vertWeights {558,0.50103,0.49897}
-		vertWeights {559,0.36925,0.63075}
-		vertWeights {562,0.36925,0.63075}
-		vertWeights {563,0.49999,0.50001}
-		vertWeights {564,0.50103,0.49897}
-		vertWeights {565,0.49999,0.50001}
-		vertWeights {566,0.50435,0.49565}
-		vertWeights {567,0.70890,0.29110}
-		vertWeights {568,0.50435,0.49565}
-		vertWeights {569,0.89633,0.10367}
-		vertWeights {570,0.50435,0.49565}
-		vertWeights {571,0.70890,0.29110}
-		vertWeights {572,0.49999,0.50001}
-		vertWeights {573,0.50103,0.49897}
-		vertWeights {574,0.89633,0.10367}
-		vertWeights {575,0.50435,0.49565}
-		vertWeights {576,0.89633,0.10367}
-		vertWeights {577,0.50103,0.49897}
+		vertWeights {554,0.89633,0.10367}
+		vertWeights {559,0.54743,0.45257}
+		vertWeights {560,0.70890,0.29110}
+		vertWeights {567,0.36925,0.63075}
+		vertWeights {569,0.96256,0.03744}
+		vertWeights {571,0.89633,0.10367}
+		vertWeights {573,0.96256,0.03744}
+		vertWeights {575,0.96256,0.03744}
+		vertWeights {576,0.36925,0.63075}
+		vertWeights {577,0.17736,0.82264}
 		vertWeights {578,0.96256,0.03744}
-		vertWeights {579,0.21963,0.78037}
-		vertWeights {580,0.49999,0.50001}
+		vertWeights {579,0.50103,0.49897}
+		vertWeights {580,0.17736,0.82264}
 		vertWeights {581,0.21963,0.78037}
-		vertWeights {582,0.50000,0.50000}
-		vertWeights {583,0.49999,0.50001}
-		vertWeights {584,0.49999,0.50001}
-		vertWeights {585,0.49999,0.50001}
-		vertWeights {586,0.49999,0.50001}
-		vertWeights {587,0.50000,0.50000}
-		vertWeights {588,0.70890,0.29110}
+		vertWeights {582,0.50103,0.49897}
+		vertWeights {583,0.36925,0.63075}
+		vertWeights {586,0.36925,0.63075}
+		vertWeights {587,0.49999,0.50001}
+		vertWeights {588,0.50103,0.49897}
 		vertWeights {589,0.49999,0.50001}
-		vertWeights {590,0.49999,0.50001}
-		vertWeights {591,0.49999,0.50001}
-		vertWeights {592,0.70890,0.29110}
-		vertWeights {593,0.54743,0.45257}
-		vertWeights {595,0.54743,0.45257}
-		vertWeights {596,0.50833,0.49167}
-		vertWeights {599,0.54743,0.45257}
-		vertWeights {600,0.50000,0.50000}
-		vertWeights {601,0.49999,0.50001}
-		vertWeights {602,0.50000,0.50000}
-		vertWeights {603,0.54743,0.45257}
-		vertWeights {604,0.50833,0.49167}
-		vertWeights {610,0.50833,0.49167}
-		vertWeights {611,0.23376,0.76624}
-		vertWeights {614,0.50833,0.49167}
-		vertWeights {615,0.21035,0.78965}
-		vertWeights {616,0.50000,0.50000}
-		vertWeights {617,0.21035,0.78965}
-		vertWeights {618,0.50833,0.49167}
-		vertWeights {619,0.23376,0.76624}
-		vertWeights {624,0.23376,0.76624}
-		vertWeights {626,0.23376,0.76624}
-		vertWeights {737,0.17736,0.82264}
-		vertWeights {738,0.36925,0.63075}
-		vertWeights {740,0.17736,0.82264}
-		vertWeights {741,0.21963,0.78037}
-		vertWeights {743,0.17736,0.82264}
-		vertWeights {745,0.21963,0.78037}
-		vertWeights {750,0.21963,0.78037}
-		vertWeights {751,0.21035,0.78965}
-		vertWeights {752,0.21963,0.78037}
-		vertWeights {755,0.21035,0.78965}
-		vertWeights {756,0.23376,0.76624}
-		vertWeights {757,0.21035,0.78965}
-		vertWeights {762,0.23376,0.76624}
-		vertWeights {773,0.36925,0.63075}
+		vertWeights {590,0.50435,0.49565}
+		vertWeights {591,0.70890,0.29110}
+		vertWeights {592,0.50435,0.49565}
+		vertWeights {593,0.89633,0.10367}
+		vertWeights {594,0.50435,0.49565}
+		vertWeights {595,0.70890,0.29110}
+		vertWeights {596,0.49999,0.50001}
+		vertWeights {597,0.50103,0.49897}
+		vertWeights {598,0.89633,0.10367}
+		vertWeights {599,0.50435,0.49565}
+		vertWeights {600,0.89633,0.10367}
+		vertWeights {601,0.50103,0.49897}
+		vertWeights {602,0.96256,0.03744}
+		vertWeights {603,0.21963,0.78037}
+		vertWeights {604,0.49999,0.50001}
+		vertWeights {605,0.21963,0.78037}
+		vertWeights {606,0.50000,0.50000}
+		vertWeights {607,0.49999,0.50001}
+		vertWeights {608,0.49999,0.50001}
+		vertWeights {609,0.49999,0.50001}
+		vertWeights {610,0.49999,0.50001}
+		vertWeights {611,0.50000,0.50000}
+		vertWeights {612,0.70890,0.29110}
+		vertWeights {613,0.49999,0.50001}
+		vertWeights {614,0.49999,0.50001}
+		vertWeights {615,0.49999,0.50001}
+		vertWeights {616,0.70890,0.29110}
+		vertWeights {617,0.54743,0.45257}
+		vertWeights {619,0.54743,0.45257}
+		vertWeights {620,0.50833,0.49167}
+		vertWeights {623,0.54743,0.45257}
+		vertWeights {624,0.50000,0.50000}
+		vertWeights {625,0.49999,0.50001}
+		vertWeights {626,0.50000,0.50000}
+		vertWeights {627,0.54743,0.45257}
+		vertWeights {628,0.50833,0.49167}
+		vertWeights {634,0.50833,0.49167}
+		vertWeights {635,0.23376,0.76624}
+		vertWeights {638,0.50833,0.49167}
+		vertWeights {639,0.21035,0.78965}
+		vertWeights {640,0.50000,0.50000}
+		vertWeights {641,0.21035,0.78965}
+		vertWeights {642,0.50833,0.49167}
+		vertWeights {643,0.23376,0.76624}
+		vertWeights {648,0.23376,0.76624}
+		vertWeights {650,0.23376,0.76624}
+		vertWeights {769,0.17736,0.82264}
+		vertWeights {770,0.36925,0.63075}
+		vertWeights {772,0.17736,0.82264}
+		vertWeights {773,0.21963,0.78037}
+		vertWeights {775,0.17736,0.82264}
+		vertWeights {777,0.21963,0.78037}
+		vertWeights {782,0.21963,0.78037}
+		vertWeights {783,0.21035,0.78965}
+		vertWeights {784,0.21963,0.78037}
+		vertWeights {787,0.21035,0.78965}
+		vertWeights {788,0.23376,0.76624}
+		vertWeights {789,0.21035,0.78965}
+		vertWeights {794,0.23376,0.76624}
+		vertWeights {805,0.36925,0.63075}
 	}
 	CIwAnimSkinSet
 	{
@@ -784,23 +788,23 @@ CIwAnimSkin
 		vertWeights {16,0.75000,0.25000}
 		vertWeights {221,0.75000,0.25000}
 		vertWeights {222,0.75000,0.25000}
-		vertWeights {540,0.75000,0.25000}
-		vertWeights {542,0.75000,0.25000}
-		vertWeights {560,0.75000,0.25000}
-		vertWeights {653,0.75000,0.25000}
-		vertWeights {654,0.75000,0.25000}
-		vertWeights {655,0.75000,0.25000}
-		vertWeights {658,0.75000,0.25000}
-		vertWeights {660,0.75000,0.25000}
-		vertWeights {1499,0.75000,0.25000}
-		vertWeights {1501,0.75000,0.25000}
-		vertWeights {1505,0.75000,0.25000}
-		vertWeights {1523,0.75000,0.25000}
-		vertWeights {1616,0.75000,0.25000}
-		vertWeights {1617,0.75000,0.25000}
-		vertWeights {1619,0.75000,0.25000}
-		vertWeights {1621,0.75000,0.25000}
-		vertWeights {1625,0.75000,0.25000}
+		vertWeights {564,0.75000,0.25000}
+		vertWeights {566,0.75000,0.25000}
+		vertWeights {584,0.75000,0.25000}
+		vertWeights {677,0.75000,0.25000}
+		vertWeights {678,0.75000,0.25000}
+		vertWeights {679,0.75000,0.25000}
+		vertWeights {682,0.75000,0.25000}
+		vertWeights {684,0.75000,0.25000}
+		vertWeights {1531,0.75000,0.25000}
+		vertWeights {1533,0.75000,0.25000}
+		vertWeights {1537,0.75000,0.25000}
+		vertWeights {1555,0.75000,0.25000}
+		vertWeights {1648,0.75000,0.25000}
+		vertWeights {1649,0.75000,0.25000}
+		vertWeights {1651,0.75000,0.25000}
+		vertWeights {1653,0.75000,0.25000}
+		vertWeights {1657,0.75000,0.25000}
 	}
 	CIwAnimSkinSet
 	{
@@ -809,22 +813,22 @@ CIwAnimSkin
 		vertWeights {23,0.20000,0.80000}
 		vertWeights {35,0.30000,0.70000}
 		vertWeights {37,0.30000,0.70000}
-		vertWeights {561,0.20000,0.80000}
-		vertWeights {625,0.30000,0.70000}
-		vertWeights {629,0.30000,0.70000}
-		vertWeights {631,0.30000,0.70000}
-		vertWeights {632,0.30000,0.70000}
-		vertWeights {636,0.30000,0.70000}
-		vertWeights {637,0.20000,0.80000}
-		vertWeights {638,0.30000,0.70000}
-		vertWeights {639,0.30000,0.70000}
-		vertWeights {641,0.30000,0.70000}
-		vertWeights {643,0.20000,0.80000}
-		vertWeights {644,0.30000,0.70000}
-		vertWeights {645,0.20000,0.80000}
-		vertWeights {647,0.30000,0.70000}
-		vertWeights {651,0.30000,0.70000}
-		vertWeights {659,0.20000,0.80000}
+		vertWeights {585,0.20000,0.80000}
+		vertWeights {649,0.30000,0.70000}
+		vertWeights {653,0.30000,0.70000}
+		vertWeights {655,0.30000,0.70000}
+		vertWeights {656,0.30000,0.70000}
+		vertWeights {660,0.30000,0.70000}
+		vertWeights {661,0.20000,0.80000}
+		vertWeights {662,0.30000,0.70000}
+		vertWeights {663,0.30000,0.70000}
+		vertWeights {665,0.30000,0.70000}
+		vertWeights {667,0.20000,0.80000}
+		vertWeights {668,0.30000,0.70000}
+		vertWeights {669,0.20000,0.80000}
+		vertWeights {671,0.30000,0.70000}
+		vertWeights {675,0.30000,0.70000}
+		vertWeights {683,0.20000,0.80000}
 	}
 	CIwAnimSkinSet
 	{
@@ -849,55 +853,24 @@ CIwAnimSkin
 		vertWeights {74,1}
 		vertWeights {75,1}
 		vertWeights {76,1}
-		vertWeights {628,1}
-		vertWeights {630,1}
-		vertWeights {633,1}
-		vertWeights {634,1}
-		vertWeights {635,1}
-		vertWeights {739,1}
-		vertWeights {742,1}
-		vertWeights {744,1}
-		vertWeights {746,1}
-		vertWeights {747,1}
-		vertWeights {748,1}
-		vertWeights {749,1}
-		vertWeights {753,1}
-		vertWeights {754,1}
-		vertWeights {758,1}
-		vertWeights {759,1}
-		vertWeights {760,1}
-		vertWeights {761,1}
-		vertWeights {763,1}
-		vertWeights {764,1}
-		vertWeights {765,1}
-		vertWeights {766,1}
-		vertWeights {767,1}
-		vertWeights {768,1}
-		vertWeights {769,1}
-		vertWeights {770,1}
+		vertWeights {652,1}
+		vertWeights {654,1}
+		vertWeights {657,1}
+		vertWeights {658,1}
+		vertWeights {659,1}
 		vertWeights {771,1}
-		vertWeights {772,1}
 		vertWeights {774,1}
-		vertWeights {775,1}
 		vertWeights {776,1}
-		vertWeights {777,1}
 		vertWeights {778,1}
 		vertWeights {779,1}
 		vertWeights {780,1}
 		vertWeights {781,1}
-		vertWeights {782,1}
-		vertWeights {783,1}
-		vertWeights {784,1}
 		vertWeights {785,1}
 		vertWeights {786,1}
-		vertWeights {787,1}
-		vertWeights {788,1}
-		vertWeights {789,1}
 		vertWeights {790,1}
 		vertWeights {791,1}
 		vertWeights {792,1}
 		vertWeights {793,1}
-		vertWeights {794,1}
 		vertWeights {795,1}
 		vertWeights {796,1}
 		vertWeights {797,1}
@@ -908,7 +881,6 @@ CIwAnimSkin
 		vertWeights {802,1}
 		vertWeights {803,1}
 		vertWeights {804,1}
-		vertWeights {805,1}
 		vertWeights {806,1}
 		vertWeights {807,1}
 		vertWeights {808,1}
@@ -920,46 +892,78 @@ CIwAnimSkin
 		vertWeights {814,1}
 		vertWeights {815,1}
 		vertWeights {816,1}
-		vertWeights {889,1}
-		vertWeights {890,1}
-		vertWeights {892,1}
-		vertWeights {893,1}
-		vertWeights {896,1}
-		vertWeights {897,1}
-		vertWeights {898,1}
-		vertWeights {900,1}
-		vertWeights {901,1}
-		vertWeights {903,1}
-		vertWeights {904,1}
-		vertWeights {906,1}
-		vertWeights {908,1}
-		vertWeights {909,1}
-		vertWeights {911,1}
-		vertWeights {913,1}
-		vertWeights {914,1}
-		vertWeights {916,1}
-		vertWeights {917,1}
+		vertWeights {817,1}
+		vertWeights {818,1}
+		vertWeights {819,1}
+		vertWeights {820,1}
+		vertWeights {821,1}
+		vertWeights {822,1}
+		vertWeights {823,1}
+		vertWeights {824,1}
+		vertWeights {825,1}
+		vertWeights {826,1}
+		vertWeights {827,1}
+		vertWeights {828,1}
+		vertWeights {829,1}
+		vertWeights {830,1}
+		vertWeights {831,1}
+		vertWeights {832,1}
+		vertWeights {833,1}
+		vertWeights {834,1}
+		vertWeights {835,1}
+		vertWeights {836,1}
+		vertWeights {837,1}
+		vertWeights {838,1}
+		vertWeights {839,1}
+		vertWeights {840,1}
+		vertWeights {841,1}
+		vertWeights {842,1}
+		vertWeights {843,1}
+		vertWeights {844,1}
+		vertWeights {845,1}
+		vertWeights {846,1}
+		vertWeights {847,1}
+		vertWeights {848,1}
 		vertWeights {921,1}
 		vertWeights {922,1}
-		vertWeights {923,1}
-		vertWeights {927,1}
+		vertWeights {924,1}
+		vertWeights {925,1}
 		vertWeights {928,1}
+		vertWeights {929,1}
+		vertWeights {930,1}
+		vertWeights {932,1}
+		vertWeights {933,1}
+		vertWeights {935,1}
+		vertWeights {936,1}
+		vertWeights {938,1}
+		vertWeights {940,1}
+		vertWeights {941,1}
+		vertWeights {943,1}
+		vertWeights {945,1}
+		vertWeights {946,1}
+		vertWeights {948,1}
+		vertWeights {949,1}
+		vertWeights {953,1}
+		vertWeights {954,1}
+		vertWeights {955,1}
+		vertWeights {959,1}
+		vertWeights {960,1}
 	}
 	CIwAnimSkinSet
 	{
 		useBones { Chest01 L_Arm01 Spine01 }
 		numVerts 6
 		vertWeights {38,0.71209,0.17802,0.10989}
-		vertWeights {640,0.71209,0.17802,0.10989}
-		vertWeights {642,0.71209,0.17802,0.10989}
-		vertWeights {646,0.71209,0.17802,0.10989}
+		vertWeights {664,0.71209,0.17802,0.10989}
 		vertWeights {666,0.71209,0.17802,0.10989}
-		vertWeights {671,0.71209,0.17802,0.10989}
+		vertWeights {670,0.71209,0.17802,0.10989}
+		vertWeights {692,0.71209,0.17802,0.10989}
+		vertWeights {697,0.71209,0.17802,0.10989}
 	}
 	CIwAnimSkinSet
 	{
 		useBones { Spine02 Spine01 HIP01 }
-		numVerts 64
+		numVerts 72
 		vertWeights {43,0.45000,0.45000,0.10000}
 		vertWeights {44,0.45000,0.45000,0.10000}
 		vertWeights {45,0.45000,0.45000,0.10000}
@@ -972,63 +976,71 @@ CIwAnimSkin
 		vertWeights {251,0.45000,0.45000,0.10000}
 		vertWeights {252,0.45000,0.45000,0.10000}
 		vertWeights {253,0.45000,0.45000,0.10000}
-		vertWeights {667,0.45000,0.45000,0.10000}
-		vertWeights {669,0.45000,0.45000,0.10000}
-		vertWeights {673,0.45000,0.45000,0.10000}
-		vertWeights {675,0.45000,0.45000,0.10000}
-		vertWeights {677,0.45000,0.45000,0.10000}
-		vertWeights {679,0.45000,0.45000,0.10000}
-		vertWeights {683,0.45000,0.45000,0.10000}
-		vertWeights {684,0.45000,0.45000,0.10000}
-		vertWeights {687,0.45000,0.45000,0.10000}
-		vertWeights {688,0.45000,0.45000,0.10000}
 		vertWeights {689,0.45000,0.45000,0.10000}
-		vertWeights {691,0.45000,0.45000,0.10000}
-		vertWeights {692,0.45000,0.45000,0.10000}
 		vertWeights {693,0.45000,0.45000,0.10000}
-		vertWeights {694,0.45000,0.45000,0.10000}
-		vertWeights {696,0.45000,0.45000,0.10000}
-		vertWeights {697,0.45000,0.45000,0.10000}
-		vertWeights {700,0.45000,0.45000,0.10000}
+		vertWeights {695,0.45000,0.45000,0.10000}
+		vertWeights {699,0.45000,0.45000,0.10000}
 		vertWeights {701,0.45000,0.45000,0.10000}
-		vertWeights {702,0.45000,0.45000,0.10000}
+		vertWeights {703,0.45000,0.45000,0.10000}
 		vertWeights {705,0.45000,0.45000,0.10000}
-		vertWeights {706,0.45000,0.45000,0.10000}
-		vertWeights {707,0.45000,0.45000,0.10000}
 		vertWeights {709,0.45000,0.45000,0.10000}
-		vertWeights {711,0.45000,0.45000,0.10000}
-		vertWeights {1628,0.45000,0.45000,0.10000}
-		vertWeights {1631,0.45000,0.45000,0.10000}
-		vertWeights {1635,0.45000,0.45000,0.10000}
-		vertWeights {1637,0.45000,0.45000,0.10000}
-		vertWeights {1640,0.45000,0.45000,0.10000}
-		vertWeights {1641,0.45000,0.45000,0.10000}
-		vertWeights {1642,0.45000,0.45000,0.10000}
-		vertWeights {1647,0.45000,0.45000,0.10000}
-		vertWeights {1649,0.45000,0.45000,0.10000}
-		vertWeights {1651,0.45000,0.45000,0.10000}
-		vertWeights {1653,0.45000,0.45000,0.10000}
-		vertWeights {1654,0.45000,0.45000,0.10000}
-		vertWeights {1657,0.45000,0.45000,0.10000}
-		vertWeights {1658,0.45000,0.45000,0.10000}
-		vertWeights {1659,0.45000,0.45000,0.10000}
+		vertWeights {710,0.45000,0.45000,0.10000}
+		vertWeights {714,0.45000,0.45000,0.10000}
+		vertWeights {715,0.45000,0.45000,0.10000}
+		vertWeights {716,0.45000,0.45000,0.10000}
+		vertWeights {717,0.45000,0.45000,0.10000}
+		vertWeights {719,0.45000,0.45000,0.10000}
+		vertWeights {720,0.45000,0.45000,0.10000}
+		vertWeights {721,0.45000,0.45000,0.10000}
+		vertWeights {722,0.45000,0.45000,0.10000}
+		vertWeights {724,0.45000,0.45000,0.10000}
+		vertWeights {725,0.45000,0.45000,0.10000}
+		vertWeights {727,0.45000,0.45000,0.10000}
+		vertWeights {730,0.45000,0.45000,0.10000}
+		vertWeights {731,0.45000,0.45000,0.10000}
+		vertWeights {732,0.45000,0.45000,0.10000}
+		vertWeights {735,0.45000,0.45000,0.10000}
+		vertWeights {736,0.45000,0.45000,0.10000}
+		vertWeights {737,0.45000,0.45000,0.10000}
+		vertWeights {739,0.45000,0.45000,0.10000}
+		vertWeights {741,0.45000,0.45000,0.10000}
+		vertWeights {743,0.45000,0.45000,0.10000}
 		vertWeights {1660,0.45000,0.45000,0.10000}
-		vertWeights {1662,0.45000,0.45000,0.10000}
-		vertWeights {1663,0.45000,0.45000,0.10000}
+		vertWeights {1661,0.45000,0.45000,0.10000}
 		vertWeights {1665,0.45000,0.45000,0.10000}
-		vertWeights {1666,0.45000,0.45000,0.10000}
-		vertWeights {1668,0.45000,0.45000,0.10000}
-		vertWeights {1670,0.45000,0.45000,0.10000}
-		vertWeights {1672,0.45000,0.45000,0.10000}
-		vertWeights {1673,0.45000,0.45000,0.10000}
+		vertWeights {1669,0.45000,0.45000,0.10000}
+		vertWeights {1671,0.45000,0.45000,0.10000}
+		vertWeights {1674,0.45000,0.45000,0.10000}
 		vertWeights {1675,0.45000,0.45000,0.10000}
-		vertWeights {1677,0.45000,0.45000,0.10000}
-		vertWeights {1680,0.45000,0.45000,0.10000}
+		vertWeights {1676,0.45000,0.45000,0.10000}
+		vertWeights {1681,0.45000,0.45000,0.10000}
+		vertWeights {1683,0.45000,0.45000,0.10000}
+		vertWeights {1685,0.45000,0.45000,0.10000}
+		vertWeights {1687,0.45000,0.45000,0.10000}
+		vertWeights {1689,0.45000,0.45000,0.10000}
+		vertWeights {1690,0.45000,0.45000,0.10000}
+		vertWeights {1693,0.45000,0.45000,0.10000}
+		vertWeights {1694,0.45000,0.45000,0.10000}
+		vertWeights {1695,0.45000,0.45000,0.10000}
+		vertWeights {1696,0.45000,0.45000,0.10000}
+		vertWeights {1698,0.45000,0.45000,0.10000}
+		vertWeights {1699,0.45000,0.45000,0.10000}
+		vertWeights {1702,0.45000,0.45000,0.10000}
+		vertWeights {1703,0.45000,0.45000,0.10000}
+		vertWeights {1704,0.45000,0.45000,0.10000}
+		vertWeights {1706,0.45000,0.45000,0.10000}
+		vertWeights {1708,0.45000,0.45000,0.10000}
+		vertWeights {1710,0.45000,0.45000,0.10000}
+		vertWeights {1711,0.45000,0.45000,0.10000}
+		vertWeights {1713,0.45000,0.45000,0.10000}
+		vertWeights {1715,0.45000,0.45000,0.10000}
+		vertWeights {1719,0.45000,0.45000,0.10000}
+		vertWeights {1720,0.45000,0.45000,0.10000}
 	}
 	CIwAnimSkinSet
 	{
 		useBones { Spine01 Spine02 HIP01 }
-		numVerts 69
+		numVerts 73
 		vertWeights {50,0.42500,0.42500,0.15000}
 		vertWeights {51,0.42500,0.42500,0.15000}
 		vertWeights {52,0.42500,0.42500,0.15000}
@@ -1044,60 +1056,64 @@ CIwAnimSkin
 		vertWeights {475,0.42500,0.42500,0.15000}
 		vertWeights {476,0.42500,0.42500,0.15000}
 		vertWeights {477,0.42500,0.42500,0.15000}
-		vertWeights {482,0.42500,0.42500,0.15000}
+		vertWeights {482,0.45000,0.45000,0.10000}
 		vertWeights {519,0.42500,0.42500,0.15000}
 		vertWeights {520,0.42500,0.42500,0.15000}
 		vertWeights {521,0.42500,0.42500,0.15000}
-		vertWeights {690,0.42500,0.42500,0.15000}
-		vertWeights {695,0.42500,0.42500,0.15000}
-		vertWeights {698,0.42500,0.42500,0.15000}
-		vertWeights {699,0.42500,0.42500,0.15000}
-		vertWeights {703,0.42500,0.42500,0.15000}
-		vertWeights {704,0.42500,0.42500,0.15000}
-		vertWeights {708,0.42500,0.42500,0.15000}
-		vertWeights {710,0.42500,0.42500,0.15000}
-		vertWeights {712,0.42500,0.42500,0.15000}
-		vertWeights {713,0.42500,0.42500,0.15000}
-		vertWeights {714,0.42500,0.42500,0.15000}
-		vertWeights {716,0.42500,0.42500,0.15000}
-		vertWeights {717,0.42500,0.42500,0.15000}
 		vertWeights {718,0.42500,0.42500,0.15000}
-		vertWeights {719,0.42500,0.42500,0.15000}
-		vertWeights {721,0.42500,0.42500,0.15000}
-		vertWeights {722,0.42500,0.42500,0.15000}
-		vertWeights {724,0.42500,0.42500,0.15000}
+		vertWeights {723,0.42500,0.42500,0.15000}
 		vertWeights {726,0.42500,0.42500,0.15000}
 		vertWeights {728,0.42500,0.42500,0.15000}
-		vertWeights {730,0.42500,0.42500,0.15000}
-		vertWeights {732,0.42500,0.42500,0.15000}
+		vertWeights {729,0.42500,0.42500,0.15000}
 		vertWeights {733,0.42500,0.42500,0.15000}
-		vertWeights {735,0.42500,0.42500,0.15000}
-		vertWeights {1655,0.42500,0.42500,0.15000}
-		vertWeights {1656,0.42500,0.42500,0.15000}
-		vertWeights {1661,0.42500,0.42500,0.15000}
-		vertWeights {1664,0.42500,0.42500,0.15000}
-		vertWeights {1667,0.42500,0.42500,0.15000}
-		vertWeights {1669,0.42500,0.42500,0.15000}
-		vertWeights {1671,0.42500,0.42500,0.15000}
-		vertWeights {1674,0.42500,0.42500,0.15000}
-		vertWeights {1676,0.45000,0.45000,0.10000}
-		vertWeights {1678,0.42500,0.42500,0.15000}
-		vertWeights {1679,0.42500,0.42500,0.15000}
-		vertWeights {1681,0.42500,0.42500,0.15000}
-		vertWeights {1684,0.42500,0.42500,0.15000}
-		vertWeights {1685,0.42500,0.42500,0.15000}
-		vertWeights {1686,0.42500,0.42500,0.15000}
-		vertWeights {1687,0.42500,0.42500,0.15000}
-		vertWeights {1689,0.42500,0.42500,0.15000}
-		vertWeights {1690,0.42500,0.42500,0.15000}
-		vertWeights {1693,0.42500,0.42500,0.15000}
-		vertWeights {1694,0.42500,0.42500,0.15000}
-		vertWeights {1695,0.42500,0.42500,0.15000}
-		vertWeights {1699,0.42500,0.42500,0.15000}
+		vertWeights {734,0.42500,0.42500,0.15000}
+		vertWeights {738,0.42500,0.42500,0.15000}
+		vertWeights {740,0.42500,0.42500,0.15000}
+		vertWeights {742,0.42500,0.42500,0.15000}
+		vertWeights {744,0.42500,0.42500,0.15000}
+		vertWeights {745,0.42500,0.42500,0.15000}
+		vertWeights {746,0.42500,0.42500,0.15000}
+		vertWeights {748,0.42500,0.42500,0.15000}
+		vertWeights {749,0.42500,0.42500,0.15000}
+		vertWeights {750,0.42500,0.42500,0.15000}
+		vertWeights {751,0.42500,0.42500,0.15000}
+		vertWeights {753,0.42500,0.42500,0.15000}
+		vertWeights {754,0.42500,0.42500,0.15000}
+		vertWeights {756,0.42500,0.42500,0.15000}
+		vertWeights {758,0.42500,0.42500,0.15000}
+		vertWeights {760,0.42500,0.42500,0.15000}
+		vertWeights {762,0.42500,0.42500,0.15000}
+		vertWeights {764,0.42500,0.42500,0.15000}
+		vertWeights {765,0.42500,0.42500,0.15000}
+		vertWeights {767,0.42500,0.42500,0.15000}
+		vertWeights {1691,0.42500,0.42500,0.15000}
+		vertWeights {1692,0.42500,0.42500,0.15000}
+		vertWeights {1697,0.42500,0.42500,0.15000}
 		vertWeights {1700,0.42500,0.42500,0.15000}
 		vertWeights {1701,0.42500,0.42500,0.15000}
-		vertWeights {1704,0.42500,0.42500,0.15000}
 		vertWeights {1705,0.42500,0.42500,0.15000}
+		vertWeights {1707,0.42500,0.42500,0.15000}
+		vertWeights {1709,0.42500,0.42500,0.15000}
+		vertWeights {1712,0.42500,0.42500,0.15000}
+		vertWeights {1714,0.45000,0.45000,0.10000}
+		vertWeights {1716,0.42500,0.42500,0.15000}
+		vertWeights {1717,0.42500,0.42500,0.15000}
+		vertWeights {1718,0.42500,0.42500,0.15000}
+		vertWeights {1721,0.42500,0.42500,0.15000}
+		vertWeights {1724,0.42500,0.42500,0.15000}
+		vertWeights {1725,0.42500,0.42500,0.15000}
+		vertWeights {1726,0.42500,0.42500,0.15000}
+		vertWeights {1727,0.42500,0.42500,0.15000}
+		vertWeights {1729,0.42500,0.42500,0.15000}
+		vertWeights {1730,0.42500,0.42500,0.15000}
+		vertWeights {1733,0.42500,0.42500,0.15000}
+		vertWeights {1734,0.42500,0.42500,0.15000}
+		vertWeights {1735,0.42500,0.42500,0.15000}
+		vertWeights {1739,0.42500,0.42500,0.15000}
+		vertWeights {1740,0.42500,0.42500,0.15000}
+		vertWeights {1741,0.42500,0.42500,0.15000}
+		vertWeights {1744,0.42500,0.42500,0.15000}
+		vertWeights {1745,0.42500,0.42500,0.15000}
 	}
 	CIwAnimSkinSet
 	{
@@ -1122,61 +1138,61 @@ CIwAnimSkin
 		vertWeights {445,0.50000,0.50000}
 		vertWeights {447,0.35000,0.65000}
 		vertWeights {448,0.75000,0.25000}
-		vertWeights {720,0.10000,0.90000}
-		vertWeights {723,0.50000,0.50000}
-		vertWeights {725,0.50000,0.50000}
-		vertWeights {727,0.10000,0.90000}
-		vertWeights {729,0.10000,0.90000}
-		vertWeights {734,0.25000,0.75000}
-		vertWeights {736,0.50000,0.50000}
-		vertWeights {1308,0.50000,0.50000}
-		vertWeights {1309,0.75000,0.25000}
-		vertWeights {1310,0.50000,0.50000}
-		vertWeights {1311,0.10000,0.90000}
-		vertWeights {1312,0.50000,0.50000}
-		vertWeights {1313,0.50000,0.50000}
-		vertWeights {1315,0.50000,0.50000}
-		vertWeights {1316,0.75000,0.25000}
-		vertWeights {1317,0.10000,0.90000}
-		vertWeights {1318,0.75000,0.25000}
-		vertWeights {1319,0.75000,0.25000}
-		vertWeights {1320,0.75000,0.25000}
-		vertWeights {1321,0.10000,0.90000}
-		vertWeights {1323,0.50000,0.50000}
-		vertWeights {1324,0.25000,0.75000}
-		vertWeights {1325,0.75000,0.25000}
-		vertWeights {1326,0.50000,0.50000}
-		vertWeights {1328,0.75000,0.25000}
-		vertWeights {1329,0.90000,0.10000}
-		vertWeights {1330,0.75000,0.25000}
-		vertWeights {1332,0.90000,0.10000}
-		vertWeights {1333,0.75000,0.25000}
-		vertWeights {1334,0.75000,0.25000}
-		vertWeights {1335,0.90000,0.10000}
-		vertWeights {1338,0.75000,0.25000}
-		vertWeights {1339,0.75000,0.25000}
+		vertWeights {752,0.10000,0.90000}
+		vertWeights {755,0.50000,0.50000}
+		vertWeights {757,0.50000,0.50000}
+		vertWeights {759,0.10000,0.90000}
+		vertWeights {761,0.10000,0.90000}
+		vertWeights {766,0.25000,0.75000}
+		vertWeights {768,0.50000,0.50000}
+		vertWeights {1340,0.50000,0.50000}
 		vertWeights {1341,0.75000,0.25000}
-		vertWeights {1342,0.75000,0.25000}
-		vertWeights {1343,0.75000,0.25000}
-		vertWeights {1344,0.75000,0.25000}
-		vertWeights {1345,0.75000,0.25000}
-		vertWeights {1346,0.75000,0.25000}
-		vertWeights {1347,0.75000,0.25000}
+		vertWeights {1342,0.50000,0.50000}
+		vertWeights {1343,0.10000,0.90000}
+		vertWeights {1344,0.50000,0.50000}
+		vertWeights {1345,0.50000,0.50000}
+		vertWeights {1347,0.50000,0.50000}
+		vertWeights {1348,0.75000,0.25000}
+		vertWeights {1349,0.10000,0.90000}
 		vertWeights {1350,0.75000,0.25000}
 		vertWeights {1351,0.75000,0.25000}
-		vertWeights {1352,0.90000,0.10000}
-		vertWeights {1355,0.90000,0.10000}
-		vertWeights {1356,0.90000,0.10000}
-		vertWeights {1358,0.75000,0.25000}
-		vertWeights {1359,0.75000,0.25000}
+		vertWeights {1352,0.75000,0.25000}
+		vertWeights {1353,0.10000,0.90000}
+		vertWeights {1355,0.50000,0.50000}
+		vertWeights {1356,0.25000,0.75000}
+		vertWeights {1357,0.75000,0.25000}
+		vertWeights {1358,0.50000,0.50000}
+		vertWeights {1360,0.75000,0.25000}
+		vertWeights {1361,0.90000,0.10000}
 		vertWeights {1362,0.75000,0.25000}
-		vertWeights {1363,0.75000,0.25000}
-		vertWeights {1364,0.75000,0.25000}
+		vertWeights {1364,0.90000,0.10000}
 		vertWeights {1365,0.75000,0.25000}
 		vertWeights {1366,0.75000,0.25000}
-		vertWeights {1368,0.75000,0.25000}
-		vertWeights {1369,0.75000,0.25000}
+		vertWeights {1367,0.90000,0.10000}
 		vertWeights {1370,0.75000,0.25000}
+		vertWeights {1371,0.75000,0.25000}
+		vertWeights {1373,0.75000,0.25000}
+		vertWeights {1374,0.75000,0.25000}
+		vertWeights {1375,0.75000,0.25000}
+		vertWeights {1376,0.75000,0.25000}
+		vertWeights {1377,0.75000,0.25000}
+		vertWeights {1378,0.75000,0.25000}
+		vertWeights {1379,0.75000,0.25000}
+		vertWeights {1382,0.75000,0.25000}
+		vertWeights {1383,0.75000,0.25000}
+		vertWeights {1384,0.90000,0.10000}
+		vertWeights {1387,0.90000,0.10000}
+		vertWeights {1388,0.90000,0.10000}
+		vertWeights {1390,0.75000,0.25000}
+		vertWeights {1391,0.75000,0.25000}
+		vertWeights {1394,0.75000,0.25000}
+		vertWeights {1395,0.75000,0.25000}
+		vertWeights {1396,0.75000,0.25000}
+		vertWeights {1397,0.75000,0.25000}
+		vertWeights {1398,0.75000,0.25000}
+		vertWeights {1400,0.75000,0.25000}
+		vertWeights {1401,0.75000,0.25000}
+		vertWeights {1402,0.75000,0.25000}
 	}
 	CIwAnimSkinSet
 	{
@@ -1198,84 +1214,84 @@ CIwAnimSkin
 		vertWeights {106,0.55573,0.44427}
 		vertWeights {107,0.56223,0.43777}
 		vertWeights {108,0.57937,0.42063}
-		vertWeights {818,0.30669,0.69331}
-		vertWeights {819,0.33072,0.66928}
-		vertWeights {822,0.33072,0.66928}
-		vertWeights {824,0.31129,0.68871}
-		vertWeights {826,0.41414,0.58586}
-		vertWeights {828,0.42842,0.57158}
-		vertWeights {829,0.42842,0.57158}
-		vertWeights {830,0.42842,0.57158}
-		vertWeights {833,0.42662,0.57338}
-		vertWeights {834,0.42662,0.57338}
-		vertWeights {837,0.39871,0.60129}
-		vertWeights {839,0.44980,0.55020}
-		vertWeights {841,0.39871,0.60129}
-		vertWeights {843,0.30669,0.69331}
-		vertWeights {845,0.31129,0.68871}
-		vertWeights {847,0.30669,0.69331}
-		vertWeights {891,0.60643,0.39357}
-		vertWeights {894,0.57267,0.42733}
-		vertWeights {895,0.58481,0.41519}
-		vertWeights {899,0.58706,0.41294}
-		vertWeights {902,0.58481,0.41519}
-		vertWeights {905,0.58481,0.41519}
-		vertWeights {907,0.55573,0.44427}
-		vertWeights {910,0.55573,0.44427}
-		vertWeights {912,0.56223,0.43777}
-		vertWeights {915,0.56223,0.43777}
-		vertWeights {918,0.59243,0.40757}
-		vertWeights {919,0.57937,0.42063}
-		vertWeights {920,0.59243,0.40757}
-		vertWeights {924,0.60643,0.39357}
-		vertWeights {925,0.58706,0.41294}
-		vertWeights {926,0.60643,0.39357}
-		vertWeights {929,0.57267,0.42733}
-		vertWeights {930,0.30669,0.69331}
-		vertWeights {931,0.60643,0.39357}
-		vertWeights {932,0.30669,0.69331}
-		vertWeights {933,0.57267,0.42733}
-		vertWeights {934,0.33072,0.66928}
-		vertWeights {935,0.57267,0.42733}
-		vertWeights {936,0.41414,0.58586}
-		vertWeights {937,0.33072,0.66928}
-		vertWeights {938,0.41414,0.58586}
-		vertWeights {939,0.57267,0.42733}
-		vertWeights {940,0.58481,0.41519}
-		vertWeights {941,0.58706,0.41294}
-		vertWeights {942,0.39871,0.60129}
-		vertWeights {943,0.59243,0.40757}
-		vertWeights {944,0.39871,0.60129}
-		vertWeights {945,0.58706,0.41294}
-		vertWeights {946,0.31129,0.68871}
-		vertWeights {947,0.41414,0.58586}
-		vertWeights {948,0.41414,0.58586}
-		vertWeights {949,0.55573,0.44427}
-		vertWeights {950,0.42842,0.57158}
-		vertWeights {951,0.55573,0.44427}
-		vertWeights {952,0.42662,0.57338}
-		vertWeights {953,0.42842,0.57158}
-		vertWeights {954,0.42662,0.57338}
-		vertWeights {955,0.55573,0.44427}
-		vertWeights {956,0.56223,0.43777}
-		vertWeights {957,0.56223,0.43777}
-		vertWeights {958,0.44980,0.55020}
-		vertWeights {959,0.42662,0.57338}
-		vertWeights {960,0.44980,0.55020}
-		vertWeights {961,0.56223,0.43777}
-		vertWeights {962,0.57937,0.42063}
-		vertWeights {963,0.59243,0.40757}
-		vertWeights {964,0.44980,0.55020}
-		vertWeights {965,0.57937,0.42063}
-		vertWeights {966,0.44980,0.55020}
-		vertWeights {967,0.59243,0.40757}
-		vertWeights {968,0.39871,0.60129}
-		vertWeights {969,0.58706,0.41294}
-		vertWeights {970,0.30669,0.69331}
-		vertWeights {971,0.31129,0.68871}
-		vertWeights {972,0.30669,0.69331}
+		vertWeights {850,0.30669,0.69331}
+		vertWeights {851,0.33072,0.66928}
+		vertWeights {854,0.33072,0.66928}
+		vertWeights {856,0.31129,0.68871}
+		vertWeights {858,0.41414,0.58586}
+		vertWeights {860,0.42842,0.57158}
+		vertWeights {861,0.42842,0.57158}
+		vertWeights {862,0.42842,0.57158}
+		vertWeights {865,0.42662,0.57338}
+		vertWeights {866,0.42662,0.57338}
+		vertWeights {869,0.39871,0.60129}
+		vertWeights {871,0.44980,0.55020}
+		vertWeights {873,0.39871,0.60129}
+		vertWeights {875,0.30669,0.69331}
+		vertWeights {877,0.31129,0.68871}
+		vertWeights {879,0.30669,0.69331}
+		vertWeights {923,0.60643,0.39357}
+		vertWeights {926,0.57267,0.42733}
+		vertWeights {927,0.58481,0.41519}
+		vertWeights {931,0.58706,0.41294}
+		vertWeights {934,0.58481,0.41519}
+		vertWeights {937,0.58481,0.41519}
+		vertWeights {939,0.55573,0.44427}
+		vertWeights {942,0.55573,0.44427}
+		vertWeights {944,0.56223,0.43777}
+		vertWeights {947,0.56223,0.43777}
+		vertWeights {950,0.59243,0.40757}
+		vertWeights {951,0.57937,0.42063}
+		vertWeights {952,0.59243,0.40757}
+		vertWeights {956,0.60643,0.39357}
+		vertWeights {957,0.58706,0.41294}
+		vertWeights {958,0.60643,0.39357}
+		vertWeights {961,0.57267,0.42733}
+		vertWeights {962,0.30669,0.69331}
+		vertWeights {963,0.60643,0.39357}
+		vertWeights {964,0.30669,0.69331}
+		vertWeights {965,0.57267,0.42733}
+		vertWeights {966,0.33072,0.66928}
+		vertWeights {967,0.57267,0.42733}
+		vertWeights {968,0.41414,0.58586}
+		vertWeights {969,0.33072,0.66928}
+		vertWeights {970,0.41414,0.58586}
+		vertWeights {971,0.57267,0.42733}
+		vertWeights {972,0.58481,0.41519}
 		vertWeights {973,0.58706,0.41294}
-		vertWeights {974,0.60643,0.39357}
+		vertWeights {974,0.39871,0.60129}
+		vertWeights {975,0.59243,0.40757}
+		vertWeights {976,0.39871,0.60129}
+		vertWeights {977,0.58706,0.41294}
+		vertWeights {978,0.31129,0.68871}
+		vertWeights {979,0.41414,0.58586}
+		vertWeights {980,0.41414,0.58586}
+		vertWeights {981,0.55573,0.44427}
+		vertWeights {982,0.42842,0.57158}
+		vertWeights {983,0.55573,0.44427}
+		vertWeights {984,0.42662,0.57338}
+		vertWeights {985,0.42842,0.57158}
+		vertWeights {986,0.42662,0.57338}
+		vertWeights {987,0.55573,0.44427}
+		vertWeights {988,0.56223,0.43777}
+		vertWeights {989,0.56223,0.43777}
+		vertWeights {990,0.44980,0.55020}
+		vertWeights {991,0.42662,0.57338}
+		vertWeights {992,0.44980,0.55020}
+		vertWeights {993,0.56223,0.43777}
+		vertWeights {994,0.57937,0.42063}
+		vertWeights {995,0.59243,0.40757}
+		vertWeights {996,0.44980,0.55020}
+		vertWeights {997,0.57937,0.42063}
+		vertWeights {998,0.44980,0.55020}
+		vertWeights {999,0.59243,0.40757}
+		vertWeights {1000,0.39871,0.60129}
+		vertWeights {1001,0.58706,0.41294}
+		vertWeights {1002,0.30669,0.69331}
+		vertWeights {1003,0.31129,0.68871}
+		vertWeights {1004,0.30669,0.69331}
+		vertWeights {1005,0.58706,0.41294}
+		vertWeights {1006,0.60643,0.39357}
 	}
 	CIwAnimSkinSet
 	{
@@ -1289,46 +1305,46 @@ CIwAnimSkin
 		vertWeights {88,1}
 		vertWeights {90,1}
 		vertWeights {92,1}
-		vertWeights {817,1}
-		vertWeights {820,1}
-		vertWeights {821,1}
-		vertWeights {823,1}
-		vertWeights {825,1}
-		vertWeights {827,1}
-		vertWeights {831,1}
-		vertWeights {832,1}
-		vertWeights {835,1}
-		vertWeights {836,1}
-		vertWeights {838,1}
-		vertWeights {840,1}
-		vertWeights {842,1}
-		vertWeights {844,1}
-		vertWeights {846,1}
-		vertWeights {848,1}
 		vertWeights {849,1}
-		vertWeights {850,1}
 		vertWeights {852,1}
 		vertWeights {853,1}
-		vertWeights {856,1}
+		vertWeights {855,1}
 		vertWeights {857,1}
-		vertWeights {858,1}
 		vertWeights {859,1}
-		vertWeights {861,1}
-		vertWeights {862,1}
+		vertWeights {863,1}
 		vertWeights {864,1}
-		vertWeights {866,1}
 		vertWeights {867,1}
+		vertWeights {868,1}
 		vertWeights {870,1}
-		vertWeights {871,1}
-		vertWeights {873,1}
+		vertWeights {872,1}
 		vertWeights {874,1}
 		vertWeights {876,1}
-		vertWeights {877,1}
+		vertWeights {878,1}
+		vertWeights {880,1}
 		vertWeights {881,1}
 		vertWeights {882,1}
 		vertWeights {884,1}
-		vertWeights {886,1}
+		vertWeights {885,1}
 		vertWeights {888,1}
+		vertWeights {889,1}
+		vertWeights {890,1}
+		vertWeights {891,1}
+		vertWeights {893,1}
+		vertWeights {894,1}
+		vertWeights {896,1}
+		vertWeights {898,1}
+		vertWeights {899,1}
+		vertWeights {902,1}
+		vertWeights {903,1}
+		vertWeights {905,1}
+		vertWeights {906,1}
+		vertWeights {908,1}
+		vertWeights {909,1}
+		vertWeights {913,1}
+		vertWeights {914,1}
+		vertWeights {916,1}
+		vertWeights {918,1}
+		vertWeights {920,1}
 	}
 	CIwAnimSkinSet
 	{
@@ -1350,79 +1366,79 @@ CIwAnimSkin
 		vertWeights {114,0.67191,0.32809}
 		vertWeights {138,0.37240,0.62760}
 		vertWeights {148,0.49242,0.50758}
-		vertWeights {851,0.99768,0.00232}
-		vertWeights {854,0.98391,0.01609}
-		vertWeights {855,0.99154,0.00846}
-		vertWeights {860,0.97918,0.02082}
-		vertWeights {863,0.99154,0.00846}
-		vertWeights {865,0.99154,0.00846}
-		vertWeights {868,0.99838,0.00162}
-		vertWeights {869,0.97813,0.02187}
-		vertWeights {872,0.97813,0.02187}
-		vertWeights {875,0.97813,0.02187}
-		vertWeights {878,0.97918,0.02082}
-		vertWeights {879,0.98628,0.01372}
-		vertWeights {880,0.97918,0.02082}
-		vertWeights {883,0.99884,0.00116}
-		vertWeights {885,0.99768,0.00232}
-		vertWeights {887,0.99884,0.00116}
-		vertWeights {975,0.98391,0.01609}
-		vertWeights {976,0.99768,0.00232}
-		vertWeights {977,0.98391,0.01609}
-		vertWeights {978,0.99154,0.00846}
-		vertWeights {979,0.98391,0.01609}
-		vertWeights {980,0.72980,0.27020}
-		vertWeights {981,0.70318,0.29682}
-		vertWeights {982,0.97918,0.02082}
-		vertWeights {983,0.99884,0.00116}
-		vertWeights {984,0.99838,0.00162}
-		vertWeights {985,0.72980,0.27020}
-		vertWeights {986,0.99154,0.00846}
-		vertWeights {987,0.97813,0.02187}
-		vertWeights {988,0.72980,0.27020}
-		vertWeights {989,0.99838,0.00162}
-		vertWeights {990,0.98628,0.01372}
-		vertWeights {991,0.72980,0.27020}
-		vertWeights {992,0.97813,0.02187}
-		vertWeights {993,0.72980,0.27020}
-		vertWeights {994,0.98628,0.01372}
-		vertWeights {995,0.97918,0.02082}
-		vertWeights {996,0.67191,0.32809}
-		vertWeights {997,0.98628,0.01372}
-		vertWeights {998,0.65598,0.34402}
-		vertWeights {999,0.69630,0.30370}
-		vertWeights {1000,0.99884,0.00116}
-		vertWeights {1001,0.99768,0.00232}
-		vertWeights {1002,0.68572,0.31428}
-		vertWeights {1082,0.65598,0.34402}
-		vertWeights {1083,0.65598,0.34402}
-		vertWeights {1084,0.37240,0.62760}
-		vertWeights {1085,0.67191,0.32809}
-		vertWeights {1086,0.37240,0.62760}
-		vertWeights {1087,0.72980,0.27020}
-		vertWeights {1088,0.67191,0.32809}
-		vertWeights {1089,0.72980,0.27020}
-		vertWeights {1090,0.37240,0.62760}
-		vertWeights {1119,0.69630,0.30370}
-		vertWeights {1120,0.49242,0.50758}
-		vertWeights {1121,0.69630,0.30370}
-		vertWeights {1122,0.70318,0.29682}
-		vertWeights {1123,0.49242,0.50758}
-		vertWeights {1124,0.72980,0.27020}
-		vertWeights {1126,0.72980,0.27020}
-		vertWeights {1127,0.49242,0.50758}
-		vertWeights {1128,0.70318,0.29682}
-		vertWeights {1145,0.68572,0.31428}
-		vertWeights {1147,0.65598,0.34402}
-		vertWeights {1149,0.68572,0.31428}
-		vertWeights {1162,0.69630,0.30370}
-		vertWeights {1164,0.68572,0.31428}
-		vertWeights {1166,0.69630,0.30370}
-		vertWeights {1188,0.37240,0.62760}
-		vertWeights {1191,0.37240,0.62760}
-		vertWeights {1195,0.49242,0.50758}
-		vertWeights {1199,0.49242,0.50758}
-		vertWeights {1203,0.49242,0.50758}
+		vertWeights {883,0.99768,0.00232}
+		vertWeights {886,0.98391,0.01609}
+		vertWeights {887,0.99154,0.00846}
+		vertWeights {892,0.97918,0.02082}
+		vertWeights {895,0.99154,0.00846}
+		vertWeights {897,0.99154,0.00846}
+		vertWeights {900,0.99838,0.00162}
+		vertWeights {901,0.97813,0.02187}
+		vertWeights {904,0.97813,0.02187}
+		vertWeights {907,0.97813,0.02187}
+		vertWeights {910,0.97918,0.02082}
+		vertWeights {911,0.98628,0.01372}
+		vertWeights {912,0.97918,0.02082}
+		vertWeights {915,0.99884,0.00116}
+		vertWeights {917,0.99768,0.00232}
+		vertWeights {919,0.99884,0.00116}
+		vertWeights {1007,0.98391,0.01609}
+		vertWeights {1008,0.99768,0.00232}
+		vertWeights {1009,0.98391,0.01609}
+		vertWeights {1010,0.99154,0.00846}
+		vertWeights {1011,0.98391,0.01609}
+		vertWeights {1012,0.72980,0.27020}
+		vertWeights {1013,0.70318,0.29682}
+		vertWeights {1014,0.97918,0.02082}
+		vertWeights {1015,0.99884,0.00116}
+		vertWeights {1016,0.99838,0.00162}
+		vertWeights {1017,0.72980,0.27020}
+		vertWeights {1018,0.99154,0.00846}
+		vertWeights {1019,0.97813,0.02187}
+		vertWeights {1020,0.72980,0.27020}
+		vertWeights {1021,0.99838,0.00162}
+		vertWeights {1022,0.98628,0.01372}
+		vertWeights {1023,0.72980,0.27020}
+		vertWeights {1024,0.97813,0.02187}
+		vertWeights {1025,0.72980,0.27020}
+		vertWeights {1026,0.98628,0.01372}
+		vertWeights {1027,0.97918,0.02082}
+		vertWeights {1028,0.67191,0.32809}
+		vertWeights {1029,0.98628,0.01372}
+		vertWeights {1030,0.65598,0.34402}
+		vertWeights {1031,0.69630,0.30370}
+		vertWeights {1032,0.99884,0.00116}
+		vertWeights {1033,0.99768,0.00232}
+		vertWeights {1034,0.68572,0.31428}
+		vertWeights {1114,0.65598,0.34402}
+		vertWeights {1115,0.65598,0.34402}
+		vertWeights {1116,0.37240,0.62760}
+		vertWeights {1117,0.67191,0.32809}
+		vertWeights {1118,0.37240,0.62760}
+		vertWeights {1119,0.72980,0.27020}
+		vertWeights {1120,0.67191,0.32809}
+		vertWeights {1121,0.72980,0.27020}
+		vertWeights {1122,0.37240,0.62760}
+		vertWeights {1151,0.69630,0.30370}
+		vertWeights {1152,0.49242,0.50758}
+		vertWeights {1153,0.69630,0.30370}
+		vertWeights {1154,0.70318,0.29682}
+		vertWeights {1155,0.49242,0.50758}
+		vertWeights {1156,0.72980,0.27020}
+		vertWeights {1158,0.72980,0.27020}
+		vertWeights {1159,0.49242,0.50758}
+		vertWeights {1160,0.70318,0.29682}
+		vertWeights {1177,0.68572,0.31428}
+		vertWeights {1179,0.65598,0.34402}
+		vertWeights {1181,0.68572,0.31428}
+		vertWeights {1194,0.69630,0.30370}
+		vertWeights {1196,0.68572,0.31428}
+		vertWeights {1198,0.69630,0.30370}
+		vertWeights {1220,0.37240,0.62760}
+		vertWeights {1223,0.37240,0.62760}
+		vertWeights {1227,0.49242,0.50758}
+		vertWeights {1231,0.49242,0.50758}
+		vertWeights {1235,0.49242,0.50758}
 	}
 	CIwAnimSkinSet
 	{
@@ -1430,27 +1446,27 @@ CIwAnimSkin
 		numVerts 12
 		vertWeights {115,0.49870,0.49878,0.00252}
 		vertWeights {116,0.47267,0.44820,0.07913}
-		vertWeights {1004,0.47267,0.44820,0.07913}
-		vertWeights {1012,0.47267,0.44820,0.07913}
-		vertWeights {1016,0.49870,0.49878,0.00252}
-		vertWeights {1020,0.47267,0.44820,0.07913}
-		vertWeights {1022,0.47267,0.44820,0.07913}
-		vertWeights {1024,0.49870,0.49878,0.00252}
-		vertWeights {1027,0.49870,0.49878,0.00252}
-		vertWeights {1029,0.49870,0.49878,0.00252}
-		vertWeights {1030,0.47267,0.44820,0.07913}
-		vertWeights {1031,0.49870,0.49878,0.00252}
+		vertWeights {1036,0.47267,0.44820,0.07913}
+		vertWeights {1044,0.47267,0.44820,0.07913}
+		vertWeights {1048,0.49870,0.49878,0.00252}
+		vertWeights {1052,0.47267,0.44820,0.07913}
+		vertWeights {1054,0.47267,0.44820,0.07913}
+		vertWeights {1056,0.49870,0.49878,0.00252}
+		vertWeights {1059,0.49870,0.49878,0.00252}
+		vertWeights {1061,0.49870,0.49878,0.00252}
+		vertWeights {1062,0.47267,0.44820,0.07913}
+		vertWeights {1063,0.49870,0.49878,0.00252}
 	}
 	CIwAnimSkinSet
 	{
 		useBones { Neck01 Chest01 R_Clavicle01 }
 		numVerts 6
 		vertWeights {119,0.53765,0.45259,0.00976}
-		vertWeights {1023,0.53765,0.45259,0.00976}
-		vertWeights {1040,0.53765,0.45259,0.00976}
-		vertWeights {1991,0.53765,0.45259,0.00976}
-		vertWeights {1993,0.53765,0.45259,0.00976}
-		vertWeights {2013,0.53765,0.45259,0.00976}
+		vertWeights {1055,0.53765,0.45259,0.00976}
+		vertWeights {1072,0.53765,0.45259,0.00976}
+		vertWeights {2039,0.53765,0.45259,0.00976}
+		vertWeights {2041,0.53765,0.45259,0.00976}
+		vertWeights {2061,0.53765,0.45259,0.00976}
 	}
 	CIwAnimSkinSet
 	{
@@ -1459,19 +1475,19 @@ CIwAnimSkin
 		vertWeights {123,1}
 		vertWeights {327,1}
 		vertWeights {328,1}
-		vertWeights {1055,1}
-		vertWeights {1057,1}
-		vertWeights {1458,1}
-		vertWeights {1459,1}
-		vertWeights {1460,1}
-		vertWeights {1474,1}
-		vertWeights {2027,1}
-		vertWeights {2028,1}
-		vertWeights {2029,1}
-		vertWeights {2442,1}
-		vertWeights {2444,1}
-		vertWeights {2446,1}
-		vertWeights {2455,1}
+		vertWeights {1087,1}
+		vertWeights {1089,1}
+		vertWeights {1490,1}
+		vertWeights {1491,1}
+		vertWeights {1492,1}
+		vertWeights {1506,1}
+		vertWeights {2075,1}
+		vertWeights {2076,1}
+		vertWeights {2077,1}
+		vertWeights {2493,1}
+		vertWeights {2495,1}
+		vertWeights {2497,1}
+		vertWeights {2506,1}
 	}
 	CIwAnimSkinSet
 	{
@@ -1522,30 +1538,7 @@ CIwAnimSkin
 		vertWeights {169,1}
 		vertWeights {170,1}
 		vertWeights {171,1}
-		vertWeights {1058,1}
-		vertWeights {1059,1}
-		vertWeights {1060,1}
-		vertWeights {1061,1}
-		vertWeights {1062,1}
-		vertWeights {1063,1}
-		vertWeights {1064,1}
-		vertWeights {1065,1}
-		vertWeights {1066,1}
-		vertWeights {1067,1}
-		vertWeights {1068,1}
-		vertWeights {1069,1}
-		vertWeights {1070,1}
-		vertWeights {1071,1}
-		vertWeights {1072,1}
-		vertWeights {1073,1}
-		vertWeights {1074,1}
-		vertWeights {1075,1}
-		vertWeights {1076,1}
-		vertWeights {1077,1}
-		vertWeights {1078,1}
-		vertWeights {1079,1}
-		vertWeights {1080,1}
-		vertWeights {1081,1}
+		vertWeights {1090,1}
 		vertWeights {1091,1}
 		vertWeights {1092,1}
 		vertWeights {1093,1}
@@ -1569,12 +1562,12 @@ CIwAnimSkin
 		vertWeights {1111,1}
 		vertWeights {1112,1}
 		vertWeights {1113,1}
-		vertWeights {1114,1}
-		vertWeights {1115,1}
-		vertWeights {1116,1}
-		vertWeights {1117,1}
-		vertWeights {1118,1}
+		vertWeights {1123,1}
+		vertWeights {1124,1}
 		vertWeights {1125,1}
+		vertWeights {1126,1}
+		vertWeights {1127,1}
+		vertWeights {1128,1}
 		vertWeights {1129,1}
 		vertWeights {1130,1}
 		vertWeights {1131,1}
@@ -1591,22 +1584,19 @@ CIwAnimSkin
 		vertWeights {1142,1}
 		vertWeights {1143,1}
 		vertWeights {1144,1}
+		vertWeights {1145,1}
 		vertWeights {1146,1}
+		vertWeights {1147,1}
 		vertWeights {1148,1}
+		vertWeights {1149,1}
 		vertWeights {1150,1}
-		vertWeights {1151,1}
-		vertWeights {1152,1}
-		vertWeights {1153,1}
-		vertWeights {1154,1}
-		vertWeights {1155,1}
-		vertWeights {1156,1}
 		vertWeights {1157,1}
-		vertWeights {1158,1}
-		vertWeights {1159,1}
-		vertWeights {1160,1}
 		vertWeights {1161,1}
+		vertWeights {1162,1}
 		vertWeights {1163,1}
+		vertWeights {1164,1}
 		vertWeights {1165,1}
+		vertWeights {1166,1}
 		vertWeights {1167,1}
 		vertWeights {1168,1}
 		vertWeights {1169,1}
@@ -1617,28 +1607,27 @@ CIwAnimSkin
 		vertWeights {1174,1}
 		vertWeights {1175,1}
 		vertWeights {1176,1}
-		vertWeights {1177,1}
 		vertWeights {1178,1}
-		vertWeights {1179,1}
 		vertWeights {1180,1}
-		vertWeights {1181,1}
 		vertWeights {1182,1}
 		vertWeights {1183,1}
 		vertWeights {1184,1}
 		vertWeights {1185,1}
 		vertWeights {1186,1}
 		vertWeights {1187,1}
+		vertWeights {1188,1}
 		vertWeights {1189,1}
 		vertWeights {1190,1}
+		vertWeights {1191,1}
 		vertWeights {1192,1}
 		vertWeights {1193,1}
-		vertWeights {1194,1}
-		vertWeights {1196,1}
+		vertWeights {1195,1}
 		vertWeights {1197,1}
-		vertWeights {1198,1}
+		vertWeights {1199,1}
 		vertWeights {1200,1}
 		vertWeights {1201,1}
 		vertWeights {1202,1}
+		vertWeights {1203,1}
 		vertWeights {1204,1}
 		vertWeights {1205,1}
 		vertWeights {1206,1}
@@ -1655,22 +1644,17 @@ CIwAnimSkin
 		vertWeights {1217,1}
 		vertWeights {1218,1}
 		vertWeights {1219,1}
-		vertWeights {1220,1}
 		vertWeights {1221,1}
 		vertWeights {1222,1}
-		vertWeights {1223,1}
 		vertWeights {1224,1}
 		vertWeights {1225,1}
 		vertWeights {1226,1}
-		vertWeights {1227,1}
 		vertWeights {1228,1}
 		vertWeights {1229,1}
 		vertWeights {1230,1}
-		vertWeights {1231,1}
 		vertWeights {1232,1}
 		vertWeights {1233,1}
 		vertWeights {1234,1}
-		vertWeights {1235,1}
 		vertWeights {1236,1}
 		vertWeights {1237,1}
 		vertWeights {1238,1}
@@ -1739,6 +1723,38 @@ CIwAnimSkin
 		vertWeights {1301,1}
 		vertWeights {1302,1}
 		vertWeights {1303,1}
+		vertWeights {1304,1}
+		vertWeights {1305,1}
+		vertWeights {1306,1}
+		vertWeights {1307,1}
+		vertWeights {1308,1}
+		vertWeights {1309,1}
+		vertWeights {1310,1}
+		vertWeights {1311,1}
+		vertWeights {1312,1}
+		vertWeights {1313,1}
+		vertWeights {1314,1}
+		vertWeights {1315,1}
+		vertWeights {1316,1}
+		vertWeights {1317,1}
+		vertWeights {1318,1}
+		vertWeights {1319,1}
+		vertWeights {1320,1}
+		vertWeights {1321,1}
+		vertWeights {1322,1}
+		vertWeights {1323,1}
+		vertWeights {1324,1}
+		vertWeights {1325,1}
+		vertWeights {1326,1}
+		vertWeights {1327,1}
+		vertWeights {1328,1}
+		vertWeights {1329,1}
+		vertWeights {1330,1}
+		vertWeights {1331,1}
+		vertWeights {1332,1}
+		vertWeights {1333,1}
+		vertWeights {1334,1}
+		vertWeights {1335,1}
 	}
 	CIwAnimSkinSet
 	{
@@ -1755,17 +1771,17 @@ CIwAnimSkin
 		vertWeights {453,1}
 		vertWeights {454,1}
 		vertWeights {456,1}
-		vertWeights {1314,1}
-		vertWeights {1327,1}
-		vertWeights {1331,1}
-		vertWeights {1336,1}
-		vertWeights {1337,1}
-		vertWeights {1340,1}
-		vertWeights {1353,1}
-		vertWeights {1354,1}
-		vertWeights {1357,1}
-		vertWeights {1360,1}
-		vertWeights {1361,1}
+		vertWeights {1346,1}
+		vertWeights {1359,1}
+		vertWeights {1363,1}
+		vertWeights {1368,1}
+		vertWeights {1369,1}
+		vertWeights {1372,1}
+		vertWeights {1385,1}
+		vertWeights {1386,1}
+		vertWeights {1389,1}
+		vertWeights {1392,1}
+		vertWeights {1393,1}
 	}
 	CIwAnimSkinSet
 	{
@@ -1775,28 +1791,28 @@ CIwAnimSkin
 		vertWeights {211,1}
 		vertWeights {213,1}
 		vertWeights {217,1}
-		vertWeights {1483,1}
-		vertWeights {1490,1}
-		vertWeights {1491,1}
-		vertWeights {1492,1}
-		vertWeights {1493,1}
-		vertWeights {1495,1}
-		vertWeights {1507,1}
-		vertWeights {1509,1}
-		vertWeights {1555,1}
-		vertWeights {1556,1}
-		vertWeights {1558,1}
-		vertWeights {1570,1}
-		vertWeights {1571,1}
-		vertWeights {1574,1}
-		vertWeights {1972,1}
-		vertWeights {1973,1}
-		vertWeights {1975,1}
-		vertWeights {1977,1}
-		vertWeights {1981,1}
-		vertWeights {1984,1}
-		vertWeights {1988,1}
-		vertWeights {1989,1}
+		vertWeights {1515,1}
+		vertWeights {1522,1}
+		vertWeights {1523,1}
+		vertWeights {1524,1}
+		vertWeights {1525,1}
+		vertWeights {1527,1}
+		vertWeights {1539,1}
+		vertWeights {1541,1}
+		vertWeights {1587,1}
+		vertWeights {1588,1}
+		vertWeights {1590,1}
+		vertWeights {1602,1}
+		vertWeights {1603,1}
+		vertWeights {1606,1}
+		vertWeights {2020,1}
+		vertWeights {2021,1}
+		vertWeights {2023,1}
+		vertWeights {2025,1}
+		vertWeights {2029,1}
+		vertWeights {2032,1}
+		vertWeights {2036,1}
+		vertWeights {2037,1}
 	}
 	CIwAnimSkinSet
 	{
@@ -1804,16 +1820,16 @@ CIwAnimSkin
 		numVerts 12
 		vertWeights {214,0.56000,0.44000}
 		vertWeights {238,0.56000,0.44000}
-		vertWeights {1486,0.56000,0.44000}
-		vertWeights {1498,0.56000,0.44000}
-		vertWeights {1502,0.56000,0.44000}
-		vertWeights {1504,0.56000,0.44000}
-		vertWeights {1508,0.56000,0.44000}
-		vertWeights {1568,0.56000,0.44000}
-		vertWeights {1572,0.56000,0.44000}
-		vertWeights {1586,0.56000,0.44000}
-		vertWeights {1588,0.56000,0.44000}
-		vertWeights {1612,0.56000,0.44000}
+		vertWeights {1518,0.56000,0.44000}
+		vertWeights {1530,0.56000,0.44000}
+		vertWeights {1534,0.56000,0.44000}
+		vertWeights {1536,0.56000,0.44000}
+		vertWeights {1540,0.56000,0.44000}
+		vertWeights {1600,0.56000,0.44000}
+		vertWeights {1604,0.56000,0.44000}
+		vertWeights {1618,0.56000,0.44000}
+		vertWeights {1620,0.56000,0.44000}
+		vertWeights {1644,0.56000,0.44000}
 	}
 	CIwAnimSkinSet
 	{
@@ -1821,18 +1837,18 @@ CIwAnimSkin
 		numVerts 14
 		vertWeights {215,0.28000,0.28000,0.44000}
 		vertWeights {216,0.47624,0.47624,0.04752}
-		vertWeights {527,0.47624,0.47624,0.04752}
-		vertWeights {537,0.28000,0.28000,0.44000}
-		vertWeights {539,0.28000,0.28000,0.44000}
-		vertWeights {1011,0.47624,0.47624,0.04752}
-		vertWeights {1021,0.47624,0.47624,0.04752}
-		vertWeights {1485,0.47624,0.47624,0.04752}
-		vertWeights {1487,0.47624,0.47624,0.04752}
-		vertWeights {1488,0.28000,0.28000,0.44000}
-		vertWeights {1497,0.28000,0.28000,0.44000}
-		vertWeights {1500,0.28000,0.28000,0.44000}
-		vertWeights {1983,0.47624,0.47624,0.04752}
-		vertWeights {1992,0.47624,0.47624,0.04752}
+		vertWeights {551,0.47624,0.47624,0.04752}
+		vertWeights {561,0.28000,0.28000,0.44000}
+		vertWeights {563,0.28000,0.28000,0.44000}
+		vertWeights {1043,0.47624,0.47624,0.04752}
+		vertWeights {1053,0.47624,0.47624,0.04752}
+		vertWeights {1517,0.47624,0.47624,0.04752}
+		vertWeights {1519,0.47624,0.47624,0.04752}
+		vertWeights {1520,0.28000,0.28000,0.44000}
+		vertWeights {1529,0.28000,0.28000,0.44000}
+		vertWeights {1532,0.28000,0.28000,0.44000}
+		vertWeights {2031,0.47624,0.47624,0.04752}
+		vertWeights {2040,0.47624,0.47624,0.04752}
 	}
 	CIwAnimSkinSet
 	{
@@ -1854,86 +1870,86 @@ CIwAnimSkin
 		vertWeights {235,0.50000,0.50000}
 		vertWeights {236,0.50833,0.49167}
 		vertWeights {239,0.23375,0.76625}
-		vertWeights {1489,0.89634,0.10366}
-		vertWeights {1494,0.54744,0.45256}
-		vertWeights {1496,0.70891,0.29109}
-		vertWeights {1503,0.36919,0.63081}
-		vertWeights {1506,0.96256,0.03744}
-		vertWeights {1510,0.96256,0.03744}
-		vertWeights {1511,0.89634,0.10366}
-		vertWeights {1512,0.96256,0.03744}
-		vertWeights {1513,0.17735,0.82265}
-		vertWeights {1514,0.96256,0.03744}
-		vertWeights {1515,0.36919,0.63081}
-		vertWeights {1516,0.50103,0.49897}
-		vertWeights {1517,0.21963,0.78037}
-		vertWeights {1518,0.50103,0.49897}
-		vertWeights {1519,0.17735,0.82265}
-		vertWeights {1520,0.36919,0.63081}
-		vertWeights {1522,0.36919,0.63081}
-		vertWeights {1524,0.50000,0.50000}
-		vertWeights {1525,0.50103,0.49897}
-		vertWeights {1526,0.50436,0.49564}
-		vertWeights {1527,0.50000,0.50000}
+		vertWeights {1521,0.89634,0.10366}
+		vertWeights {1526,0.54744,0.45256}
 		vertWeights {1528,0.70891,0.29109}
-		vertWeights {1529,0.50436,0.49564}
-		vertWeights {1530,0.50000,0.50000}
-		vertWeights {1531,0.50436,0.49564}
-		vertWeights {1532,0.70891,0.29109}
-		vertWeights {1533,0.89634,0.10366}
-		vertWeights {1534,0.50103,0.49897}
-		vertWeights {1535,0.89634,0.10366}
-		vertWeights {1536,0.96256,0.03744}
-		vertWeights {1537,0.89634,0.10366}
-		vertWeights {1538,0.50103,0.49897}
-		vertWeights {1539,0.50436,0.49564}
-		vertWeights {1540,0.21963,0.78037}
-		vertWeights {1541,0.50000,0.50000}
-		vertWeights {1542,0.50000,0.50000}
-		vertWeights {1543,0.21963,0.78037}
-		vertWeights {1544,0.50000,0.50000}
-		vertWeights {1545,0.50000,0.50000}
-		vertWeights {1546,0.50000,0.50000}
-		vertWeights {1547,0.50000,0.50000}
-		vertWeights {1548,0.50000,0.50000}
-		vertWeights {1549,0.70891,0.29109}
-		vertWeights {1550,0.50000,0.50000}
-		vertWeights {1551,0.54744,0.45256}
-		vertWeights {1552,0.50000,0.50000}
-		vertWeights {1553,0.70891,0.29109}
-		vertWeights {1554,0.50000,0.50000}
-		vertWeights {1557,0.50833,0.49167}
-		vertWeights {1559,0.54744,0.45256}
-		vertWeights {1560,0.54744,0.45256}
-		vertWeights {1561,0.50000,0.50000}
-		vertWeights {1562,0.50833,0.49167}
-		vertWeights {1563,0.50000,0.50000}
-		vertWeights {1564,0.54744,0.45256}
-		vertWeights {1565,0.50000,0.50000}
-		vertWeights {1573,0.23375,0.76625}
-		vertWeights {1575,0.50833,0.49167}
-		vertWeights {1576,0.50833,0.49167}
-		vertWeights {1577,0.21035,0.78965}
-		vertWeights {1578,0.23375,0.76625}
-		vertWeights {1579,0.21035,0.78965}
-		vertWeights {1580,0.50833,0.49167}
-		vertWeights {1581,0.50000,0.50000}
-		vertWeights {1587,0.23375,0.76625}
-		vertWeights {1590,0.23375,0.76625}
-		vertWeights {1706,0.17735,0.82265}
-		vertWeights {1708,0.17735,0.82265}
-		vertWeights {1709,0.36919,0.63081}
-		vertWeights {1710,0.21963,0.78037}
-		vertWeights {1713,0.21963,0.78037}
-		vertWeights {1714,0.17735,0.82265}
-		vertWeights {1719,0.21963,0.78037}
-		vertWeights {1720,0.21035,0.78965}
-		vertWeights {1722,0.21963,0.78037}
-		vertWeights {1724,0.21035,0.78965}
-		vertWeights {1725,0.23375,0.76625}
-		vertWeights {1727,0.21035,0.78965}
-		vertWeights {1733,0.23375,0.76625}
-		vertWeights {1742,0.36919,0.63081}
+		vertWeights {1535,0.36919,0.63081}
+		vertWeights {1538,0.96256,0.03744}
+		vertWeights {1542,0.96256,0.03744}
+		vertWeights {1543,0.89634,0.10366}
+		vertWeights {1544,0.96256,0.03744}
+		vertWeights {1545,0.17735,0.82265}
+		vertWeights {1546,0.96256,0.03744}
+		vertWeights {1547,0.36919,0.63081}
+		vertWeights {1548,0.50103,0.49897}
+		vertWeights {1549,0.21963,0.78037}
+		vertWeights {1550,0.50103,0.49897}
+		vertWeights {1551,0.17735,0.82265}
+		vertWeights {1552,0.36919,0.63081}
+		vertWeights {1554,0.36919,0.63081}
+		vertWeights {1556,0.50000,0.50000}
+		vertWeights {1557,0.50103,0.49897}
+		vertWeights {1558,0.50436,0.49564}
+		vertWeights {1559,0.50000,0.50000}
+		vertWeights {1560,0.70891,0.29109}
+		vertWeights {1561,0.50436,0.49564}
+		vertWeights {1562,0.50000,0.50000}
+		vertWeights {1563,0.50436,0.49564}
+		vertWeights {1564,0.70891,0.29109}
+		vertWeights {1565,0.89634,0.10366}
+		vertWeights {1566,0.50103,0.49897}
+		vertWeights {1567,0.89634,0.10366}
+		vertWeights {1568,0.96256,0.03744}
+		vertWeights {1569,0.89634,0.10366}
+		vertWeights {1570,0.50103,0.49897}
+		vertWeights {1571,0.50436,0.49564}
+		vertWeights {1572,0.21963,0.78037}
+		vertWeights {1573,0.50000,0.50000}
+		vertWeights {1574,0.50000,0.50000}
+		vertWeights {1575,0.21963,0.78037}
+		vertWeights {1576,0.50000,0.50000}
+		vertWeights {1577,0.50000,0.50000}
+		vertWeights {1578,0.50000,0.50000}
+		vertWeights {1579,0.50000,0.50000}
+		vertWeights {1580,0.50000,0.50000}
+		vertWeights {1581,0.70891,0.29109}
+		vertWeights {1582,0.50000,0.50000}
+		vertWeights {1583,0.54744,0.45256}
+		vertWeights {1584,0.50000,0.50000}
+		vertWeights {1585,0.70891,0.29109}
+		vertWeights {1586,0.50000,0.50000}
+		vertWeights {1589,0.50833,0.49167}
+		vertWeights {1591,0.54744,0.45256}
+		vertWeights {1592,0.54744,0.45256}
+		vertWeights {1593,0.50000,0.50000}
+		vertWeights {1594,0.50833,0.49167}
+		vertWeights {1595,0.50000,0.50000}
+		vertWeights {1596,0.54744,0.45256}
+		vertWeights {1597,0.50000,0.50000}
+		vertWeights {1605,0.23375,0.76625}
+		vertWeights {1607,0.50833,0.49167}
+		vertWeights {1608,0.50833,0.49167}
+		vertWeights {1609,0.21035,0.78965}
+		vertWeights {1610,0.23375,0.76625}
+		vertWeights {1611,0.21035,0.78965}
+		vertWeights {1612,0.50833,0.49167}
+		vertWeights {1613,0.50000,0.50000}
+		vertWeights {1619,0.23375,0.76625}
+		vertWeights {1622,0.23375,0.76625}
+		vertWeights {1746,0.17735,0.82265}
+		vertWeights {1748,0.17735,0.82265}
+		vertWeights {1749,0.36919,0.63081}
+		vertWeights {1750,0.21963,0.78037}
+		vertWeights {1753,0.21963,0.78037}
+		vertWeights {1754,0.17735,0.82265}
+		vertWeights {1759,0.21963,0.78037}
+		vertWeights {1760,0.21035,0.78965}
+		vertWeights {1762,0.21963,0.78037}
+		vertWeights {1764,0.21035,0.78965}
+		vertWeights {1765,0.23375,0.76625}
+		vertWeights {1767,0.21035,0.78965}
+		vertWeights {1773,0.23375,0.76625}
+		vertWeights {1782,0.36919,0.63081}
 	}
 	CIwAnimSkinSet
 	{
@@ -1958,65 +1974,26 @@ CIwAnimSkin
 		vertWeights {277,1}
 		vertWeights {278,1}
 		vertWeights {279,1}
-		vertWeights {1591,1}
-		vertWeights {1592,1}
-		vertWeights {1596,1}
-		vertWeights {1598,1}
-		vertWeights {1600,1}
-		vertWeights {1707,1}
-		vertWeights {1711,1}
-		vertWeights {1712,1}
-		vertWeights {1715,1}
-		vertWeights {1716,1}
-		vertWeights {1717,1}
-		vertWeights {1718,1}
-		vertWeights {1721,1}
-		vertWeights {1723,1}
-		vertWeights {1726,1}
-		vertWeights {1728,1}
-		vertWeights {1729,1}
-		vertWeights {1730,1}
-		vertWeights {1731,1}
-		vertWeights {1732,1}
-		vertWeights {1734,1}
-		vertWeights {1735,1}
-		vertWeights {1736,1}
-		vertWeights {1737,1}
-		vertWeights {1738,1}
-		vertWeights {1739,1}
-		vertWeights {1740,1}
-		vertWeights {1741,1}
-		vertWeights {1743,1}
-		vertWeights {1744,1}
-		vertWeights {1745,1}
-		vertWeights {1746,1}
+		vertWeights {1623,1}
+		vertWeights {1624,1}
+		vertWeights {1628,1}
+		vertWeights {1630,1}
+		vertWeights {1632,1}
 		vertWeights {1747,1}
-		vertWeights {1748,1}
-		vertWeights {1749,1}
-		vertWeights {1750,1}
 		vertWeights {1751,1}
 		vertWeights {1752,1}
-		vertWeights {1753,1}
-		vertWeights {1754,1}
 		vertWeights {1755,1}
 		vertWeights {1756,1}
 		vertWeights {1757,1}
 		vertWeights {1758,1}
-		vertWeights {1759,1}
-		vertWeights {1760,1}
 		vertWeights {1761,1}
-		vertWeights {1762,1}
 		vertWeights {1763,1}
-		vertWeights {1764,1}
-		vertWeights {1765,1}
 		vertWeights {1766,1}
-		vertWeights {1767,1}
 		vertWeights {1768,1}
 		vertWeights {1769,1}
 		vertWeights {1770,1}
 		vertWeights {1771,1}
 		vertWeights {1772,1}
-		vertWeights {1773,1}
 		vertWeights {1774,1}
 		vertWeights {1775,1}
 		vertWeights {1776,1}
@@ -2025,34 +2002,73 @@ CIwAnimSkin
 		vertWeights {1779,1}
 		vertWeights {1780,1}
 		vertWeights {1781,1}
-		vertWeights {1782,1}
 		vertWeights {1783,1}
 		vertWeights {1784,1}
 		vertWeights {1785,1}
-		vertWeights {1858,1}
-		vertWeights {1859,1}
-		vertWeights {1860,1}
-		vertWeights {1862,1}
-		vertWeights {1864,1}
-		vertWeights {1866,1}
-		vertWeights {1867,1}
-		vertWeights {1868,1}
-		vertWeights {1870,1}
-		vertWeights {1872,1}
-		vertWeights {1873,1}
-		vertWeights {1874,1}
-		vertWeights {1877,1}
-		vertWeights {1878,1}
-		vertWeights {1879,1}
-		vertWeights {1882,1}
-		vertWeights {1883,1}
-		vertWeights {1884,1}
-		vertWeights {1886,1}
-		vertWeights {1888,1}
-		vertWeights {1890,1}
-		vertWeights {1892,1}
-		vertWeights {1894,1}
-		vertWeights {1896,1}
+		vertWeights {1786,1}
+		vertWeights {1787,1}
+		vertWeights {1788,1}
+		vertWeights {1789,1}
+		vertWeights {1790,1}
+		vertWeights {1791,1}
+		vertWeights {1792,1}
+		vertWeights {1793,1}
+		vertWeights {1794,1}
+		vertWeights {1795,1}
+		vertWeights {1796,1}
+		vertWeights {1797,1}
+		vertWeights {1798,1}
+		vertWeights {1799,1}
+		vertWeights {1800,1}
+		vertWeights {1801,1}
+		vertWeights {1802,1}
+		vertWeights {1803,1}
+		vertWeights {1804,1}
+		vertWeights {1805,1}
+		vertWeights {1806,1}
+		vertWeights {1807,1}
+		vertWeights {1808,1}
+		vertWeights {1809,1}
+		vertWeights {1810,1}
+		vertWeights {1811,1}
+		vertWeights {1812,1}
+		vertWeights {1813,1}
+		vertWeights {1814,1}
+		vertWeights {1815,1}
+		vertWeights {1816,1}
+		vertWeights {1817,1}
+		vertWeights {1818,1}
+		vertWeights {1819,1}
+		vertWeights {1820,1}
+		vertWeights {1821,1}
+		vertWeights {1822,1}
+		vertWeights {1823,1}
+		vertWeights {1824,1}
+		vertWeights {1825,1}
+		vertWeights {1898,1}
+		vertWeights {1899,1}
+		vertWeights {1900,1}
+		vertWeights {1902,1}
+		vertWeights {1904,1}
+		vertWeights {1906,1}
+		vertWeights {1907,1}
+		vertWeights {1908,1}
+		vertWeights {1910,1}
+		vertWeights {1912,1}
+		vertWeights {1913,1}
+		vertWeights {1914,1}
+		vertWeights {1917,1}
+		vertWeights {1918,1}
+		vertWeights {1919,1}
+		vertWeights {1922,1}
+		vertWeights {1923,1}
+		vertWeights {1924,1}
+		vertWeights {1926,1}
+		vertWeights {1928,1}
+		vertWeights {1930,1}
+		vertWeights {1932,1}
+		vertWeights {1934,1}
+		vertWeights {1936,1}
 	}
 	CIwAnimSkinSet
 	{
@@ -2061,38 +2077,38 @@ CIwAnimSkin
 		vertWeights {230,0.20000,0.80000}
 		vertWeights {241,0.30000,0.70000}
 		vertWeights {243,0.30000,0.70000}
-		vertWeights {1521,0.20000,0.80000}
-		vertWeights {1589,0.30000,0.70000}
-		vertWeights {1593,0.30000,0.70000}
-		vertWeights {1594,0.30000,0.70000}
-		vertWeights {1595,0.30000,0.70000}
-		vertWeights {1597,0.20000,0.80000}
-		vertWeights {1599,0.30000,0.70000}
-		vertWeights {1601,0.30000,0.70000}
-		vertWeights {1603,0.30000,0.70000}
-		vertWeights {1604,0.30000,0.70000}
-		vertWeights {1605,0.20000,0.80000}
-		vertWeights {1607,0.30000,0.70000}
-		vertWeights {1609,0.20000,0.80000}
-		vertWeights {1610,0.30000,0.70000}
-		vertWeights {1614,0.30000,0.70000}
-		vertWeights {1623,0.20000,0.80000}
+		vertWeights {1553,0.20000,0.80000}
+		vertWeights {1621,0.30000,0.70000}
+		vertWeights {1625,0.30000,0.70000}
+		vertWeights {1626,0.30000,0.70000}
+		vertWeights {1627,0.30000,0.70000}
+		vertWeights {1629,0.20000,0.80000}
+		vertWeights {1631,0.30000,0.70000}
+		vertWeights {1633,0.30000,0.70000}
+		vertWeights {1635,0.30000,0.70000}
+		vertWeights {1636,0.30000,0.70000}
+		vertWeights {1637,0.20000,0.80000}
+		vertWeights {1639,0.30000,0.70000}
+		vertWeights {1641,0.20000,0.80000}
+		vertWeights {1642,0.30000,0.70000}
+		vertWeights {1646,0.30000,0.70000}
+		vertWeights {1655,0.20000,0.80000}
 	}
 	CIwAnimSkinSet
 	{
 		useBones { Chest01 R_Arm01 Spine01 }
 		numVerts 6
 		vertWeights {246,0.71209,0.17802,0.10989}
-		vertWeights {1602,0.71209,0.17802,0.10989}
-		vertWeights {1606,0.71209,0.17802,0.10989}
-		vertWeights {1608,0.71209,0.17802,0.10989}
-		vertWeights {1633,0.71209,0.17802,0.10989}
-		vertWeights {1636,0.71209,0.17802,0.10989}
+		vertWeights {1634,0.71209,0.17802,0.10989}
+		vertWeights {1638,0.71209,0.17802,0.10989}
+		vertWeights {1640,0.71209,0.17802,0.10989}
+		vertWeights {1667,0.71209,0.17802,0.10989}
+		vertWeights {1670,0.71209,0.17802,0.10989}
 	}
 	CIwAnimSkinSet
 	{
 		useBones { R_Thigh01 HIP01 }
-		numVerts 73
+		numVerts 74
 		vertWeights {260,0.10000,0.90000}
 		vertWeights {261,0.50000,0.50000}
 		vertWeights {262,0.50000,0.50000}
@@ -2112,60 +2128,61 @@ CIwAnimSkin
 		vertWeights {490,0.50000,0.50000}
 		vertWeights {491,0.75000,0.25000}
 		vertWeights {492,0.35000,0.65000}
-		vertWeights {1688,0.10000,0.90000}
-		vertWeights {1691,0.50000,0.50000}
-		vertWeights {1692,0.50000,0.50000}
-		vertWeights {1696,0.10000,0.90000}
-		vertWeights {1698,0.10000,0.90000}
-		vertWeights {1702,0.50000,0.50000}
-		vertWeights {1703,0.25000,0.75000}
-		vertWeights {2283,0.50000,0.50000}
-		vertWeights {2284,0.10000,0.90000}
-		vertWeights {2285,0.75000,0.25000}
-		vertWeights {2286,0.50000,0.50000}
-		vertWeights {2287,0.50000,0.50000}
-		vertWeights {2288,0.75000,0.25000}
-		vertWeights {2290,0.50000,0.50000}
-		vertWeights {2291,0.50000,0.50000}
-		vertWeights {2292,0.10000,0.90000}
-		vertWeights {2293,0.75000,0.25000}
-		vertWeights {2295,0.75000,0.25000}
-		vertWeights {2296,0.10000,0.90000}
-		vertWeights {2297,0.75000,0.25000}
-		vertWeights {2298,0.50000,0.50000}
-		vertWeights {2300,0.75000,0.25000}
-		vertWeights {2301,0.50000,0.50000}
-		vertWeights {2302,0.25000,0.75000}
-		vertWeights {2303,0.75000,0.25000}
-		vertWeights {2305,0.90000,0.10000}
-		vertWeights {2306,0.75000,0.25000}
-		vertWeights {2307,0.90000,0.10000}
-		vertWeights {2308,0.75000,0.25000}
-		vertWeights {2310,0.75000,0.25000}
-		vertWeights {2311,0.90000,0.10000}
-		vertWeights {2313,0.75000,0.25000}
-		vertWeights {2314,0.75000,0.25000}
-		vertWeights {2315,0.75000,0.25000}
-		vertWeights {2317,0.75000,0.25000}
-		vertWeights {2318,0.75000,0.25000}
-		vertWeights {2319,0.75000,0.25000}
-		vertWeights {2320,0.75000,0.25000}
-		vertWeights {2321,0.75000,0.25000}
-		vertWeights {2322,0.75000,0.25000}
-		vertWeights {2324,0.75000,0.25000}
-		vertWeights {2326,0.75000,0.25000}
-		vertWeights {2328,0.90000,0.10000}
-		vertWeights {2330,0.90000,0.10000}
-		vertWeights {2332,0.90000,0.10000}
+		vertWeights {1728,0.10000,0.90000}
+		vertWeights {1731,0.50000,0.50000}
+		vertWeights {1732,0.50000,0.50000}
+		vertWeights {1736,0.10000,0.90000}
+		vertWeights {1738,0.10000,0.90000}
+		vertWeights {1742,0.50000,0.50000}
+		vertWeights {1743,0.25000,0.75000}
+		vertWeights {2332,0.50000,0.50000}
+		vertWeights {2333,0.10000,0.90000}
 		vertWeights {2334,0.75000,0.25000}
-		vertWeights {2336,0.75000,0.25000}
-		vertWeights {2338,0.75000,0.25000}
-		vertWeights {2339,0.75000,0.25000}
-		vertWeights {2340,0.75000,0.25000}
-		vertWeights {2341,0.75000,0.25000}
+		vertWeights {2335,0.50000,0.50000}
+		vertWeights {2336,0.50000,0.50000}
+		vertWeights {2337,0.75000,0.25000}
+		vertWeights {2339,0.50000,0.50000}
+		vertWeights {2340,0.50000,0.50000}
+		vertWeights {2341,0.10000,0.90000}
 		vertWeights {2342,0.75000,0.25000}
-		vertWeights {2343,0.75000,0.25000}
-		vertWeights {2345,0.75000,0.25000}
+		vertWeights {2344,0.75000,0.25000}
+		vertWeights {2345,0.10000,0.90000}
+		vertWeights {2346,0.75000,0.25000}
+		vertWeights {2347,0.50000,0.50000}
+		vertWeights {2349,0.75000,0.25000}
+		vertWeights {2350,0.50000,0.50000}
+		vertWeights {2351,0.25000,0.75000}
+		vertWeights {2352,0.75000,0.25000}
+		vertWeights {2354,0.90000,0.10000}
+		vertWeights {2355,0.75000,0.25000}
+		vertWeights {2356,0.90000,0.10000}
+		vertWeights {2357,0.75000,0.25000}
+		vertWeights {2359,0.75000,0.25000}
+		vertWeights {2360,0.90000,0.10000}
+		vertWeights {2362,0.75000,0.25000}
+		vertWeights {2363,0.75000,0.25000}
+		vertWeights {2364,0.75000,0.25000}
+		vertWeights {2366,0.75000,0.25000}
+		vertWeights {2367,0.75000,0.25000}
+		vertWeights {2368,0.75000,0.25000}
+		vertWeights {2369,0.75000,0.25000}
+		vertWeights {2370,0.75000,0.25000}
+		vertWeights {2371,0.75000,0.25000}
+		vertWeights {2373,0.75000,0.25000}
+		vertWeights {2375,0.75000,0.25000}
+		vertWeights {2377,0.90000,0.10000}
+		vertWeights {2379,0.90000,0.10000}
+		vertWeights {2381,0.90000,0.10000}
+		vertWeights {2383,0.75000,0.25000}
+		vertWeights {2385,0.75000,0.25000}
+		vertWeights {2387,0.75000,0.25000}
+		vertWeights {2388,0.75000,0.25000}
+		vertWeights {2389,0.75000,0.25000}
+		vertWeights {2390,0.75000,0.25000}
+		vertWeights {2391,0.75000,0.25000}
+		vertWeights {2392,0.75000,0.25000}
+		vertWeights {2394,0.75000,0.25000}
+		vertWeights {2396,0.75000,0.25000}
 	}
 	CIwAnimSkinSet
 	{
@@ -2187,84 +2204,84 @@ CIwAnimSkin
 		vertWeights {309,0.55573,0.44427}
 		vertWeights {310,0.56223,0.43777}
 		vertWeights {311,0.57937,0.42063}
-		vertWeights {1787,0.30669,0.69331}
-		vertWeights {1788,0.33072,0.66928}
-		vertWeights {1790,0.33072,0.66928}
-		vertWeights {1793,0.31128,0.68872}
-		vertWeights {1795,0.41414,0.58586}
-		vertWeights {1796,0.42842,0.57158}
-		vertWeights {1798,0.42842,0.57158}
-		vertWeights {1800,0.42842,0.57158}
-		vertWeights {1802,0.42662,0.57338}
-		vertWeights {1804,0.42662,0.57338}
-		vertWeights {1806,0.39871,0.60129}
-		vertWeights {1810,0.39871,0.60129}
-		vertWeights {1811,0.44980,0.55020}
-		vertWeights {1812,0.30669,0.69331}
-		vertWeights {1816,0.30669,0.69331}
-		vertWeights {1817,0.31128,0.68872}
-		vertWeights {1861,0.60642,0.39358}
-		vertWeights {1863,0.57267,0.42733}
-		vertWeights {1865,0.58481,0.41519}
-		vertWeights {1869,0.58705,0.41295}
-		vertWeights {1871,0.58481,0.41519}
-		vertWeights {1875,0.58481,0.41519}
-		vertWeights {1876,0.55573,0.44427}
-		vertWeights {1880,0.55573,0.44427}
-		vertWeights {1881,0.56223,0.43777}
-		vertWeights {1885,0.56223,0.43777}
-		vertWeights {1887,0.59243,0.40757}
-		vertWeights {1889,0.59243,0.40757}
-		vertWeights {1891,0.57937,0.42063}
-		vertWeights {1893,0.60642,0.39358}
-		vertWeights {1895,0.60642,0.39358}
-		vertWeights {1897,0.58705,0.41295}
-		vertWeights {1898,0.30669,0.69331}
-		vertWeights {1899,0.57267,0.42733}
-		vertWeights {1900,0.60642,0.39358}
-		vertWeights {1901,0.57267,0.42733}
-		vertWeights {1902,0.30669,0.69331}
-		vertWeights {1903,0.33072,0.66928}
-		vertWeights {1904,0.57267,0.42733}
-		vertWeights {1905,0.41414,0.58586}
-		vertWeights {1906,0.58481,0.41519}
-		vertWeights {1907,0.41414,0.58586}
-		vertWeights {1908,0.57267,0.42733}
-		vertWeights {1909,0.33072,0.66928}
-		vertWeights {1910,0.39871,0.60129}
-		vertWeights {1911,0.58705,0.41295}
-		vertWeights {1912,0.59243,0.40757}
-		vertWeights {1913,0.58705,0.41295}
-		vertWeights {1914,0.39871,0.60129}
-		vertWeights {1915,0.31128,0.68872}
-		vertWeights {1916,0.41414,0.58586}
-		vertWeights {1917,0.55573,0.44427}
-		vertWeights {1918,0.41414,0.58586}
-		vertWeights {1919,0.42842,0.57158}
+		vertWeights {1827,0.30669,0.69331}
+		vertWeights {1828,0.33072,0.66928}
+		vertWeights {1830,0.33072,0.66928}
+		vertWeights {1833,0.31128,0.68872}
+		vertWeights {1835,0.41414,0.58586}
+		vertWeights {1836,0.42842,0.57158}
+		vertWeights {1838,0.42842,0.57158}
+		vertWeights {1840,0.42842,0.57158}
+		vertWeights {1842,0.42662,0.57338}
+		vertWeights {1844,0.42662,0.57338}
+		vertWeights {1846,0.39871,0.60129}
+		vertWeights {1850,0.39871,0.60129}
+		vertWeights {1851,0.44980,0.55020}
+		vertWeights {1852,0.30669,0.69331}
+		vertWeights {1856,0.30669,0.69331}
+		vertWeights {1857,0.31128,0.68872}
+		vertWeights {1901,0.60642,0.39358}
+		vertWeights {1903,0.57267,0.42733}
+		vertWeights {1905,0.58481,0.41519}
+		vertWeights {1909,0.58705,0.41295}
+		vertWeights {1911,0.58481,0.41519}
+		vertWeights {1915,0.58481,0.41519}
+		vertWeights {1916,0.55573,0.44427}
 		vertWeights {1920,0.55573,0.44427}
-		vertWeights {1921,0.42662,0.57338}
-		vertWeights {1922,0.56223,0.43777}
-		vertWeights {1923,0.42662,0.57338}
-		vertWeights {1924,0.55573,0.44427}
-		vertWeights {1925,0.42842,0.57158}
-		vertWeights {1926,0.56223,0.43777}
-		vertWeights {1927,0.44980,0.55020}
-		vertWeights {1928,0.57937,0.42063}
-		vertWeights {1929,0.44980,0.55020}
-		vertWeights {1930,0.56223,0.43777}
-		vertWeights {1931,0.42662,0.57338}
-		vertWeights {1932,0.44980,0.55020}
-		vertWeights {1933,0.59243,0.40757}
-		vertWeights {1934,0.57937,0.42063}
-		vertWeights {1935,0.59243,0.40757}
-		vertWeights {1936,0.44980,0.55020}
-		vertWeights {1937,0.39871,0.60129}
-		vertWeights {1938,0.58705,0.41295}
-		vertWeights {1939,0.30669,0.69331}
+		vertWeights {1921,0.56223,0.43777}
+		vertWeights {1925,0.56223,0.43777}
+		vertWeights {1927,0.59243,0.40757}
+		vertWeights {1929,0.59243,0.40757}
+		vertWeights {1931,0.57937,0.42063}
+		vertWeights {1933,0.60642,0.39358}
+		vertWeights {1935,0.60642,0.39358}
+		vertWeights {1937,0.58705,0.41295}
+		vertWeights {1938,0.30669,0.69331}
+		vertWeights {1939,0.57267,0.42733}
 		vertWeights {1940,0.60642,0.39358}
-		vertWeights {1941,0.30669,0.69331}
-		vertWeights {1942,0.58705,0.41295}
-		vertWeights {1943,0.31128,0.68872}
+		vertWeights {1941,0.57267,0.42733}
+		vertWeights {1942,0.30669,0.69331}
+		vertWeights {1943,0.33072,0.66928}
+		vertWeights {1944,0.57267,0.42733}
+		vertWeights {1945,0.41414,0.58586}
+		vertWeights {1946,0.58481,0.41519}
+		vertWeights {1947,0.41414,0.58586}
+		vertWeights {1948,0.57267,0.42733}
+		vertWeights {1949,0.33072,0.66928}
+		vertWeights {1950,0.39871,0.60129}
+		vertWeights {1951,0.58705,0.41295}
+		vertWeights {1952,0.59243,0.40757}
+		vertWeights {1953,0.58705,0.41295}
+		vertWeights {1954,0.39871,0.60129}
+		vertWeights {1955,0.31128,0.68872}
+		vertWeights {1956,0.41414,0.58586}
+		vertWeights {1957,0.55573,0.44427}
+		vertWeights {1958,0.41414,0.58586}
+		vertWeights {1959,0.42842,0.57158}
+		vertWeights {1960,0.55573,0.44427}
+		vertWeights {1961,0.42662,0.57338}
+		vertWeights {1962,0.56223,0.43777}
+		vertWeights {1963,0.42662,0.57338}
+		vertWeights {1964,0.55573,0.44427}
+		vertWeights {1965,0.42842,0.57158}
+		vertWeights {1966,0.56223,0.43777}
+		vertWeights {1967,0.44980,0.55020}
+		vertWeights {1968,0.57937,0.42063}
+		vertWeights {1969,0.44980,0.55020}
+		vertWeights {1970,0.56223,0.43777}
+		vertWeights {1971,0.42662,0.57338}
+		vertWeights {1972,0.44980,0.55020}
+		vertWeights {1973,0.59243,0.40757}
+		vertWeights {1974,0.57937,0.42063}
+		vertWeights {1975,0.59243,0.40757}
+		vertWeights {1976,0.44980,0.55020}
+		vertWeights {1977,0.39871,0.60129}
+		vertWeights {1978,0.58705,0.41295}
+		vertWeights {1979,0.30669,0.69331}
+		vertWeights {1980,0.60642,0.39358}
+		vertWeights {1981,0.30669,0.69331}
+		vertWeights {1982,0.58705,0.41295}
+		vertWeights {1983,0.31128,0.68872}
 	}
 	CIwAnimSkinSet
 	{
@@ -2278,51 +2295,51 @@ CIwAnimSkin
 		vertWeights {291,1}
 		vertWeights {293,1}
 		vertWeights {295,1}
-		vertWeights {1786,1}
-		vertWeights {1789,1}
-		vertWeights {1791,1}
-		vertWeights {1792,1}
-		vertWeights {1794,1}
-		vertWeights {1797,1}
-		vertWeights {1799,1}
-		vertWeights {1801,1}
-		vertWeights {1803,1}
-		vertWeights {1805,1}
-		vertWeights {1807,1}
-		vertWeights {1808,1}
-		vertWeights {1809,1}
-		vertWeights {1813,1}
-		vertWeights {1814,1}
-		vertWeights {1815,1}
-		vertWeights {1818,1}
-		vertWeights {1819,1}
-		vertWeights {1820,1}
-		vertWeights {1822,1}
-		vertWeights {1823,1}
-		vertWeights {1825,1}
-		vertWeights {1827,1}
-		vertWeights {1828,1}
+		vertWeights {1826,1}
 		vertWeights {1829,1}
+		vertWeights {1831,1}
 		vertWeights {1832,1}
-		vertWeights {1833,1}
 		vertWeights {1834,1}
-		vertWeights {1836,1}
-		vertWeights {1838,1}
-		vertWeights {1840,1}
-		vertWeights {1842,1}
+		vertWeights {1837,1}
+		vertWeights {1839,1}
+		vertWeights {1841,1}
 		vertWeights {1843,1}
-		vertWeights {1844,1}
+		vertWeights {1845,1}
 		vertWeights {1847,1}
+		vertWeights {1848,1}
 		vertWeights {1849,1}
-		vertWeights {1851,1}
 		vertWeights {1853,1}
 		vertWeights {1854,1}
 		vertWeights {1855,1}
+		vertWeights {1858,1}
+		vertWeights {1859,1}
+		vertWeights {1860,1}
+		vertWeights {1862,1}
+		vertWeights {1863,1}
+		vertWeights {1865,1}
+		vertWeights {1867,1}
+		vertWeights {1868,1}
+		vertWeights {1869,1}
+		vertWeights {1872,1}
+		vertWeights {1873,1}
+		vertWeights {1874,1}
+		vertWeights {1876,1}
+		vertWeights {1878,1}
+		vertWeights {1880,1}
+		vertWeights {1882,1}
+		vertWeights {1883,1}
+		vertWeights {1884,1}
+		vertWeights {1887,1}
+		vertWeights {1889,1}
+		vertWeights {1891,1}
+		vertWeights {1893,1}
+		vertWeights {1894,1}
+		vertWeights {1895,1}
 	}
 	CIwAnimSkinSet
 	{
 		useBones { R_Forearm01 R_Hand01 }
-		numVerts 89
+		numVerts 97
 		vertWeights {296,0.98430,0.01570}
 		vertWeights {297,0.99768,0.00232}
 		vertWeights {298,0.99137,0.00863}
@@ -2339,79 +2356,87 @@ CIwAnimSkin
 		vertWeights {317,0.67107,0.32893}
 		vertWeights {338,0.37918,0.62082}
 		vertWeights {353,0.50594,0.49406}
-		vertWeights {1821,0.99768,0.00232}
-		vertWeights {1824,0.99137,0.00863}
-		vertWeights {1826,0.98430,0.01570}
-		vertWeights {1830,0.97918,0.02082}
-		vertWeights {1831,0.99137,0.00863}
-		vertWeights {1835,0.99137,0.00863}
-		vertWeights {1837,0.99804,0.00196}
-		vertWeights {1839,0.97684,0.02316}
-		vertWeights {1841,0.97684,0.02316}
-		vertWeights {1845,0.97684,0.02316}
-		vertWeights {1846,0.97918,0.02082}
-		vertWeights {1848,0.98592,0.01408}
-		vertWeights {1850,0.97918,0.02082}
-		vertWeights {1852,0.99884,0.00116}
-		vertWeights {1856,0.99884,0.00116}
-		vertWeights {1857,0.99768,0.00232}
-		vertWeights {1944,0.98430,0.01570}
-		vertWeights {1945,0.99768,0.00232}
-		vertWeights {1946,0.98430,0.01570}
-		vertWeights {1947,0.99137,0.00863}
-		vertWeights {1948,0.72722,0.27278}
-		vertWeights {1949,0.98430,0.01570}
-		vertWeights {1950,0.70413,0.29587}
-		vertWeights {1951,0.97918,0.02082}
-		vertWeights {1952,0.99884,0.00116}
-		vertWeights {1953,0.99137,0.00863}
-		vertWeights {1954,0.72722,0.27278}
-		vertWeights {1955,0.99804,0.00196}
-		vertWeights {1956,0.97684,0.02316}
-		vertWeights {1957,0.99804,0.00196}
-		vertWeights {1958,0.72722,0.27278}
-		vertWeights {1959,0.98592,0.01408}
-		vertWeights {1960,0.72722,0.27278}
-		vertWeights {1961,0.72722,0.27278}
-		vertWeights {1962,0.98592,0.01408}
-		vertWeights {1963,0.97684,0.02316}
-		vertWeights {1964,0.97918,0.02082}
-		vertWeights {1965,0.67107,0.32893}
-		vertWeights {1966,0.65599,0.34401}
-		vertWeights {1967,0.98592,0.01408}
-		vertWeights {1968,0.99884,0.00116}
-		vertWeights {1969,0.69631,0.30369}
-		vertWeights {1970,0.99768,0.00232}
-		vertWeights {1971,0.68575,0.31425}
-		vertWeights {2056,0.65599,0.34401}
-		vertWeights {2057,0.37918,0.62082}
-		vertWeights {2058,0.65599,0.34401}
-		vertWeights {2059,0.67107,0.32893}
-		vertWeights {2060,0.37918,0.62082}
-		vertWeights {2061,0.72722,0.27278}
-		vertWeights {2062,0.72722,0.27278}
-		vertWeights {2063,0.37918,0.62082}
-		vertWeights {2064,0.67107,0.32893}
-		vertWeights {2093,0.69631,0.30369}
-		vertWeights {2094,0.69631,0.30369}
-		vertWeights {2095,0.50594,0.49406}
-		vertWeights {2096,0.70413,0.29587}
-		vertWeights {2097,0.50594,0.49406}
-		vertWeights {2098,0.72722,0.27278}
-		vertWeights {2099,0.70413,0.29587}
-		vertWeights {2100,0.72722,0.27278}
-		vertWeights {2101,0.50594,0.49406}
-		vertWeights {2120,0.68575,0.31425}
-		vertWeights {2121,0.65599,0.34401}
-		vertWeights {2122,0.68575,0.31425}
-		vertWeights {2137,0.69631,0.30369}
-		vertWeights {2138,0.68575,0.31425}
-		vertWeights {2139,0.69631,0.30369}
-		vertWeights {2162,0.37918,0.62082}
-		vertWeights {2168,0.37918,0.62082}
-		vertWeights {2169,0.50594,0.49406}
-		vertWeights {2173,0.50594,0.49406}
-		vertWeights {2180,0.50594,0.49406}
+		vertWeights {1861,0.99768,0.00232}
+		vertWeights {1864,0.99137,0.00863}
+		vertWeights {1866,0.98430,0.01570}
+		vertWeights {1870,0.97918,0.02082}
+		vertWeights {1871,0.99137,0.00863}
+		vertWeights {1875,0.99137,0.00863}
+		vertWeights {1877,0.99804,0.00196}
+		vertWeights {1879,0.97684,0.02316}
+		vertWeights {1881,0.97684,0.02316}
+		vertWeights {1885,0.97684,0.02316}
+		vertWeights {1886,0.97918,0.02082}
+		vertWeights {1888,0.98592,0.01408}
+		vertWeights {1890,0.97918,0.02082}
+		vertWeights {1892,0.99884,0.00116}
+		vertWeights {1896,0.99884,0.00116}
+		vertWeights {1897,0.99768,0.00232}
+		vertWeights {1984,0.98430,0.01570}
+		vertWeights {1985,0.69631,0.30369}
+		vertWeights {1986,0.98430,0.01570}
+		vertWeights {1987,0.99768,0.00232}
+		vertWeights {1988,0.98430,0.01570}
+		vertWeights {1989,0.99137,0.00863}
+		vertWeights {1990,0.72722,0.27278}
+		vertWeights {1991,0.98430,0.01570}
+		vertWeights {1992,0.70413,0.29587}
+		vertWeights {1993,0.97918,0.02082}
+		vertWeights {1994,0.99884,0.00116}
+		vertWeights {1995,0.68575,0.31425}
+		vertWeights {1996,0.97918,0.02082}
+		vertWeights {1997,0.99137,0.00863}
+		vertWeights {1998,0.72722,0.27278}
+		vertWeights {1999,0.99804,0.00196}
+		vertWeights {2000,0.97684,0.02316}
+		vertWeights {2001,0.99804,0.00196}
+		vertWeights {2002,0.72722,0.27278}
+		vertWeights {2003,0.98592,0.01408}
+		vertWeights {2004,0.72722,0.27278}
+		vertWeights {2005,0.72722,0.27278}
+		vertWeights {2006,0.98592,0.01408}
+		vertWeights {2007,0.97684,0.02316}
+		vertWeights {2008,0.97918,0.02082}
+		vertWeights {2009,0.67107,0.32893}
+		vertWeights {2010,0.65599,0.34401}
+		vertWeights {2011,0.67107,0.32893}
+		vertWeights {2012,0.97918,0.02082}
+		vertWeights {2013,0.98592,0.01408}
+		vertWeights {2014,0.99884,0.00116}
+		vertWeights {2015,0.69631,0.30369}
+		vertWeights {2016,0.99768,0.00232}
+		vertWeights {2017,0.69631,0.30369}
+		vertWeights {2018,0.99884,0.00116}
+		vertWeights {2019,0.68575,0.31425}
+		vertWeights {2104,0.65599,0.34401}
+		vertWeights {2105,0.37918,0.62082}
+		vertWeights {2106,0.65599,0.34401}
+		vertWeights {2107,0.67107,0.32893}
+		vertWeights {2108,0.37918,0.62082}
+		vertWeights {2109,0.72722,0.27278}
+		vertWeights {2110,0.72722,0.27278}
+		vertWeights {2111,0.37918,0.62082}
+		vertWeights {2112,0.67107,0.32893}
+		vertWeights {2141,0.69631,0.30369}
+		vertWeights {2142,0.69631,0.30369}
+		vertWeights {2143,0.50594,0.49406}
+		vertWeights {2144,0.70413,0.29587}
+		vertWeights {2145,0.50594,0.49406}
+		vertWeights {2146,0.72722,0.27278}
+		vertWeights {2147,0.70413,0.29587}
+		vertWeights {2148,0.72722,0.27278}
+		vertWeights {2149,0.50594,0.49406}
+		vertWeights {2168,0.68575,0.31425}
+		vertWeights {2169,0.65599,0.34401}
+		vertWeights {2170,0.68575,0.31425}
+		vertWeights {2185,0.69631,0.30369}
+		vertWeights {2186,0.68575,0.31425}
+		vertWeights {2187,0.69631,0.30369}
+		vertWeights {2211,0.37918,0.62082}
+		vertWeights {2217,0.37918,0.62082}
+		vertWeights {2218,0.50594,0.49406}
+		vertWeights {2222,0.50594,0.49406}
+		vertWeights {2229,0.50594,0.49406}
 	}
 	CIwAnimSkinSet
 	{
@@ -2419,21 +2444,21 @@ CIwAnimSkin
 		numVerts 12
 		vertWeights {318,0.47267,0.44820,0.07913}
 		vertWeights {319,0.49870,0.49878,0.00252}
-		vertWeights {1974,0.47267,0.44820,0.07913}
-		vertWeights {1982,0.47267,0.44820,0.07913}
-		vertWeights {1986,0.49870,0.49878,0.00252}
-		vertWeights {1990,0.47267,0.44820,0.07913}
-		vertWeights {1994,0.47267,0.44820,0.07913}
-		vertWeights {1995,0.49870,0.49878,0.00252}
-		vertWeights {1997,0.49870,0.49878,0.00252}
-		vertWeights {1999,0.49870,0.49878,0.00252}
-		vertWeights {2001,0.47267,0.44820,0.07913}
-		vertWeights {2003,0.49870,0.49878,0.00252}
+		vertWeights {2022,0.47267,0.44820,0.07913}
+		vertWeights {2030,0.47267,0.44820,0.07913}
+		vertWeights {2034,0.49870,0.49878,0.00252}
+		vertWeights {2038,0.47267,0.44820,0.07913}
+		vertWeights {2042,0.47267,0.44820,0.07913}
+		vertWeights {2043,0.49870,0.49878,0.00252}
+		vertWeights {2045,0.49870,0.49878,0.00252}
+		vertWeights {2047,0.49870,0.49878,0.00252}
+		vertWeights {2049,0.47267,0.44820,0.07913}
+		vertWeights {2051,0.49870,0.49878,0.00252}
 	}
 	CIwAnimSkinSet
 	{
 		useBones { R_Hand01 }
-		numVerts 262
+		numVerts 263
 		vertWeights {329,1}
 		vertWeights {330,1}
 		vertWeights {331,1}
@@ -2479,45 +2504,6 @@ CIwAnimSkin
 		vertWeights {373,1}
 		vertWeights {374,1}
 		vertWeights {375,1}
-		vertWeights {2032,1}
-		vertWeights {2033,1}
-		vertWeights {2034,1}
-		vertWeights {2035,1}
-		vertWeights {2036,1}
-		vertWeights {2037,1}
-		vertWeights {2038,1}
-		vertWeights {2039,1}
-		vertWeights {2040,1}
-		vertWeights {2041,1}
-		vertWeights {2042,1}
-		vertWeights {2043,1}
-		vertWeights {2044,1}
-		vertWeights {2045,1}
-		vertWeights {2046,1}
-		vertWeights {2047,1}
-		vertWeights {2048,1}
-		vertWeights {2049,1}
-		vertWeights {2050,1}
-		vertWeights {2051,1}
-		vertWeights {2052,1}
-		vertWeights {2053,1}
-		vertWeights {2054,1}
-		vertWeights {2055,1}
-		vertWeights {2065,1}
-		vertWeights {2066,1}
-		vertWeights {2067,1}
-		vertWeights {2068,1}
-		vertWeights {2069,1}
-		vertWeights {2070,1}
-		vertWeights {2071,1}
-		vertWeights {2072,1}
-		vertWeights {2073,1}
-		vertWeights {2074,1}
-		vertWeights {2075,1}
-		vertWeights {2076,1}
-		vertWeights {2077,1}
-		vertWeights {2078,1}
-		vertWeights {2079,1}
 		vertWeights {2080,1}
 		vertWeights {2081,1}
 		vertWeights {2082,1}
@@ -2531,17 +2517,17 @@ CIwAnimSkin
 		vertWeights {2090,1}
 		vertWeights {2091,1}
 		vertWeights {2092,1}
+		vertWeights {2093,1}
+		vertWeights {2094,1}
+		vertWeights {2095,1}
+		vertWeights {2096,1}
+		vertWeights {2097,1}
+		vertWeights {2098,1}
+		vertWeights {2099,1}
+		vertWeights {2100,1}
+		vertWeights {2101,1}
 		vertWeights {2102,1}
 		vertWeights {2103,1}
-		vertWeights {2104,1}
-		vertWeights {2105,1}
-		vertWeights {2106,1}
-		vertWeights {2107,1}
-		vertWeights {2108,1}
-		vertWeights {2109,1}
-		vertWeights {2110,1}
-		vertWeights {2111,1}
-		vertWeights {2112,1}
 		vertWeights {2113,1}
 		vertWeights {2114,1}
 		vertWeights {2115,1}
@@ -2549,6 +2535,9 @@ CIwAnimSkin
 		vertWeights {2117,1}
 		vertWeights {2118,1}
 		vertWeights {2119,1}
+		vertWeights {2120,1}
+		vertWeights {2121,1}
+		vertWeights {2122,1}
 		vertWeights {2123,1}
 		vertWeights {2124,1}
 		vertWeights {2125,1}
@@ -2563,16 +2552,10 @@ CIwAnimSkin
 		vertWeights {2134,1}
 		vertWeights {2135,1}
 		vertWeights {2136,1}
+		vertWeights {2137,1}
+		vertWeights {2138,1}
+		vertWeights {2139,1}
 		vertWeights {2140,1}
-		vertWeights {2141,1}
-		vertWeights {2142,1}
-		vertWeights {2143,1}
-		vertWeights {2144,1}
-		vertWeights {2145,1}
-		vertWeights {2146,1}
-		vertWeights {2147,1}
-		vertWeights {2148,1}
-		vertWeights {2149,1}
 		vertWeights {2150,1}
 		vertWeights {2151,1}
 		vertWeights {2152,1}
@@ -2585,27 +2568,26 @@ CIwAnimSkin
 		vertWeights {2159,1}
 		vertWeights {2160,1}
 		vertWeights {2161,1}
+		vertWeights {2162,1}
 		vertWeights {2163,1}
 		vertWeights {2164,1}
 		vertWeights {2165,1}
 		vertWeights {2166,1}
 		vertWeights {2167,1}
-		vertWeights {2170,1}
 		vertWeights {2171,1}
 		vertWeights {2172,1}
+		vertWeights {2173,1}
 		vertWeights {2174,1}
 		vertWeights {2175,1}
 		vertWeights {2176,1}
 		vertWeights {2177,1}
 		vertWeights {2178,1}
 		vertWeights {2179,1}
+		vertWeights {2180,1}
 		vertWeights {2181,1}
 		vertWeights {2182,1}
 		vertWeights {2183,1}
 		vertWeights {2184,1}
-		vertWeights {2185,1}
-		vertWeights {2186,1}
-		vertWeights {2187,1}
 		vertWeights {2188,1}
 		vertWeights {2189,1}
 		vertWeights {2190,1}
@@ -2629,25 +2611,20 @@ CIwAnimSkin
 		vertWeights {2208,1}
 		vertWeights {2209,1}
 		vertWeights {2210,1}
-		vertWeights {2211,1}
 		vertWeights {2212,1}
 		vertWeights {2213,1}
 		vertWeights {2214,1}
 		vertWeights {2215,1}
 		vertWeights {2216,1}
-		vertWeights {2217,1}
-		vertWeights {2218,1}
 		vertWeights {2219,1}
 		vertWeights {2220,1}
 		vertWeights {2221,1}
-		vertWeights {2222,1}
 		vertWeights {2223,1}
 		vertWeights {2224,1}
 		vertWeights {2225,1}
 		vertWeights {2226,1}
 		vertWeights {2227,1}
 		vertWeights {2228,1}
-		vertWeights {2229,1}
 		vertWeights {2230,1}
 		vertWeights {2231,1}
 		vertWeights {2232,1}
@@ -2696,6 +2673,55 @@ CIwAnimSkin
 		vertWeights {2275,1}
 		vertWeights {2276,1}
 		vertWeights {2277,1}
+		vertWeights {2278,1}
+		vertWeights {2279,1}
+		vertWeights {2280,1}
+		vertWeights {2281,1}
+		vertWeights {2282,1}
+		vertWeights {2283,1}
+		vertWeights {2284,1}
+		vertWeights {2285,1}
+		vertWeights {2286,1}
+		vertWeights {2287,1}
+		vertWeights {2288,1}
+		vertWeights {2289,1}
+		vertWeights {2290,1}
+		vertWeights {2291,1}
+		vertWeights {2292,1}
+		vertWeights {2293,1}
+		vertWeights {2294,1}
+		vertWeights {2295,1}
+		vertWeights {2296,1}
+		vertWeights {2297,1}
+		vertWeights {2298,1}
+		vertWeights {2299,1}
+		vertWeights {2300,1}
+		vertWeights {2301,1}
+		vertWeights {2302,1}
+		vertWeights {2303,1}
+		vertWeights {2304,1}
+		vertWeights {2305,1}
+		vertWeights {2306,1}
+		vertWeights {2307,1}
+		vertWeights {2308,1}
+		vertWeights {2309,1}
+		vertWeights {2310,1}
+		vertWeights {2311,1}
+		vertWeights {2312,1}
+		vertWeights {2313,1}
+		vertWeights {2314,1}
+		vertWeights {2315,1}
+		vertWeights {2316,1}
+		vertWeights {2317,1}
+		vertWeights {2318,1}
+		vertWeights {2319,1}
+		vertWeights {2320,1}
+		vertWeights {2321,1}
+		vertWeights {2322,1}
+		vertWeights {2323,1}
+		vertWeights {2324,1}
+		vertWeights {2325,1}
+		vertWeights {2326,1}
 	}
 	CIwAnimSkinSet
 	{
@@ -2712,27 +2738,28 @@ CIwAnimSkin
 		vertWeights {497,1}
 		vertWeights {498,1}
 		vertWeights {522,1}
-		vertWeights {2289,1}
-		vertWeights {2299,1}
-		vertWeights {2304,1}
-		vertWeights {2309,1}
-		vertWeights {2312,1}
-		vertWeights {2316,1}
-		vertWeights {2329,1}
-		vertWeights {2331,1}
-		vertWeights {2333,1}
-		vertWeights {2335,1}
-		vertWeights {2337,1}
+		vertWeights {2338,1}
+		vertWeights {2348,1}
+		vertWeights {2353,1}
+		vertWeights {2358,1}
+		vertWeights {2361,1}
+		vertWeights {2365,1}
+		vertWeights {2378,1}
+		vertWeights {2380,1}
+		vertWeights {2382,1}
+		vertWeights {2384,1}
+		vertWeights {2386,1}
 	}
 	CIwAnimSkinSet
 	{
 		useBones { L_Thigh01 R_Thigh01 HIP01 }
-		numVerts 5
+		numVerts 6
 		vertWeights {386,0.37500,0.37500,0.25000}
-		vertWeights {1367,0.37500,0.37500,0.25000}
-		vertWeights {1371,0.37500,0.37500,0.25000}
-		vertWeights {2327,0.37500,0.37500,0.25000}
-		vertWeights {2344,0.37500,0.37500,0.25000}
+		vertWeights {1399,0.37500,0.37500,0.25000}
+		vertWeights {1403,0.37500,0.37500,0.25000}
+		vertWeights {2376,0.37500,0.37500,0.25000}
+		vertWeights {2393,0.37500,0.37500,0.25000}
+		vertWeights {2395,0.37500,0.37500,0.25000}
 	}
 	CIwAnimSkinSet
 	{
@@ -2831,5 +2858,34 @@ CIwAnimSkin
 		useBones { R_Foot01 R_Shin01 }
 		numVerts 1
 		vertWeights {512,0.75000,0.25000}
+	}
+	CIwAnimSkinSet
+	{
+		useBones { wapon_nube }
+		numVerts 24
+		vertWeights {525,1}
+		vertWeights {526,1}
+		vertWeights {527,1}
+		vertWeights {528,1}
+		vertWeights {529,1}
+		vertWeights {530,1}
+		vertWeights {531,1}
+		vertWeights {532,1}
+		vertWeights {533,1}
+		vertWeights {534,1}
+		vertWeights {535,1}
+		vertWeights {536,1}
+		vertWeights {537,1}
+		vertWeights {538,1}
+		vertWeights {539,1}
+		vertWeights {540,1}
+		vertWeights {541,1}
+		vertWeights {542,1}
+		vertWeights {543,1}
+		vertWeights {544,1}
+		vertWeights {545,1}
+		vertWeights {546,1}
+		vertWeights {547,1}
+		vertWeights {548,1}
 	}
 }

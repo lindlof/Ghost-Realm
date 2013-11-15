@@ -37,7 +37,7 @@
 
 void LoadViking();
 void LoadSkelman();
-void DeleteGhost();
+void DeleteGhosts();
 
 void initFightView();
 
@@ -263,7 +263,7 @@ void CameraViewTerm()
     if (g_CameraTexture)
         delete g_CameraTexture;
 
-	DeleteGhost();
+	DeleteGhosts();
 	IW_CLASS_REMOVE(GhostCollision);
 
     if (s3eCameraAvailable())
@@ -313,23 +313,26 @@ void LoadSkelman() {
 	ghostStore_Skel[1]  = (CIwAnimSkel*)pGroup->GetResNamed("HIP01", IW_ANIM_RESTYPE_SKELETON);
 	ghostStore_Anims[1][GHOST_ANIM_IDLE]  = (CIwAnim*)pGroup->GetResNamed("Skelman_Idle", IW_ANIM_RESTYPE_ANIMATION);
 	ghostStore_Anims[1][GHOST_ANIM_AGRO]  = (CIwAnim*)pGroup->GetResNamed("Skelman_Idle", IW_ANIM_RESTYPE_ANIMATION);
-	ghostStore_Anims[1][GHOST_ANIM_DODGE]  = (CIwAnim*)pGroup->GetResNamed("Skelman_Idle", IW_ANIM_RESTYPE_ANIMATION);
+	ghostStore_Anims[1][GHOST_ANIM_DODGE]  = (CIwAnim*)pGroup->GetResNamed("Skelman_Miss", IW_ANIM_RESTYPE_ANIMATION);
 	ghostStore_Anims[1][GHOST_ANIM_ATTACK]  = (CIwAnim*)pGroup->GetResNamed("Skelman_Attack", IW_ANIM_RESTYPE_ANIMATION);
 	ghostStore_Anims[1][GHOST_ANIM_CAPTURED]  = (CIwAnim*)pGroup->GetResNamed("Skelman_Death", IW_ANIM_RESTYPE_ANIMATION);
 }
 
-void DeleteGhost() {
-	if (ghost_Model)
-		delete ghost_Model;
-	if (ghostCollision)
-		delete ghostCollision;
-	if (ghost_Skin)
-		delete ghost_Skin;
-	if (ghost_Skel)
-		delete ghost_Skel;
-	for (int i = 0; i < 5; i++) {
-		if (ghost_Anims[i])
-			delete ghost_Anims[i];
+void DeleteGhosts() {
+	for (int i = 0; i < 2; i++) {
+		if (ghostStore_Model[i])
+			delete ghostStore_Model[i];
+		if (ghostStoreCollision[i])
+			delete ghostStoreCollision[i];
+		if (ghostStore_Skin[i])
+			delete ghostStore_Skin[i];
+		if (ghostStore_Skel[i])
+			delete ghostStore_Skel[i];
+
+		for (int j = 0; j < 5; j++) {
+			if (ghostStore_Anims[i][j])
+				delete ghostStore_Anims[i][j];
+		}
 	}
 }
 

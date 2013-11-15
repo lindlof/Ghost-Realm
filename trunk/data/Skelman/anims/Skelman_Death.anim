@@ -1,4 +1,4 @@
-// Source file: Skel_exp_test03.max
+// Source file: Skel_Anim_Death.max
 CIwAnim
 {
 	skeleton "HIP01"
@@ -117,6 +117,14 @@ CIwAnim
 		bone "R_EndHand01"
 		pos {25.25456,-0.00001,0.00000}
 		rot {1,-0.00000,0.00000,0.00000}
+		
+		bone "wapon_nube"
+		pos {14.60499,-0.33610,1.82497}
+		rot {0.36007,-0.59719,0.58272,0.41730}
+		
+		bone "End_WaponNube"
+		pos {70.91902,0.00000,0}
+		rot {1,-0.00000,0.00000,-0.00000}
 		
 	}
 	// Keyframe# 1
@@ -4047,6 +4055,14 @@ CIwAnim
 		bone "R_EndHand01"
 		pos {25.25458,-0.00001,0.00000}
 		rot {1,-0.00000,0.00000,0.00000}
+		
+		bone "wapon_nube"
+		pos {14.60500,-0.33610,1.82497}
+		rot {0.36007,-0.59719,0.58272,0.41730}
+		
+		bone "End_WaponNube"
+		pos {70.91903,0,0.00001}
+		rot {1,0.00000,-0.00000,0.00000}
 		
 	}
 }
