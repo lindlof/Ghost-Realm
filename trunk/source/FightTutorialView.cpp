@@ -83,8 +83,8 @@ FightTutorialView::FightTutorialView() {
 		float whScale = (float)((double)defendAnimTexture->GetWidth() / defendAnimTexture->GetHeight());
 		int16 w = h * whScale;
 
-		int x2 = (double)IwGxGetScreenWidth()*0.64f;
-		int x1 = x2-w;
+		int x1 = (double)IwGxGetScreenWidth()*0.5f - (float)w*0.49f;
+		int x2 = x1+w;
 		int y1 = (double)IwGxGetScreenHeight()*0.15f;
 		int y2 = y1 + h;
 
