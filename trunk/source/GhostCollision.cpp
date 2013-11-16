@@ -244,11 +244,12 @@ void GhostCollision::RenderEctoplasmaBar(float ectoPercent, double ghostRotation
 		IwGxDrawPrims(IW_GX_QUAD_STRIP, s_QuadStrip, 4);
 	}
 
-	int16 start_y1 = border_y1 + abs((float)(border_y2 - border_y1)*0.235);
-	int16 start_y2 = start_y1  + abs((float)(border_y2 - border_y1)*0.625);
-	int16 startEndW = (start_y2 - start_y1);
-	int16 start_x1 = border_x1 + abs((float)(border_x2 - border_x1)*0.007);
-	int16 start_x2 = start_x1 + startEndW;
+	int16 start_y1 = border_y1 + abs((float)(border_y2 - border_y1)*0.225);
+	int16 start_y2 = start_y1  + abs((float)(border_y2 - border_y1)*0.690);
+	float startWhScale = (float)((double)startTexture->GetWidth() / startTexture->GetHeight());
+	int16 startW = (start_y2 - start_y1) * startWhScale;
+	int16 start_x1 = border_x1 + abs((float)(border_x2 - border_x1)*0.0097);
+	int16 start_x2 = start_x1 + startW;
 	
 	{
 		CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
@@ -276,11 +277,13 @@ void GhostCollision::RenderEctoplasmaBar(float ectoPercent, double ghostRotation
 
 	int16 end_y1 = start_y1;
 	int16 end_y2 = start_y2;
-	
-	int endMaxX = border_x2 - abs((float)(border_x2 - border_x1)*0.007) - startEndW;
+	float endWhScale = (float)((double)endTexture->GetWidth() / endTexture->GetHeight());
+	int16 endW = (end_y2 - end_y1) * endWhScale;
+
+	int endMaxX = border_x2 - abs((float)(border_x2 - border_x1)*0.0097) - endW;
 	int endMinX = start_x2;
 	int16 end_x1 = (double)(endMaxX - endMinX)*ectoPercent + endMinX;
-	int16 end_x2 = end_x1 + startEndW;
+	int16 end_x2 = end_x1 + endW;
 	
 	{
 		CIwMaterial* pMat = IW_GX_ALLOC_MATERIAL();
