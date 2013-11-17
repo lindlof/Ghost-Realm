@@ -9,16 +9,22 @@
 
 #include "GameState.h"
 #include "Ghost.h"
+#include "MapZoom.h"
 
 #include "IwRandom.h"
 #include "s3eTimer.h"
 
+MapZoom* mapZoom;
+
 void MapModelInit() {
 	IwRandSeed((int32)s3eTimerGetMs());
+
+	mapZoom = new MapZoom();
 }
 
 void MapModelTerm() {
-
+	if (mapZoom)
+		delete mapZoom;
 }
 
 bool MapModelUpdate() {
@@ -41,4 +47,8 @@ bool MapModelUpdate() {
 	player->headingUpdate();
 
 	return true;
+}
+
+MapZoom* getMapZoom() {
+	return mapZoom;
 }

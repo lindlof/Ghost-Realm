@@ -9,11 +9,14 @@
 
 #include "GameState.h"
 #include "MapView.h"
+#include "MapModel.h"
 
 #include "s3e.h"
 #include "s3eCompass.h"
 
 void MapSingleTouch(s3ePointerEvent* event);
+void MapMultiTouch(s3ePointerTouchEvent* event);
+void MapMultiTouchMotion(s3ePointerTouchMotionEvent* event);
 
 void MapControllerInit() {
 	if (s3eCompassAvailable())
@@ -22,6 +25,9 @@ void MapControllerInit() {
     }
 
 	s3ePointerRegister(S3E_POINTER_BUTTON_EVENT, (s3eCallback)MapSingleTouch, NULL);
+
+	s3ePointerRegister(S3E_POINTER_TOUCH_EVENT, (s3eCallback)MapMultiTouch, NULL);
+    s3ePointerRegister(S3E_POINTER_TOUCH_MOTION_EVENT, (s3eCallback)MapMultiTouchMotion, NULL);
 }
 
 void MapControllerTerm() {
@@ -48,4 +54,19 @@ void MapSingleTouch(s3ePointerEvent* event) {
 
 		mapGhost->Touch(event->m_x, event->m_y, event->m_Pressed);
 	}
+}
+
+void MapMultiTouch(s3ePointerTouchEvent* event) {
+	MapZoom* mapZoom = getMapZoom();
+
+	if (mapZoom != NULL)
+			mapZoom->Touch(event->m_x, event->m_y, event->m_Pressed, event->m_TouchID);
+}
+
+void MapMultiTouchMotion(s3ePointerTouchMotionEvent* event)
+{
+	MapZoom* mapZoom = getMapZoom();
+
+	if (mapZoom != NULL)
+			mapZoom->Motion(event->m_x, event->m_y, event->m_TouchID);
 }

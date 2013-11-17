@@ -7,6 +7,10 @@
  * PARTICULAR PURPOSE.
  */
 
+#include "MapZoom.h"
+
 void MapModelInit();
 void MapModelTerm();
 bool MapModelUpdate();
+
+MapZoom* getMapZoom();

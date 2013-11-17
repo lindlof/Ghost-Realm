@@ -10,6 +10,7 @@
 #include "GameState.h"
 #include "MapView.h"
 #include "MapRoamingGhost.h"
+#include "MapModel.h"
 
 #include "IwGx.h"
 #include "IwGxPrint.h"
@@ -33,6 +34,7 @@ static CIwTexture* mapTexture;
 
 void mapInit(int mapW, int mapH);
 static CIwFVec2 mapVert[4];
+static CIwFVec2 mapVertZoom[4];
 
 static CIwFVec2 mapDefaultUvs[4] =
 {
@@ -146,8 +148,22 @@ void renderMap() {
 
 	IwGxSetScreenSpaceSlot(-1);
 
+	float zoom = getMapZoom()->getZoom();
+
+	int16 hScrW = (double)IwGxGetScreenWidth()*0.5f;
+	int16 hScrH = (double)IwGxGetScreenHeight()*0.5f;
+	int16 x1 = hScrW - hScrW*zoom;
+	int16 x2 = hScrW + hScrW*zoom;
+	int16 y1 = hScrH - hScrH*zoom;
+	int16 y2 = hScrH + hScrH*zoom;
+
+	mapVertZoom[0].x = x1, mapVertZoom[0].y = y1;
+	mapVertZoom[1].x = x1, mapVertZoom[1].y = y2;
+	mapVertZoom[2].x = x2, mapVertZoom[2].y = y2;
+	mapVertZoom[3].x = x2, mapVertZoom[3].y = y1;
+
     IwGxSetUVStream(mapDefaultUvs);
-    IwGxSetVertStreamScreenSpace(mapVert, 4);
+    IwGxSetVertStreamScreenSpace(mapVertZoom, 4);
 
     IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
 }

@@ -40,6 +40,8 @@ files
 	MapController.h
 	MapModel.cpp
 	MapModel.h
+	MapZoom.cpp
+	MapZoom.h
 
 	[MapView]
 	MapView.cpp

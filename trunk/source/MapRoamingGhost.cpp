@@ -11,6 +11,7 @@
 
 #include "GameState.h"
 #include "CameraModel.h"
+#include "MapModel.h"
 
 #include "IwGraphics.h"
 #include "IwRandom.h"
@@ -69,7 +70,16 @@ MapRoamingGhost::~MapRoamingGhost() {
 }
 
 void MapRoamingGhost::Render() {
-	CIwFVec2 topLeft = CIwFVec2(centre.x-size.x/2+ghostRoamingRadius, centre.y-size.y/2);
+	float zoom = getMapZoom()->getZoom();
+
+	double hScrW = (double)IwGxGetScreenWidth()/2;
+	double hScrH = (double)IwGxGetScreenHeight()/2;
+
+	CIwFVec2 centre = CIwFVec2(hScrW+zoom*(this->centre.x-hScrW), hScrH+zoom*(this->centre.y-hScrH));
+	CIwFVec2 topLeft = CIwFVec2(
+		centre.x - zoom*(size.x/2) + zoom*ghostRoamingRadius, 
+		centre.y - zoom*(size.y/2));
+	CIwFVec2 size = CIwFVec2(this->size.x*zoom, this->size.y*zoom);
 
 	matrix->SetRot(rad(ghostRoamingAngle), centre);
 	Iw2DSetTransformMatrix(*matrix);
