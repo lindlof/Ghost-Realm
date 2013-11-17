@@ -48,6 +48,7 @@ class MapRoamingGhost {
 	void Render();
 	void Update();
 	void Touch(int x, int y, bool pressed);
+	void Touch(uint32 id);
 
 	void modifyCentreWithTexture(float x, float y);
 	void setNotice(bool notice);

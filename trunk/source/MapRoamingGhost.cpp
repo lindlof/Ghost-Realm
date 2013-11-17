@@ -198,3 +198,8 @@ void MapRoamingGhost::Touch(int x, int y, bool pressed) {
 		pressedTime = 0;
 	}
 }
+
+void MapRoamingGhost::Touch(uint32 id) {
+	// Multiple touches decline ghost pressing
+	if (id > 0) pressedTime = 0;
+}

@@ -49,18 +49,20 @@ bool MapControllerUpdate() {
 }
 
 void MapSingleTouch(s3ePointerEvent* event) {
-	if (getGameState()->getGameMode() == MAP_MODE) {
-		MapRoamingGhost* mapGhost = getRoamingGhost();
+	MapRoamingGhost* mapGhost = getRoamingGhost();
 
-		mapGhost->Touch(event->m_x, event->m_y, event->m_Pressed);
-	}
+	mapGhost->Touch(event->m_x, event->m_y, event->m_Pressed);
 }
 
 void MapMultiTouch(s3ePointerTouchEvent* event) {
 	MapZoom* mapZoom = getMapZoom();
+	MapRoamingGhost* mapGhost = getRoamingGhost();
 
 	if (mapZoom != NULL)
-			mapZoom->Touch(event->m_x, event->m_y, event->m_Pressed, event->m_TouchID);
+		mapZoom->Touch(event->m_x, event->m_y, event->m_Pressed, event->m_TouchID);
+
+	if (mapGhost != NULL)
+		mapGhost->Touch(event->m_TouchID);
 }
 
 void MapMultiTouchMotion(s3ePointerTouchMotionEvent* event)
