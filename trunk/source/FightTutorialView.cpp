@@ -79,7 +79,7 @@ FightTutorialView::FightTutorialView() {
 		defendAnimMat->SetAnimCelH((double)defendAnimTexture->GetHeight()/defendAnimRows);
 		defendAnimMat->SetAnimCelPeriod(5);
 
-		int h = (double)IwGxGetScreenHeight()*0.29f;
+		int h = (double)IwGxGetScreenHeight()*0.34f;
 		float whScale = (float)((double)defendAnimTexture->GetWidth() / defendAnimTexture->GetHeight());
 		int16 w = h * whScale;
 
