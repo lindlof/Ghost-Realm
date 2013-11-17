@@ -16,8 +16,13 @@
 
 class MapRoamingGhost {
 	private:
-	CIwFVec2 centre;
+	double centreX;
+	double centreY;
 	CIwFVec2 size;
+
+	CIwFVec2 destination;
+	double destinationAngle;
+	void (*arrivalCallback)(MapRoamingGhost*);
 
 	CIwFVec2 tapAreaTopLeft;
 	CIwFVec2 tapAreaSize;
@@ -46,6 +51,7 @@ class MapRoamingGhost {
 
 	void modifyCentreWithTexture(float x, float y);
 	void setNotice(bool notice);
+	void moveGhost(CIwFVec2 destination, void arrivalCallback(MapRoamingGhost*));
 };
 
 #endif

@@ -95,6 +95,7 @@ bool CameraModelUpdate()
 			fightOver = true;
 			gameOverTime = clock() + 10000;
 			getFightTutorial()->triggerTutorial(TUTORIAL_YOU_WON);
+			gameState->introProceed();
 		} else if (!fightOver && player->getMana() <= 0) {
 			player->lostBattle();
 			fightOver = true;

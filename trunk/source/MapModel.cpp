@@ -30,11 +30,14 @@ void MapModelTerm() {
 bool MapModelUpdate() {
 
 	if (getGameState()->getGhost() == NULL) {
-		int rand = IwRandMinMax(0, 2);
+		IntroState introState = getGameState()->getIntroState();
+		
 		GhostType type;
-
-		if (rand == 0) type = GhostType::VIKING;
-		else if (rand == 1) type = GhostType::SKELMAN;
+		if (introState == INTRO_ATTACK) {
+			type = GhostType::VIKING;
+		} else {
+			type = GhostType::SKELMAN;
+		}
 
 		Ghost* ghost = new Ghost(type, getGameState()->getPlayer());
 		getGameState()->setGhost(ghost);

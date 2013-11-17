@@ -26,6 +26,7 @@ void renderMapXpBar();
 
 static MapRoamingGhost* mapGhost;
 static MapRoamingGhost* mapGhost2;
+static bool defendIntroSet;
 
 static CIw2DImage* playerTexture;
 static CIw2DImage* healthTexture;
@@ -64,6 +65,10 @@ void MapViewInit()
 	
 	mapInit(mapTexture->GetWidth(), mapTexture->GetHeight());
 
+	ghostInit();
+}
+
+void ghostInit() {
 	mapGhost = new MapRoamingGhost("textures/map_ghost.png", 
 		CIwFVec2(IwGxGetScreenWidth()/2, IwGxGetScreenHeight()/2));
 	mapGhost->modifyCentreWithTexture(-0.18f, -0.13f);
@@ -71,6 +76,7 @@ void MapViewInit()
 
 	mapGhost2 = new MapRoamingGhost("textures/map_ghost_xtra.png",
 		CIwFVec2(IwGxGetScreenWidth()*0.80f, IwGxGetScreenHeight()*0.70f));
+	defendIntroSet = false;
 }
 
 void mapInit(int mapW, int mapH) {
@@ -116,6 +122,10 @@ void MapViewTerm() {
 		delete xpBarTexture;
 }
 
+void arrivalCallback(MapRoamingGhost* ghost) {
+	ghost->setNotice(true);
+}
+
 bool MapViewUpdate() {
 
 	// Clear the screen
@@ -126,8 +136,16 @@ bool MapViewUpdate() {
 	renderMapXpBar();
 	renderMapHealth();
 
-	mapGhost->Update();
-	mapGhost->Render();
+	IntroState introState = getGameState()->getIntroState();
+
+	if (introState == INTRO_ATTACK) {
+		mapGhost->Update();
+		mapGhost->Render();
+	} else if (introState == INTRO_DEFEND && !defendIntroSet) {
+		defendIntroSet = true;
+		mapGhost2->moveGhost(CIwFVec2(IwGxGetScreenWidth()/2, IwGxGetScreenHeight()/2), arrivalCallback);
+	}
+
 	mapGhost2->Update();
 	mapGhost2->Render();
 
@@ -194,7 +212,7 @@ void renderMapPlayer() {
 }
 
 MapRoamingGhost* getRoamingGhost() {
-	return mapGhost;
+	return getGameState()->getIntroState() == INTRO_ATTACK ? mapGhost : mapGhost2;
 }
 
 void renderMapXpBar() {

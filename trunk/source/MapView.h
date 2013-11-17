@@ -13,4 +13,6 @@ void MapViewInit();
 void MapViewTerm();
 bool MapViewUpdate();
 
+void ghostInit();
+
 MapRoamingGhost* getRoamingGhost();

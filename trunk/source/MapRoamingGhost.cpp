@@ -25,6 +25,8 @@ double inline deg(double d) {
     return d / PI * 180.0f;
 }
 
+double inline dabs(double d) { return d < 0 ? d*-1 : d; }
+
 MapRoamingGhost::MapRoamingGhost(char *texture, CIwFVec2 centre) {
 	IwRandSeed((int32)s3eTimerGetMs());
 
@@ -32,7 +34,10 @@ MapRoamingGhost::MapRoamingGhost(char *texture, CIwFVec2 centre) {
 	matrix = new CIwFMat2D();
 
 	{
-		this->centre = centre;
+		this->centreX = centre.x;
+		this->centreY = centre.y;
+		this->destination = centre;
+		this->arrivalCallback = NULL;
 
 		int16 w = IwGxGetScreenWidth()*0.29f;
 
@@ -75,7 +80,7 @@ void MapRoamingGhost::Render() {
 	double hScrW = (double)IwGxGetScreenWidth()/2;
 	double hScrH = (double)IwGxGetScreenHeight()/2;
 
-	CIwFVec2 centre = CIwFVec2(hScrW+zoom*(this->centre.x-hScrW), hScrH+zoom*(this->centre.y-hScrH));
+	CIwFVec2 centre = CIwFVec2(hScrW+zoom*(this->centreX-hScrW), hScrH+zoom*(this->centreY-hScrH));
 	CIwFVec2 topLeft = CIwFVec2(
 		centre.x - zoom*(size.x/2) + zoom*ghostRoamingRadius, 
 		centre.y - zoom*(size.y/2));
@@ -129,11 +134,41 @@ void MapRoamingGhost::Update() {
 	ghostRoamingRadius = IwRandMinMax(0, 1) ? ghostRoamingRadius + 1 : ghostRoamingRadius - 1;
 	if (ghostRoamingRadius < 20) ghostRoamingRadius = 20;
 	if (ghostRoamingRadius > 100) ghostRoamingRadius = 100;
+
+	if (arrivalCallback != NULL) {
+		double travelX = cos(destinationAngle)*6.f;
+		double travelY = sin(destinationAngle)*6.f;
+		if (abs(centreX-destination.x) < abs((centreX+travelX)-destination.x))
+			travelX = 0;
+		if (abs(centreY-destination.y) < abs((centreY+travelY)-destination.y))
+			travelY = 0;
+		centreX += travelX;
+		centreY += travelY;
+		if (travelX == 0 && travelY == 0) {
+			centreX = destination.x;
+			centreY = destination.y;
+			arrivalCallback(this);
+			arrivalCallback = NULL;
+		}
+	}
+}
+
+void MapRoamingGhost::moveGhost(CIwFVec2 destination, void arrivalCallback(MapRoamingGhost*)) {
+	this->arrivalCallback = arrivalCallback;
+	this->destination = destination;
+	this->destinationAngle = atan(dabs(destination.y-centreY) / dabs(destination.x-centreX));
+	if (destination.x < centreX) {
+		destinationAngle *= -1;
+		destinationAngle += PI;
+	}
+	if (destination.y < centreY) {
+		destinationAngle *= -1;
+	}
 }
 
 void MapRoamingGhost::modifyCentreWithTexture(float x, float y) {
-	centre.x += size.x*x;
-	centre.y += size.y*y;
+	destination.x = centreX += size.x*x;
+	destination.y = centreY += size.y*y;
 }
 
 void MapRoamingGhost::setNotice(bool notice) {

@@ -16,9 +16,9 @@ GameState* getGameState() {
 	return gameState;
 }
 
-
 GameState::GameState() {
 	GameState::gameMode = NO_GAMEMODE;
+	introState = INTRO_ATTACK;
 	player = new Player();
 	ghost = NULL;
 }
@@ -60,4 +60,16 @@ void GameState::setGhost(Ghost* ghost) {
 void GameState::deleteGhost() {
 	delete ghost;
 	GameState::ghost = NULL;
+}
+
+void GameState::introProceed() {
+	introState = INTRO_DEFEND;
+}
+
+void GameState::introReset() {
+	introState = INTRO_ATTACK;
+}
+
+IntroState GameState::getIntroState() {
+	return introState;
 }

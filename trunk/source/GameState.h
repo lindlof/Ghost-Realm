@@ -11,10 +11,13 @@
 #include "Ghost.h"
 
 enum GameMode { NO_GAMEMODE, CAMERA_MODE, MAP_MODE };
+enum IntroState { INTRO_ATTACK, INTRO_DEFEND };
 class GameState {
 	private:
 	GameMode gameMode;
 	GameMode lastGameMode;
+	IntroState introState;
+
 	Player *player;
 	Ghost *ghost;
 
@@ -30,6 +33,10 @@ class GameState {
 	Ghost* getGhost();
 	void setGhost(Ghost* ghost);
 	void deleteGhost();
+
+	IntroState getIntroState();
+	void introProceed();
+	void introReset();
 };
 
 GameState* getGameState();
