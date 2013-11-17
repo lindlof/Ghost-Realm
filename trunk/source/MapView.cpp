@@ -138,13 +138,14 @@ bool MapViewUpdate() {
 
 	IntroState introState = getGameState()->getIntroState();
 
-	if (introState == INTRO_ATTACK) {
-		mapGhost->Update();
-		mapGhost->Render();
-	} else if (introState == INTRO_DEFEND && !defendIntroSet) {
+	if (introState == INTRO_DEFEND && !defendIntroSet) {
+		mapGhost->setNotice(false);
 		defendIntroSet = true;
 		mapGhost2->moveGhost(CIwFVec2(IwGxGetScreenWidth()/2, IwGxGetScreenHeight()/2), arrivalCallback);
 	}
+
+	mapGhost->Update();
+	mapGhost->Render();
 
 	mapGhost2->Update();
 	mapGhost2->Render();
