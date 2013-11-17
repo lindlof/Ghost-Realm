@@ -95,8 +95,8 @@ void MapRoamingGhost::Render() {
 		float whScale = (float)((double)noticeTexture->GetWidth() / noticeTexture->GetHeight());
 		int16 h = w * 1/whScale;
 	
-		double roamingX = cos(rad(ghostRoamingAngle)) * ghostRoamingRadius;
-		double roamingY = sin(rad(ghostRoamingAngle)) * ghostRoamingRadius;
+		double roamingX = cos(rad(ghostRoamingAngle)) * zoom*ghostRoamingRadius;
+		double roamingY = sin(rad(ghostRoamingAngle)) * zoom*ghostRoamingRadius;
 
 		float ghostEmptyPadding = 0.17f;
 		CIwFVec2 noticeTopLeft = CIwFVec2(
