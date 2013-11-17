@@ -49,26 +49,32 @@ bool MapControllerUpdate() {
 }
 
 void MapSingleTouch(s3ePointerEvent* event) {
-	MapRoamingGhost* mapGhost = getRoamingGhost();
+	if (getGameState()->getGameMode() == MAP_MODE) {
+		MapRoamingGhost* mapGhost = getRoamingGhost();
 
-	mapGhost->Touch(event->m_x, event->m_y, event->m_Pressed);
+		mapGhost->Touch(event->m_x, event->m_y, event->m_Pressed);
+	}
 }
 
 void MapMultiTouch(s3ePointerTouchEvent* event) {
-	MapZoom* mapZoom = getMapZoom();
-	MapRoamingGhost* mapGhost = getRoamingGhost();
+	if (getGameState()->getGameMode() == MAP_MODE) {
+		MapZoom* mapZoom = getMapZoom();
+		MapRoamingGhost* mapGhost = getRoamingGhost();
 
-	if (mapZoom != NULL)
-		mapZoom->Touch(event->m_x, event->m_y, event->m_Pressed, event->m_TouchID);
+		if (mapZoom != NULL)
+			mapZoom->Touch(event->m_x, event->m_y, event->m_Pressed, event->m_TouchID);
 
-	if (mapGhost != NULL)
-		mapGhost->Touch(event->m_TouchID);
+		if (mapGhost != NULL)
+			mapGhost->Touch(event->m_TouchID);
+	}
 }
 
 void MapMultiTouchMotion(s3ePointerTouchMotionEvent* event)
 {
-	MapZoom* mapZoom = getMapZoom();
+	if (getGameState()->getGameMode() == MAP_MODE) {
+		MapZoom* mapZoom = getMapZoom();
 
-	if (mapZoom != NULL)
-			mapZoom->Motion(event->m_x, event->m_y, event->m_TouchID);
+		if (mapZoom != NULL)
+				mapZoom->Motion(event->m_x, event->m_y, event->m_TouchID);
+	}
 }

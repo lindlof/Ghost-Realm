@@ -69,11 +69,13 @@ bool CameraControllerUpdate()
 }
 
 void SingleTouch(s3ePointerEvent* event) {
-	if (!gameIsHalt()) {
-		ghostTouch(event->m_x, event->m_y);
-	}
+	if (getGameState()->getGameMode() == CAMERA_MODE) {
+		if (!gameIsHalt()) {
+			ghostTouch(event->m_x, event->m_y);
+		}
 
-	getFightTutorialView()->Touch(event->m_x, event->m_y, event->m_Pressed);
+		getFightTutorialView()->Touch(event->m_x, event->m_y, event->m_Pressed);
+	}
 }
 
 void SingleTouchMotion(s3ePointerMotionEvent* event) {
@@ -81,18 +83,22 @@ void SingleTouchMotion(s3ePointerMotionEvent* event) {
 }
 
 void MultiTouch(s3ePointerTouchEvent* event) {
-	CameraDefend* cameraDefend = getCameraDefend();
+	if (getGameState()->getGameMode() == CAMERA_MODE) {
+		CameraDefend* cameraDefend = getCameraDefend();
 
-	if (cameraDefend != NULL)
-			cameraDefend->Touch(event->m_x, event->m_y, event->m_Pressed, event->m_TouchID);
+		if (cameraDefend != NULL)
+				cameraDefend->Touch(event->m_x, event->m_y, event->m_Pressed, event->m_TouchID);
+	}
 }
 
 void MultiTouchMotion(s3ePointerTouchMotionEvent* event)
 {
-	if (!gameIsHalt()) {
-		CameraDefend* cameraDefend = getCameraDefend();
+	if (getGameState()->getGameMode() == CAMERA_MODE) {
+		if (!gameIsHalt()) {
+			CameraDefend* cameraDefend = getCameraDefend();
 
-		if (cameraDefend != NULL)
-			cameraDefend->Motion(event->m_x, event->m_y, event->m_TouchID);
+			if (cameraDefend != NULL)
+				cameraDefend->Motion(event->m_x, event->m_y, event->m_TouchID);
+		}
 	}
 }
