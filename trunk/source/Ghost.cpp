@@ -9,6 +9,7 @@
 
 #include "Ghost.h"
 #include "CameraModel.h"
+#include "GameState.h"
 
 #include "IwRandom.h"
 #include "s3eTimer.h"
@@ -155,7 +156,11 @@ bool Ghost::ghostUpdate() {
 
 	// Initiate new attacks
 	if (found && getAttack() == NULL && nextAttackInterval <= 0) {
-		attackDefendable = IwRandMinMax(0, 9) < 8; // 20 % of attacks not defendable
+		if (getGameState()->getIntroState() == INTRO_ATTACK) {
+			attackDefendable = false;
+		} else {
+			attackDefendable = IwRandMinMax(0, 9) < 8; // 20 % of attacks not defendable
+		}
 		ghostAttack = new GhostAttack(player, ghostType);
 		nextAttackInterval = IwRandMinMax(4000, 6000);
 		animAttack = true;
