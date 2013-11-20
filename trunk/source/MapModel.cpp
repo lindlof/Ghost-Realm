@@ -14,6 +14,7 @@
 #include "IwRandom.h"
 #include "s3eTimer.h"
 
+void restartGame();
 void respawnGhost();
 
 MapZoom* mapZoom;
@@ -36,7 +37,7 @@ bool MapModelUpdate() {
 
 	Player* player = getGameState()->getPlayer();
 	if (player->isDead()) {
-		player->resurrect();
+		restartGame();
 	}
 	player->headingUpdate();
 
@@ -62,6 +63,11 @@ void respawnGhost() {
 		Ghost* ghost = new Ghost(type, getGameState()->getPlayer());
 		getGameState()->setGhost(ghost);
 	}
+}
+
+void restartGame() {
+	getGameState()->getPlayer()->resurrect();
+	getGameState()->introReset();
 }
 
 MapZoom* getMapZoom() {
