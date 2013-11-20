@@ -20,6 +20,7 @@ class MapRoamingGhost {
 	double centreY;
 	CIwFVec2 size;
 
+	bool arrived;
 	CIwFVec2 destination;
 	double destinationAngle;
 	void (*arrivalCallback)(MapRoamingGhost*);
@@ -53,6 +54,7 @@ class MapRoamingGhost {
 	void modifyCentreWithTexture(float x, float y);
 	void setNotice(bool notice);
 	void moveGhost(CIwFVec2 destination, void arrivalCallback(MapRoamingGhost*));
+	void setCentre(CIwFVec2 centre);
 };
 
 #endif

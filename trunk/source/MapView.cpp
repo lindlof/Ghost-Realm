@@ -146,14 +146,15 @@ bool MapViewUpdate() {
 	Player* player = getGameState()->getPlayer();
 	IntroState introState = getGameState()->getIntroState();
 
-	if (lastDeads > player->getDeadCount()) {
+	if (lastDeads < player->getDeadCount()) {
 		lastDeads = player->getDeadCount();
 		defendIntroSet = false;
 		mapGhost->setNotice(true);
 		mapGhost2->setNotice(false);
+		mapGhost2->setCentre(CIwFVec2(IwGxGetScreenWidth()*0.80f, IwGxGetScreenHeight()*0.70f));
 	}
-	if (lastLoses > player->getLoseCount() ||
-		lastWins > player->getWinCount()) {
+	if (lastLoses < player->getLoseCount() ||
+		lastWins < player->getWinCount()) {
 		lastLoses = player->getLoseCount();
 		lastWins = player->getWinCount();
 	}

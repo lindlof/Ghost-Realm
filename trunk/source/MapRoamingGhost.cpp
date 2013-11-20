@@ -34,10 +34,7 @@ MapRoamingGhost::MapRoamingGhost(char *texture, CIwFVec2 centre) {
 	matrix = new CIwFMat2D();
 
 	{
-		this->centreX = centre.x;
-		this->centreY = centre.y;
-		this->destination = centre;
-		this->arrivalCallback = NULL;
+		setCentre(centre);
 
 		int16 w = IwGxGetScreenWidth()*0.29f;
 
@@ -135,7 +132,7 @@ void MapRoamingGhost::Update() {
 	if (ghostRoamingRadius < 20) ghostRoamingRadius = 20;
 	if (ghostRoamingRadius > 100) ghostRoamingRadius = 100;
 
-	if (arrivalCallback != NULL) {
+	if (!arrived) {
 		double travelX = cos(destinationAngle)*6.f;
 		double travelY = sin(destinationAngle)*6.f;
 		if (abs(centreX-destination.x) < abs((centreX+travelX)-destination.x))
@@ -147,6 +144,7 @@ void MapRoamingGhost::Update() {
 		if (travelX == 0 && travelY == 0) {
 			centreX = destination.x;
 			centreY = destination.y;
+			arrived = true;
 			arrivalCallback(this);
 			arrivalCallback = NULL;
 		}
@@ -154,6 +152,7 @@ void MapRoamingGhost::Update() {
 }
 
 void MapRoamingGhost::moveGhost(CIwFVec2 destination, void arrivalCallback(MapRoamingGhost*)) {
+	this->arrived = false;
 	this->arrivalCallback = arrivalCallback;
 	this->destination = destination;
 	this->destinationAngle = atan(dabs(destination.y-centreY) / dabs(destination.x-centreX));
@@ -164,6 +163,14 @@ void MapRoamingGhost::moveGhost(CIwFVec2 destination, void arrivalCallback(MapRo
 	if (destination.y < centreY) {
 		destinationAngle *= -1;
 	}
+}
+
+void MapRoamingGhost::setCentre(CIwFVec2 centre) {
+	this->centreX = centre.x;
+	this->centreY = centre.y;
+	this->destination = centre;
+	this->arrived = true;
+	this->arrivalCallback = NULL;
 }
 
 void MapRoamingGhost::modifyCentreWithTexture(float x, float y) {
