@@ -79,7 +79,8 @@ void ghostInit() {
 	mapGhost->modifyCentreWithTexture(-0.18f, -0.13f);
 	mapGhost->setNotice(true);
 
-	mapGhost2 = new MapRoamingGhost("textures/map_ghost_xtra.png", CIwFVec2(0, 0));
+	mapGhost2 = new MapRoamingGhost("textures/map_ghost_xtra.png", 
+		CIwFVec2(IwGxGetScreenWidth()*0.80f, IwGxGetScreenHeight()*0.70f));
 }
 
 void mapInit(int mapW, int mapH) {
