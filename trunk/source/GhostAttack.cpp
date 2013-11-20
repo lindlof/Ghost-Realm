@@ -9,6 +9,7 @@
 
 #include "GhostAttack.h"
 #include "CameraModel.h"
+#include "GameState.h"
 
 #include "Audio.h"
 #include "IwRandom.h"
@@ -23,7 +24,14 @@ GhostAttack::GhostAttack(Player* player, GhostType ghostType) {
 
 	this->player = player;
 
-	hit = hit*ghostType.getStrength();
+	float strength;
+	if (getGameState()->getIntroState() == INTRO_ATTACK) {
+		strength = 0.2f;
+	} else {
+		strength = ghostType.getStrength();
+	}
+
+	hit = hit*strength;
 	lastTime = clock();
 	interval = 3000;
 
