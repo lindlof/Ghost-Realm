@@ -26,9 +26,8 @@ void renderMapXpBar();
 
 static MapRoamingGhost* mapGhost;
 static MapRoamingGhost* mapGhost2;
-static bool defendIntroSet;
 
-int lastLoses, lastWins, lastDeads;
+int lastLoses, lastWins;
 
 static CIw2DImage* playerTexture;
 static CIw2DImage* healthTexture;
@@ -60,7 +59,6 @@ void MapViewInit()
 	Player* player = getGameState()->getPlayer();
 	lastLoses = player->getLoseCount();
 	lastWins = player->getWinCount();
-	lastDeads = player->getDeadCount();
 
 	playerTexture = Iw2DCreateImage("textures/map_player.png");
 	healthTexture = Iw2DCreateImage("textures/map_health.png");
@@ -81,9 +79,7 @@ void ghostInit() {
 	mapGhost->modifyCentreWithTexture(-0.18f, -0.13f);
 	mapGhost->setNotice(true);
 
-	mapGhost2 = new MapRoamingGhost("textures/map_ghost_xtra.png",
-		CIwFVec2(IwGxGetScreenWidth()*0.80f, IwGxGetScreenHeight()*0.70f));
-	defendIntroSet = false;
+	mapGhost2 = new MapRoamingGhost("textures/map_ghost_xtra.png", CIwFVec2(0, 0));
 }
 
 void mapInit(int mapW, int mapH) {
@@ -146,23 +142,19 @@ bool MapViewUpdate() {
 	Player* player = getGameState()->getPlayer();
 	IntroState introState = getGameState()->getIntroState();
 
-	if (lastDeads < player->getDeadCount()) {
-		lastDeads = player->getDeadCount();
-		defendIntroSet = false;
-		mapGhost->setNotice(true);
-		mapGhost2->setNotice(false);
-		mapGhost2->setCentre(CIwFVec2(IwGxGetScreenWidth()*0.80f, IwGxGetScreenHeight()*0.70f));
-	}
 	if (lastLoses < player->getLoseCount() ||
 		lastWins < player->getWinCount()) {
 		lastLoses = player->getLoseCount();
 		lastWins = player->getWinCount();
+
+		mapGhost2->setCentre(CIwFVec2(IwGxGetScreenWidth()*0.80f, IwGxGetScreenHeight()*0.70f));
+		mapGhost2->setNotice(false);
+
+		if (introState == INTRO_DEFEND) {
+			mapGhost2->moveGhost(CIwFVec2(IwGxGetScreenWidth()/2, IwGxGetScreenHeight()/2), arrivalCallback);
+		}
 	}
-	if (introState == INTRO_DEFEND && !defendIntroSet) {
-		mapGhost->setNotice(false);
-		defendIntroSet = true;
-		mapGhost2->moveGhost(CIwFVec2(IwGxGetScreenWidth()/2, IwGxGetScreenHeight()/2), arrivalCallback);
-	} else {
+	if (introState == INTRO_ATTACK) {
 		mapGhost->Update();
 		mapGhost->Render();
 	}
