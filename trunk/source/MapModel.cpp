@@ -14,7 +14,10 @@
 #include "IwRandom.h"
 #include "s3eTimer.h"
 
+void respawnGhost();
+
 MapZoom* mapZoom;
+GhostType lastGhostType;
 
 void MapModelInit() {
 	IwRandSeed((int32)s3eTimerGetMs());
@@ -29,19 +32,7 @@ void MapModelTerm() {
 
 bool MapModelUpdate() {
 
-	if (getGameState()->getGhost() == NULL) {
-		IntroState introState = getGameState()->getIntroState();
-		
-		GhostType type;
-		if (introState == INTRO_ATTACK) {
-			type = GhostType::VIKING;
-		} else {
-			type = GhostType::SKELMAN;
-		}
-
-		Ghost* ghost = new Ghost(type, getGameState()->getPlayer());
-		getGameState()->setGhost(ghost);
-	}
+	respawnGhost();
 
 	Player* player = getGameState()->getPlayer();
 	if (player->isDead()) {
@@ -50,6 +41,27 @@ bool MapModelUpdate() {
 	player->headingUpdate();
 
 	return true;
+}
+
+void respawnGhost() {
+	if (getGameState()->getGhost() == NULL) {
+		IntroState introState = getGameState()->getIntroState();
+		
+		GhostType type;
+		if (introState == INTRO_ATTACK) {
+			type = GhostType::VIKING;
+		} else {
+			if (lastGhostType == GhostType::VIKING) {
+				type = GhostType::SKELMAN;
+			} else {
+				type = GhostType::VIKING;
+			}
+		}
+
+		lastGhostType = type;
+		Ghost* ghost = new Ghost(type, getGameState()->getPlayer());
+		getGameState()->setGhost(ghost);
+	}
 }
 
 MapZoom* getMapZoom() {
