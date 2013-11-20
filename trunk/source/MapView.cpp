@@ -27,7 +27,7 @@ void renderMapXpBar();
 static MapRoamingGhost* mapGhost;
 static MapRoamingGhost* mapGhost2;
 
-int lastLoses, lastWins;
+static int lastLoses, lastWins;
 
 static CIw2DImage* playerTexture;
 static CIw2DImage* healthTexture;

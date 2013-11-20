@@ -131,10 +131,10 @@ void MapRoamingGhost::Update() {
 	ghostRoamingRadius = IwRandMinMax(0, 1) ? ghostRoamingRadius + 1 : ghostRoamingRadius - 1;
 	if (ghostRoamingRadius < 20) ghostRoamingRadius = 20;
 	if (ghostRoamingRadius > 100) ghostRoamingRadius = 100;
-
-	if (!arrived) {
-		double travelX = cos(destinationAngle)*6.f;
-		double travelY = sin(destinationAngle)*6.f;
+	
+	if (!arrived && clock() > moveTime) {
+		double travelX = cos(destinationAngle)*12.f;
+		double travelY = sin(destinationAngle)*12.f;
 		if (abs(centreX-destination.x) < abs((centreX+travelX)-destination.x))
 			travelX = 0;
 		if (abs(centreY-destination.y) < abs((centreY+travelY)-destination.y))
@@ -163,6 +163,8 @@ void MapRoamingGhost::moveGhost(CIwFVec2 destination, void arrivalCallback(MapRo
 	if (destination.y < centreY) {
 		destinationAngle *= -1;
 	}
+
+	moveTime = clock() + 1500;
 }
 
 void MapRoamingGhost::setCentre(CIwFVec2 centre) {

@@ -24,6 +24,7 @@ class MapRoamingGhost {
 	CIwFVec2 destination;
 	double destinationAngle;
 	void (*arrivalCallback)(MapRoamingGhost*);
+	time_t moveTime;
 
 	CIwFVec2 tapAreaTopLeft;
 	CIwFVec2 tapAreaSize;
