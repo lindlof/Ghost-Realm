@@ -104,7 +104,7 @@ bool CameraModelUpdate()
 
 			player->increaseLoseCount();
 			if (player->isDead()) {
-				player->increaseDieCount();
+				player->increaseDeadCount();
 				fightTutorial->triggerTutorial(TUTORIAL_YOU_DIED);
 			} else {
 				getFightTutorial()->triggerTutorial(TUTORIAL_GHOST_WON);
