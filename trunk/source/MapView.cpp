@@ -142,10 +142,10 @@ bool MapViewUpdate() {
 		mapGhost->setNotice(false);
 		defendIntroSet = true;
 		mapGhost2->moveGhost(CIwFVec2(IwGxGetScreenWidth()/2, IwGxGetScreenHeight()/2), arrivalCallback);
+	} else {
+		mapGhost->Update();
+		mapGhost->Render();
 	}
-
-	mapGhost->Update();
-	mapGhost->Render();
 
 	mapGhost2->Update();
 	mapGhost2->Render();
