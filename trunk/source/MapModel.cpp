@@ -32,14 +32,13 @@ void MapModelTerm() {
 }
 
 bool MapModelUpdate() {
-
-	respawnGhost();
-
 	Player* player = getGameState()->getPlayer();
 	if (player->isDead()) {
 		restartGame();
 	}
 	player->headingUpdate();
+
+	respawnGhost();
 
 	return true;
 }
