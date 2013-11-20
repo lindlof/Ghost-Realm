@@ -96,12 +96,15 @@ bool CameraModelUpdate()
 			gameOverTime = clock() + 10000;
 			getFightTutorial()->triggerTutorial(TUTORIAL_YOU_WON);
 			gameState->introProceed();
+			player->increaseWinCount();
 		} else if (!fightOver && player->getMana() <= 0) {
 			player->lostBattle();
 			fightOver = true;
 			gameOverTime = clock() + 10000;
 
+			player->increaseLoseCount();
 			if (player->isDead()) {
+				player->increaseDieCount();
 				fightTutorial->triggerTutorial(TUTORIAL_YOU_DIED);
 			} else {
 				getFightTutorial()->triggerTutorial(TUTORIAL_GHOST_WON);

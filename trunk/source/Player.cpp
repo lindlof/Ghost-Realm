@@ -168,3 +168,22 @@ bool Player::poll(bool& poll) {
 	poll = false;
 	return temp;
 }
+
+int Player::getWinCount() {
+	return winCount;
+}
+int Player::getLoseCount() {
+	return loseCount;
+}
+int Player::getDeadCount() {
+	return deadCount;
+}
+void Player::increaseWinCount() {
+	winCount++;
+}
+void Player::increaseLoseCount() {
+	loseCount++;
+}
+void Player::increaseDeadCount() {
+	deadCount++;
+}

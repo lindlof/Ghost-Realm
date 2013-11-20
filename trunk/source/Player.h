@@ -38,6 +38,10 @@ class Player {
 	bool animAttack;
 	bool poll(bool& poll);
 
+	int winCount;
+	int loseCount;
+	int deadCount;
+
 	public:
 	Player();
 	bool headingUpdate();
@@ -58,6 +62,13 @@ class Player {
 	clock_t getHitTime();
 
 	bool pollAnimAttack();
+
+	int getWinCount();
+	int getLoseCount();
+	int getDeadCount();
+	void increaseWinCount();
+	void increaseLoseCount();
+	void increaseDeadCount();
 };
 
 #endif

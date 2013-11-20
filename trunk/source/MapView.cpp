@@ -28,6 +28,8 @@ static MapRoamingGhost* mapGhost;
 static MapRoamingGhost* mapGhost2;
 static bool defendIntroSet;
 
+int lastLoses, lastWins, lastDeads;
+
 static CIw2DImage* playerTexture;
 static CIw2DImage* healthTexture;
 static CIw2DImage* xpBarTexture;
@@ -55,6 +57,11 @@ double inline deg(double d) {
 
 void MapViewInit()
 {
+	Player* player = getGameState()->getPlayer();
+	lastLoses = player->getLoseCount();
+	lastWins = player->getWinCount();
+	lastDeads = player->getDeadCount();
+
 	playerTexture = Iw2DCreateImage("textures/map_player.png");
 	healthTexture = Iw2DCreateImage("textures/map_health.png");
 	xpBarTexture  = Iw2DCreateImage("textures/map_xp_bar.png");
@@ -136,8 +143,20 @@ bool MapViewUpdate() {
 	renderMapXpBar();
 	renderMapHealth();
 
+	Player* player = getGameState()->getPlayer();
 	IntroState introState = getGameState()->getIntroState();
 
+	if (lastDeads > player->getDeadCount()) {
+		lastDeads = player->getDeadCount();
+		defendIntroSet = false;
+		mapGhost->setNotice(true);
+		mapGhost2->setNotice(false);
+	}
+	if (lastLoses > player->getLoseCount() ||
+		lastWins > player->getWinCount()) {
+		lastLoses = player->getLoseCount();
+		lastWins = player->getWinCount();
+	}
 	if (introState == INTRO_DEFEND && !defendIntroSet) {
 		mapGhost->setNotice(false);
 		defendIntroSet = true;
