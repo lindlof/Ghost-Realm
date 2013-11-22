@@ -9,6 +9,7 @@
 
 #include "Main.h"
 #include "GameState.h"
+#include "Audio.h"
 
 #include <time.h>
 
@@ -49,6 +50,8 @@ int main() {
         s3eDeviceYield(0);
 
         int start = clock();
+
+		Audio::GetInstance().Update();
 
 		if (getGameState()->getGameMode() == CAMERA_MODE) {
 			CameraControllerUpdate();

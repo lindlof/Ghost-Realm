@@ -23,11 +23,17 @@ private:
 	void playFile(char* file);
 	void playAmbient(char* file);
 
+	int ambientChan;
+
 public:
+	static Audio& GetInstance();
+
 	static void Play(char* file);
 
 	static void PlayAmbientCamera();
 	static void PlayAmbientCameraCombat();
 	static void PlayAmbientMap();
 	static void StopAmbient();
+
+	void Update();
 };
