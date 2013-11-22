@@ -133,16 +133,18 @@ void MapRoamingGhost::Update() {
 	if (ghostRoamingRadius > 100) ghostRoamingRadius = 100;
 	
 	if (!arrived && clock() > moveTime) {
-		float speed = 9.f;
-		/*{ // Speed fade out/in
+		float speed = 12.f;
+		{ // Speed fade out/in
 			double currentH = sqrt(pow(dabs(destination.y-centreY), 2) + pow(dabs(destination.x-centreX), 2));
-			if (currentH > moveHypotenuse*0.7f) {
-				speed *= (currentH - moveHypotenuse*0.7f)/(moveHypotenuse*0.3f);
-			} else if (currentH < moveHypotenuse*0.3f) {
-				speed *= currentH/(moveHypotenuse*0.3f);
+			double fadeLen = moveHypotenuse*0.1f;
+			if (currentH > moveHypotenuse-fadeLen) {
+				speed *= (fadeLen - (currentH - (moveHypotenuse-fadeLen)))/fadeLen;
+			} else if (currentH < fadeLen) {
+				speed *= currentH/fadeLen;
 			}
+			IwTrace(GHOST_HUNTER, ("moveHypotenuse %f currentH %f speed %f", moveHypotenuse, currentH, speed));
 			if (speed < 0.2f) speed = 0.2f;
-		}*/
+		}
 
 		double travelX = cos(destinationAngle)*speed;
 		double travelY = sin(destinationAngle)*speed;
@@ -176,7 +178,7 @@ void MapRoamingGhost::moveGhost(CIwFVec2 destination, void arrivalCallback(MapRo
 		destinationAngle *= -1;
 	}
 
-	moveTime = clock() + 1500;
+	moveTime = clock() + 500;
 }
 
 void MapRoamingGhost::setCentre(CIwFVec2 centre) {
