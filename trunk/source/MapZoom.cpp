@@ -19,9 +19,16 @@ MapZoom::MapZoom() {
 
 	currentZoom = 1.5f;
 	lastDistance = 0;
+
+	resetTaps();
 }
 
 void MapZoom::Touch(int32 x, int32 y, bool press, uint32 id) {
+	// Multiple touches decline double tap zooming
+	if (id > 0) {
+		resetTaps();
+	}
+
 	if (id >= MAX_TOUCHES) return;
 	touch[id].location = CIwFVec2(x, y);
 	touch[id].active = press;
@@ -42,6 +49,35 @@ void MapZoom::Motion(int32 x, int32 y, uint32 id) {
 
 	if (currentZoom > 3) currentZoom = 3;
 	if (currentZoom < 1) currentZoom = 1;
+}
+
+void MapZoom::Touch(int32 x, int32 y, bool pressed, bool touchReserved) {
+	if (touchReserved) {
+		resetTaps();
+		return;
+	}
+
+	if (pressed) {
+		pressedTime = clock();
+	}
+
+	if (clock() - pressedTime < 1500 && !pressed) {
+		tapCount++;
+
+		if (tapCount > 1 && clock() - lastTapTime < 2200) {
+			resetTaps();
+			currentZoom = 1.5f;
+		} else {
+			lastTapTime = clock();
+			pressedTime = 0;
+		}
+	}
+}
+
+void MapZoom::resetTaps() {
+	tapCount = 0;
+	pressedTime = 0;
+	lastTapTime = 0;
 }
 
 double MapZoom::getDistance(int id1, int id2) {

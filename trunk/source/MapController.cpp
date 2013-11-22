@@ -51,8 +51,14 @@ bool MapControllerUpdate() {
 void MapSingleTouch(s3ePointerEvent* event) {
 	if (getGameState()->getGameMode() == MAP_MODE) {
 		MapRoamingGhost* mapGhost = getRoamingGhost();
+		MapZoom* mapZoom = getMapZoom();
 
-		mapGhost->Touch(event->m_x, event->m_y, event->m_Pressed);
+		bool ghostTouched = false;
+		if (mapGhost != NULL)
+			ghostTouched = mapGhost->Touch(event->m_x, event->m_y, event->m_Pressed);
+
+		if (mapZoom != NULL)
+				mapZoom->Touch(event->m_x, event->m_y, event->m_Pressed, ghostTouched);
 	}
 }
 

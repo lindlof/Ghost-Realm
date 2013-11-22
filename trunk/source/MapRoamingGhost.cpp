@@ -186,8 +186,10 @@ void MapRoamingGhost::setNotice(bool notice) {
 	this->notice = notice;
 }
 
-void MapRoamingGhost::Touch(int x, int y, bool pressed) {
-	if (getGameState()->getGhost() == NULL) return;
+bool MapRoamingGhost::Touch(int x, int y, bool pressed) {
+	bool ret = false;
+
+	if (getGameState()->getGhost() == NULL) return ret;
 
 	if (x > tapAreaTopLeft.x &&
 		x < tapAreaTopLeft.x + tapAreaSize.x &&
@@ -196,16 +198,20 @@ void MapRoamingGhost::Touch(int x, int y, bool pressed) {
 
 		if (pressed) {
 			pressedTime = clock();
+			ret = true;
 		}
 
 		if (clock() - pressedTime < 1500 && !pressed) {
 			IwTrace(GHOST_HUNTER, ("Player wants to fight"));
 			initFight();
 			getGameState()->setGameMode(CAMERA_MODE);
+			ret = true;
 		}
 	} else {
 		pressedTime = 0;
 	}
+
+	return ret;
 }
 
 void MapRoamingGhost::Touch(uint32 id) {
