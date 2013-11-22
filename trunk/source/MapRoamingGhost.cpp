@@ -142,7 +142,6 @@ void MapRoamingGhost::Update() {
 			} else if (currentH < fadeLen) {
 				speed *= currentH/fadeLen;
 			}
-			IwTrace(GHOST_HUNTER, ("moveHypotenuse %f currentH %f speed %f", moveHypotenuse, currentH, speed));
 			if (speed < 0.2f) speed = 0.2f;
 		}
 
