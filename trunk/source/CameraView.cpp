@@ -404,7 +404,7 @@ void setupPlayer() {
 
     // Set viewing position with the Y axis as upright.
     viewMatrix.SetIdentity();
-    viewMatrix.LookAt(CIwFVec3(0,0,0), CIwFVec3(0,0,100), CIwFVec3(0,-1,0));
+    viewMatrix.LookAt(CIwFVec3(0,-11,0), CIwFVec3(0,0,100), CIwFVec3(0,-1,0));
 
     // Rotate according to compass heading
 	viewMatrix.PostRotateY(rad(player->getHeading()));
