@@ -21,7 +21,13 @@ private:
 	Audio& operator=(Audio const&){};
 
 	void playFile(char* file);
+	void playAmbient(char* file);
 
 public:
 	static void Play(char* file);
+
+	static void PlayAmbientCamera();
+	static void PlayAmbientCameraCombat();
+	static void PlayAmbientMap();
+	static void StopAmbient();
 };

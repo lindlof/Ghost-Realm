@@ -122,6 +122,9 @@ assets
 	textures/attack/attack_3.png
 	textures/attack/attack_4.png
 
+	sounds/camera_ambient.mp3
+	sounds/camera_combat_ambient.mp3
+	sounds/map_ambient.mp3
 	sounds/camera_ghost_attack.mp3
 	sounds/camera_ghost_attack_miss.mp3
 	sounds/camera_ghost_first_contact_agro.mp3

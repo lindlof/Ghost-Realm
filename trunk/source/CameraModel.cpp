@@ -11,6 +11,7 @@
 #include "CameraModel.h"
 #include "GhostType.h"
 #include "Ghost.h"
+#include "Audio.h"
 
 #include <math.h>
 #include <time.h>
@@ -73,6 +74,8 @@ void CameraModelTerm()
 }
 
 void initFight() {
+	Audio::PlayAmbientCamera();
+
 	getGameState()->getPlayer()->initFight();
 
 	fightTutorial->resetShown();
@@ -91,6 +94,7 @@ bool CameraModelUpdate()
 		ghost->ghostUpdate();
 
 		if (!fightOver && ghost->isDead()) {
+			Audio::StopAmbient();
 			player->wonBattle();
 			fightOver = true;
 			gameOverTime = clock() + 10000;
@@ -98,6 +102,7 @@ bool CameraModelUpdate()
 			gameState->introProceed();
 			player->increaseWinCount();
 		} else if (!fightOver && player->getMana() <= 0) {
+			Audio::StopAmbient();
 			player->lostBattle();
 			fightOver = true;
 			gameOverTime = clock() + 10000;

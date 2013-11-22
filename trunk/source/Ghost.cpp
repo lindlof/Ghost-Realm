@@ -45,6 +45,7 @@ Ghost::Ghost(GhostType ghostType, Player *player) {
 	hitTime = 0;
 	nextAttackInterval = 0;
 	attackDefendable = false;
+	ghostHasBeenHit = false;
 
 	floatingAngle = 0;
 
@@ -64,6 +65,11 @@ void Ghost::cameraInit() {
 }
 
 void Ghost::ghostGotHit(int hit) {
+	if (!ghostHasBeenHit) {
+		ghostHasBeenHit = true;
+		Audio::PlayAmbientCameraCombat();
+	}
+
 	// 75% of hits success
 	if (IwRandMinMax(0, 100) <= 75) {
 		ectoplasm -= hit;

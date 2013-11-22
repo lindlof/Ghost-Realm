@@ -43,6 +43,7 @@ class Ghost {
 	GhostAttack* ghostAttack;
 	bool attackDefendable;
 	clock_t hitTime;
+	bool ghostHasBeenHit;
 
 	int nextAttackInterval;
 

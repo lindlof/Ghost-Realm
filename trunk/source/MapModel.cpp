@@ -12,6 +12,7 @@
 #include "GameState.h"
 #include "Ghost.h"
 #include "MapZoom.h"
+#include "Audio.h"
 
 #include "IwRandom.h"
 #include "s3eTimer.h"
@@ -19,13 +20,20 @@
 void restartGame();
 void respawnGhost();
 
-MapZoom* mapZoom;
-GhostType lastGhostType;
+static MapZoom* mapZoom;
+static GhostType lastGhostType;
+
+static int lastLoses, lastWins;
 
 void MapModelInit() {
 	IwRandSeed((int32)s3eTimerGetMs());
 
 	mapZoom = new MapZoom();
+
+	Player* player = getGameState()->getPlayer();
+	lastLoses = player->getLoseCount();
+	lastWins = player->getWinCount();
+	Audio::PlayAmbientMap();
 }
 
 void MapModelTerm() {
@@ -34,11 +42,20 @@ void MapModelTerm() {
 }
 
 bool MapModelUpdate() {
+
 	Player* player = getGameState()->getPlayer();
 	if (player->isDead()) {
 		restartGame();
 	}
 	player->headingUpdate();
+
+	if (lastLoses < player->getLoseCount() ||
+		lastWins < player->getWinCount()) {
+		lastLoses = player->getLoseCount();
+		lastWins = player->getWinCount();
+
+		Audio::PlayAmbientMap();
+	}
 
 	respawnGhost();
 
