@@ -61,7 +61,8 @@ FightTutorialView::FightTutorialView() {
 
 		int h = (double)IwGxGetScreenHeight()*0.35f;
 		float whScale = 
-			(float)(((double)attackAnimTexture->GetWidth()/attackAnimCells) / ((double)attackAnimTexture->GetHeight()/attackAnimRows));
+			(float)(((double)attackAnimTexture->GetWidth()/attackAnimCells) /
+			((double)attackAnimTexture->GetHeight()/attackAnimRows));
 		int16 w = h * whScale;
 
 		int x1 = (double)IwGxGetScreenWidth()*0.33f;
@@ -95,7 +96,7 @@ FightTutorialView::FightTutorialView() {
 		int16 w = h * whScale;
 
 		int x1 = (double)IwGxGetScreenWidth()*0.5f - (float)w*0.49f;
-		int x2 = x1+w;
+		int x2 = x1 + w;
 		int y1 = (double)IwGxGetScreenHeight()*0.15f;
 		int y2 = y1 + h;
 
@@ -116,17 +117,17 @@ FightTutorialView::FightTutorialView() {
 		searchAnimMat->CreateAnim();
 		searchAnimMat->SetAnimCelW((double)searchAnimTexture->GetWidth()/searchAnimCells);
 		searchAnimMat->SetAnimCelH((double)searchAnimTexture->GetHeight()/searchAnimRows);
-		searchAnimMat->SetAnimCelPeriod(5);
+		searchAnimMat->SetAnimCelPeriod(2.66);
 
-		int h = (double)IwGxGetScreenHeight()*0.34f;
+		int h = (double)IwGxGetScreenHeight()*0.35f;
 		float whScale = 
 			(float)(((double)searchAnimTexture->GetWidth()/searchAnimCells) / 
 			((double)searchAnimTexture->GetHeight()/searchAnimRows));
 		int16 w = h * whScale;
 
-		int x1 = (double)IwGxGetScreenWidth()*0.5f - (float)w*0.50f;
-		int x2 = x1+w;
-		int y1 = (double)IwGxGetScreenHeight()*0.15f;
+		int x1 = (double)IwGxGetScreenWidth()*0.50f - (float)w*0.50f;
+		int x2 = x1 + w;
+		int y1 = (double)IwGxGetScreenHeight()*0.51f - h;
 		int y2 = y1 + h;
 
 		searchAnimVerts[0] = CIwFVec2(x1, y1);
