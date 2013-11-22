@@ -47,12 +47,20 @@ class FightTutorialView {
 	CIwTexture* defendAnimTexture;
 	CIwMaterial* defendAnimMat;
 
+	static const int searchAnimCells = 4;
+	static const int searchAnimRows = 2;
+	static CIwFVec2 search_anim_uvs[4];
+	CIwFVec2 searchAnimVerts[4];
+	CIwTexture* searchAnimTexture;
+	CIwMaterial* searchAnimMat;
+
 	clock_t pressedTime;
 
 
 	void drawText(CIw2DImage* text, bool animated);
 	void drawAttackAnim();
 	void drawDefendAnim();
+	void drawSearchAnim();
 
 	public:
 	FightTutorialView();
