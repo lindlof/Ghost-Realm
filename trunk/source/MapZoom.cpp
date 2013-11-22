@@ -12,15 +12,33 @@
 #include "math.h"
 #include "IwGraphics.h"
 
+inline int getSign(float a) { return a == 0 ? 0 : a > 0 ? +1 : -1; }
+
 MapZoom::MapZoom() {
 	for (int i = 0; i < MAX_TOUCHES; i++) {
 		touch[i].active = false;
 	}
 
-	currentZoom = 1.5f;
+	setZoom(1.5f);
 	lastDistance = 0;
 
 	resetTaps();
+}
+
+void MapZoom::Update() {
+	if (currentZoom != destinationZoom) {
+		int pol = getSign(destinationZoom - currentZoom);
+		currentZoom += 0.10f*pol;
+		if ((pol > 0 && currentZoom > destinationZoom) ||
+			(pol < 0 && currentZoom < destinationZoom)) {
+				setZoom(destinationZoom);
+		}
+	}
+}
+
+void MapZoom::setZoom(float zoom) {
+	currentZoom = zoom;
+	destinationZoom = zoom;
 }
 
 void MapZoom::Touch(int32 x, int32 y, bool press, uint32 id) {
@@ -43,12 +61,12 @@ void MapZoom::Motion(int32 x, int32 y, uint32 id) {
 
 	float zoomStrength = 3.0/IwGxGetScreenWidth();
 	double newDistance = getDistance(0, 1);
-	currentZoom += (newDistance - lastDistance)*zoomStrength;
+	setZoom(currentZoom + (newDistance - lastDistance)*zoomStrength);
 
 	lastDistance = newDistance;
 
-	if (currentZoom > 3) currentZoom = 3;
-	if (currentZoom < 1) currentZoom = 1;
+	if (currentZoom > 3) setZoom(3);
+	if (currentZoom < 1) setZoom(1);
 }
 
 void MapZoom::Touch(int32 x, int32 y, bool pressed, bool touchReserved) {
@@ -65,8 +83,14 @@ void MapZoom::Touch(int32 x, int32 y, bool pressed, bool touchReserved) {
 		tapCount++;
 
 		if (tapCount > 1 && clock() - lastTapTime < 2200) {
+			// Double tap registered
 			resetTaps();
-			currentZoom = 1.5f;
+
+			if (currentZoom >= 1.5 && currentZoom < 2) {
+				destinationZoom = 2.5f;
+			} else {
+				destinationZoom = 1.5f;
+			}
 		} else {
 			lastTapTime = clock();
 			pressedTime = 0;

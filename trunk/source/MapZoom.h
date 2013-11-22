@@ -24,6 +24,7 @@ private:
 	static const int MAX_TOUCHES = 2;
 
 	float currentZoom;
+	float destinationZoom;
 
 	int tapCount;
 	clock_t pressedTime;
@@ -33,8 +34,12 @@ private:
 	MapZoomTouch touch[MAX_TOUCHES];
 	double getDistance(int id1, int id2);
 
+	void setZoom(float zoom);
+
 public:
 	MapZoom();
+
+	void Update();
 
 	void Touch(int32 x, int32 y, bool press, uint32 id);
 	void Motion(int32 x, int32 y, uint32 id);

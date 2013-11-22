@@ -7,6 +7,8 @@
  * PARTICULAR PURPOSE.
  */
 
+#include "MapModel.h"
+
 #include "GameState.h"
 #include "Ghost.h"
 #include "MapZoom.h"
@@ -39,6 +41,10 @@ bool MapModelUpdate() {
 	player->headingUpdate();
 
 	respawnGhost();
+
+	MapZoom* mapZoom = getMapZoom();
+	if (mapZoom != NULL)
+		mapZoom->Update();
 
 	return true;
 }
