@@ -21,6 +21,7 @@ class MapRoamingGhost {
 	CIwFVec2 size;
 
 	bool arrived;
+	double moveHypotenuse;
 	CIwFVec2 destination;
 	double destinationAngle;
 	void (*arrivalCallback)(MapRoamingGhost*);

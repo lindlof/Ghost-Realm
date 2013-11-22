@@ -133,8 +133,19 @@ void MapRoamingGhost::Update() {
 	if (ghostRoamingRadius > 100) ghostRoamingRadius = 100;
 	
 	if (!arrived && clock() > moveTime) {
-		double travelX = cos(destinationAngle)*12.f;
-		double travelY = sin(destinationAngle)*12.f;
+		float speed = 9.f;
+		/*{ // Speed fade out/in
+			double currentH = sqrt(pow(dabs(destination.y-centreY), 2) + pow(dabs(destination.x-centreX), 2));
+			if (currentH > moveHypotenuse*0.7f) {
+				speed *= (currentH - moveHypotenuse*0.7f)/(moveHypotenuse*0.3f);
+			} else if (currentH < moveHypotenuse*0.3f) {
+				speed *= currentH/(moveHypotenuse*0.3f);
+			}
+			if (speed < 0.2f) speed = 0.2f;
+		}*/
+
+		double travelX = cos(destinationAngle)*speed;
+		double travelY = sin(destinationAngle)*speed;
 		if (abs(centreX-destination.x) < abs((centreX+travelX)-destination.x))
 			travelX = 0;
 		if (abs(centreY-destination.y) < abs((centreY+travelY)-destination.y))
@@ -154,6 +165,7 @@ void MapRoamingGhost::Update() {
 void MapRoamingGhost::moveGhost(CIwFVec2 destination, void arrivalCallback(MapRoamingGhost*)) {
 	this->arrived = false;
 	this->arrivalCallback = arrivalCallback;
+	this->moveHypotenuse = sqrt(pow(dabs(destination.y-centreY), 2) + pow(dabs(destination.x-centreX), 2));
 	this->destination = destination;
 	this->destinationAngle = atan(dabs(destination.y-centreY) / dabs(destination.x-centreX));
 	if (destination.x < centreX) {
