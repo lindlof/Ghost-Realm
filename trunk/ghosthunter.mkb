@@ -125,6 +125,7 @@ assets
 	sounds/camera_ghost_attack.mp3
 	sounds/camera_ghost_attack_miss.mp3
 	sounds/camera_ghost_first_contact_agro.mp3
+	sounds/camera_ghost_is_seen.mp3
 	sounds/camera_ghost_takes_damage.mp3
 	sounds/camera_player_attack_hit.mp3
 	sounds/camera_player_attack_miss.mp3

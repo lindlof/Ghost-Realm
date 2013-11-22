@@ -73,8 +73,9 @@ int Player::getMana() {
 	return Player::mana;
 }
 
-void Player::resetMana() {
+void Player::initFight() {
 	mana = PLAYER_MAX_MANA;
+	ghostSeen = false;
 }
 
 void Player::lostBattle() {
@@ -109,9 +110,17 @@ void Player::accelometerUpdate(int32 x, int32 y, int32 z) {
 	bool angleOk = ghostAngle < 40;
 
 	FightTutorial* tutorial = getFightTutorial();
-	if (angleOk && tutorial != NULL) {
-		tutorial->counterTrigger(TUTORIAL_SEARCH);
-		tutorial->triggerTutorial(TUTORIAL_ATTACK);
+	if (angleOk) {
+
+		if (tutorial != NULL) {
+			tutorial->counterTrigger(TUTORIAL_SEARCH);
+			tutorial->triggerTutorial(TUTORIAL_ATTACK);
+		}
+
+		if (!ghostSeen) {
+			ghostSeen = true;
+			Audio::Play("sounds/camera_ghost_is_seen.mp3");
+		}
 	}
 
 	if (strikeRes > 0 && isReady()) {

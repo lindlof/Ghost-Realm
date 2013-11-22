@@ -35,6 +35,8 @@ class Player {
 
 	void init();
 
+	bool ghostSeen;
+
 	bool animAttack;
 	bool poll(bool& poll);
 
@@ -54,7 +56,7 @@ class Player {
 
 	int getVitality();
 	int getMana();
-	void resetMana();
+	void initFight();
 	void lostBattle();
 	void wonBattle();
 	bool isDead();
