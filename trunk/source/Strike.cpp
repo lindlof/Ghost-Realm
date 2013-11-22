@@ -36,10 +36,10 @@ int Strike::strikeUpdate(int32 x, int32 y, int32 z) {
 	int i;
 
 	float phoneAccel = (float)sqrt(z*z + y*y);
-	phoneAccel = z < 0 ? phoneAccel*-1 : phoneAccel*1;
+	phoneAccel = (z+y) < 0 ? phoneAccel*-1 : phoneAccel*1;
 
-	//if (phoneAccel < -200 || phoneAccel > 200) 
-	//	IwTrace(GHOST_HUNTER, ("Strike x: %d y: %d z: %d accel: %f", x, y, z, phoneAccel));
+	if (phoneAccel < -200 || phoneAccel > 200) 
+		IwTrace(GHOST_HUNTER, ("Strike x: %d y: %d z: %d accel: %f", x, y, z, phoneAccel));
 
 	// 1) Should the strike init?
 	if (!striking && phoneAccel > ACCEL_TO_START_STRKE) {
@@ -58,7 +58,7 @@ int Strike::strikeUpdate(int32 x, int32 y, int32 z) {
 	if (striking) {
 		IwTrace(GOHU, ("accel %f", phoneAccel));
 
-		if (timeUsed < MIN_STRIKE_TIME && z + y < ACCEL_TO_START_STRKE/2) {
+		if (timeUsed < MIN_STRIKE_TIME && z + y < ACCEL_TO_START_STRKE/2 && (x < 100 && y < 100)) {
 			// 2) Is the phone already slowing or going backward?
 			striking = false;
 			IwTrace(GHOST_HUNTER, ("Strike ended too early"));
