@@ -48,7 +48,7 @@ class FightTutorialView {
 	CIwMaterial* defendAnimMat;
 
 	static const int searchAnimCells = 4;
-	static const int searchAnimRows = 2;
+	static const int searchAnimRows = 4;
 	static CIwFVec2 search_anim_uvs[4];
 	CIwFVec2 searchAnimVerts[4];
 	CIwTexture* searchAnimTexture;

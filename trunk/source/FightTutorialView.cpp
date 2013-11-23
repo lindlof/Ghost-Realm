@@ -117,7 +117,7 @@ FightTutorialView::FightTutorialView() {
 		searchAnimMat->CreateAnim();
 		searchAnimMat->SetAnimCelW((double)searchAnimTexture->GetWidth()/searchAnimCells);
 		searchAnimMat->SetAnimCelH((double)searchAnimTexture->GetHeight()/searchAnimRows);
-		searchAnimMat->SetAnimCelPeriod(2.66);
+		searchAnimMat->SetAnimCelPeriod(2.66f);
 
 		int h = (double)IwGxGetScreenHeight()*0.35f;
 		float whScale = 
@@ -271,6 +271,9 @@ void FightTutorialView::drawDefendAnim() {
 
 void FightTutorialView::drawSearchAnim() {
 	IwGxLightingOff();
+
+	if (searchAnimMat->GetAnimCelID() > 11)
+		searchAnimMat->SetAnimCelID(0);
 
 	searchAnimMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
 	searchAnimMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
