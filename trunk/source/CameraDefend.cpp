@@ -24,7 +24,7 @@ static CIwFVec2 dot_uvs[4] =
 };
 
 static int cells = 4;
-static int rows = 4;
+static int rows = 2;
 static CIwFVec2 anim_uvs[4] =
 {
     CIwFVec2(0,         0),
