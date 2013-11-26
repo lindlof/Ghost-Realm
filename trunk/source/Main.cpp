@@ -36,7 +36,6 @@ int main() {
     IwGxSetColClear(0x0, 0x0, 0x0, 0xff);
 
 	Splash* splash = new Splash();
-	splash->Render();
 	s3eDeviceYield(20);
 	{ // Init game
 		CameraViewPreInit();

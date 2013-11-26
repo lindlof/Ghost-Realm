@@ -33,6 +33,7 @@ public:
 	static void PlayAmbientCamera();
 	static void PlayAmbientCameraCombat();
 	static void PlayAmbientMap();
+	static void PlayAmbientMapInstantly();
 	static void StopAmbient();
 
 	void Update();

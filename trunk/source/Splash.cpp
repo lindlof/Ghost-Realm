@@ -8,6 +8,7 @@
  */
 
 #include "Splash.h"
+#include "Audio.h"
 
 Splash::Splash() {
 	texture = new CIwTexture;
@@ -41,6 +42,8 @@ Splash::Splash() {
 	uvs[2] = CIwFVec2(1, 1);
 	uvs[3] = CIwFVec2(1, 0);
 
+	this->Render();
+	Audio::PlayAmbientMapInstantly();
 }
 
 Splash::~Splash() {

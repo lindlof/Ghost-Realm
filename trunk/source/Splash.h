@@ -16,9 +16,9 @@ private:
 	CIwFVec2 vert[4];
 	CIwFVec2 uvs[4];
 
+	void Render();
+
 public:
 	Splash();
 	~Splash();
-
-	void Render();
 };

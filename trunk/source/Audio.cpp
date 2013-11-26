@@ -35,6 +35,10 @@ void Audio::PlayAmbientCameraCombat() {
 void Audio::PlayAmbientMap() {
 	Instance().playAmbient("sounds/map_ambient.mp3");
 }
+void Audio::PlayAmbientMapInstantly() {
+	Instance().playAmbient("sounds/map_ambient.mp3");
+	s3eAudioSetInt(S3E_AUDIO_VOLUME, s3eAudioGetInt(S3E_AUDIO_VOLUME_DEFAULT));
+}
 void Audio::StopAmbient() {
 	Instance().playAmbient(NULL);
 }

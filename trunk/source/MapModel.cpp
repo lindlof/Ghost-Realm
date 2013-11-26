@@ -33,7 +33,6 @@ void MapModelInit() {
 	Player* player = getGameState()->getPlayer();
 	lastLoses = player->getLoseCount();
 	lastWins = player->getWinCount();
-	Audio::PlayAmbientMap();
 }
 
 void MapModelTerm() {
