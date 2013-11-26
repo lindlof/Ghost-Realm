@@ -46,6 +46,8 @@ void BuildCollision(const char* pUserString, CIwModel* pModel)
 
 #endif
 
+inline float fabs(float a) { return a > 0 ? a : a * -1; }
+
 GhostCollision::GhostCollision() {
 	m_pModel = NULL;
 
@@ -216,8 +218,8 @@ void GhostCollision::RenderEctoplasmaBar(float ectoPercent, double ghostRotation
 	const int16 border_x1 = ghostX+ghostW/2 - (float)w*ectobarScale;
 	const int16 border_x2 = ghostX+ghostW/2 + (float)w*ectobarScale;
 
-	const int16 border_y1 = ghostY+0x20;
-	const int16 border_y2 = ghostY+0x20 + (float)0x10*ectobarScale;
+	const float border_y1 = ghostY+0x20;
+	const float border_y2 = ghostY+0x20 + (float)0x10*ectobarScale;
 	const int16 z = 0x6;
 
 	{
@@ -226,8 +228,8 @@ void GhostCollision::RenderEctoplasmaBar(float ectoPercent, double ghostRotation
 		pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
 		pMat->SetTexture(borderTexture);
 
-		int16 x1 = border_x1, x2 = border_x2, 
-			y1 = border_y1, y2 = border_y2;
+		int16 x1 = border_x1, x2 = border_x2; 
+		float y1 = border_y1, y2 = border_y2;
 		border_Verts[0] = CIwFVec3(x1, y2, -z);
 		border_Verts[1] = CIwFVec3(x2, y2, -z);
 		border_Verts[2] = CIwFVec3(x2, y1, -z);
@@ -244,8 +246,8 @@ void GhostCollision::RenderEctoplasmaBar(float ectoPercent, double ghostRotation
 		IwGxDrawPrims(IW_GX_QUAD_STRIP, s_QuadStrip, 4);
 	}
 
-	int16 start_y1 = border_y1 + abs((float)(border_y2 - border_y1)*0.225);
-	int16 start_y2 = start_y1  + abs((float)(border_y2 - border_y1)*0.690);
+	float start_y1 = border_y1 + fabs((float)(border_y2 - border_y1)*0.200);
+	float start_y2 = start_y1  + fabs((float)(border_y2 - border_y1)*0.720);
 	float startWhScale = (float)((double)startTexture->GetWidth() / startTexture->GetHeight());
 	int16 startW = (start_y2 - start_y1) * startWhScale;
 	int16 start_x1 = border_x1 + abs((float)(border_x2 - border_x1)*0.0097);
@@ -257,8 +259,8 @@ void GhostCollision::RenderEctoplasmaBar(float ectoPercent, double ghostRotation
 		pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
 		pMat->SetTexture(startTexture);
 
-		int16 x1 = start_x1, x2 = start_x2, 
-			y1 = start_y1, y2 = start_y2;
+		int16 x1 = start_x1, x2 = start_x2;
+		float y1 = start_y1, y2 = start_y2;
 		start_Verts[0] = CIwFVec3(x1, y2, -z);
 		start_Verts[1] = CIwFVec3(x2, y2, -z);
 		start_Verts[2] = CIwFVec3(x2, y1, -z);
@@ -275,8 +277,8 @@ void GhostCollision::RenderEctoplasmaBar(float ectoPercent, double ghostRotation
 		IwGxDrawPrims(IW_GX_QUAD_STRIP, s_QuadStrip, 4);
 	}
 
-	int16 end_y1 = start_y1;
-	int16 end_y2 = start_y2;
+	float end_y1 = start_y1;
+	float end_y2 = start_y2;
 	float endWhScale = (float)((double)endTexture->GetWidth() / endTexture->GetHeight());
 	int16 endW = (end_y2 - end_y1) * endWhScale;
 
@@ -291,8 +293,8 @@ void GhostCollision::RenderEctoplasmaBar(float ectoPercent, double ghostRotation
 		pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
 		pMat->SetTexture(endTexture);
 
-		int16 x1 = end_x1, x2 = end_x2, 
-			y1 = end_y1, y2 = end_y2;
+		int16 x1 = end_x1, x2 = end_x2;
+		float y1 = end_y1, y2 = end_y2;
 		end_Verts[0] = CIwFVec3(x1, y2, -z);
 		end_Verts[1] = CIwFVec3(x2, y2, -z);
 		end_Verts[2] = CIwFVec3(x2, y1, -z);
@@ -309,8 +311,8 @@ void GhostCollision::RenderEctoplasmaBar(float ectoPercent, double ghostRotation
 		IwGxDrawPrims(IW_GX_QUAD_STRIP, s_QuadStrip, 4);
 	}
 	
-	int16 center_y1 = start_y1;
-	int16 center_y2 = start_y2;
+	float center_y1 = start_y1;
+	float center_y2 = start_y2;
 	int16 center_x1 = start_x2 - 1;
 	int16 center_x2 = end_x1 + 1;
 	
@@ -320,8 +322,8 @@ void GhostCollision::RenderEctoplasmaBar(float ectoPercent, double ghostRotation
 		pMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
 		pMat->SetTexture(centerTexture);
 
-		int16 x1 = center_x1, x2 = center_x2, 
-			y1 = center_y1, y2 = center_y2;
+		int16 x1 = center_x1, x2 = center_x2; 
+		float y1 = center_y1, y2 = center_y2;
 		center_Verts[0] = CIwFVec3(x1, y2, -z);
 		center_Verts[1] = CIwFVec3(x2, y2, -z);
 		center_Verts[2] = CIwFVec3(x2, y1, -z);
