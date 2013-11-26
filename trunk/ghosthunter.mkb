@@ -64,6 +64,8 @@ files
 	[Main]
 	Main.cpp
 	Main.h
+	Splash.cpp
+	Splash.h
 
 	[Resources]
 	(data/viking)
@@ -87,6 +89,7 @@ assets
 	viking/viking.group.bin
 
     (data)
+	textures/splash.png
     textures/defending_dot.png
 	textures/defending_anim.png
 	textures/player_blood.png

@@ -10,6 +10,7 @@
 #include "Main.h"
 #include "GameState.h"
 #include "Audio.h"
+#include "Splash.h"
 
 #include <time.h>
 
@@ -34,15 +35,21 @@ int main() {
 	// Set screen clear colour
     IwGxSetColClear(0x0, 0x0, 0x0, 0xff);
 
-	CameraViewPreInit();
+	Splash* splash = new Splash();
+	splash->Render();
+	s3eDeviceYield(20);
+	{ // Init game
+		CameraViewPreInit();
 
-	MapControllerInit();
-	MapModelInit();
-	MapViewInit();
+		MapControllerInit();
+		MapModelInit();
+		MapViewInit();
 
-	CameraControllerInit();
-	CameraModelInit();
-	CameraViewInit();
+		CameraControllerInit();
+		CameraModelInit();
+		CameraViewInit();
+	}
+	delete splash;
 
 	getGameState()->setGameMode(MAP_MODE);
 
