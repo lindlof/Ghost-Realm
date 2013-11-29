@@ -1,6 +1,9 @@
-// Source file: Skel_Anim_AttackV2.max
-CIwMaterial
+// Source file: Skel_Anim_AttackV2.max 
+CIwMaterial 
 {
 	name "GEO_For_Export/GEO_For_Export"
+	colDiffuse { 255 255 255 222 }
+	colAmbient { 255 255 255 222 }
 	texture0 "Skelman.png"
+	cullMode "NONE"
 }
