@@ -34,6 +34,7 @@ class GhostAttack {
 	void setDefended();
 
 	bool isOver();
+	clock_t getInterval();
 };
 
 #endif

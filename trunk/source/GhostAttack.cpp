@@ -62,3 +62,7 @@ void GhostAttack::setDefended() {
 bool GhostAttack::isOver() {
 	return over;
 }
+
+clock_t GhostAttack::getInterval() {
+	return interval;
+}

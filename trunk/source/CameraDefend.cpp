@@ -209,6 +209,19 @@ void CameraDefend::Render() {
 
 	if (!isActive()) return;
 
+	{
+		Ghost* ghost = getGameState()->getGhost();
+		GhostAttack* attack = (ghost != NULL) ? ghost->getAttack() : NULL;
+
+		if (attack != NULL && 
+			((attack->getInterval() <  750 && attack->getInterval() > 600) ||
+			 (attack->getInterval() <  400 && attack->getInterval() > 250))) {
+			dotTexture = dotTextureRed;
+		} else {
+			dotTexture = dotTextureGreen;
+		}
+	}
+
 	Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
 	Iw2DSetTransformMatrix(CIwFMat2D::g_Identity);
 
