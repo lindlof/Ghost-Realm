@@ -31,6 +31,7 @@ static int lastLoses, lastWins;
 
 static CIw2DImage* playerTexture;
 static CIw2DImage* healthTexture;
+static CIw2DImage* healthLostTexture;
 static CIw2DImage* xpBarTexture;
 static CIwTexture* mapTexture;
 
@@ -62,6 +63,7 @@ void MapViewInit()
 
 	playerTexture = Iw2DCreateImage("textures/map_player.png");
 	healthTexture = Iw2DCreateImage("textures/map_health.png");
+	healthLostTexture = Iw2DCreateImage("textures/map_health_lost.png");
 	xpBarTexture  = Iw2DCreateImage("textures/map_xp_bar.png");
 	
 	mapTexture = new CIwTexture;
@@ -109,6 +111,12 @@ void mapInit(int mapW, int mapH) {
 }
 
 void MapViewTerm() {
+
+	if (healthTexture)
+		delete healthTexture;
+
+	if (healthLostTexture)
+		delete healthLostTexture;
 
 	if (playerTexture)
 		delete playerTexture;
@@ -270,10 +278,14 @@ void renderMapHealth() {
 
 	CIwFVec2 size = CIwFVec2(w, h);
 	int vitality = getGameState()->getPlayer()->getVitality();
-
-	for (int i = 0; i < vitality; i++) {
+	
+	for (int i = 0; i < PLAYER_MAX_VITALITY; i++) {
 		CIwFVec2 topLeft = CIwFVec2(leftPadding + (leftMargin+w)*i, topPadding);
 
-		Iw2DDrawImage(healthTexture, topLeft, size);
+		if (i < vitality) {
+			Iw2DDrawImage(healthTexture, topLeft, size);
+		} else {
+			Iw2DDrawImage(healthLostTexture, topLeft, size);
+		}
 	}
 }

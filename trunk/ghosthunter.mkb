@@ -100,6 +100,7 @@ assets
 	textures/map_ghost_xtra.png
 	textures/map_player.png
 	textures/map_health.png
+	textures/map_health_lost.png
 	textures/map_template.png
 	textures/map_xp_bar.png
 	textures/mana/mana_bar_border.png
