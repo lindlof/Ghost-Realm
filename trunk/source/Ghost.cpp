@@ -160,8 +160,21 @@ bool Ghost::ghostUpdate() {
 		}
 	}
 
+	// Decrease next intervals
+	if (!gameIsHalt()) {
+		clock_t currentTime = clock();
+		if (nextAttackInterval >= 0)
+			nextAttackInterval -= currentTime - lastUpdate;
+		if (animAttackInterval >= 0)
+			animAttackInterval -= currentTime - lastUpdate;
+
+		lastUpdate = currentTime;
+	} else {
+		lastUpdate = clock();
+	}
+
 	// Initiate new attacks
-	if (found && getAttack() == NULL && nextAttackInterval <= 0) {
+	if (found && !gameIsHalt() && getAttack() == NULL && nextAttackInterval <= 0) {
 		if (getGameState()->getIntroState() == INTRO_ATTACK) {
 			attackDefendable = false;
 		} else {
@@ -181,19 +194,6 @@ bool Ghost::ghostUpdate() {
 		} else {
 			getAttack()->Update();
 		}
-	}
-
-	// Decrease next attack interval
-	if (!gameIsHalt()) {
-		clock_t currentTime = clock();
-		if (nextAttackInterval >= 0)
-			nextAttackInterval -= currentTime - lastUpdate;
-		if (animAttackInterval >= 0)
-			animAttackInterval -= currentTime - lastUpdate;
-
-		lastUpdate = currentTime;
-	} else {
-		lastUpdate = clock();
 	}
 
 	return true;
