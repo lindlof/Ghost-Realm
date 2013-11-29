@@ -90,6 +90,7 @@ CameraDefend::CameraDefend() {
 	
 	reinit();
 	active = false;
+	defended = false;
 }
 
 void CameraDefend::reinit() {
@@ -153,12 +154,6 @@ void CameraDefend::reinit() {
 	for (int i = 0; i < DEFEND_TOUCHES_MAX; i++) {
 		touch[i]->drawing = false;
 	}
-
-	animMat->SetAnimCelID(0);
-	animMatSuccess->SetAnimCelID(0);
-
-	defended = false;
-	defendedPlayed = false;
 }
 
 CameraDefend::~CameraDefend() {
@@ -187,11 +182,7 @@ CameraDefend::~CameraDefend() {
 }
 
 void CameraDefend::Render() {
-	if (defended && !defendedPlayed) {
-		if (animMatSuccess->GetAnimCelID() == animMatSuccess->GetAnimCelNum() - 1) {
-			defendedPlayed = true;
-		}
-
+	if (defended) {
 		IwGxLightingOff();
 
 		animMatSuccess->SetModulateMode(CIwMaterial::MODULATE_NONE);
@@ -205,6 +196,12 @@ void CameraDefend::Render() {
 
 		IwGxSetVertStreamScreenSpace(animVertsRightSuccess, 4);
 		IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
+
+		if (animMatSuccess->GetAnimCelID() == animMatSuccess->GetAnimCelNum() - 1) {
+			defended = false;
+		}
+	} else {
+		animMatSuccess->SetAnimCelID(0);
 	}
 
 	if (!isActive()) return;
