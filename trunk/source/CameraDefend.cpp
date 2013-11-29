@@ -33,6 +33,16 @@ static CIwFVec2 anim_uvs[4] =
     CIwFVec2(1.f/cells, 0),
 };
 
+static int cellsSuccess = 4;
+static int rowsSuccess = 2;
+static CIwFVec2 anim_uvs_success[4] =
+{
+    CIwFVec2(0,                0),
+    CIwFVec2(0,                1.f/rowsSuccess),
+    CIwFVec2(1.f/cellsSuccess, 1.f/rowsSuccess),
+    CIwFVec2(1.f/cellsSuccess, 0),
+};
+
 double inline rad(double d) {
     return d / 180.0f * PI;
 }
@@ -49,20 +59,34 @@ CameraDefend::CameraDefend() {
 		touch[i]->drawing = false;
 	}
 
-	dotTexture = Iw2DCreateImage("textures/defending_dot.png");
+	dotTextureGreen = Iw2DCreateImage("textures/defending_dot/defending_dot.png");
+	dotTextureRed   = Iw2DCreateImage("textures/defending_dot/defending_dot_red.png");
+	dotTexture = dotTextureGreen;
 	dotAngle = 0;
 
-	animTexture = new CIwTexture;
-	animTexture->LoadFromFile("textures/defending_anim.png");
-	animTexture->Upload();
+	animTexturePress = new CIwTexture;
+	animTexturePress->LoadFromFile("textures/defending_dot/defending_anim.png");
+	animTexturePress->Upload();
 
 	animMat = new CIwMaterial;
-	animMat->SetTexture(animTexture);
+	animMat->SetTexture(animTexturePress);
 
 	animMat->CreateAnim();
-	animMat->SetAnimCelW((double)animTexture->GetWidth()/cells);
-	animMat->SetAnimCelH((double)animTexture->GetHeight()/rows);
+	animMat->SetAnimCelW((double)animTexturePress->GetWidth()/cells);
+	animMat->SetAnimCelH((double)animTexturePress->GetHeight()/rows);
     animMat->SetAnimCelPeriod(2);
+
+	animTextureSuccess = new CIwTexture;
+	animTextureSuccess->LoadFromFile("textures/defending_dot/defending_success.png");
+	animTextureSuccess->Upload();
+
+	animMatSuccess = new CIwMaterial;
+	animMatSuccess->SetTexture(animTextureSuccess);
+
+	animMatSuccess->CreateAnim();
+	animMatSuccess->SetAnimCelW((double)animTexturePress->GetWidth()/cellsSuccess);
+	animMatSuccess->SetAnimCelH((double)animTexturePress->GetHeight()/rowsSuccess);
+    animMatSuccess->SetAnimCelPeriod(2);
 	
 	reinit();
 	active = false;
@@ -95,6 +119,11 @@ void CameraDefend::reinit() {
 		animVertsLeft[1] = CIwFVec2(dotVertsTopLeftLeft.x - width, dotVertsTopLeftLeft.y + height*2);
 		animVertsLeft[2] = CIwFVec2(dotVertsTopLeftLeft.x + width*2, dotVertsTopLeftLeft.y + height*2);
 		animVertsLeft[3] = CIwFVec2(dotVertsTopLeftLeft.x + width*2, dotVertsTopLeftLeft.y - height);
+
+		animVertsLeftSuccess[0] = animVertsLeft[0];
+		animVertsLeftSuccess[1] = animVertsLeft[1];
+		animVertsLeftSuccess[2] = animVertsLeft[2];
+		animVertsLeftSuccess[3] = animVertsLeft[3];
 	}
 
 	{
@@ -114,22 +143,42 @@ void CameraDefend::reinit() {
 		animVertsRight[1] = CIwFVec2(dotVertsTopLeftRight.x - width, dotVertsTopLeftRight.y + height*2);
 		animVertsRight[2] = CIwFVec2(dotVertsTopLeftRight.x + width*2, dotVertsTopLeftRight.y + height*2);
 		animVertsRight[3] = CIwFVec2(dotVertsTopLeftRight.x + width*2, dotVertsTopLeftRight.y - height);
+
+		animVertsRightSuccess[0] = animVertsRight[0];
+		animVertsRightSuccess[1] = animVertsRight[1];
+		animVertsRightSuccess[2] = animVertsRight[2];
+		animVertsRightSuccess[3] = animVertsRight[3];
 	}
 
 	for (int i = 0; i < DEFEND_TOUCHES_MAX; i++) {
 		touch[i]->drawing = false;
 	}
+
+	animMat->SetAnimCelID(0);
+	animMatSuccess->SetAnimCelID(0);
+
+	defended = false;
+	defendedPlayed = false;
 }
 
 CameraDefend::~CameraDefend() {
 	if (animMat)
 		delete animMat;
 
-	if (dotTexture)
-		delete dotTexture;
+	if (animMatSuccess)
+		delete animMatSuccess;
 
-	if (animTexture)
-		delete animTexture;
+	if (dotTextureGreen)
+		delete dotTextureGreen;
+
+	if (dotTextureRed)
+		delete dotTextureRed;
+
+	if (animTexturePress)
+		delete animTexturePress;
+
+	if (animTextureSuccess)
+		delete animTextureSuccess;
 
 	for (int i = 0; i < DEFEND_TOUCHES_MAX; i++) {
 		if (touch[i])
@@ -138,6 +187,26 @@ CameraDefend::~CameraDefend() {
 }
 
 void CameraDefend::Render() {
+	if (defended && !defendedPlayed) {
+		if (animMatSuccess->GetAnimCelID() == animMatSuccess->GetAnimCelNum() - 1) {
+			defendedPlayed = true;
+		}
+
+		IwGxLightingOff();
+
+		animMatSuccess->SetModulateMode(CIwMaterial::MODULATE_NONE);
+		animMatSuccess->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
+
+		IwGxSetMaterial(animMatSuccess);
+		IwGxSetUVStream(anim_uvs_success);
+
+		IwGxSetVertStreamScreenSpace(animVertsLeftSuccess, 4);
+		IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
+
+		IwGxSetVertStreamScreenSpace(animVertsRightSuccess, 4);
+		IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
+	}
+
 	if (!isActive()) return;
 
 	Iw2DSetAlphaMode(IW_2D_ALPHA_NONE);
@@ -156,29 +225,32 @@ void CameraDefend::Render() {
 	Iw2DSetTransformMatrix(rot);
 	Iw2DDrawImage(dotTexture, dotVertsTopLeftRight, dotVertsSizeRight);
 
+	bool isDrwaing = true;
 	for (int i = 0; i < DEFEND_TOUCHES_MAX; i++) {
 		// Is any touch drawing?
 		if (touch[i]->drawing) break;
 
 		if (i == DEFEND_TOUCHES_MAX - 1) {
+			isDrwaing = false;
 			animMat->SetAnimCelID(0);
-			return;
 		}
 	}
 
-	IwGxLightingOff();
+	if (isDrwaing) {
+		IwGxLightingOff();
 
-	animMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
-	animMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
+		animMat->SetModulateMode(CIwMaterial::MODULATE_NONE);
+		animMat->SetAlphaMode(CIwMaterial::ALPHA_BLEND);
 
-	IwGxSetMaterial(animMat);
-	IwGxSetUVStream(anim_uvs);
+		IwGxSetMaterial(animMat);
+		IwGxSetUVStream(anim_uvs);
 
-	IwGxSetVertStreamScreenSpace(animVertsLeft, 4);
-	IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
+		IwGxSetVertStreamScreenSpace(animVertsLeft, 4);
+		IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
 
-	IwGxSetVertStreamScreenSpace(animVertsRight, 4);
-	IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
+		IwGxSetVertStreamScreenSpace(animVertsRight, 4);
+		IwGxDrawPrims(IW_GX_QUAD_LIST, NULL, 4);
+	}
 }
 
 void CameraDefend::Update() {
@@ -230,6 +302,7 @@ void CameraDefend::Motion(int32 x, int32 y, uint32 id) {
 	if (dotsCollideWithDrawing) {
 		active = false;
 		if (ghost->getAttack() != NULL)
+			defended = true;
 			ghost->getAttack()->setDefended();
 
 		/*IwTrace(GHOST_HUNTER, ("Player defend drawing %s; coords %.0f.%.0f to %.0f.%.0f - dot left coord %.0f.%.0f right coord %.0f.%.0f", 

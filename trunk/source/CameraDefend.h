@@ -26,17 +26,28 @@ class DefendTouch {
 
 class CameraDefend {
 	private:
-	CIwMaterial* animMat;
 	CIw2DImage* dotTexture;
-	CIwTexture* animTexture;
+	CIw2DImage* dotTextureGreen;
+	CIw2DImage* dotTextureRed;
 
 	CIwFVec2 dotVertsTopLeftLeft;
 	CIwFVec2 dotVertsSizeLeft;
 	CIwFVec2 dotVertsTopLeftRight;
 	CIwFVec2 dotVertsSizeRight;
 
+	CIwMaterial* animMat;
+	CIwTexture* animTexturePress;
+
 	CIwFVec2 animVertsLeft[4];
 	CIwFVec2 animVertsRight[4];
+
+	bool defended;
+	bool defendedPlayed;
+	CIwMaterial* animMatSuccess;
+	CIwTexture* animTextureSuccess;
+
+	CIwFVec2 animVertsLeftSuccess[4];
+	CIwFVec2 animVertsRightSuccess[4];
 
 	int dotAngle;
 	bool active;
