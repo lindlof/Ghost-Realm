@@ -45,7 +45,7 @@ void Audio::StopAmbient() {
 
 
 Audio::Audio() {
-	maxChannel = s3eAudioGetInt(S3E_AUDIO_NUM_CHANNELS);
+	maxChannel = s3eAudioGetInt(S3E_AUDIO_NUM_CHANNELS) - 1;
 	channel = 2;
 	ambientChan = 0;
 }
