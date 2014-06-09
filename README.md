@@ -6,6 +6,8 @@ Ghost Realm was designed and developed during Game Project course in Metropolia 
 
 Demo is made with Marmalade C++ SDK. Ghost Realm is tested and released on Android but nothing should limit compatibility with other platforms that Marmalade supports.
 
+All material including sounds, pictures, 3D models and source code is licensed under Apache 2.0 license.
+
 # Core concept
 
 The game takes place in augmented reality. The default view is a real life map that player can navigate using GPS. Ghosts can be found in some area of the map.
