@@ -4,7 +4,7 @@ Ghost Realm is a mobile game demo. Demo features 3D action in augmented reality.
 
 Ghost Realm was designed and developed during Game Project course in Metropolia University of Applied Sciences. Demo is ultimately designed for demonstration of core game concepts in the Game Connection Europe event.
 
-Demo is made with Marmalade C++ SDK. It's tested and released on Android but nothing should limit compatibility with other platforms that Marmalade supports.
+Demo is made with Marmalade C++ SDK. Ghost Realm is tested and released on Android but nothing should limit compatibility with other platforms that Marmalade supports.
 
 # Core concept
 
@@ -24,6 +24,16 @@ Artist: Eero Salminen
 Artist: Humberto Bampende
 Developer: Mikael Lindlöf
 Sound designer: Eero Kaukomies
+
+# Building
+
+Building is tested with following components:
+* Marmalade 6.4, JDK 1.6.0_45 and Android SDK
+* Marmalade 7.3, JDK 1.6.0_45 and Android NDK r9
+
+To build the compiled 3D models (.group.bin files):
+1. Build Simulator x86 Debug
+2. Run Simulator x86 Debug
 
 # Links
 
