@@ -1,0 +1,8 @@
+ResGroupResources:
+	CIwModelBuildInfo (0x66bbd6f5)
+		"GEO_For_Export" (0xc354a9c7)
+		Size: 228812
+	ResList 'CIwModelBuildInfo' pos:18 size:228822
+
+ResGroupResources: Wrote 228826 bytes to CIwResGroup ""
+

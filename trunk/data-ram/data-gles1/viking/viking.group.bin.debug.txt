@@ -1,0 +1,8 @@
+ResGroupResources:
+	CIwModelBuildInfo (0x66bbd6f5)
+		"viking" (0x22c845ad)
+		Size: 211148
+	ResList 'CIwModelBuildInfo' pos:18 size:211158
+
+ResGroupResources: Wrote 211162 bytes to CIwResGroup ""
+
