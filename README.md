@@ -32,6 +32,7 @@ Map and GPS are not implemented in this demo so the player can only stand still.
 # Links
 
 * GitHub: https://github.com/Mikuz/Ghost-Realm
+* Google Play: https://play.google.com/store/apps/details?id=fi.ghostrealm
 * Ghost Realm blog: https://ghosthuntermobile.wordpress.com
 * Trello: https://trello.com/b/MX5TF9HU/ghost-realm
 
