@@ -8,7 +8,9 @@ Demo is made with Marmalade C++ SDK. Ghost Realm is tested and released on Andro
 
 All material including sounds, pictures, 3D models and source code is licensed under Apache 2.0 license.
 
-# Core concept
+# Game concept
+
+GHost Realm Demo was designed to be presented with a guy that explains the game concept. Since we can't ship the sources with a marketing guy here is a short explanation of Ghost Realm concept.
 
 The game takes place in augmented reality. The default view is a real life map that player can navigate using GPS. Ghosts can be found in some area of the map.
 
